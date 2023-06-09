@@ -4,17 +4,61 @@ import { dropTableHead } from './parameters.js';
 const inputDrops = document.querySelector('#input');
 const outputDrops = document.querySelector('#output');
 
+/**
+ * Translates parameters in the input text based on the @dropTableHead object.
+ * Ignores translation within these arrow thingys "<" and ">".
+ */
 const parameterTranslator = () => {
-    for (let parameter in dropTableHead) {
-        // Insensitive case regex that matches any digits at the end of the string.  
-        const regex = new RegExp(`\\b${parameter}\\b\\d*`, 'ig');
+    const input = inputDrops.value;
+    let output = '';
+    let currentIndex = 0;
+    // Tracks if there's an item currently inside the arrow thingys
+    let inAngleBrackets = false; 
 
-        // Extract any digits at the end of the match and append them to the replacement string.
-        const digits = parameter.match(/\d+$/);
-        const translated = dropTableHead[parameter] + (digits ? digits[0] : '');
+    while (currentIndex < input.length) {
+        if (input[currentIndex] === '<') {
+            inAngleBrackets = true;
+            output += input[currentIndex];
+            currentIndex++;
+        } else if (input[currentIndex] === '>') {
+            inAngleBrackets = false;
+            output += input[currentIndex];
+            currentIndex++;
+        } else if (!inAngleBrackets) {
+            let matchFound = false;
 
-        outputDrops.value = outputDrops.value.replace(regex, translated);
+            for (let parameter in dropTableHead) {
+                const regex = new RegExp(`\\b${parameter}\\b\\d*`, 'ig');
+                regex.lastIndex = currentIndex; // Set the regex start index
+
+                const match = regex.exec(input);
+
+                if (match && match.index === currentIndex) {
+                    const translated = dropTableHead[parameter] + (match[0].match(/\d+$/) || '');
+                    output += translated;
+                    currentIndex += match[0].length;
+                    matchFound = true;
+                    break;
+                }
+            }
+            
+            if (!matchFound) {
+                // If no parameter match is found, add the current character to the output
+                output += input[currentIndex];
+                currentIndex++;
+            }
+        } else {
+            /**
+            * If currently inside arrow thingys, add the current character to the output
+            * It will still be in english tho, so we can either append it as is
+            * or we just leave it in an empty string like this "<>", whichever is best
+            */
+            output += input[currentIndex];
+            currentIndex++;
+        }
     }
+
+    outputDrops.value = output;
 };
 
 const translateItemNames = async () => {
