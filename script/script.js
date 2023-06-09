@@ -84,7 +84,7 @@ const translateItemNames = async () => {
     outputDrops.value = lines.join("\n");
 };
 
-inputDrops.addEventListener('mouseover', () => {
+inputDrops.addEventListener('input', () => {
     outputDrops.value = inputDrops.value;
 
     parameterTranslator();
