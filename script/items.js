@@ -1,5 +1,5 @@
 try {
-    const response = await fetch('data.json');
+    const response = await fetch('./data/data.json');
     var itemNames = await response.json(); 
 } catch (error) {
     console.error('Error loading JSON file:', error);
