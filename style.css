@@ -4,15 +4,60 @@
   box-sizing: border-box;
 }
 
+:root {
+  --clr-bg-primary: hsl(220, 66%, 8%);
+  --clr-bg-secondary: hsl(220, 34%, 20%);
+  --clr-text-primary: hsl(28, 100%, 65%);
+  --clr-text-secondary: hsl(28, 44%, 66%);
+  
+  --max-width-laptop: 64rem;
+}
+
 body {
-  background-color: hsl(220, 66%, 8%);
+  background-color: var(--clr-bg-primary);
+}
+
+header {
+  max-width: var(--max-width-laptop);
+  margin-inline: auto;
+  margin-bottom: 1.5rem;
+}
+
+header .logo {
+  color: var(--clr-text-primary);
+}
+
+main {
+  max-width: var(--max-width-laptop);
+  margin-inline: auto;
+}
+
+section {
+  display: flex;
+  height: 90vh;
+}
+
+.inputs-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .text-box {
   border-radius: .35rem;
-  background-color: hsl(219, 34%, 20%);
-  color: hsl(28, 44%, 66%);
+  /* Vai ser width: 100% depois da infobox */
+  width: 60%; 
+  height: 100%;
+  /* Depois que adicionar a infobox apagar esse margin-inline, ele vai quebrar tudo */
+  margin-inline: auto;
+  background-color: var(--clr-bg-secondary);
+  color: var(--clr-text-secondary);
   padding: .5rem;
   line-height: 1.6;
+  resize: none;
 }
 
+/* Esse aqui não vai funcionar ainda pq o infobox ta comentado para eu n esquecer depois, n esquece! */
+.infobox-container {
+  width: 50%;
+}
