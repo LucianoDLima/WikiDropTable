@@ -9,57 +9,33 @@ const outputDrops = document.querySelector('#output');
  * Ignores translation within these arrow thingys "<" and ">".
  */
 const parameterTranslator = () => {
-  const input = inputDrops.value;
-  let output = '';
-  let currentIndex = 0;
-  // Tracks if there's an item currently inside the arrow thingys
-  let inAngleBrackets = false;
+  // Splits by both '<' and '>' via RegEx.
+  let output = inputDrops.value.split(/[<>]+/);
+  const len = output.length;
 
-  while (currentIndex < input.length) {
-    if (input[currentIndex] === '<') {
-      inAngleBrackets = true;
-      output += input[currentIndex];
-      currentIndex++;
-    } else if (input[currentIndex] === '>') {
-      inAngleBrackets = false;
-      output += input[currentIndex];
-      currentIndex++;
-    } else if (!inAngleBrackets) {
-      let matchFound = false;
+  for (let parameter in dropTableHead) {
+    // Insensitive case regex that matches any digits at the end of the string.  
+    const regex = new RegExp(`\\b${parameter}\\b\\d*`, 'ig');
 
-      for (let parameter in dropTableHead) {
-        const regex = new RegExp(`\\b${parameter}\\b\\d*`, 'ig');
-        regex.lastIndex = currentIndex; // Set the regex start index
+    // Extract any digits at the end of the match and append them to the replacement string.
+    const digits = parameter.match(/\d+$/);
+    const translated = dropTableHead[parameter] + (digits ? digits[0] : '');
 
-        const match = regex.exec(input);
-
-        if (match && match.index === currentIndex) {
-          const translated =
-            dropTableHead[parameter] + (match[0].match(/\d+$/) || '');
-          output += translated;
-          currentIndex += match[0].length;
-          matchFound = true;
-          break;
-        }
+    for (let i = 0; i < len; i++) {
+      // Everything between any '<' and '>' are on odd indexes inside 'output'.
+      if (i % 2 == 0) {
+        output[i] = output[i].replace(regex, translated);
       }
-
-      if (!matchFound) {
-        // If no parameter match is found, add the current character to the output
-        output += input[currentIndex];
-        currentIndex++;
-      }
-    } else {
-      /**
-       * If currently inside arrow thingys, add the current character to the output
-       * It will still be in english tho, so we can either append it as is
-       * or we just leave it in an empty string like this "<>", whichever is best
-       */
-      output += input[currentIndex];
-      currentIndex++;
     }
   }
 
-  outputDrops.value = output;
+  // Joins 'output' by alternating between '<' and '>'.
+  outputDrops.value = output.reduce((acc, curr, index) => {
+    if (index === 0) {
+      return curr;
+    }
+    return acc + (index % 2 === 0 ? '>' : '<') + curr;
+  }, '');
 };
 
 const translateItemNames = async () => {
