@@ -1,4 +1,4 @@
-import { indexOf2D, fetchTranslatedName } from './items.js';
+import { fetchTranslatedName } from './items.js';
 import { dropTableHead } from './parameters.js';
 
 const inputDrops = document.querySelector('#input');
@@ -75,9 +75,9 @@ const translateItemNames = async () => {
       item = item[1].split('|');
       item = item[0];
 
-      const idx = indexOf2D(item);
-      if (idx) {
-        lines[i] = lines[i].replace(item, fetchTranslatedName(idx));
+      const translatedName = fetchTranslatedName(item);
+      if (translatedName) {
+        lines[i] = lines[i].replace(item, translatedName);
       }
     }
   }
