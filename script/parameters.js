@@ -5,6 +5,7 @@
     'DropsLineSpiritGems': 'ObjetoLargadoGemasEspirituais',
     'DropsLineTriskelion': 'ObjetoLargadoTríscele',
     'DropsLineGhosts': 'ObjetoLargadoFantasmas',
+    'DropsLineRW': 'ObjetoLargadoRecompensas',
     'Universal drops': 'ObjetoLargadoUniversal',
     'DropsLineArch': 'ObjetoLargadoArq',
     'DropsLineThiev': 'ObjetoLargadoRoubo',
@@ -35,5 +36,6 @@
     'gemw\\s*=\\s*yes': `mercado = sim`,
     'DropsTableBottom': `ObjetoLargadoRodapé`,
     'DropsTableBottom\d+': `ObjetoLargadoRodapé`,
+    'DropsLineEnd': 'ObjetoLargadoRodapé',
     'Main Drop': 'Objetos principais'
 };
