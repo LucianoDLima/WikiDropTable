@@ -55,3 +55,7 @@ section {
   line-height: 1.6;
   resize: none;
 }
+
+.text-box:last-child {
+  cursor: pointer;
+}
