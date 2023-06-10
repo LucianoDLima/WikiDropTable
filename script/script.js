@@ -38,7 +38,7 @@ const parameterTranslator = () => {
   }, '');
 };
 
-const translateItemNames = async () => {
+const translateItemNames = () => {
   let lines = outputDrops.value.split('\n');
 
   for (let i = 0; i < lines.length; i++) {
