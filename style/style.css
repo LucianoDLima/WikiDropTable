@@ -40,24 +40,18 @@ section {
 .inputs-container {
   display: flex;
   flex-direction: column;
+  gap: 1rem;
   width: 100%;
 }
 
 .text-box {
   border-radius: .35rem;
-  /* Vai ser width: 100% depois da infobox */
   width: 60%; 
   height: 100%;
-  /* Depois que adicionar a infobox apagar esse margin-inline, ele vai quebrar tudo */
   margin-inline: auto;
   background-color: var(--clr-bg-secondary);
   color: var(--clr-text-secondary);
   padding: .5rem;
   line-height: 1.6;
   resize: none;
-}
-
-/* Esse aqui não vai funcionar ainda pq o infobox ta comentado para eu n esquecer depois, n esquece! */
-.infobox-container {
-  width: 50%;
 }
