@@ -1,0 +1,6 @@
+@use '../utilities/_variables' as *;
+
+body {
+    background-color: map-get($colors, bg-primary);
+    font-family: monospace ,sans-serif;
+}

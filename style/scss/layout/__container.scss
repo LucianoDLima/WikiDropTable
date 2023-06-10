@@ -1,0 +1,6 @@
+@use '../utilities/_variables' as *;
+
+main {
+    max-width: map-get($breakpoints, laptop);
+    margin-inline: auto;
+}
