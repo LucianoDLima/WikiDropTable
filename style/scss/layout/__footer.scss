@@ -27,6 +27,11 @@
 
         & a {
             color: map-get($colors, text-secondary); 
+            transition: 0.5s;
+
+            &:hover {
+                color: map-get($colors, text-primary)
+            }
         }
 
     }
