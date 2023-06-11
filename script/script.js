@@ -8,18 +8,18 @@ const outputDrops = document.querySelector('#output');
  * Translates parameters in the input text based on the @dropTableHead object.
  * Ignores translation within these arrow thingys "<" and ">".
  */
-const parameterTranslator = () => {
+const parameterTranslator = (objectToBeTranslated) => {
   // Splits by both '<' and '>' via RegEx.
   let output = inputDrops.value.split(/[<>]+/);
   const len = output.length;
 
-  for (let parameter in dropTableHead) {
+  for (let parameter in objectToBeTranslated) {
     // Insensitive case regex that matches any digits at the end of the string.  
     const regex = new RegExp(`\\b${parameter}\\b\\d*`, 'ig');
 
     // Extract any digits at the end of the match and append them to the replacement string.
     const digits = parameter.match(/\d+$/);
-    const translated = dropTableHead[parameter] + (digits ? digits[0] : '');
+    const translated = objectToBeTranslated[parameter] + (digits ? digits[0] : '');
 
     for (let i = 0; i < len; i++) {
       // Everything between any '<' and '>' are on odd indexes inside 'output'.
@@ -64,7 +64,7 @@ const translateItemNames = () => {
 inputDrops.addEventListener('input', () => {
   outputDrops.value = inputDrops.value;
 
-  parameterTranslator();
+  parameterTranslator(dropTableHead);
   translateItemNames();
 });
 
