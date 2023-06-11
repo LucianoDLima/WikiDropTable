@@ -9,7 +9,7 @@ textarea {
 }
 
 body {
-  background-color: hsl(220, 66%, 8%);
+  background-color: hsl(220deg, 66%, 8%);
   font-family: monospace, sans-serif;
 }
 
@@ -19,7 +19,7 @@ body {
   margin-bottom: 1.5rem;
 }
 .header__logo {
-  color: hsl(28, 100%, 65%);
+  color: hsl(28deg, 100%, 65%);
 }
 
 main {
@@ -42,9 +42,9 @@ main {
   width: 55%;
   height: 45%;
   margin-inline: auto;
-  border: 1.5px solid hsl(28, 100%, 65%);
-  background-color: hsl(220, 34%, 20%);
-  color: hsl(28, 44%, 66%);
+  border: 1.5px solid hsl(28deg, 100%, 65%);
+  background-color: hsl(220deg, 34%, 20%);
+  color: hsl(28deg, 44%, 66%);
   padding: 0.5rem;
   line-height: 1.6;
   resize: none;
@@ -58,27 +58,29 @@ main {
   height: 2.5em;
   text-align: center;
   transition: 0.5s;
-  background-color: hsl(220, 34%, 20%);
-  border-top: 2px solid hsl(28, 100%, 65%);
+  background-color: hsl(220deg, 34%, 20%);
+  border-top: 0.125rem solid hsl(28deg, 100%, 65%);
   opacity: 0.7;
 }
 .footer__title {
   margin-top: 0.5rem;
   font-weight: bold;
-  color: hsl(28, 100%, 65%);
+  color: hsl(28deg, 100%, 65%);
 }
 .footer__details {
-  font-size: 12px;
+  font-size: 0.75rem;
   text-align: center;
   padding: 1em;
   transition: 0.25s;
-  color: hsl(28, 100%, 65%);
+  color: hsl(28deg, 100%, 65%);
 }
 .footer__details a {
-  color: hsl(28, 44%, 66%);
+  color: hsl(28deg, 44%, 66%);
 }
 .footer:hover {
   height: 4em;
   opacity: 1;
   border-top: none;
-}/*# sourceMappingURL=style.css.map */
+}
+
+/*# sourceMappingURL=style.css.map */

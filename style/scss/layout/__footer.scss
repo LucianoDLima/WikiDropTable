@@ -9,7 +9,7 @@
     text-align: center;
     transition: 0.5s;
     background-color: map-get($colors, bg-secondary);
-    border-top: 2px solid map-get($colors, text-primary);
+    border-top: 0.125rem solid map-get($colors, text-primary);
     opacity: 0.7;
 
     &__title { 
@@ -19,7 +19,7 @@
     }
 
     &__details {
-        font-size: 12px; 
+        font-size: map-get($fs, xs); 
         text-align: center;
         padding: 1em;
         transition: 0.25s;
