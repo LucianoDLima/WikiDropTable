@@ -86,7 +86,7 @@ main {
 .footer__details a:hover {
   color: hsl(28deg, 100%, 65%);
 }
-.footer:hover {
+.footer:hover, .footer:focus-within {
   height: 4em;
   opacity: 1;
   border-top: none;

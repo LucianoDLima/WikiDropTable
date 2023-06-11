@@ -36,7 +36,8 @@
 
     }
 
-    &:hover {
+    &:hover,
+    &:focus-within {
         height: 4em;
         opacity: 1;
         border-top: none;
