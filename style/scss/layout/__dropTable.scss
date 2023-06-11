@@ -7,14 +7,15 @@
     &__container {
         display: flex;
         flex-direction: column;
-        gap: 1rem;
+        gap: 1.5rem;
         width: 100%;
 
         .droptable__text-box {
-            border-radius: 0.25rem;
-            width: 60%;
-            height: 50%;
+            border-radius: 0.5rem;
+            width: 55%;
+            height: 45%;
             margin-inline: auto;
+            border: 1.5px solid map-get($colors, text-primary);
             background-color: map-get($colors, bg-secondary);
             color: map-get($colors, text-secondary);
             padding: 0.5rem;

@@ -34,14 +34,15 @@ main {
 .droptable__container {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
   width: 100%;
 }
 .droptable__container .droptable__text-box {
-  border-radius: 0.25rem;
-  width: 60%;
-  height: 50%;
+  border-radius: 0.5rem;
+  width: 55%;
+  height: 45%;
   margin-inline: auto;
+  border: 1.5px solid hsl(28, 100%, 65%);
   background-color: hsl(220, 34%, 20%);
   color: hsl(28, 44%, 66%);
   padding: 0.5rem;
