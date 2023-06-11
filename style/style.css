@@ -49,6 +49,11 @@ main {
   line-height: 1.6;
   resize: none;
 }
+@media screen and (max-width: 48rem) {
+  .droptable__container .droptable__text-box {
+    width: 85%;
+  }
+}
 
 .footer {
   position: fixed;
@@ -76,6 +81,10 @@ main {
 }
 .footer__details a {
   color: hsl(28deg, 44%, 66%);
+  transition: 0.5s;
+}
+.footer__details a:hover {
+  color: hsl(28deg, 100%, 65%);
 }
 .footer:hover {
   height: 4em;

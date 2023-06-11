@@ -1,4 +1,5 @@
 @use '../utilities/_variables' as *;
+@use '../utilities/_mixins' as *;
 
 .droptable {
     display: flex;
@@ -21,6 +22,10 @@
             padding: 0.5rem;
             line-height: 1.6;
             resize: none;
+
+            @include screen(map-get($breakpoints, tablet)) {
+                width: 85%;
+            }
         }
     }
 }
