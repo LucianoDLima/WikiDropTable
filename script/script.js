@@ -9,74 +9,75 @@ const outputDrops = document.querySelector('#output');
  * Ignores translation within these arrow thingys "<" and ">".
  */
 const parameterTranslator = (objectToBeTranslated) => {
-  // Splits by both '<' and '>' via RegEx.
-  let output = inputDrops.value.split(/[<>]+/);
-  const len = output.length;
+    // Splits by both '<' and '>' via RegEx.
+    let output = inputDrops.value.split(/[<>]+/);
+    const len = output.length;
 
-  for (let parameter in objectToBeTranslated) {
-    // Insensitive case regex that matches any digits at the end of the string.  
-    const regex = new RegExp(`\\b${parameter}\\b\\d*`, 'ig');
+    for (let parameter in objectToBeTranslated) {
+        // Insensitive case regex that matches any digits at the end of the string.
+        const regex = new RegExp(`\\b${parameter}\\b\\d*`, 'ig');
 
-    // Extract any digits at the end of the match and append them to the replacement string.
-    const digits = parameter.match(/\d+$/);
-    const translated = objectToBeTranslated[parameter] + (digits ? digits[0] : '');
+        // Extract any digits at the end of the match and append them to the replacement string.
+        const digits = parameter.match(/\d+$/);
+        const translated =
+            objectToBeTranslated[parameter] + (digits ? digits[0] : '');
 
-    for (let i = 0; i < len; i++) {
-      // Everything between any '<' and '>' are on odd indexes inside 'output'.
-      if (i % 2 == 0) {
-        output[i] = output[i].replace(regex, translated);
-      }
+        for (let i = 0; i < len; i++) {
+            // Everything between any '<' and '>' are on odd indexes inside 'output'.
+            if (i % 2 == 0) {
+                output[i] = output[i].replace(regex, translated);
+            }
+        }
     }
-  }
 
-  // Joins 'output' by alternating between '<' and '>'.
-  outputDrops.value = output.reduce((acc, curr, index) => {
-    if (index === 0) {
-      return curr;
-    }
-    return acc + (index % 2 === 0 ? '>' : '<') + curr;
-  }, '');
+    // Joins 'output' by alternating between '<' and '>'.
+    outputDrops.value = output.reduce((acc, curr, index) => {
+        if (index === 0) {
+            return curr;
+        }
+        return acc + (index % 2 === 0 ? '>' : '<') + curr;
+    }, '');
 };
 
 const translateItemNames = () => {
-  let lines = outputDrops.value.split('\n');
+    let lines = outputDrops.value.split('\n');
 
-  for (let i = 0; i < lines.length; i++) {
-    let item = lines[i];
+    for (let i = 0; i < lines.length; i++) {
+        let item = lines[i];
 
-    // It has a name to be translated.
-    if (item.indexOf('=') != -1) {
-      // Strips 'Grimy irit' from {{DropsLine|Name=Grimy irit|Quantity=3|Rarity=Common}}.
-      item = item.split('=');
-      item = item[1].split('|');
-      item = item[0];
+        // It has a name to be translated.
+        if (item.indexOf('=') != -1) {
+            // Strips 'Grimy irit' from {{DropsLine|Name=Grimy irit|Quantity=3|Rarity=Common}}.
+            item = item.split('=');
+            item = item[1].split('|');
+            item = item[0];
 
-      const translatedName = fetchTranslatedName(item);
-      if (translatedName) {
-        lines[i] = lines[i].replace(item, translatedName);
-      }
+            const translatedName = fetchTranslatedName(item);
+            if (translatedName) {
+                lines[i] = lines[i].replace(item, translatedName);
+            }
+        }
     }
-  }
 
-  outputDrops.value = lines.join('\n');
+    outputDrops.value = lines.join('\n');
 };
 
 inputDrops.addEventListener('input', () => {
-  outputDrops.value = inputDrops.value;
+    outputDrops.value = inputDrops.value;
 
-  parameterTranslator(dropTableHead);
-  translateItemNames();
+    parameterTranslator(dropTableHead);
+    translateItemNames();
 });
 
 outputDrops.addEventListener('click', () => {
-  outputDrops.select();
-  document.execCommand('copy');
+    outputDrops.select();
+    document.execCommand('copy');
 
-  // Unselect it all after copying
-  const selection = window.getSelection();
-  selection.removeAllRanges();
+    // Unselect it all after copying
+    const selection = window.getSelection();
+    selection.removeAllRanges();
 
-  setTimeout(() => {
-    outputDrops.textContent = outputDrops.value;
-  }, 1500);
+    setTimeout(() => {
+        outputDrops.textContent = outputDrops.value;
+    }, 1500);
 });
