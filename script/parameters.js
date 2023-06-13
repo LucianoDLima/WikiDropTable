@@ -42,8 +42,8 @@
     // Vai ter um outro objeto, não vai ficar tudo junto, mas vou deixar aqui por hora, depois crio um botão que altera o parametro usado
     
     'infobox item': 'Infobox objeto',
-    'yes': 'sim',
-    'no': 'não',
+    'yes': 'Sim',
+    'no': 'Não',
     'release': 'lançamento',
     'update': 'atualização',
     'quest': 'missão',
@@ -54,7 +54,7 @@
     'disassembly': 'desmontável',
     'noteable': 'cupom',
     'actions': 'ações',
-    'actions_equipped': 'ações equipado',
+    'actions_equipped': 'ações_equipado',
     // Tenho que ver as ações pra adicionar aqui
     'destroy': 'destruir',
     'drop': 'largar',
