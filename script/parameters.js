@@ -37,5 +37,32 @@
     'DropsTableBottom': `ObjetoLargadoRodapé`,
     'DropsTableBottom\d+': `ObjetoLargadoRodapé`,
     'DropsLineEnd': 'ObjetoLargadoRodapé',
-    'Main Drop': 'Objetos principais'
+    'Main Drop': 'Objetos principais',
+
+    // Vai ter um outro objeto, não vai ficar tudo junto, mas vou deixar aqui por hora, depois crio um botão que altera o parametro usado
+    
+    'infobox item': 'Infobox objeto',
+    'yes': 'sim',
+    'no': 'não',
+    'release': 'lançamento',
+    'update': 'atualização',
+    'quest': 'missão',
+    'tradeable': 'negociável',
+    'stackable': 'acumulável',
+    'equipable': 'equipável',
+    'value': 'valor',
+    'disassembly': 'desmontável',
+    'noteable': 'cupom',
+    'actions': 'ações',
+    'actions_equipped': 'ações equipado',
+    // Tenho que ver as ações pra adicionar aqui
+    'destroy': 'destruir',
+    'drop': 'largar',
+    // Tenho que ver os itens presentes em destruir
+    'kept': 'em morte',
+    'reclaimable': 'recuperável',
+    // Ver os itens presentes em kept
+    'exchange': 'gemw',
+    'examine': 'examinar',
+    'weight': 'peso'
 };
