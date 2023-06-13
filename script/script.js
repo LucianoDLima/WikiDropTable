@@ -45,15 +45,15 @@ const translateItemNames = () => {
     for (let i = 0; i < lines.length; i++) {
         let item = lines[i];
 
-        // It has a name to be translated.
+        // Check if it has a name to be translated.
         if (item.indexOf('=') != -1) {
-            // Strips 'Grimy irit' from {{DropsLine|Name=Grimy irit|Quantity=3|Rarity=Common}}.
             item = item.split('=');
             item = item[1].split('|');
-            item = item[0];
+            item = item[0].trim();
 
             const translatedName = fetchTranslatedName(item);
             if (translatedName) {
+                // Replace the item name with the translated name.
                 lines[i] = lines[i].replace(item, translatedName);
             }
         }
