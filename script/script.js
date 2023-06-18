@@ -29,6 +29,7 @@ const translateItemNames = () => {
         handleFetchItems(item, lines, i, '=', '|')
         handleFetchItems(item, lines, i, '[[', ']')
         handleFetchItems(item, lines, i, 'Discover:', '|')
+        handleFetchItems(item, lines, i, '[[File:', '.png]]')
     }
 
     outputDrops.value = lines.join('\n');
