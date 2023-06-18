@@ -1,17 +1,26 @@
 /**
  * Translates parameters in the input text based on the @parameterToBeTranslated object.
- * Ignores translation within the angle brackets ("<" and ">").
  */
 export const parameterTranslator = (
     inputDrops,
     outputDrops,
-    paramaterToBeTranslated
+    paramaterToBeTranslated,
+    paramaterToBeTranslated2,
+    paramaterToBeTranslated3,
+    paramaterToBeTranslated4
 ) => {
     // Splits by both '<' and '>' via RegEx.
     let output = inputDrops.value.split(/[<>]+/);
     const outputLength = output.length;
 
+	// Currently, all parameters are being called, which may potentially slow down the app (it will :p).
+	// This will be addressed when implementing buttons to manage the selection of parameters tho.
+	// Reminder: Remove all the paramaterToBeTranslated followed by numbers.
+
 	handleParamaterToBeTranslated(output, outputLength, paramaterToBeTranslated)
+	handleParamaterToBeTranslated(output, outputLength, paramaterToBeTranslated2)
+	handleParamaterToBeTranslated(output, outputLength, paramaterToBeTranslated3)
+	handleParamaterToBeTranslated(output, outputLength, paramaterToBeTranslated4)
 
     // Joins 'output' by alternating between angle brackets.
     outputDrops.value = output.reduce((acc, curr, index) => {

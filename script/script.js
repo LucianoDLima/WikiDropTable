@@ -1,5 +1,5 @@
 import { fetchTranslatedName } from './items.js';
-import { dropTableHead } from './parameters.js';
+import { dropTableHead, skillNames, infoboxItem, infoboxRecipe } from './parameters.js';
 import { parameterTranslator } from './parameterTranslator.js';
 
 const inputDrops = document.querySelector('#input');
@@ -37,7 +37,7 @@ const translateItemNames = () => {
 inputDrops.addEventListener('input', () => {
     outputDrops.value = inputDrops.value;
 
-    parameterTranslator(inputDrops, outputDrops,dropTableHead)
+    parameterTranslator(inputDrops, outputDrops, dropTableHead, skillNames, infoboxItem, infoboxRecipe)
     translateItemNames();
 });
 
