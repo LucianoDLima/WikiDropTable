@@ -28,6 +28,7 @@ const translateItemNames = () => {
         // Check if it has a name to be translated.
         handleFetchItems(item, lines, i, '=', '|')
         handleFetchItems(item, lines, i, '[[', ']')
+        handleFetchItems(item, lines, i, 'Discover:', '|')
     }
 
     outputDrops.value = lines.join('\n');
