@@ -8,7 +8,7 @@ try {
 export const fetchTranslatedName = (item) => {
     const itemNamesLength = itemNames.length;
     for (let i = 0; i < itemNamesLength; i++) {
-        if (itemNames[i][0] === item) {
+        if (itemNames[i][0].toLowerCase() === item) {
             return itemNames[i][1];
         }
     }

@@ -45,7 +45,7 @@ const handleFetchItems = (item, lines, i, start, end) => {
         item = item[1].split(end);
         item = item[0].trim();
         
-        const translatedName = fetchTranslatedName(item);
+        const translatedName = fetchTranslatedName(item.toLowerCase());
         if (translatedName) {
             // Replace the item name with the translated name.
             lines[i] = lines[i].replace(item, translatedName);
