@@ -1,6 +1,5 @@
  export const dropTableHead = {
     'DropsTableHead': 'ObjetoLargadoCabeçalho',
-    'DropsTableHead\\d+': 'ObjetoLargadoCabeçalho',
     'DropsLine': 'ObjetoLargado',
     'DropsLineSpiritGems': 'ObjetoLargadoGemasEspirituais',
     'DropsLineTriskelion': 'ObjetoLargadoTríscele',
@@ -38,9 +37,9 @@
     'DropsTableBottom\d+': `ObjetoLargadoRodapé`,
     'DropsLineEnd': 'ObjetoLargadoRodapé',
     'Main Drop': 'Objetos principais',
+};
 
-    // Vai ter um outro objeto, não vai ficar tudo junto, mas vou deixar aqui por hora, depois crio um botão que altera o parametro usado
-    
+export const infoboxItem = {
     'infobox item': 'Infobox objeto',
     'yes': 'Sim',
     'no': 'Não',
@@ -65,4 +64,79 @@
     'exchange': 'gemw',
     'examine': 'examinar',
     'weight': 'peso'
-};
+}
+
+export const infoboxRecipe = {
+    'Creation': 'Criação',
+    'Switch infobox': 'Alterar Infobox',
+    'Infobox Recipe': 'Infobox criar',
+    'name': 'nome',
+    'skill': 'habilidade',
+    'skillXP': 'habilidade_exp',
+    'secSkill': 'habilidade_sec',
+    'secXP': 'habilidade_sec_exp',
+    'secLevel': 'nível_sec',
+    'geValue': 'mercado',
+    'level': 'nível',
+    'facility': 'facilidade',
+    // 'ilinkp': 'iconlink',
+    // 'ilink': 'iconlink',
+    'Lvl-1 Enchant': 'Encantamento nível 1',
+    'Lvl-2 Enchant': 'Encantamento nível 2',
+    'Lvl-3 Enchant': 'Encantamento nível 3',
+    'Lvl-4 Enchant': 'Encantamento nível 4',
+    'Lvl-5 Enchant': 'Encantamento nível 5',
+    'Lvl-6 Enchant': 'Encantamento nível 6',
+    // {{ilinkp|Lvl-6 Enchant|size=21}}
+    'members': 'membros',
+    'mat1price': 'mat1preço',
+    'mat2price': 'mat2preço',
+    'mat3price': 'mat3preço',
+    'mat4price': 'mat4preço',
+    'mat5price': 'mat5preço',
+    'mat6price': 'mat6preço',
+    'mat7price': 'mat7preço',
+    'mat8price': 'mat8preço',
+    'mat9price': 'mat9preço',
+    'mat1qty': 'mat1quantidade',
+    'mat2qty': 'mat2quantidade',
+    'mat3qty': 'mat3quantidade',
+    'mat4qty': 'mat4quantidade',
+    'mat5qty': 'mat5quantidade',
+    'mat6qty': 'mat6quantidade',
+    'mat7qty': 'mat7quantidade',
+    'mat8qty': 'mat8quantidade',
+    'mat9qty': 'mat9quantidade',
+    'method': 'método',
+}
+
+export const skillNames = {
+    'Attack': 'Ataque',
+    'Strength': 'Força',
+    'Defence': 'Defesa',
+    'Ranged': 'Combate à Distância',
+    'Prayer': 'Oração',
+    'Magic': 'Magia',
+    'Constitution': 'Constituição',
+    'Agility': 'Agilidade',
+    'Herblore': 'Herbologia',
+    'Thieving': 'Ladino',
+    'Crafting': 'Artesanato',
+    'Fletching': 'Arquearia',
+    'Slayer': 'Extermínio',
+    'Hunter': 'Caça',
+    'Mining': 'Mineração',
+    'Smithing': 'Metalurgia',
+    'Fishing': 'Pesca',
+    'Cooking': 'Culinária',
+    'Firemaking': 'Fogo',
+    'Woodcutting': 'Corte de Lenha',
+    'Runecrafting': 'Criação de Runas',
+    'Farming': 'Agricultura',
+    'Construction': 'Construção',
+    'Summoning': 'Evocação',
+    'Dungeoneering': 'Dungeon',
+    'Divination': 'Divinação',
+    'Invention': 'Invenção',
+    'Archaeology': 'Arqueologia'
+}
