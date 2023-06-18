@@ -11,7 +11,19 @@ export const parameterTranslator = (
     let output = inputDrops.value.split(/[<>]+/);
     const outputLength = output.length;
 
-    for (let parameter in paramaterToBeTranslated) {
+	handleParamaterToBeTranslated(output, outputLength, paramaterToBeTranslated)
+
+    // Joins 'output' by alternating between angle brackets.
+    outputDrops.value = output.reduce((acc, curr, index) => {
+        if (index === 0) {
+            return curr;
+        }
+        return acc + (index % 2 === 0 ? '>' : '<') + curr;
+    }, '');
+};
+
+function handleParamaterToBeTranslated(output, outputLength, paramaterToBeTranslated) {
+	for (let parameter in paramaterToBeTranslated) {
         // Insensitive case regex that matches any digits at the end of the string.
         const regex = new RegExp(`\\b${parameter}\\b\\d*`, 'ig');
 
@@ -27,12 +39,4 @@ export const parameterTranslator = (
             }
         }
     }
-
-    // Joins 'output' by alternating between angle brackets.
-    outputDrops.value = output.reduce((acc, curr, index) => {
-        if (index === 0) {
-            return curr;
-        }
-        return acc + (index % 2 === 0 ? '>' : '<') + curr;
-    }, '');
-};
+}
