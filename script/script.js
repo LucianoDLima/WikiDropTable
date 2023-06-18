@@ -39,6 +39,20 @@ const parameterTranslator = (objectToBeTranslated) => {
     }, '');
 };
 
+const handleFetchItems = (item, lines, i, start, end) => {
+    if (item.indexOf(start) != -1) {
+        item = item.split(start);
+        item = item[1].split(end);
+        item = item[0].trim();
+        
+        const translatedName = fetchTranslatedName(item);
+        if (translatedName) {
+            // Replace the item name with the translated name.
+            lines[i] = lines[i].replace(item, translatedName);
+        }
+    }
+};
+
 const translateItemNames = () => {
     let lines = outputDrops.value.split('\n');
 
@@ -46,21 +60,13 @@ const translateItemNames = () => {
         let item = lines[i];
 
         // Check if it has a name to be translated.
-        if (item.indexOf('=') != -1) {
-            item = item.split('=');
-            item = item[1].split('|');
-            item = item[0].trim();
-
-            const translatedName = fetchTranslatedName(item);
-            if (translatedName) {
-                // Replace the item name with the translated name.
-                lines[i] = lines[i].replace(item, translatedName);
-            }
-        }
+        handleFetchItems(item, lines, i, '=', '|')
+        handleFetchItems(item, lines, i, '[[', ']')
     }
 
     outputDrops.value = lines.join('\n');
 };
+
 
 inputDrops.addEventListener('input', () => {
     outputDrops.value = inputDrops.value;
