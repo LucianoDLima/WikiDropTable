@@ -21,15 +21,20 @@ const handleFetchItems = (item, lines, i, start, end) => {
 
 const translateItemNames = () => {
     let lines = outputDrops.value.split('\n');
+    const symbolsToCheck = [
+        ['=', '|'],
+        ['[[', ']'],
+        ['Discover:', '|'],
+        ['[[File:', '.png]]']
+    ];
 
     for (let i = 0; i < lines.length; i++) {
         let item = lines[i];
 
         // Check if it has a name to be translated.
-        handleFetchItems(item, lines, i, '=', '|')
-        handleFetchItems(item, lines, i, '[[', ']')
-        handleFetchItems(item, lines, i, 'Discover:', '|')
-        handleFetchItems(item, lines, i, '[[File:', '.png]]')
+        symbolsToCheck.forEach(([start, end]) => {
+            handleFetchItems(item, lines, i, start, end);
+        });
     }
 
     outputDrops.value = lines.join('\n');
