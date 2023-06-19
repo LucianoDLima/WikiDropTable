@@ -7,7 +7,8 @@ export const translateParameters = (
     paramaterToBeTranslated,
     paramaterToBeTranslated2,
     paramaterToBeTranslated3,
-    paramaterToBeTranslated4
+    paramaterToBeTranslated4,
+    paramaterToBeTranslated5
 ) => {
     // Splits by both '<' and '>' via RegEx.
     let output = inputDrops.value.split(/[<>]+/);
@@ -21,6 +22,7 @@ export const translateParameters = (
         [paramaterToBeTranslated2],
         [paramaterToBeTranslated3],
         [paramaterToBeTranslated4],
+        [paramaterToBeTranslated5],
     ];
 
     parametersToCheck.forEach(([params]) => {

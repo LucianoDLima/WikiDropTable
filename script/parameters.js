@@ -64,7 +64,8 @@ export const infoboxItem = {
     // Ver os itens presentes em kept
     'exchange': 'gemw',
     'examine': 'examinar',
-    'weight': 'peso'
+    'weight': 'peso',
+    'file': 'Arquivo'
 }
 
 export const infoboxRecipe = {
@@ -129,6 +130,29 @@ export const infoboxRecipe = {
     'spell': '',
     'ilinkp': 'plinkp'
     // ==== End: Exception parameters ====
+}
+
+export const summonPouch = {
+    'Infobar Summon Pouch': 'Databox Algibeiras de Evocação',
+    'name': 'nome',
+    'image': 'imagem',
+    'shards': 'fragmentos',
+    'charm': 'talismã',
+    'tertiary': 'terciário',
+    'createxp': 'exp criar',
+    'usexp': 'exp uso',
+    'high': 'avançada',
+    'low': 'básica',
+    'exchange': 'mercado', // It has a dupe in Infobox item with a different translation sadly, so the button to swap between templates will be necessary
+    'examine': 'examinar',
+    'returnlvl': 'nível da troca',
+
+    // Charms:
+    'gold': 'Dourado',
+    'green': 'Verde',
+    'crimson': 'Carmesim',
+    'blue': 'Azul',
+    'elder': 'Ancião',
 }
 
 export const skillNames = {
