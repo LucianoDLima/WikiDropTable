@@ -1,7 +1,7 @@
 /**
  * Translates parameters in the input text based on the @parameterToBeTranslated object.
  */
-export const parameterTranslator = (
+export const translateParameters = (
     inputDrops,
     outputDrops,
     paramaterToBeTranslated,
