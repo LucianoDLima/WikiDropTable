@@ -5,6 +5,7 @@
     'DropsLineTriskelion': 'ObjetoLargadoTríscele',
     'DropsLineGhosts': 'ObjetoLargadoFantasmas',
     'DropsLineRW': 'ObjetoLargadoRecompensas',
+    'DropsLineWC': 'ObjetoLargadoCorteDeLenha',
     'Universal drops': 'ObjetoLargadoUniversal',
     'DropsLineArch': 'ObjetoLargadoArq',
     'DropsLineThiev': 'ObjetoLargadoRoubo',
