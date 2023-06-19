@@ -13,14 +13,19 @@ export const parameterTranslator = (
     let output = inputDrops.value.split(/[<>]+/);
     const outputLength = output.length;
 
-	// Currently, all parameters are being called, which may potentially slow down the app (it will :p).
-	// This will be addressed when implementing buttons to manage the selection of parameters tho.
-	// Reminder: Remove all the paramaterToBeTranslated followed by numbers.
+    // Currently, all parameters are being called, which may potentially slow down the app (it will :p).
+    // This will be addressed when implementing buttons to manage the selection of parameters tho.
+    // Reminder: Remove all the paramaterToBeTranslated followed by numbers.
+    const parametersToCheck = [
+        [paramaterToBeTranslated],
+        [paramaterToBeTranslated2],
+        [paramaterToBeTranslated3],
+        [paramaterToBeTranslated4],
+    ];
 
-	handleParamaterToBeTranslated(output, outputLength, paramaterToBeTranslated)
-	handleParamaterToBeTranslated(output, outputLength, paramaterToBeTranslated2)
-	handleParamaterToBeTranslated(output, outputLength, paramaterToBeTranslated3)
-	handleParamaterToBeTranslated(output, outputLength, paramaterToBeTranslated4)
+    parametersToCheck.forEach(([params]) => {
+        handleParamaterToBeTranslated(output, outputLength, params);
+    });
 
     // Joins 'output' by alternating between angle brackets.
     outputDrops.value = output.reduce((acc, curr, index) => {
