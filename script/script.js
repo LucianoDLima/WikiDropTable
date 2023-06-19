@@ -24,7 +24,7 @@ const translateItemNames = () => {
     const symbolsToCheck = [
         ['=', '|'],
         ['[[', ']'],
-        ['Discover:', '|'],
+        ['Descobrir:', '|'],
         ['[[File:', '.png]]']
     ];
 

@@ -122,7 +122,11 @@ export const infoboxRecipe = {
     'Lvl-5 Enchant': 'Encantamento nível 5',
     'Lvl-6 Enchant': 'Encantamento nível 6',
     'requires a': 'Requer um(a)',
+    'requires an': 'Requer um(a)',
     'Must be performed at the': 'Deve ser realizada em um(a)',
+    'Enchanted using the': 'Encantado usando o',
+    'spell': '',
+    'ilinkp': 'plinkp'
     // ==== End: Exception parameters ====
 }
 
