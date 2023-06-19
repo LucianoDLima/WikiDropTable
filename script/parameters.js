@@ -100,11 +100,13 @@ export const infoboxRecipe = {
     'mat7qty': 'mat7quantidade',
     'mat8qty': 'mat8quantidade',
     'mat9qty': 'mat9quantidade',
+    'Discover': 'Descobrir',
 
     // ==== Start: Facility and misc parameters ====
     'facility': 'facilidade',
     'furnace': 'fornalha',
-    'workshop': 'bancada do inventor',
+    // 'workshop': 'bancada do inventor',
+    'inventor\'s workbench': 'bancada do inventor',
     'obelisk': 'obelisco',
     'fast incubator': 'incubadora rápida',
     'fast compost bin': 'caixa de adubo rápido',
