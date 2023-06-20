@@ -2,6 +2,8 @@
 
 The RS3 Wiki Helper Tool is a browser application designed to assist users in translating pages from the Runescape 3 Wiki. It simplifies the translation process by automatically translating specific template parameters and all the runescape 3 items. Please note that this tool is not intended for translating entire pages but rather templates with fixed translations plus the game items.
 
+## How to properly use it
+
 Here's an example of how the tool works using the Infobox recipe template:
 ```
 {{Infobox Recipe
