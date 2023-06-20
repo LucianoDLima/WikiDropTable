@@ -64,3 +64,9 @@ Making it short, this app is designed to assist in translating templates and the
   * [Recipe - Criação](https://runescape.wiki/w/Template:Infobox_Recipe)
   * [Item - Objeto](https://runescape.wiki/w/Module:Infobox_Item)
   * [Summon Pouch - Algibeiras de Evocação](https://runescape.wiki/w/Template:Infobox_Summoning_pouch)
+
+  ## Current known bugs
+- If there is an parameter inside a template that has the same name as a game item, it will skip the translation, for example:
+  * **Furnace** is a parameter from infobox recipe, so if you write "**= Orthen furnace core|**", the item will not be translated.
+- If there are multiple items in the same line, only the first one will be translated. This does not happen in parameters, however. For example:
+  * **"[[Super prayer renewal potion (6)]], [[Ancient elven ritual shard]], [[Luck of the Dwarves]]"**, only the prayer potion will be translated, the rest is ignored.
