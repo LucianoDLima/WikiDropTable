@@ -5,27 +5,18 @@ export const translateParameters = (
     inputDrops,
     outputDrops,
     paramaterToBeTranslated,
-    paramaterToBeTranslated2,
-    paramaterToBeTranslated3,
-    paramaterToBeTranslated4,
-    paramaterToBeTranslated5
+    paramaterToBeTranslated2
 ) => {
     // Splits by both '<' and '>' via RegEx.
     let output = inputDrops.value.split(/[<>]+/);
     const outputLength = output.length;
 
-    // Currently, all parameters are being called, which may potentially slow down the app (it will :p).
-    // This will be addressed when implementing buttons to manage the selection of parameters tho.
-    // Reminder: Remove all the paramaterToBeTranslated followed by numbers.
     const parametersToCheck = [
-        [paramaterToBeTranslated],
-        [paramaterToBeTranslated2],
-        [paramaterToBeTranslated3],
-        [paramaterToBeTranslated4],
-        [paramaterToBeTranslated5],
+        paramaterToBeTranslated,
+        paramaterToBeTranslated2
     ];
 
-    parametersToCheck.forEach(([params]) => {
+    parametersToCheck.forEach((params) => {
         handleParamaterToBeTranslated(output, outputLength, params);
     });
 
@@ -39,19 +30,48 @@ export const translateParameters = (
 };
 
 function handleParamaterToBeTranslated(output, outputLength, paramaterToBeTranslated) {
-	for (let parameter in paramaterToBeTranslated) {
+    for (let parameter in paramaterToBeTranslated) {
         // Insensitive case regex that matches any digits at the end of the string.
         const regex = new RegExp(`\\b${parameter}\\b\\d*`, 'ig');
 
         // Extract any digits at the end of the match and append them to the replacement string.
         const digits = parameter.match(/\d+$/);
-        const translated =
-            paramaterToBeTranslated[parameter] + (digits ? digits[0] : '');
+        const translated = paramaterToBeTranslated[parameter] + (digits ? digits[0] : '');
 
         for (let i = 0; i < outputLength; i++) {
-            // Everything between angle brackets are on odd indexes inside 'output'.
-            if (i % 2 == 0) {
-                output[i] = output[i].replace(regex, translated);
+            if (i % 2 === 0) {
+                // Handle exception for 'date' parameter (Day Month)
+                let exceptionRegexDate = /date\s*=\s*(\d+)\s+([\w\s]+)\s+(\d+)/ig;
+                let matchesDate = output[i].matchAll(exceptionRegexDate);
+                let replacedDate = false;
+                
+                for (let match of matchesDate) {
+                    const day = match[1];
+                    const month = match[2];
+                    const year = match[3];
+                    const exceptionReplacementDate = `data={{Data|${day}|${month.toLowerCase()}|${year}}}`;
+                    output[i] = output[i].replace(match[0], exceptionReplacementDate);
+                    replacedDate = true;
+                }
+
+                // Handle exception for 'release' parameter ([Day Month] [Year])
+                let exceptionRegexRelease = /release\s*=\s*\[\[([\w\s]+)\]\]\s*\[\[([\w\s]+)\]\]/ig;
+                let matchesRelease = output[i].matchAll(exceptionRegexRelease);
+                let replacedRelease = false;
+
+                for (let match of matchesRelease) {
+                    const dayMonth = match[1].trim();
+                    const year = match[2].trim();
+                    const [day, month] = dayMonth.split(' ');
+                    const exceptionReplacementRelease = `release = {{Data|${day}|${month.toLowerCase()}|${year}}}`;
+                    output[i] = output[i].replace(match[0], exceptionReplacementRelease);
+                    replacedRelease = true;
+                }
+
+                // If no exceptions are found, perform regular translation
+                if (!replacedDate && !replacedRelease) {
+                    output[i] = output[i].replace(regex, translated);
+                }
             }
         }
     }
