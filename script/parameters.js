@@ -132,29 +132,6 @@ export const infoboxRecipe = {
     // ==== End: Exception parameters ====
 }
 
-export const summonPouch = {
-    'Infobar Summon Pouch': 'Databox Algibeiras de Evocação',
-    'name': 'nome',
-    'image': 'imagem',
-    'shards': 'fragmentos',
-    'charm': 'talismã',
-    'tertiary': 'terciário',
-    'createxp': 'exp criar',
-    'usexp': 'exp uso',
-    'high': 'avançada',
-    'low': 'básica',
-    'exchange': 'mercado', // It has a dupe in Infobox item with a different translation sadly, so the button to swap between templates will be necessary
-    'examine': 'examinar',
-    'returnlvl': 'nível da troca',
-
-    // Charms:
-    'gold': 'Dourado',
-    'green': 'Verde',
-    'crimson': 'Carmesim',
-    'blue': 'Azul',
-    'elder': 'Ancião',
-}
-
 export const skillNames = {
     'Attack': 'Ataque',
     'Strength': 'Força',
@@ -183,5 +160,66 @@ export const skillNames = {
     'Dungeoneering': 'Dungeon',
     'Divination': 'Divinação',
     'Invention': 'Invenção',
-    'Archaeology': 'Arqueologia'
+    'Archaeology': 'Arqueologia',
+}
+
+export const updateHistory = {
+    'UH': 'HA',
+    'UL': 'LA',
+    'type': 'tipo',
+    'update': 'atualização',
+    'date': 'data',
+}
+
+export const infoboxSummoning = {
+    // General - used in more than one template
+    'name': 'nome',
+    'image': 'imagem',
+    'examine': 'examinar',
+    'createxp': 'exp criar',
+    'usexp': 'exp uso',
+    'low': 'básica',
+    'high': 'avançada',
+    'returnlvl': 'nível da troca',
+    'file': 'Arquivo',
+    
+    // Familiar
+    'release': 'lançamento',
+    'update': 'atualização',
+    'level': 'nível',
+    'time': 'tempo',
+    'points': 'pontos',
+    'size': 'tamanho',
+    'combat': 'combate',
+    'lifepoints': 'pontos vitais',
+    'immune to poison': 'imune veneno',
+    'ability': 'habilidade',
+    'style': 'estilo',
+    'special': 'especial',
+    'max': 'max',
+    'race': 'raça',
+    'attack': 'ataque',
+    'defence': 'defesa',
+    'ranged': 'combate à distância',
+    'magic': 'magia',
+    
+    // Summon Pouch
+    'Infobar Summon Pouch': 'Databox Algibeiras de Evocação',
+    'shards': 'fragmentos',
+    'charm': 'talismã',
+    'tertiary': 'terciário',
+    'tertiarycost': 'custoterciário',
+    'cost': 'custo',
+    
+    // Summon scrioll
+    'Infobox Summoning scroll': 'Databox Pergaminhos de Evocação',
+    'return': 'retorno',
+
+    // Charms:
+    'gold': 'Dourado',
+    'green': 'Verde',
+    'crimson': 'Carmesim',
+    'blue': 'Azul',
+    'elder': 'Ancião',
+
 }
