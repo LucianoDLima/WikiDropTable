@@ -6,7 +6,9 @@ export const translateItemNames = (outputDrops) => {
       ['=', '|'],
       ['[[', ']'],
       ['Descobrir:', '|'],
-      ['[[Arquivo:', '.png]]']
+      ['[[Arquivo:', '.png'],
+      ['==', '=='],
+      ['|', '}}']
   ];
 
   for (let i = 0; i < lines.length; i++) {
