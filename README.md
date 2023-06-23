@@ -1,6 +1,13 @@
 # RS3 Wiki Helper Tool
 
+## Live 
+
+[RS3 Wiki Helper Tool Website](https://lucianodlima.github.io/WikiDropTable/)
+
+## Overview
+
 The RS3 Wiki Helper Tool is a browser application designed to assist users in translating pages from the Runescape 3 Wiki. It simplifies the translation process by automatically translating specific template parameters and all the runescape 3 items. Please note that this tool is not intended for translating entire pages but rather templates with fixed translations plus the game items.
+
 
 ## How to properly use it
 
@@ -53,6 +60,7 @@ As you can see, the tool translates everything except the text between **_>_** a
 Making it short, this app is designed to assist in translating templates and the corresponding items within those templates, nothing else!
 
 ## Templates currently supported
+
 - Drops
   * [Monsters and general](https://runescape.wiki/w/Template:DropsLine)
   * [Events and rewards](https://runescape.wiki/w/Template:DropsLineRW)
@@ -64,8 +72,11 @@ Making it short, this app is designed to assist in translating templates and the
   * [Recipe - Criação](https://runescape.wiki/w/Template:Infobox_Recipe)
   * [Item - Objeto](https://runescape.wiki/w/Module:Infobox_Item)
   * [Summon Pouch - Algibeiras de Evocação](https://runescape.wiki/w/Template:Infobox_Summoning_pouch)
+  * [Summon Scrolls - Pergaminhos de Evocação](https://runescape.wiki/w/Template:Infobox_Summoning_scroll)
+  * [Familiar - Familiar](https://runescape.wiki/w/Template:Infobox_familiar)
 
-  ## Current known bugs
+## Current known bugs
+
 - If there is an parameter inside a template that has the same name as a game item, it will skip the translation, for example:
   * **Furnace** is a parameter from infobox recipe, so if you write "**= Orthen furnace core|**", the item will not be translated.
 - If there are multiple items in the same line, only the first one will be translated. This does not happen in parameters, however. For example:
