@@ -1,15 +1,69 @@
-import { dropTableHead, skillNames, infoboxItem, infoboxRecipe, summonPouch } from './parameters.js';
+import * as tp from './parameters.js';
 import { translateParameters } from './parameterTranslator.js';
 import { translateItemNames } from './itemTranslator.js';
 
 const inputDrops = document.querySelector('#input');
 const outputDrops = document.querySelector('#output');
 
+// It looks for the appropriate template to translate based on some key words.
+function handleInput() {
+    const inputContent = inputDrops.value;
+    const lines = inputContent.split('\n');
+
+    for (let i = 0; i < lines.length; i++) {
+        const line = lines[i];
+        let caseFound = false; 
+
+        switch (line) {
+            case '{{Infobox familiar':
+            case '{{Infobar Summon Pouch':
+            case '{{Infobox Summoning scroll':
+                console.log('famil');
+                translateParameters(inputDrops, outputDrops, tp.infoboxSummoning);
+                caseFound = true;
+                break;
+
+            case '{{infobox item':
+                console.log('item');
+                translateParameters(inputDrops, outputDrops, tp.infoboxItem);
+                caseFound = true;
+                break;
+            
+            case '==Creation==':
+            case 'Infobox Recipe':
+                translateParameters(inputDrops, outputDrops, tp.infoboxRecipe, tp.skillNames);
+                caseFound = true;
+                break;
+                
+            case '===Main drops===':
+            case '===Secondary drops===':
+            case '{{DropsTableHead}}':
+                translateParameters(inputDrops, outputDrops, tp.dropTableHead);
+                caseFound = true;
+                break;
+            
+            case '==Update history==':
+            case '{{UH|':
+                translateParameters(inputDrops, outputDrops, tp.updateHistory);
+                caseFound = true;
+                break;
+        }
+
+        if (caseFound) {
+            break; // Exit the loop if a case is matched
+        }
+
+        console.log('all');
+        translateParameters(inputDrops, outputDrops, tp.dropTableHead, tp.infoboxItem, tp.infoboxRecipe, tp.infoboxSummoning, tp.infoboxSummoning, tp.skillNames);
+    }
+}
+
+
 
 inputDrops.addEventListener('input', () => {
     outputDrops.value = inputDrops.value;
-
-    translateParameters(inputDrops, outputDrops, dropTableHead, skillNames, infoboxItem, infoboxRecipe, summonPouch)
+    
+    handleInput()
     translateItemNames(outputDrops);
 });
 
