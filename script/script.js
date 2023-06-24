@@ -50,11 +50,11 @@ function handleInput() {
         }
 
         if (caseFound) {
-            break; // Exit the loop if a case is matched
+            break; 
         }
 
         console.log('all');
-        translateParameters(inputDrops, outputDrops, tp.dropTableHead, tp.infoboxItem, tp.infoboxRecipe, tp.infoboxSummoning, tp.infoboxSummoning, tp.skillNames);
+        translateParameters(inputDrops, outputDrops, tp.dropTableHead, tp.infoboxItem, tp.infoboxRecipe, tp.infoboxSummoning, tp.updateHistory, tp.skillNames);
     }
 }
 
