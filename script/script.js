@@ -18,13 +18,11 @@ function handleInput() {
             case '{{Infobox familiar':
             case '{{Infobar Summon Pouch':
             case '{{Infobox Summoning scroll':
-                console.log('famil');
                 translateParameters(inputDrops, outputDrops, tp.infoboxSummoning);
                 caseFound = true;
                 break;
 
             case '{{infobox item':
-                console.log('item');
                 translateParameters(inputDrops, outputDrops, tp.infoboxItem);
                 caseFound = true;
                 break;
@@ -53,7 +51,6 @@ function handleInput() {
             break; 
         }
 
-        console.log('all');
         translateParameters(inputDrops, outputDrops, tp.dropTableHead, tp.infoboxItem, tp.infoboxRecipe, tp.infoboxSummoning, tp.updateHistory, tp.skillNames);
     }
 }
