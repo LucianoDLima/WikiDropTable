@@ -190,6 +190,10 @@ export const updateHistory = {
     'type': 'tipo',
     'update': 'atualização',
     'date': 'data',
+
+    'patch': 'correção',
+    'hidden': 'oculta'
+
 }
 
 export const infoboxSummoning = {
