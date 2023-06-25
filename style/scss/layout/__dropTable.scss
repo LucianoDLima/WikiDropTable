@@ -4,27 +4,28 @@
 .droptable {
     display: flex;
     height: 90vh;
+    color: map-get($colors, text-secondary);
 
-    &__container {
+    &__main-container {
         display: flex;
         flex-direction: column;
         gap: 1.5rem;
         width: 100%;
 
-        .droptable__text-box {
-            border-radius: 0.25rem;
+        .droptable__individual-container {
             width: 55%;
             height: 45%;
             margin-inline: auto;
-            border: 1.5px solid map-get($colors, text-primary);
-            background-color: map-get($colors, bg-secondary);
-            color: map-get($colors, text-secondary);
-            padding: 0.5rem;
-            line-height: 1.6;
-            resize: none;
 
-            @include screen(map-get($breakpoints, tablet)) {
-                width: 85%;
+            .droptable__text-box {
+                border-radius: 0.25rem;
+                width: 100%;
+                height: 100%;
+                border: none;
+                background-color: map-get($colors, bg-secondary);
+                padding: 0.5rem;
+                line-height: 1.6;
+                resize: none;
             }
         }
     }

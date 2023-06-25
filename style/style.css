@@ -4,8 +4,9 @@
   box-sizing: border-box;
 }
 
-textarea {
+textarea, button {
   font-family: inherit;
+  color: inherit;
 }
 
 body {
@@ -30,29 +31,28 @@ main {
 .droptable {
   display: flex;
   height: 90vh;
+  color: hsl(28deg, 44%, 66%);
 }
-.droptable__container {
+.droptable__main-container {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
   width: 100%;
 }
-.droptable__container .droptable__text-box {
-  border-radius: 0.25rem;
+.droptable__main-container .droptable__individual-container {
   width: 55%;
   height: 45%;
   margin-inline: auto;
-  border: 1.5px solid hsl(28deg, 100%, 65%);
+}
+.droptable__main-container .droptable__individual-container .droptable__text-box {
+  border-radius: 0.25rem;
+  width: 100%;
+  height: 100%;
+  border: none;
   background-color: hsl(220deg, 34%, 20%);
-  color: hsl(28deg, 44%, 66%);
   padding: 0.5rem;
   line-height: 1.6;
   resize: none;
-}
-@media screen and (max-width: 48rem) {
-  .droptable__container .droptable__text-box {
-    width: 85%;
-  }
 }
 
 .footer {
