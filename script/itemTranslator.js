@@ -4,10 +4,11 @@ export const translateItemNames = (outputDrops, data) => {
   let lines = outputDrops.value.split('\n');
   const symbolsToCheck = [
       ['=', '|'],
+      ['=', '.png'],
       ['[[', ']'],
       ['Descobrir:', '|'],
       ['[[Arquivo:', '.png'],
-      ['==', '.png']
+      ['==', '==']
   ];
 
   for (let i = 0; i < lines.length; i++) {
