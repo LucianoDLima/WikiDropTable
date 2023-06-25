@@ -10,17 +10,23 @@
         <script src="script/script.js" defer type="module"></script>
     </head>
     <body>
-        <header class="header">
-        </header>
+        <header class="header"></header>
         <main>
             <section class="droptable">
-                <div class="droptable__container">
-                    <textarea class="droptable__text-box" id="input"></textarea>
-                    <textarea
-                        class="droptable__text-box"
-                        id="output"
-                        readonly
-                    ></textarea>
+                <div class="droptable__main-container">
+                    <div class="droptable__individual-container">
+                        <textarea
+                            class="droptable__text-box"
+                            id="input"
+                        ></textarea>
+                    </div>
+                    <div class="droptable__individual-container">
+                        <textarea
+                            class="droptable__text-box"
+                            id="output"
+                            readonly
+                        ></textarea>
+                    </div>
                 </div>
             </section>
         </main>
@@ -28,7 +34,14 @@
         <footer class="footer">
             <p class="footer__title">WikiDropTable</p>
             <p class="footer__details">
-                Feito por <a target="_blank" href="https://github.com/LucianoDLima">Queen Guava</a> & <a target="_blank" href="https://github.com/PvMDragonic">PvM Dragonic</a>.
+                Feito por
+                <a target="_blank" href="https://github.com/LucianoDLima"
+                    >Queen Guava</a
+                >
+                &
+                <a target="_blank" href="https://github.com/PvMDragonic"
+                    >PvM Dragonic</a
+                >.
             </p>
         </footer>
     </body>
