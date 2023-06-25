@@ -1,4 +1,16 @@
- export const dropTableHead = {
+// export const general = {
+//     '': '',
+//     'name': 'nome',
+//     'examine': 'examinar',
+//     'image': 'imagem',
+//     'release': 'lançamento',
+//     'update': 'atualização',
+//     'quest': 'missão',
+//     'file': 'arquivo',
+//     'members': 'membros',
+// }
+
+export const dropTableHead = {
     'DropsTableHead': 'ObjetoLargadoCabeçalho',
     'DropsLine': 'ObjetoLargado',
     'DropsLineSpiritGems': 'ObjetoLargadoGemasEspirituais',
@@ -41,6 +53,7 @@
 };
 
 export const infoboxItem = {
+    'debugger': 'debugger',
     'infobox item': 'Infobox objeto',
     'yes': 'Sim',
     'no': 'Não',
@@ -69,6 +82,7 @@ export const infoboxItem = {
 }
 
 export const infoboxRecipe = {
+    'debugger': 'debugger',
     'Creation': 'Criação',
     'Switch infobox': 'Alterar Infobox',
     'Infobox Recipe': 'Infobox criar',
@@ -133,6 +147,7 @@ export const infoboxRecipe = {
 }
 
 export const skillNames = {
+    'debugger': 'debugger',
     'Attack': 'Ataque',
     'Strength': 'Força',
     'Defence': 'Defesa',
@@ -164,6 +179,8 @@ export const skillNames = {
 }
 
 export const updateHistory = {
+    'debugger': 'debugger',
+    'Update history': 'Histórico de Atualizações',
     'UH': 'HA',
     'UL': 'LA',
     'type': 'tipo',
@@ -172,7 +189,7 @@ export const updateHistory = {
 }
 
 export const infoboxSummoning = {
-    // General - used in more than one template
+    'debugger': 'debugger',
     'name': 'nome',
     'image': 'imagem',
     'examine': 'examinar',
@@ -222,4 +239,85 @@ export const infoboxSummoning = {
     'blue': 'Azul',
     'elder': 'Ancião',
 
+}
+
+export const infoboxMonster = {
+    'debugger': 'debugger',
+    'Switch infobox': 'Alterar Infobox',
+    'Infobox Monster new': 'Infobox monstro',
+    'name': 'nome',
+    'image': 'imagem',
+    'examine': 'examinar',
+    'release': 'lançamento',
+    'update': 'atualização',
+    'members': 'membros',
+    'aggressive': 'agressivo',
+    'poisonous': 'venenoso',
+    'experience': 'experiência',
+    'webxp2h': 'exparma2m',
+    'wepxpmhandarmour': 'exparma',
+    'wepxpoh': 'exparmasec',
+    'level': 'nível',
+    'lifepoints': 'vida',
+    'slaylvl': 'extermínio nível',
+    'slayxp': 'extermínio exp',
+    'slayercat': 'extermínio categoria',
+    'assigned_by': 'designado por',
+    'immune_to_poison': 'imune a veneno',
+    'immune_to_stun': 'imune a atordoamento',
+    'immune_to_deflect': 'imune a dano de recuo',
+    'immune_to_drain': 'imune a drenar estatísticas',
+    'weakness': 'fraqueza',
+    'susceptibility': 'suscetível a',
+    'style': 'estilo',
+    'primarystyle': 'estilo primário',
+    'speed': 'velocidade',
+    'attack': 'ataque',
+    'ranged': 'combate à distância',
+    'magic': 'magia',
+    'defence': 'defesa',
+    'max_melee': 'dano corpo',
+    'max_ranged': 'dano distância',
+    'max_magic': 'dano magia',
+    'max_spec': 'dano especial',
+    'armour': 'armadura',
+    'acc_melee': 'precisão corpo',
+    'acc_ranged': 'precisão distância',
+    'acc_magic': 'precisão magia',
+    'aff_weakness': 'afinidade fraqueza',
+    'aff_melee': 'afinidade corpo',
+    'aff_ranged': 'afinidade distância',
+    'aff_magic': 'afinidade magia',
+    'abilities': 'recursos',
+    'yes': 'Sim',
+    'no': 'Não',
+    'file': 'Arquivo'
+}
+
+export const infoboxNPC = {
+    'debugger': 'debugger',
+    'name': 'nome',
+    'image': 'imagem',
+    'examine': 'examinar',
+    'release': 'lançamento',
+    'update': 'atualização',
+    'members': 'membros',
+    'race': 'raça',
+    'quest': 'missão',
+    'location': 'localização',
+    'gender': 'gênero',
+    'map': 'intmap',
+    'removal': 'descontinuado',
+    'removalupdate': 'descontinuado notícia',
+    'shop': 'vendedor',
+    'actions': 'ações',
+    'thievelvl': 'nívelRoubo',
+    'f2pvisible': 'f2pvisível',
+    'voice': 'voz',
+    'objectid': 'cenarioid',
+    'file': 'Arquivo',
+    'yes': 'Sim',
+    'no': 'Não',
+    'male': 'Homem',
+    'female': 'Mulher'
 }
