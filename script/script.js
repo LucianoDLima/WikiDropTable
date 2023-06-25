@@ -18,38 +18,38 @@ function handleInput() {
         switch (line) {
             case '{{Infobox Monster new':
             case '{{Infobox NPC':
-                translateParameters(inputDrops, outputDrops, tp.infoboxMonster, tp.infoboxNPC)
+                translateParameters(inputDrops, outputDrops, tp.general, tp.infoboxMonster, tp.infoboxNPC)
                 caseFound = true;
                 break
             
             case '{{Infobox familiar':
             case '{{Infobar Summon Pouch':
             case '{{Infobox Summoning scroll':
-                translateParameters(inputDrops, outputDrops, tp.infoboxSummoning);
+                translateParameters(inputDrops, outputDrops, tp.general, tp.infoboxSummoning);
                 caseFound = true;
                 break;
 
             case '{{infobox item':
-                translateParameters(inputDrops, outputDrops, tp.infoboxItem);
+                translateParameters(inputDrops, outputDrops, tp.general, tp.infoboxItem);
                 caseFound = true;
                 break;
             
             case '==Creation==':
             case 'Infobox Recipe':
-                translateParameters(inputDrops, outputDrops, tp.infoboxRecipe, tp.skillNames);
+                translateParameters(inputDrops, outputDrops, tp.general, tp.infoboxRecipe, tp.skillNames);
                 caseFound = true;
                 break;
                 
             case '===Main drops===':
             case '===Secondary drops===':
             case '{{DropsTableHead}}':
-                translateParameters(inputDrops, outputDrops, tp.dropTableHead);
+                translateParameters(inputDrops, outputDrops, tp.general, tp.dropTableHead);
                 caseFound = true;
                 break;
             
             case '==Update history==':
             case '{{UH|':
-                translateParameters(inputDrops, outputDrops, tp.updateHistory);
+                translateParameters(inputDrops, outputDrops, tp.general, tp.updateHistory);
                 caseFound = true;
                 break;
         }
@@ -58,7 +58,7 @@ function handleInput() {
             break; 
         }
 
-        translateParameters(inputDrops, outputDrops, tp.dropTableHead, tp.infoboxItem, tp.infoboxRecipe, tp.infoboxSummoning, tp.updateHistory, tp.skillNames, tp.infoboxMonster, tp.infoboxNPC);
+        translateParameters(inputDrops, outputDrops, tp.general, tp.dropTableHead, tp.infoboxItem, tp.infoboxRecipe, tp.infoboxSummoning, tp.updateHistory, tp.skillNames, tp.infoboxMonster, tp.infoboxNPC);
     }
 }
 
