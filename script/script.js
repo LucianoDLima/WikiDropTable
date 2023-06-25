@@ -1,6 +1,7 @@
 import * as tp from './parameters.js';
 import { translateParameters } from './parameterTranslator.js';
 import { translateItemNames } from './itemTranslator.js';
+import { itemNames, npcNames } from './items.js';
 
 const inputDrops = document.querySelector('#input');
 const outputDrops = document.querySelector('#output');
@@ -15,6 +16,12 @@ function handleInput() {
         let caseFound = false; 
 
         switch (line) {
+            case '{{Infobox Monster new':
+            case '{{Infobox NPC':
+                translateParameters(inputDrops, outputDrops, tp.infoboxMonster, tp.infoboxNPC)
+                caseFound = true;
+                break
+            
             case '{{Infobox familiar':
             case '{{Infobar Summon Pouch':
             case '{{Infobox Summoning scroll':
@@ -51,7 +58,7 @@ function handleInput() {
             break; 
         }
 
-        translateParameters(inputDrops, outputDrops, tp.dropTableHead, tp.infoboxItem, tp.infoboxRecipe, tp.infoboxSummoning, tp.updateHistory, tp.skillNames);
+        translateParameters(inputDrops, outputDrops, tp.dropTableHead, tp.infoboxItem, tp.infoboxRecipe, tp.infoboxSummoning, tp.updateHistory, tp.skillNames, tp.infoboxMonster, tp.infoboxNPC);
     }
 }
 
@@ -61,7 +68,8 @@ inputDrops.addEventListener('input', () => {
     outputDrops.value = inputDrops.value;
     
     handleInput()
-    translateItemNames(outputDrops);
+    translateItemNames(outputDrops, npcNames);
+    translateItemNames(outputDrops, itemNames);
 });
 
 outputDrops.addEventListener('click', () => {
