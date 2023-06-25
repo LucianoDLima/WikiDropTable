@@ -7,6 +7,11 @@
 textarea, button {
   font-family: inherit;
   color: inherit;
+  font-size: inherit;
+}
+
+ol, ul {
+  list-style: none;
 }
 
 body {
@@ -36,7 +41,7 @@ main {
 .droptable__main-container {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 3.5rem;
   width: 100%;
 }
 .droptable__main-container .droptable__individual-container {
@@ -44,8 +49,80 @@ main {
   height: 45%;
   margin-inline: auto;
 }
-.droptable__main-container .droptable__individual-container .droptable__text-box {
+.droptable__main-container .droptable__individual-container .droptable__uh {
+  background-color: hsl(220deg, 29%, 27%);
+  padding: 0.25rem;
+  width: 100%;
+}
+.droptable__main-container .droptable__individual-container .droptable__uh .droptable__uh-container {
+  width: inherit;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+.droptable__main-container .droptable__individual-container .droptable__uh .droptable__uh-container button {
+  padding: 0.25rem 0.25rem;
+  background-color: hsl(220deg, 34%, 20%);
   border-radius: 0.25rem;
+  border: none;
+  border-left: 2px solid rgb(100, 100, 100);
+  border-top: 2px solid rgb(100, 100, 100);
+  border-right: 2px solid rgb(10, 10, 10);
+  border-bottom: 2px solid rgb(10, 10, 10);
+  cursor: pointer;
+}
+.droptable__main-container .droptable__individual-container .droptable__uh .droptable__uh-container button.active {
+  background-color: hsl(220deg, 29%, 27%);
+  border-right: 2px solid rgb(100, 100, 100);
+  border-bottom: 2px solid rgb(100, 100, 100);
+  border-left: 2px solid rgb(10, 10, 10);
+  border-top: 2px solid rgb(10, 10, 10);
+}
+.droptable__main-container .droptable__individual-container .droptable__uh .droptable__uh-container .droptable__uh-filter {
+  position: absolute;
+  top: 3rem;
+  display: inherit;
+  justify-content: inherit;
+  max-width: 27.5rem;
+}
+.droptable__main-container .droptable__individual-container .droptable__uh .droptable__uh-container .droptable__uh-filter .droptable__uh-input {
+  width: 100%;
+  padding: 0 0.5rem 0 0.5rem;
+  border: 1px solid black;
+  border-radius: 0.25rem;
+  display: flex;
+  flex-direction: column;
+}
+.droptable__main-container .droptable__individual-container .droptable__uh .droptable__uh-container .droptable__uh-filter .droptable__uh-input.hidden {
+  display: none;
+}
+.droptable__main-container .droptable__individual-container .droptable__uh .droptable__uh-container .droptable__uh-filter .droptable__uh-input.active {
+  display: inline-block;
+  background-color: hsl(220deg, 29%, 27%);
+}
+.droptable__main-container .droptable__individual-container .droptable__uh .droptable__uh-container .droptable__uh-filter .droptable__uh-input .droptable__date {
+  text-align: center;
+  padding-block: 1rem;
+  border-bottom: 1px solid white;
+}
+.droptable__main-container .droptable__individual-container .droptable__uh .droptable__uh-container .droptable__uh-filter .droptable__uh-input .droptable__date h2 {
+  margin-bottom: 0.5rem;
+}
+.droptable__main-container .droptable__individual-container .droptable__uh .droptable__uh-container .droptable__uh-filter .droptable__uh-input .droptable__date ol, .droptable__main-container .droptable__individual-container .droptable__uh .droptable__uh-container .droptable__uh-filter .droptable__uh-input .droptable__date ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.droptable__main-container .droptable__individual-container .droptable__uh .droptable__uh-container .droptable__uh-filter .droptable__uh-input .droptable__date .droptable__filter-btns {
+  padding: 0.25rem 0.75rem;
+  border: 1px solid wheat;
+}
+.droptable__main-container .droptable__individual-container .droptable__uh .droptable__uh-container .droptable__uh-filter .droptable__uh-input .droptable__date:last-child {
+  border: none;
+}
+.droptable__main-container .droptable__individual-container .droptable__text-box {
+  border-radius: 0 0 0.25rem 0.25rem;
   width: 100%;
   height: 100%;
   border: none;

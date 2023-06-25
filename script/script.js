@@ -5,6 +5,8 @@ import { itemNames, npcNames } from './items.js';
 
 const inputDrops = document.querySelector('#input');
 const outputDrops = document.querySelector('#output');
+const uhButton = document.querySelector('#uh-button');
+const uhInputs = document.querySelector('[data-uh]');
 
 // It looks for the appropriate template to translate based on some key words.
 function handleInput() {
@@ -84,3 +86,16 @@ outputDrops.addEventListener('click', () => {
         outputDrops.textContent = outputDrops.value;
     }, 1500);
 });
+
+uhButton.addEventListener('click', () => {
+    uhButton.classList.toggle('active')
+    uhInputs.classList.toggle('active')
+})
+
+// Closes if clicked outside the UH container
+document.body.addEventListener('click', (e) => {
+    if(!e.target.closest('.active')) {
+        uhButton.classList.remove('active')
+        uhInputs.classList.remove('active')
+    }
+})
