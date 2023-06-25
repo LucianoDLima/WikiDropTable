@@ -1,14 +1,28 @@
-// export const general = {
-//     '': '',
-//     'name': 'nome',
-//     'examine': 'examinar',
-//     'image': 'imagem',
-//     'release': 'lançamento',
-//     'update': 'atualização',
-//     'quest': 'missão',
-//     'file': 'arquivo',
-//     'members': 'membros',
-// }
+export const general = {
+    'debugger': 'debugger',
+    'name': 'nome',
+    'examine': 'examinar',
+    'image': 'imagem',
+    'release': 'lançamento',
+    'update': 'atualização',
+    'quest': 'missão',
+    'file': 'Arquivo',
+    'members': 'membros',
+
+    // Months
+    'january': 'Janeiro',
+    'february': 'Fevereiro',
+    'march': 'Março',
+    'april': 'Abril',
+    'may': 'Maio',
+    'june': 'Junho',
+    'july': 'Julho',
+    'august': 'Agosto',
+    'september': 'Setembro',
+    'october': 'Outubro',
+    'november': 'Novembro',
+    'december': 'Dezembro',
+}
 
 export const dropTableHead = {
     'DropsTableHead': 'ObjetoLargadoCabeçalho',
@@ -22,14 +36,11 @@ export const dropTableHead = {
     'DropsLineArch': 'ObjetoLargadoArq',
     'DropsLineThiev': 'ObjetoLargadoRoubo',
     'DropsLineHunt': 'ObjetoLargadoCaça',
-    'name': 'nome',
     'namenotes': 'nomeNotas',
     'quantity': 'quantidade',
     'quantitynotes': 'quantidadeNotas',
     'rarity': 'raridade',
     'raritynotes': 'raridadeNotas',
-    'members': 'membros',
-    'image': 'imagem',
     'version': 'ver',
     'noted': 'notas',
     'always': 'sempre',
@@ -57,9 +68,7 @@ export const infoboxItem = {
     'infobox item': 'Infobox objeto',
     'yes': 'Sim',
     'no': 'Não',
-    'release': 'lançamento',
     'update': 'atualização',
-    'quest': 'missão',
     'tradeable': 'negociável',
     'stackable': 'acumulável',
     'equipable': 'equipável',
@@ -76,9 +85,7 @@ export const infoboxItem = {
     'reclaimable': 'recuperável',
     // Ver os itens presentes em kept
     'exchange': 'gemw',
-    'examine': 'examinar',
     'weight': 'peso',
-    'file': 'Arquivo'
 }
 
 export const infoboxRecipe = {
@@ -86,8 +93,6 @@ export const infoboxRecipe = {
     'Creation': 'Criação',
     'Switch infobox': 'Alterar Infobox',
     'Infobox Recipe': 'Infobox criar',
-    'name': 'nome',
-    'members': 'membros',
     'skill': 'habilidade',
     'skillXP': 'habilidade_exp',
     'secSkill': 'habilidade_sec',
@@ -95,7 +100,6 @@ export const infoboxRecipe = {
     'secLevel': 'nível_sec',
     'geValue': 'mercado',
     'level': 'nível',
-    'quest': 'missão',
     'method': 'método',
     'mat': 'componente',
     'mat1price': 'mat1preço',
@@ -190,18 +194,15 @@ export const updateHistory = {
 
 export const infoboxSummoning = {
     'debugger': 'debugger',
-    'name': 'nome',
-    'image': 'imagem',
-    'examine': 'examinar',
     'createxp': 'exp criar',
     'usexp': 'exp uso',
     'low': 'básica',
     'high': 'avançada',
     'returnlvl': 'nível da troca',
-    'file': 'Arquivo',
+    'yes': 'sim',
+    'no': 'não',
     
     // Familiar
-    'release': 'lançamento',
     'update': 'atualização',
     'level': 'nível',
     'time': 'tempo',
@@ -245,12 +246,6 @@ export const infoboxMonster = {
     'debugger': 'debugger',
     'Switch infobox': 'Alterar Infobox',
     'Infobox Monster new': 'Infobox monstro',
-    'name': 'nome',
-    'image': 'imagem',
-    'examine': 'examinar',
-    'release': 'lançamento',
-    'update': 'atualização',
-    'members': 'membros',
     'aggressive': 'agressivo',
     'poisonous': 'venenoso',
     'experience': 'experiência',
@@ -291,19 +286,12 @@ export const infoboxMonster = {
     'abilities': 'recursos',
     'yes': 'Sim',
     'no': 'Não',
-    'file': 'Arquivo'
 }
 
 export const infoboxNPC = {
     'debugger': 'debugger',
-    'name': 'nome',
-    'image': 'imagem',
-    'examine': 'examinar',
-    'release': 'lançamento',
     'update': 'atualização',
-    'members': 'membros',
     'race': 'raça',
-    'quest': 'missão',
     'location': 'localização',
     'gender': 'gênero',
     'map': 'intmap',
@@ -315,7 +303,6 @@ export const infoboxNPC = {
     'f2pvisible': 'f2pvisível',
     'voice': 'voz',
     'objectid': 'cenarioid',
-    'file': 'Arquivo',
     'yes': 'Sim',
     'no': 'Não',
     'male': 'Homem',
