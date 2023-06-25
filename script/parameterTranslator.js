@@ -10,6 +10,8 @@ export const translateParameters = (
     tp4,
     tp5,
     tp6,
+    tp7,
+    tp8
 ) => {
     // Splits by both '<' and '>' via RegEx.
     let output = inputDrops.value.split(/[<>]+/);
@@ -22,6 +24,8 @@ export const translateParameters = (
         tp4,
         tp5,
         tp6,
+        tp7,
+        tp8
     ];
 
     templatesToCheck.forEach((params) => {
