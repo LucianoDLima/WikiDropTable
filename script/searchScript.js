@@ -1,5 +1,5 @@
-const uhButton = document.querySelector('#uh-button');
-const uhInputs = document.querySelector('[data-uh]');
+const haButton = document.querySelector('#uh-button');
+const haInputs = document.querySelector('[data-uh]');
 const websiteButtons = document.querySelectorAll('[data-filter="website"]');
 const dayButtons = document.querySelectorAll('[data-filter="days"]');
 const monthButtons = document.querySelectorAll('[data-filter="months"]');
@@ -31,6 +31,7 @@ const yearList = [
     2021, 2022, 2023,
 ];
 
+// Handles the information got from the buttons
 function handleSearchButtons(selected) {
     const dayArray = Array.from(dayButtons);
     const monthArray = Array.from(monthButtons);
@@ -44,9 +45,12 @@ function handleSearchButtons(selected) {
 
             button.classList.add('active');
 
+			// Gets the index (textContent for website only) of the clicked item
             switch (e.target.getAttribute('data-filter')) {
                 case 'website':
                     website = e.target.textContent;
+
+					// Only show the interface needed for the current selected website
                     if (website === 'Wiki') {
                         searchContainer[1].classList.remove('hidden');
                         searchContainer[3].classList.add('hidden');
@@ -68,9 +72,6 @@ function handleSearchButtons(selected) {
                 case 'years':
                     year = yearArray.indexOf(e.target);
                     break;
-                default:
-                    console.error('Something went wrong.');
-                    break;
             }
         });
     });
@@ -81,24 +82,25 @@ handleSearchButtons(dayButtons);
 handleSearchButtons(monthButtons);
 handleSearchButtons(yearButtons);
 
-uhButton.addEventListener('click', () => {
-    uhButton.classList.toggle('active');
-    uhInputs.classList.toggle('active');
+// Opens the search interface
+haButton.addEventListener('click', () => {
+    haButton.classList.toggle('active');
+    haInputs.classList.toggle('active');
 });
 
-// Closes if clicked outside the UH container
+// Closes if clicked outside the ha container
 document.body.addEventListener('click', (e) => {
     if (!e.target.closest('.active')) {
-        uhButton.classList.remove('active');
-        uhInputs.classList.remove('active');
+        haButton.classList.remove('active');
+        haInputs.classList.remove('active');
     }
 });
 
+// Opens a new tab, taking you to the website selected
 searchButton.addEventListener('click', () => {
     let officialWebsite = `https://secure.runescape.com/m=news/l=3/a=9/archive?year=${yearList[year]}&month=${month + 1}&filter=Filtrar`;
     let wikiWebsite = `https://pt.runescape.wiki/w/${day + 1}_de_${monthList[month]?.toLowerCase()}`;
 
-    console.log(website);
     switch (website) {
         case 'Wiki':
             window.open(wikiWebsite, '_blank');
