@@ -116,7 +116,6 @@ main {
 }
 .droptable__main-container .droptable__individual-container .droptable__uh .droptable__uh-container .droptable__uh-filter .droptable__uh-input .droptable__date .droptable__filter-btns {
   padding: 0.25rem 0.75rem;
-  border: 1px solid wheat;
 }
 .droptable__main-container .droptable__individual-container .droptable__uh .droptable__uh-container .droptable__uh-filter .droptable__uh-input .droptable__date:last-child {
   border: none;
