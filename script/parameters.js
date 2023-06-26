@@ -234,7 +234,7 @@ export const infoboxSummoning = {
     'cost': 'custo',
     
     // Summon scrioll
-    'Infobox Summoning scroll': 'Databox Pergaminhos de Evocação',
+    'Infobox Summon scroll': 'Databox Pergaminhos de Evocação',
     'return': 'retorno',
 
     // Charms:
