@@ -104,6 +104,10 @@ main {
   text-align: center;
   padding-block: 1rem;
   border-bottom: 1px solid white;
+  display: block;
+}
+.droptable__main-container .droptable__individual-container .droptable__uh .droptable__uh-container .droptable__uh-filter .droptable__uh-input .droptable__date.hidden {
+  display: none;
 }
 .droptable__main-container .droptable__individual-container .droptable__uh .droptable__uh-container .droptable__uh-filter .droptable__uh-input .droptable__date h2 {
   margin-bottom: 0.5rem;

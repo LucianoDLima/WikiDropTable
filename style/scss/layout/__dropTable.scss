@@ -75,6 +75,11 @@
                                 text-align: center;
                                 padding-block: 1rem;
                                 border-bottom: 1px solid white;
+                                display: block;
+
+                                &.hidden {
+                                    display: none;
+                                }
                                 h2 {
                                     margin-bottom: .5rem;
                                 }

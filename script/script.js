@@ -13,6 +13,7 @@ const dayButtons = document.querySelectorAll('[data-filter="days"]')
 const monthButtons = document.querySelectorAll('[data-filter="months"]')
 const yearButtons = document.querySelectorAll('[data-filter="years"]')
 const searchButton = document.querySelector('[data-filter="search"]')
+const searchContainer = document.querySelectorAll('.droptable__date')
 
 // It looks for the appropriate template to translate based on some key words.
 function handleInput() {
@@ -124,6 +125,17 @@ function handleSearchButtons(selected) {
             switch (e.target.getAttribute('data-filter')) {
                 case 'website':
                     website = e.target.textContent
+                    if(website === 'Wiki'){
+                        searchContainer[1].classList.remove('hidden')
+                        searchContainer[3].classList.add('hidden')
+                    } else if(website === 'Oficial') {
+                        searchContainer[1].classList.add('hidden')
+                        searchContainer[3].classList.remove('hidden')
+                    } else {
+                        searchContainer[1].classList.remove('hidden')
+                        searchContainer[3].classList.remove('hidden')
+                        
+                    }
                     break;
                     
                 case 'days':
@@ -161,11 +173,11 @@ searchButton.addEventListener('click', () => {
             window.open(wikiWebsite, '_blank');
             break;
         
-        case 'Official':
+        case 'Oficial':
             window.open(officialWebsite, '_blank');
             break;
 
-        case 'Both':
+        case 'Ambos':
             setTimeout(() => {
                 window.open(officialWebsite, '_blank');
             }, 100);
