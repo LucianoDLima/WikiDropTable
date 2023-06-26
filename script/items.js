@@ -11,26 +11,21 @@ try {
     console.error('Error loading JSON file:', error);
 }
 
-const fetchTranslatedName = (item, data) => {
-    const dataLength = data.length;
-    for (let i = 0; i < dataLength; i++) {
-        if (data[i][0].toLowerCase() === item) {
-            return data[i][1];
-        }
-    }
-    return false;
-};
+function fetchTranslatedName(item, data) {
+    const dataMap = new Map(data);
+    return dataMap.get(item) || false;
+}
 
 export function handleFetchData(item, lines, i, start, end, data) {
-    if (item.indexOf(start) != -1) {
-      item = item.split(start);
-      item = item[1].split(end);
-      item = item[0].trim();
-  
-      const translatedName = fetchTranslatedName(item.toLowerCase(), data);
-      if (translatedName) {
-        // Replace the item name with the translated name.
-        lines[i] = lines[i].replace(item, translatedName);
-      }
+    if (item.includes(start)) {
+        // Strips the item name from the DropsLine.
+        item = item.split(start);
+        item = item[1].split(end);
+        item = item[0].trim();
+
+        const translatedName = fetchTranslatedName(item, data);
+        if (translatedName) {
+            lines[i] = lines[i].replace(item, translatedName);
+        }
     }
-  }
+}
