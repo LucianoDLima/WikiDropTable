@@ -8,6 +8,12 @@
 
 The RS3 Wiki Helper Tool is a browser application designed to assist users in translating pages from the Runescape 3 Wiki. It simplifies the translation process by automatically translating specific template parameters and all the runescape 3 items. Please note that this tool is not intended for translating entire pages but rather templates with fixed translations plus the game items.
 
+## Features
+- Translates most of the wiki parameters.
+- Translates all the NPC and Item names.
+- Searches for the correct page containing the updates you might need.
+- (Soon) Searches for the correct GE page containing the item so you can check the Examine text.
+
 
 ## How to properly use it
 
@@ -74,6 +80,10 @@ Making it short, this app is designed to assist in translating templates and the
   * [Summon Pouch - Algibeiras de Evocação](https://runescape.wiki/w/Template:Infobox_Summoning_pouch)
   * [Summon Scrolls - Pergaminhos de Evocação](https://runescape.wiki/w/Template:Infobox_Summoning_scroll)
   * [Familiar - Familiar](https://runescape.wiki/w/Template:Infobox_familiar)
+  * [Monster - Monstro](https://runescape.wiki/w/Template:Infobox_Monster_new)
+  * [NPC](https://runescape.wiki/w/Template:Infobox_NPC)
+- Others.
+  * [Update history - Histórico de atualização](https://runescape.wiki/w/Template:Update_history)
 
 ## Current known bugs
 
