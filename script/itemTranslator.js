@@ -1,41 +1,47 @@
-function fetchTranslatedName(item, data) {
-    const dataMap = new Map(data);
-    return dataMap.get(item) || false;
-}
+import { itemNames, npcNames } from './items.js';
 
-function handleFetchData(item, lines, i, start, end, data) {
-    if (item.includes(start)) {
+const namesDataSet = [
+    itemNames,
+    npcNames
+];
+
+const symbolsToCheck = [
+    ['=', '|'],
+    ['=', '.png'],
+    ['[[', ']'],
+    ['Descobrir:', '|'],
+    ['[[Arquivo:', '.png'],
+    ['==', '==']
+];
+
+function fetchTranslatedName(line, start, end, dataMap) {
+    if (line.includes(start)) {
         // Strips the item name from the table line.
-        item = item.split(start);
+        let item = line.split(start);
         item = item[1].split(end);
         item = item[0].trim();
 
-        const translatedName = fetchTranslatedName(item, data);
-        if (translatedName) {
-            lines[i] = lines[i].replace(item, translatedName);
+        if (dataMap.has(item)) {
+            return line.replace(item, dataMap.get(item));
         }
     }
+
+    return line;
 }
 
-export function translateItemNames(outputDrops, data) {
-    let lines = outputDrops.value.split('\n');
-    const symbolsToCheck = [
-        ['=', '|'],
-        ['=', '.png'],
-        ['[[', ']'],
-        ['Descobrir:', '|'],
-        ['[[Arquivo:', '.png'],
-        ['==', '==']
-    ];
+export function translateItemNames(text) {
+    let lines = text.split('\n');
 
-    for (let i = 0; i < lines.length; i++) {
-        let item = lines[i];
-
-        // Check if it has a name to be translated.
-        symbolsToCheck.forEach(([start, end]) => {
-            handleFetchData(item, lines, i, start, end, data);
-        });
+    for (const dataSet of namesDataSet) {
+        const dataMap = new Map(dataSet);
+        
+        const len = lines.length;
+        for (let i = 0; i < len; i++) {
+            for (const [start, end] of symbolsToCheck) {
+                lines[i] = fetchTranslatedName(lines[i], start, end, dataMap);
+            }
+        }
     }
 
-    outputDrops.value = lines.join('\n');
+    return lines.join('\n');
 };

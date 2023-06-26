@@ -1,7 +1,6 @@
 import * as tp from './parameters.js';
 import { translateParameters } from './parameterTranslator.js';
 import { translateItemNames } from './itemTranslator.js';
-import { itemNames, npcNames } from './items.js';
 
 const inputDrops = document.querySelector('#input');
 const outputDrops = document.querySelector('#output');
@@ -62,12 +61,9 @@ function handleInput() {
     }
 }
 
-inputDrops.addEventListener('input', () => {
-    outputDrops.value = inputDrops.value;
-    
-    handleInput()
-    translateItemNames(outputDrops, npcNames);
-    translateItemNames(outputDrops, itemNames);
+inputDrops.addEventListener('input', () => {    
+    handleInput();
+    outputDrops.value = translateItemNames(outputDrops.value);
 });
 
 outputDrops.addEventListener('click', () => {
