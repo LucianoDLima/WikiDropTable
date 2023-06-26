@@ -134,7 +134,6 @@ function handleSearchButtons(selected) {
                     break;
                 case 'years': 
                     year = yearArray.indexOf(e.target)
-                    console.log(website, day, month, year);
                     break
                 default:
                     console.error('Something went wrong.');
