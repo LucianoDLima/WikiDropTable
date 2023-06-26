@@ -24,7 +24,7 @@ function handleInput() {
             
             case '{{Infobox familiar':
             case '{{Infobar Summon Pouch':
-            case '{{Infobox Summoning scroll':
+            case '{{Infobox Summon scroll':
                 translateParameters(inputDrops, outputDrops, tp.general, tp.infoboxSummoning);
                 caseFound = true;
                 break;
