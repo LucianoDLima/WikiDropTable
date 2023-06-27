@@ -2,7 +2,6 @@
 * Contains all parameters and their translations for each supported infobox.
 */
 export const general = {
-    'debugger': 'debugger',
     'name': 'nome',
     'examine': 'examinar',
     'image': 'imagem',
@@ -187,7 +186,7 @@ export const skillNames = {
 }
 
 export const updateHistory = {
-    'eeeee': 'eeee',
+    ...general,
     'Update history': 'Histórico de Atualizações',
     'UH': 'HA',
     'UL': 'LA',
@@ -201,7 +200,7 @@ export const updateHistory = {
 }
 
 export const infoboxSummoning = {
-    'debugger': 'debugger',
+    ...general,
     'createxp': 'exp criar',
     'usexp': 'exp uso',
     'low': 'básica',
@@ -298,6 +297,7 @@ export const infoboxMonster = {
 }
 
 export const infoboxNPC = {
+    ...general,
     'debugger': 'debugger',
     'update': 'atualização',
     'race': 'raça',
