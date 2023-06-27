@@ -1,8 +1,8 @@
 import { namesDataSet } from './items.js';
 
 const symbolsToCheck = [
-    ['nome =', '|'],
-    ['image =', '.png'],
+    ['nome=', '|'],
+    ['image=', '.png'],
     ['[[', ']'],
     ['Descobrir:', '|'],
     ['[[Arquivo:', '.png'],
