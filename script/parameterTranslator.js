@@ -46,7 +46,7 @@ export const translateParameters = (
 function handleParamaterToBeTranslated(output, outputLength, paramaterToBeTranslated) {
     for (let parameter in paramaterToBeTranslated) {
         // Insensitive case regex that matches any digits at the end of the string.
-        const regex = new RegExp(`\\b${parameter}\\b\\d*`, 'ig');
+        const regex = new RegExp(`\\b${parameter}\\b\\d*`);
 
         // Extract any digits at the end of the match and append them to the replacement string.
         const digits = parameter.match(/\d+$/);
