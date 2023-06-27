@@ -13,23 +13,20 @@
         width: 100%;
 
         .droptable__individual-container {
-            width: 55%;
-            height: 45%;
+            position: relative;
+            width: 65%;
+            height: 100%;
             margin-inline: auto;
 
             .droptable__uh {
                 background-color: map-get($colors, bg-tertiary);
                 padding: .25rem;
-                width: 100%;
+                display: flex;
+                color: hsl(0, 0%, 100%);
                 
                 .droptable__uh-container {
-                    width: inherit;
-                    display: flex;
-                    justify-content: flex-end;
-                    position: relative;
-
                     button {
-                        padding: .25rem .25rem;
+                        padding: .25rem .5rem;
                         background-color: map-get($colors, bg-secondary);
                         border-radius: .25rem;
                         border: none;
@@ -44,23 +41,23 @@
                             border-bottom: 2px solid rgb(100, 100, 100);
                             border-left: 2px solid rgb(10, 10, 10);
                             border-top: 2px solid rgb(10, 10, 10);
+                            color: hsl(0, 0%, 80%);
                         }
                     }
     
                     .droptable__uh-filter {
                         position: absolute;
                         top: 3rem;
-                        display: inherit;
-                        justify-content: inherit;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        z-index: 10;
                         max-width: 27.5rem;
+                        width: 100%;
 
                         .droptable__uh-input {
-                            width: 100%;
-                            padding: 0 .5rem 0 .5rem;
+                            padding-inline: .5rem;
                             border: 1px solid black;
-                            border-radius: .25rem;
-                            display: flex;
-                            flex-direction: column;
+                            border-radius: .15rem;
 
                             &.hidden {
                                 display: none;
