@@ -1,7 +1,61 @@
+import * as tp from './parameters.js';
+
+const monsterAndNpc = {
+    ...tp.infoboxMonster,
+    ...tp.infoboxNPC
+}
+
+const recipeSkillNames = {
+    ...tp.infoboxRecipe,
+    ...tp.skillNames
+}
+
+const allTemplates = {
+    ...tp.dropTableHead,
+    ...tp.infoboxItem,
+    ...tp.infoboxRecipe,
+    ...tp.skillNames,
+    ...tp.updateHistory,
+    ...tp.infoboxSummoning,
+    ...tp.infoboxMonster,
+    ...tp.infoboxNPC
+}
+
 /**
  * Translates parameters in the input text based on the @parameterToBeTranslated object.
  */
-export function translateParameters(inputText, templates) {
+export function translateParameters(inputText) {
+    switch (true) {
+        case inputText.includes('{{Infobox Monster new'):
+        case inputText.includes('{{Infobox NPC'):
+            return handleParameters(inputText, monsterAndNpc);
+        
+        case inputText.includes('{{Infobox familiar'):
+        case inputText.includes('{{Infobar Summon Pouch'):
+        case inputText.includes('{{Infobox Summon scroll'):
+            return handleParameters(inputText, tp.infoboxSummoning);
+
+        case inputText.includes('{{infobox item'):
+            return handleParameters(inputText, tp.infoboxItem);
+        
+        case inputText.includes('==Creation=='):
+        case inputText.includes('Infobox Recipe'):
+            return handleParameters(inputText, recipeSkillNames);
+            
+        case inputText.includes('===Main drops==='):
+        case inputText.includes('===Secondary drops==='):
+        case inputText.includes('{{DropsTableHead}}'):
+            return handleParameters(inputText, tp.dropTableHead);
+        
+        case inputText.includes('==Update history=='):
+        case inputText.includes('{{UH|'):
+            return handleParameters(inputText, tp.updateHistory);
+    }
+        
+    return handleParameters(inputText, allTemplates);
+}
+
+function handleParameters(inputText, templates) {
     // Splits by both '<' and '>' via RegEx.
     let output = inputText.split(/[<>]+/);
 
