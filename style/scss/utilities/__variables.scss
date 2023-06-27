@@ -2,8 +2,14 @@ $colors: (
     bg-primary: hsl(220, 66%, 8%),
     bg-secondary: hsl(220, 34%, 20%),
     bg-tertiary: hsl(220, 29%, 27%),
+
     text-primary: hsl(28, 100%, 65%),
-    text-secondary: hsl(28, 44%, 66%)
+    text-secondary: hsl(28, 44%, 66%),
+    text-white: hsl(0, 0%, 97%),
+    text-off-white: hsl(0, 0%, 80%),
+
+    strong-neutral: hsl(0, 0%, 10%),
+    soft-neutral: hsl(0, 0%, 40%),
 );
 
 $fs: (

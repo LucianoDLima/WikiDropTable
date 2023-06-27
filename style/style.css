@@ -54,25 +54,24 @@ main {
   background-color: hsl(220deg, 29%, 27%);
   padding: 0.25rem;
   display: flex;
-  color: hsl(0deg, 0%, 100%);
+  color: hsl(0deg, 0%, 97%);
 }
 .droptable__main-container .droptable__individual-container .droptable__uh .droptable__uh-container button {
   padding: 0.25rem 0.5rem;
   background-color: hsl(220deg, 34%, 20%);
   border-radius: 0.25rem;
-  border: none;
-  border-left: 2px solid rgb(100, 100, 100);
-  border-top: 2px solid rgb(100, 100, 100);
-  border-right: 2px solid rgb(10, 10, 10);
-  border-bottom: 2px solid rgb(10, 10, 10);
+  border-left: 2px solid hsl(0deg, 0%, 40%);
+  border-top: 2px solid hsl(0deg, 0%, 40%);
+  border-right: 2px solid hsl(0deg, 0%, 10%);
+  border-bottom: 2px solid hsl(0deg, 0%, 10%);
   cursor: pointer;
 }
 .droptable__main-container .droptable__individual-container .droptable__uh .droptable__uh-container button.active {
   background-color: hsl(220deg, 29%, 27%);
-  border-right: 2px solid rgb(100, 100, 100);
-  border-bottom: 2px solid rgb(100, 100, 100);
-  border-left: 2px solid rgb(10, 10, 10);
-  border-top: 2px solid rgb(10, 10, 10);
+  border-right: 2px solid hsl(0deg, 0%, 40%);
+  border-bottom: 2px solid hsl(0deg, 0%, 40%);
+  border-left: 2px solid hsl(0deg, 0%, 10%);
+  border-top: 2px solid hsl(0deg, 0%, 10%);
   color: hsl(0deg, 0%, 80%);
 }
 .droptable__main-container .droptable__individual-container .droptable__uh .droptable__uh-container .droptable__uh-filter {
@@ -86,7 +85,7 @@ main {
 }
 .droptable__main-container .droptable__individual-container .droptable__uh .droptable__uh-container .droptable__uh-filter .droptable__uh-input {
   padding-inline: 0.5rem;
-  border: 1px solid black;
+  border: 1px solid hsl(0deg, 0%, 10%);
   border-radius: 0.15rem;
 }
 .droptable__main-container .droptable__individual-container .droptable__uh .droptable__uh-container .droptable__uh-filter .droptable__uh-input.hidden {
@@ -99,7 +98,7 @@ main {
 .droptable__main-container .droptable__individual-container .droptable__uh .droptable__uh-container .droptable__uh-filter .droptable__uh-input .droptable__date {
   text-align: center;
   padding-block: 1rem;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid hsl(0deg, 0%, 80%);
   display: block;
 }
 .droptable__main-container .droptable__individual-container .droptable__uh .droptable__uh-container .droptable__uh-filter .droptable__uh-input .droptable__date.hidden {
