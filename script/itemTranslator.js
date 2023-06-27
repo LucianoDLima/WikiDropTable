@@ -1,9 +1,4 @@
-import { itemNames, npcNames } from './items.js';
-
-const namesDataSet = [
-    itemNames,
-    npcNames
-];
+import { namesDataSet } from './items.js';
 
 const symbolsToCheck = [
     ['=', '|'],
@@ -20,9 +15,10 @@ function fetchTranslatedName(line, start, end, dataMap) {
         let item = line.split(start);
         item = item[1].split(end);
         item = item[0].trim();
+        const itemLower = item.toLowerCase();
 
-        if (dataMap.has(item)) {
-            return line.replace(item, dataMap.get(item));
+        if (dataMap.has(itemLower)) {
+            return line.replace(item, dataMap.get(itemLower));
         }
     }
 
@@ -31,14 +27,12 @@ function fetchTranslatedName(line, start, end, dataMap) {
 
 export function translateItemNames(text) {
     let lines = text.split('\n');
+    const len = lines.length;
 
-    for (const dataSet of namesDataSet) {
-        const dataMap = new Map(dataSet);
-        
-        const len = lines.length;
+    for (const dataSet of namesDataSet) {       
         for (let i = 0; i < len; i++) {
             for (const [start, end] of symbolsToCheck) {
-                lines[i] = fetchTranslatedName(lines[i], start, end, dataMap);
+                lines[i] = fetchTranslatedName(lines[i], start, end, dataSet);
             }
         }
     }
