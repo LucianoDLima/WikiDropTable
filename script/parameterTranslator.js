@@ -4,35 +4,13 @@
 export const translateParameters = (
     inputDrops,
     outputDrops,
-    tp,
-    tp2,
-    tp3,
-    tp4,
-    tp5,
-    tp6,
-    tp7,
-    tp8,
-    tp9
+    templates
 ) => {
     // Splits by both '<' and '>' via RegEx.
     let output = inputDrops.value.split(/[<>]+/);
     const outputLength = output.length;
 
-    const templatesToCheck = [
-        tp,
-        tp2,
-        tp3,
-        tp4,
-        tp5,
-        tp6,
-        tp7,
-        tp8,
-        tp9
-    ];
-
-    templatesToCheck.forEach((params) => {
-        handleParamaterToBeTranslated(output, outputLength, params);
-    });
+        handleParamaterToBeTranslated(output, outputLength, templates);
 
     // Joins 'output' by alternating between angle brackets.
     outputDrops.value = output.reduce((acc, curr, index) => {

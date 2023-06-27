@@ -10,6 +10,26 @@ function handleInput() {
     const inputContent = inputDrops.value;
     const lines = inputContent.split('\n');
 
+    const monsterAndNpc = {
+        ...tp.infoboxMonster,
+        ...tp.infoboxNPC
+    }
+    const recipeSkillNames = {
+        ...tp.infoboxRecipe,
+        ...tp.skillNames
+    }
+    const allTemplates = {
+        ...tp.dropTableHead,
+        ...tp.infoboxItem,
+        ...tp.infoboxRecipe,
+        ...tp.skillNames,
+        ...tp.updateHistory,
+        ...tp.infoboxSummoning,
+        ...tp.infoboxMonster,
+        ...tp.infoboxNPC
+    }
+
+
     for (let i = 0; i < lines.length; i++) {
         const line = lines[i];
         let caseFound = false; 
@@ -17,38 +37,38 @@ function handleInput() {
         switch (line) {
             case '{{Infobox Monster new':
             case '{{Infobox NPC':
-                translateParameters(inputDrops, outputDrops, tp.general, tp.infoboxMonster, tp.infoboxNPC)
+                translateParameters(inputDrops, outputDrops, monsterAndNpc)
                 caseFound = true;
                 break
             
             case '{{Infobox familiar':
             case '{{Infobar Summon Pouch':
             case '{{Infobox Summon scroll':
-                translateParameters(inputDrops, outputDrops, tp.general, tp.infoboxSummoning);
+                translateParameters(inputDrops, outputDrops, tp.infoboxSummoning);
                 caseFound = true;
                 break;
 
             case '{{infobox item':
-                translateParameters(inputDrops, outputDrops, tp.general, tp.infoboxItem);
+                translateParameters(inputDrops, outputDrops, tp.infoboxItem);
                 caseFound = true;
                 break;
             
             case '==Creation==':
             case 'Infobox Recipe':
-                translateParameters(inputDrops, outputDrops, tp.general, tp.infoboxRecipe, tp.skillNames);
+                translateParameters(inputDrops, outputDrops, recipeSkillNames);
                 caseFound = true;
                 break;
                 
             case '===Main drops===':
             case '===Secondary drops===':
             case '{{DropsTableHead}}':
-                translateParameters(inputDrops, outputDrops, tp.general, tp.dropTableHead);
+                translateParameters(inputDrops, outputDrops, tp.dropTableHead);
                 caseFound = true;
                 break;
             
             case '==Update history==':
             case '{{UH|':
-                translateParameters(inputDrops, outputDrops, tp.general, tp.updateHistory);
+                translateParameters(inputDrops, outputDrops, tp.updateHistory);
                 caseFound = true;
                 break;
         }
@@ -57,7 +77,7 @@ function handleInput() {
             break; 
         }
 
-        translateParameters(inputDrops, outputDrops, tp.general, tp.dropTableHead, tp.infoboxItem, tp.infoboxRecipe, tp.infoboxSummoning, tp.updateHistory, tp.skillNames, tp.infoboxMonster, tp.infoboxNPC);
+        translateParameters(inputDrops, outputDrops, allTemplates);
     }
 }
 
