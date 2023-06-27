@@ -5,84 +5,60 @@ import { translateItemNames } from './itemTranslator.js';
 const inputDrops = document.querySelector('#input');
 const outputDrops = document.querySelector('#output');
 
-// It looks for the appropriate template to translate based on some key words.
-function handleInput() {
-    const inputContent = inputDrops.value;
-    const lines = inputContent.split('\n');
+const monsterAndNpc = {
+    ...tp.infoboxMonster,
+    ...tp.infoboxNPC
+}
 
-    const monsterAndNpc = {
-        ...tp.infoboxMonster,
-        ...tp.infoboxNPC
-    }
-    const recipeSkillNames = {
-        ...tp.infoboxRecipe,
-        ...tp.skillNames
-    }
-    const allTemplates = {
-        ...tp.dropTableHead,
-        ...tp.infoboxItem,
-        ...tp.infoboxRecipe,
-        ...tp.skillNames,
-        ...tp.updateHistory,
-        ...tp.infoboxSummoning,
-        ...tp.infoboxMonster,
-        ...tp.infoboxNPC
-    }
+const recipeSkillNames = {
+    ...tp.infoboxRecipe,
+    ...tp.skillNames
+}
 
+const allTemplates = {
+    ...tp.dropTableHead,
+    ...tp.infoboxItem,
+    ...tp.infoboxRecipe,
+    ...tp.skillNames,
+    ...tp.updateHistory,
+    ...tp.infoboxSummoning,
+    ...tp.infoboxMonster,
+    ...tp.infoboxNPC
+}
 
-    for (let i = 0; i < lines.length; i++) {
-        const line = lines[i];
-        let caseFound = false; 
+function handleParameters(inputText) {
+    switch (true) {
+        case inputText.includes('{{Infobox Monster new'):
+        case inputText.includes('{{Infobox NPC'):
+            return translateParameters(inputText, monsterAndNpc);
+        
+        case inputText.includes('{{Infobox familiar'):
+        case inputText.includes('{{Infobar Summon Pouch'):
+        case inputText.includes('{{Infobox Summon scroll'):
+            return translateParameters(inputText, tp.infoboxSummoning);
 
-        switch (line) {
-            case '{{Infobox Monster new':
-            case '{{Infobox NPC':
-                translateParameters(inputDrops, outputDrops, monsterAndNpc)
-                caseFound = true;
-                break
+        case inputText.includes('{{infobox item'):
+            return translateParameters(inputText, tp.infoboxItem);
+        
+        case inputText.includes('==Creation=='):
+        case inputText.includes('Infobox Recipe'):
+            return translateParameters(inputText, recipeSkillNames);
             
-            case '{{Infobox familiar':
-            case '{{Infobar Summon Pouch':
-            case '{{Infobox Summon scroll':
-                translateParameters(inputDrops, outputDrops, tp.infoboxSummoning);
-                caseFound = true;
-                break;
-
-            case '{{infobox item':
-                translateParameters(inputDrops, outputDrops, tp.infoboxItem);
-                caseFound = true;
-                break;
-            
-            case '==Creation==':
-            case 'Infobox Recipe':
-                translateParameters(inputDrops, outputDrops, recipeSkillNames);
-                caseFound = true;
-                break;
-                
-            case '===Main drops===':
-            case '===Secondary drops===':
-            case '{{DropsTableHead}}':
-                translateParameters(inputDrops, outputDrops, tp.dropTableHead);
-                caseFound = true;
-                break;
-            
-            case '==Update history==':
-            case '{{UH|':
-                translateParameters(inputDrops, outputDrops, tp.updateHistory);
-                caseFound = true;
-                break;
-        }
-
-        if (caseFound) {
-            break; 
-        }
-
-        translateParameters(inputDrops, outputDrops, allTemplates);
+        case inputText.includes('===Main drops==='):
+        case inputText.includes('===Secondary drops==='):
+        case inputText.includes('{{DropsTableHead}}'):
+            return translateParameters(inputText, tp.dropTableHead);
+        
+        case inputText.includes('==Update history=='):
+        case inputText.includes('{{UH|'):
+            return translateParameters(inputText, tp.updateHistory);
     }
+        
+    return translateParameters(inputText, allTemplates);
 }
 
 inputDrops.addEventListener('input', () => {    
-    handleInput();
+    outputDrops.value = handleParameters(inputDrops.value);
     outputDrops.value = translateItemNames(outputDrops.value);
 });
 

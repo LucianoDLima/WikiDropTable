@@ -1,23 +1,18 @@
 /**
  * Translates parameters in the input text based on the @parameterToBeTranslated object.
  */
-export const translateParameters = (
-    inputDrops,
-    outputDrops,
-    templates
-) => {
+export function translateParameters(inputText, templates) {
     // Splits by both '<' and '>' via RegEx.
-    let output = inputDrops.value.split(/[<>]+/);
-    const outputLength = output.length;
+    let output = inputText.split(/[<>]+/);
 
-        handleParamaterToBeTranslated(output, outputLength, templates);
+    output = handleParamaterToBeTranslated(output, output.length, templates);
 
     // Joins 'output' by alternating between angle brackets.
-    outputDrops.value = output.reduce((acc, curr, index) => {
+    return output.reduce((acc, curr, index) => {
         if (index === 0) {
-            return curr;
+          return curr;
         }
-        return acc + (index % 2 === 0 ? '>' : '<') + curr;
+        return `${acc}${index % 2 === 0 ? '>' : '<'}${curr}`;
     }, '');
 };
 
@@ -32,24 +27,19 @@ function handleParamaterToBeTranslated(output, outputLength, paramaterToBeTransl
 
         for (let i = 0; i < outputLength; i++) {
             if (i % 2 === 0) {
-                // Handle exception for 'date' parameter (Day Month)
+                // Finds all matching patterns of 'date = 12 June 2023'.
                 let exceptionRegexDate = /date\s*=\s*(\d+)\s+([\w\s]+)\s+(\d+)/ig;
                 let matchesDate = output[i].matchAll(exceptionRegexDate);
-                let replacedDate = false;
                 
                 for (let match of matchesDate) {
-                    const day = match[1];
-                    const month = match[2];
-                    const year = match[3];
+                    const [day, month, year] = match;
                     const exceptionReplacementDate = `data={{Data|${day}|${month.toLowerCase()}|${year}}}`;
                     output[i] = output[i].replace(match[0], exceptionReplacementDate);
-                    replacedDate = true;
                 }
 
-                // Handle exception for 'release' parameter ([Day Month] [Year])
+                // Finds all matching patterns of the 'release' parameter '([Day Month] [Year])'.
                 let exceptionRegexRelease = /release\s*=\s*\[\[([\w\s]+)\]\]\s*\[\[([\w\s]+)\]\]/ig;
                 let matchesRelease = output[i].matchAll(exceptionRegexRelease);
-                let replacedRelease = false;
 
                 for (let match of matchesRelease) {
                     const dayMonth = match[1].trim();
@@ -57,14 +47,15 @@ function handleParamaterToBeTranslated(output, outputLength, paramaterToBeTransl
                     const [day, month] = dayMonth.split(' ');
                     const exceptionReplacementRelease = `release = {{Data|${day}|${month.toLowerCase()}|${year}}}`;
                     output[i] = output[i].replace(match[0], exceptionReplacementRelease);
-                    replacedRelease = true;
                 }
 
-                // If no exceptions are found, perform regular translation
-                if (!replacedDate && !replacedRelease) {
+                // If no exceptions are found, perform regular translation.
+                if (matchesDate.length == null && matchesRelease.length == null) {
                     output[i] = output[i].replace(regex, translated);
                 }
             }
         }
     }
+
+    return output;
 }

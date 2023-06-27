@@ -1,3 +1,6 @@
+/*
+* Contains all parameters and their translations for each supported infobox.
+*/
 export const general = {
     'debugger': 'debugger',
     'name': 'nome',
