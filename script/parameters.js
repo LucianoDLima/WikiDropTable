@@ -25,6 +25,7 @@ export const general = {
 }
 
 export const dropTableHead = {
+    ...general,
     'DropsTableHead': 'ObjetoLargadoCabeçalho',
     'DropsLine': 'ObjetoLargado',
     'DropsLineSpiritGems': 'ObjetoLargadoGemasEspirituais',
@@ -64,7 +65,7 @@ export const dropTableHead = {
 };
 
 export const infoboxItem = {
-    'debugger': 'debugger',
+    ...general,
     'infobox item': 'Infobox objeto',
     'yes': 'Sim',
     'no': 'Não',
@@ -89,7 +90,7 @@ export const infoboxItem = {
 }
 
 export const infoboxRecipe = {
-    'debugger': 'debugger',
+    ...general,
     'Creation': 'Criação',
     'Switch infobox': 'Alterar Infobox',
     'Infobox Recipe': 'Infobox criar',
@@ -151,7 +152,7 @@ export const infoboxRecipe = {
 }
 
 export const skillNames = {
-    'debugger': 'debugger',
+    ...general,
     'Attack': 'Ataque',
     'Strength': 'Força',
     'Defence': 'Defesa',
@@ -183,7 +184,7 @@ export const skillNames = {
 }
 
 export const updateHistory = {
-    'debugger': 'debugger',
+    'eeeee': 'eeee',
     'Update history': 'Histórico de Atualizações',
     'UH': 'HA',
     'UL': 'LA',
@@ -247,6 +248,7 @@ export const infoboxSummoning = {
 }
 
 export const infoboxMonster = {
+    ...general,
     'debugger': 'debugger',
     'Switch infobox': 'Alterar Infobox',
     'Infobox Monster new': 'Infobox monstro',
