@@ -10,6 +10,11 @@ const recipeSkillNames = {
     ...tp.skillNames
 }
 
+const shopAndDrop = {
+    ...tp.dropTableHead,
+    ...tp.infoboxShop
+}
+
 const allTemplates = {
     ...tp.dropTableHead,
     ...tp.infoboxItem,
@@ -18,7 +23,8 @@ const allTemplates = {
     ...tp.updateHistory,
     ...tp.infoboxSummoning,
     ...tp.infoboxMonster,
-    ...tp.infoboxNPC
+    ...tp.infoboxNPC,
+    ...tp.infoboxShop
 }
 
 /**
@@ -50,6 +56,9 @@ export function translateParameters(inputText) {
         case inputText.includes('==Update history=='):
         case inputText.includes('{{UH|'):
             return handleParameters(inputText, tp.updateHistory);
+
+        case inputText.includes('{{Infobox loja'):
+            return handleParameters(inputText, shopAndDrop);
     }
         
     return handleParameters(inputText, allTemplates);
