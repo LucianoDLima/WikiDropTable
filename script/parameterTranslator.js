@@ -58,6 +58,7 @@ export function translateParameters(inputText) {
             return handleParameters(inputText, tp.updateHistory);
 
         case inputText.includes('{{Infobox loja'):
+        case inputText.includes('{{StoreTableHead}}'):
             return handleParameters(inputText, shopAndDrop);
     }
         
