@@ -200,5 +200,11 @@
     "voice": "voz",
     "objectid": "cenarioid",
     "male": "Homem",
-    "female": "Mulher"
+    "female": "Mulher",
+    "Stock": "estoque",
+    "Sell": "vender",
+    "Buy": "comprar",
+    "N/A": "não",
+    "Pack": "pacote",
+    "PackNum": "pacoteNum"
 }
