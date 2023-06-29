@@ -42,11 +42,12 @@ export function translateParameters(inputText) {
     inputTextLines = inputTextLines.map(handleParameters).join('\n');
 
     // Searches as many predef/infobox names from the known ones at infoboxes. 
-    const predefNames = Array.from(infoboxes.keys()).filter(key => inputText.includes(key));
+    const predefNames = Array.from(infoboxes.keys()).filter(key => new RegExp(key, 'i').test(inputText));
+    console.log(predefNames);
 
     if (predefNames != null) {
         predefNames.forEach(
-            // Translates as many occurances of all predef/infobox names found as possible.
+            // Translates as many occurrences of all predef/infobox names found as possible.
             element => inputTextLines = inputTextLines.replace(new RegExp(element, 'g'), infoboxes.get(element))
         );
     }
@@ -81,16 +82,18 @@ function handleParameters(inputText) {
         if (!allParams) {
             continue;
         }
-        
+
         for (const [paramName, paramValue] of allParams) {
-            if (exceptions.has(paramName)) {
-                // 'exceptions.get(paramName)' is the function that handles the entire 'output[i]'.
-                output[i] = exceptions.get(paramName)(output[i]);
-                continue;
-            } 
+            const lowercaseParamName = paramName.toLowerCase(); 
             
-            if (parameters.has(paramName)) {
-                output[i] = output[i].replace(paramName, parameters.get(paramName));
+            if (exceptions.has(lowercaseParamName)) {
+                // 'exceptions.get(paramName)' is the function that handles the entire 'output[i]'.
+                output[i] = exceptions.get(lowercaseParamName)(output[i]);
+                continue;
+            }
+
+            if (parameters.has(lowercaseParamName)) { 
+                output[i] = output[i].replace(paramName, parameters.get(lowercaseParamName));
             }
 
             if (paramValue == null) {
