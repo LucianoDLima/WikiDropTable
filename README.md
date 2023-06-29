@@ -1,18 +1,14 @@
-# RS3 Wiki Helper Tool
-
-## Live 
-
-[RS3 Wiki Helper Tool Website](https://lucianodlima.github.io/WikiDropTable/)
+# PT-BR Wiki Translator
 
 ## Overview
 
-The RS3 Wiki Helper Tool is a browser application designed to assist users in translating pages from the Runescape 3 Wiki. It simplifies the translation process by automatically translating specific template parameters and all the runescape 3 items. Please note that this tool is not intended for translating entire pages but rather templates with fixed translations plus the game items.
+The RS3 Wiki Helper Tool is a browser application designed to assist users in translating pages from the Runescape 3 Wiki. It simplifies the translation process by automatically translating specific template parameters and all the runescape 3 items and NPCs. Please note that this tool is not intended for translating entire pages but rather templates with fixed translations plus the game items. You can see more on how to use in the section [How to use it](#how-to-properly-use-it).
 
 ## Features
-- Translates most of the wiki parameters.
+- Translates most of the wiki infoboxes and parameters.
 - Translates all the NPC and Item names.
-- Searches for the correct page containing the updates you might need.
-- (Soon) Searches for the correct GE page containing the item so you can check the Examine text.
+- Searches for the correct page containing the updates from the selected day.
+- Upcoming feature: Searches for the correct GE page containing the item so you can check the Examine text.
 
 
 ## How to properly use it
@@ -42,7 +38,7 @@ The above template will be translated to:
 |membros = Sim
 }}
 ```
-In this example, the translation is applied to specific parameters that have fixed translations. For instance, the parameter **_name_** is always translated to **_nome_**, **_skill_** becomes **_habilidade_**, and so on. However, not all parameters are translated since some are used the same in both languages. For example, "ticks" remains as "ticks" in Portuguese.
+In this example, the translation is applied to specific parameters that have fixed translations. For instance, the parameter **_"name"_** is always translated to **_"nome"_**, **_"skill"_** becomes **_"habilidade"_**, and so on. However, not all parameters are translated since some are used the same in both languages. For example, **_"ticks"_** remains the same in Portuguese.
 
 Now an example of how **NOT** to use this tool. Consider the following template for monster drops::
 
@@ -61,9 +57,9 @@ When translated to portuguese, it becomes:
 {{ObjetoLargadoRodapé}}
 ```
 
-As you can see, the tool translates everything except the text between **_>_** and **_<_** tags. This limitation exists because such text is usually specific to individual objects. For example, if we used **_nomeNotas=<>..._** with **_Runa da alma_**, the text would need to be entirely different. More generic content like character stories or object histories cannot be translated using this tool, for that you should use your own knowledge and other tools like google translator (don't use google translator for everything, though, please. Have common sense).
+As you can see, the tool translates everything except the text between **_>_** and **_<_** tags. This limitation exists because such text is usually specific to individual objects. For example, if we used **_nomeNotas=<>..._** with **_Runa da alma_**, the text would need to be entirely different. More generic content like character stories, object examine texts or explanation of mechanics and so on cannot be translated using this tool, for that you should use your own knowledge and other tools like google translator (don't use google translator for everything, though, please. Have common sense).
 
-Making it short, this app is designed to assist in translating templates and the corresponding items within those templates, nothing else!
+In short, this app is designed to assist in translating templates and the corresponding items within those templates, nothing else!
 
 ## Templates currently supported
 
@@ -82,13 +78,12 @@ Making it short, this app is designed to assist in translating templates and the
   * [Familiar - Familiar](https://runescape.wiki/w/Template:Infobox_familiar)
   * [Monster - Monstro](https://runescape.wiki/w/Template:Infobox_Monster_new)
   * [NPC](https://runescape.wiki/w/Template:Infobox_NPC)
+  * [Shop - Loja](https://runescape.wiki/w/Template:Infobox_Shop)
 - Others.
   * [Update history - Histórico de atualização](https://runescape.wiki/w/Template:Update_history)
 
 ## Current known bugs
 
-- If there is a parameter inside a template that has the same name as a game item, it will skip the translation, for example:
-  * **Furnace** is a parameter from infobox recipe, so if you write "**= Orthen furnace core|**", the item will not be translated.
-- If there are multiple items in the same line, only the first one will be translated. This does not happen in parameters, however. For example:
-  * **"[[Super prayer renewal potion (6)]], [[Ancient elven ritual shard]], [[Luck of the Dwarves]]"**, only the prayer potion will be translated, the rest is ignored.
+- If there are multiple items or NPCs in the same line, only the first one will be translated. This does not happen in parameters, however. For example:
+  * **"[[Super prayer renewal potion (6)]], [[Ancient elven ritual shard]], [[Luck of the Dwarves]]"**, only the **Super prayer potion** will be translated, the rest is ignored as they are in the same line.
   
