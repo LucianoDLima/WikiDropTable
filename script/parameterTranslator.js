@@ -43,12 +43,11 @@ export function translateParameters(inputText) {
 
     // Searches as many predef/infobox names from the known ones at infoboxes. 
     const predefNames = Array.from(infoboxes.keys()).filter(key => new RegExp(key, 'i').test(inputText));
-    console.log(predefNames);
 
     if (predefNames != null) {
         predefNames.forEach(
             // Translates as many occurrences of all predef/infobox names found as possible.
-            element => inputTextLines = inputTextLines.replace(new RegExp(element, 'g'), infoboxes.get(element))
+            element => inputTextLines = inputTextLines.replace(new RegExp(element, 'gi'), infoboxes.get(element))
         );
     }
 
