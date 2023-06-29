@@ -201,10 +201,10 @@
     "objectid": "cenarioid",
     "male": "Homem",
     "female": "Mulher",
-    "Stock": "estoque",
-    "Sell": "vender",
-    "Buy": "comprar",
+    "stock": "estoque",
+    "sell": "vender",
+    "buy": "comprar",
     "N/A": "não",
-    "Pack": "pacote",
-    "PackNum": "pacoteNum"
+    "pack": "pacote",
+    "packnum": "pacoteNum"
 }
