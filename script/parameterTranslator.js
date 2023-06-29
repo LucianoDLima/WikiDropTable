@@ -36,17 +36,22 @@ function releaseException(text) {
 }
 
 export function translateParameters(inputText) {
-    const inputTextLines = inputText.split('\n');
-
-    // Searches the predef/infobox name from the known ones at infoboxes. 
-    const predefName = Array.from(infoboxes.keys()).find(key => inputTextLines[0].includes(key));
+    let inputTextLines = inputText.split('\n');
 
     // Applies 'handleParameters()' to each line of inputTextLines.
-    const processedText = inputTextLines.map(handleParameters).join('\n');
+    inputTextLines = inputTextLines.map(handleParameters).join('\n');
 
-    // Translates as many occurances of the predef/infobox name as possible.
-    // This is for cases like {{DropsLine}} that have multiple predefs at once.
-    return predefName ? processedText.replace(new RegExp(predefName, 'g'), infoboxes.get(predefName)) : processedText;
+    // Searches as many predef/infobox names from the known ones at infoboxes. 
+    const predefNames = Array.from(infoboxes.keys()).filter(key => inputText.includes(key));
+
+    if (predefNames != null) {
+        predefNames.forEach(
+            // Translates as many occurances of all predef/infobox names found as possible.
+            element => inputTextLines = inputTextLines.replace(new RegExp(element, 'g'), infoboxes.get(element))
+        );
+    }
+
+    return inputTextLines;
 }
 
 function splitLineParameters(paramLine) {
