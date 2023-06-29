@@ -8,38 +8,34 @@
     height: 2.5em;
     text-align: center;
     transition: 0.5s;
-    background-color: map-get($colors, bg-secondary);
-    border-top: 0.125rem solid map-get($colors, text-primary);
-    opacity: 0.7;
+    background-color: map-get($colors, bg-tertiary);
+    border-top: 2px solid map-get($colors, soft-neutral);
 
     &__title { 
         margin-top: 0.5rem;
         font-weight: bold;
-        color: map-get($colors, text-primary);
+        color: map-get($colors, text-white);
+        transition: 0.5s;
     }
 
     &__details {
         font-size: map-get($fs, xs); 
         text-align: center;
         padding: 1em;
-        transition: 0.25s;
         color: map-get($colors, text-primary);
 
         & a {
             color: map-get($colors, text-secondary); 
-            transition: 0.5s;
-
-            &:hover {
-                color: map-get($colors, text-primary)
-            }
         }
-
     }
 
     &:hover,
     &:focus-within {
         height: 4em;
         opacity: 1;
-        border-top: none;
+    }
+
+    &:hover > &__title {
+        color: map-get($colors, text-primary);
     }
 }

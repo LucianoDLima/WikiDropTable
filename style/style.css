@@ -15,7 +15,7 @@ ol, ul {
 }
 
 body {
-  background-color: hsl(220deg, 66%, 8%);
+  background-color: hsl(220, 66%, 8%);
   font-family: monospace, sans-serif;
 }
 
@@ -25,7 +25,7 @@ body {
   margin-bottom: 1.5rem;
 }
 .header__logo {
-  color: hsl(28deg, 100%, 65%);
+  color: hsl(28, 100%, 65%);
 }
 
 main {
@@ -36,7 +36,7 @@ main {
 .droptable {
   display: flex;
   height: 90vh;
-  color: hsl(28deg, 44%, 66%);
+  color: hsl(28, 44%, 66%);
 }
 .droptable__main-container {
   display: flex;
@@ -51,28 +51,28 @@ main {
   margin-inline: auto;
 }
 .droptable__main-container .droptable__individual-container .droptable__uh {
-  background-color: hsl(220deg, 29%, 27%);
+  background-color: hsl(220, 29%, 27%);
   padding: 0.25rem;
   display: flex;
-  color: hsl(0deg, 0%, 97%);
+  color: hsl(0, 0%, 97%);
 }
 .droptable__main-container .droptable__individual-container .droptable__uh .droptable__uh-container button {
   padding: 0.25rem 0.5rem;
-  background-color: hsl(220deg, 34%, 20%);
+  background-color: hsl(220, 34%, 20%);
   border-radius: 0.25rem;
-  border-left: 2px solid hsl(0deg, 0%, 40%);
-  border-top: 2px solid hsl(0deg, 0%, 40%);
-  border-right: 2px solid hsl(0deg, 0%, 10%);
-  border-bottom: 2px solid hsl(0deg, 0%, 10%);
+  border-left: 2px solid hsl(0, 0%, 40%);
+  border-top: 2px solid hsl(0, 0%, 40%);
+  border-right: 2px solid hsl(0, 0%, 10%);
+  border-bottom: 2px solid hsl(0, 0%, 10%);
   cursor: pointer;
 }
 .droptable__main-container .droptable__individual-container .droptable__uh .droptable__uh-container button.active {
-  background-color: hsl(220deg, 29%, 27%);
-  border-right: 2px solid hsl(0deg, 0%, 40%);
-  border-bottom: 2px solid hsl(0deg, 0%, 40%);
-  border-left: 2px solid hsl(0deg, 0%, 10%);
-  border-top: 2px solid hsl(0deg, 0%, 10%);
-  color: hsl(0deg, 0%, 80%);
+  background-color: hsl(220, 29%, 27%);
+  border-right: 2px solid hsl(0, 0%, 40%);
+  border-bottom: 2px solid hsl(0, 0%, 40%);
+  border-left: 2px solid hsl(0, 0%, 10%);
+  border-top: 2px solid hsl(0, 0%, 10%);
+  color: hsl(0, 0%, 80%);
 }
 .droptable__main-container .droptable__individual-container .droptable__uh .droptable__uh-container .droptable__uh-filter {
   position: absolute;
@@ -85,7 +85,7 @@ main {
 }
 .droptable__main-container .droptable__individual-container .droptable__uh .droptable__uh-container .droptable__uh-filter .droptable__uh-input {
   padding-inline: 0.5rem;
-  border: 1px solid hsl(0deg, 0%, 10%);
+  border: 1px solid hsl(0, 0%, 10%);
   border-radius: 0.15rem;
 }
 .droptable__main-container .droptable__individual-container .droptable__uh .droptable__uh-container .droptable__uh-filter .droptable__uh-input.hidden {
@@ -93,12 +93,12 @@ main {
 }
 .droptable__main-container .droptable__individual-container .droptable__uh .droptable__uh-container .droptable__uh-filter .droptable__uh-input.active {
   display: inline-block;
-  background-color: hsl(220deg, 29%, 27%);
+  background-color: hsl(220, 29%, 27%);
 }
 .droptable__main-container .droptable__individual-container .droptable__uh .droptable__uh-container .droptable__uh-filter .droptable__uh-input .droptable__date {
   text-align: center;
   padding-block: 1rem;
-  border-bottom: 1px solid hsl(0deg, 0%, 80%);
+  border-bottom: 1px solid hsl(0, 0%, 80%);
   display: block;
 }
 .droptable__main-container .droptable__individual-container .droptable__uh .droptable__uh-container .droptable__uh-filter .droptable__uh-input .droptable__date.hidden {
@@ -124,7 +124,7 @@ main {
   width: 100%;
   height: 100%;
   border: none;
-  background-color: hsl(220deg, 34%, 20%);
+  background-color: hsl(220, 34%, 20%);
   padding: 0.5rem;
   line-height: 1.6;
   resize: none;
@@ -138,33 +138,28 @@ main {
   height: 2.5em;
   text-align: center;
   transition: 0.5s;
-  background-color: hsl(220deg, 34%, 20%);
-  border-top: 0.125rem solid hsl(28deg, 100%, 65%);
-  opacity: 0.7;
+  background-color: hsl(220, 29%, 27%);
+  border-top: 2px solid hsl(0, 0%, 40%);
 }
 .footer__title {
   margin-top: 0.5rem;
   font-weight: bold;
-  color: hsl(28deg, 100%, 65%);
+  color: hsl(0, 0%, 97%);
+  transition: 0.5s;
 }
 .footer__details {
   font-size: 0.75rem;
   text-align: center;
   padding: 1em;
-  transition: 0.25s;
-  color: hsl(28deg, 100%, 65%);
+  color: hsl(28, 100%, 65%);
 }
 .footer__details a {
-  color: hsl(28deg, 44%, 66%);
-  transition: 0.5s;
-}
-.footer__details a:hover {
-  color: hsl(28deg, 100%, 65%);
+  color: hsl(28, 44%, 66%);
 }
 .footer:hover, .footer:focus-within {
   height: 4em;
   opacity: 1;
-  border-top: none;
 }
-
-/*# sourceMappingURL=style.css.map */
+.footer:hover > .footer__title {
+  color: hsl(28, 100%, 65%);
+}/*# sourceMappingURL=style.css.map */
