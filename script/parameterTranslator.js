@@ -8,7 +8,7 @@ const exceptions = new Map([
 function dateException(text) {
     // Finds all matching patterns of 'date = 12 June 2023'.
     return text.replace(/date\s*=\s*(\d+)\s+([\w\s]+)\s+(\d+)/ig, (_, day, month, year) => {
-        return `data = {{Data|${day}|${month.toLowerCase()}|${year}}}`;
+        return `data={{Data|${day}|${month.toLowerCase()}|${year}}}`;
     });
 }
 
@@ -31,7 +31,7 @@ function releaseException(text) {
     // Finds all matching patterns of the 'release' parameter '([Day Month] [Year])'.
     return text.replace(/release\s*=\s*\[\[([\w\s]+)\]\]\s*\[\[([\w\s]+)\]\]/ig, (_, dayMonth, year) => {
         const [day, month] = dayMonth.trim().split(' ');
-        return `lançamento = {{Data|${day}|${months.get(month.toLowerCase())}|${year.trim()}}}`;
+        return `lançamento={{Data|${day}|${months.get(month.toLowerCase())}|${year.trim()}}}`;
     });
 }
 
@@ -68,10 +68,13 @@ function splitParamsFromLine(paramLine) {
 }
 
 function handleParameters(inputTextLine) {
-    // Tries to split by both '<' and '>' via RegEx.
-    let output = inputTextLine.split(/[<>]+/);
-    const outputLength = output.length;
+    // Standardizes to properly replace whole words during paramValue replacing.
+    let output = inputTextLine.replace(/ = /g, "=");
 
+    // Tries to split by both '<' and '>' via RegEx.
+    output = inputTextLine.split(/[<>]+/);
+
+    const outputLength = output.length;
     for (let i = 0; i < outputLength; i++) {
         if (i % 2 === 1) {
             continue;
@@ -97,7 +100,7 @@ function handleParameters(inputTextLine) {
             if (parameters.has(lowercase)) {
                 output[i] = output[i].replace(paramName, parameters.get(lowercase));
             }
-            
+
             // Splits by ':', '|' and ', ' to catch [[File]], (Notes) and multiple values.
             let splittedParamValue = paramValue.split(/, |:|\(/);
 
@@ -107,9 +110,13 @@ function handleParameters(inputTextLine) {
                 // Handles {{DropsLine}} and such, that end with }}.
                 if (lowercase.endsWith('}}')) {
                     lowercase = lowercase.replace('}}', '');
-                    output[i] = parameters.has(lowercase) ? output[i].replace(elem, `${parameters.get(lowercase)}}}`) : output[i];
+                    output[i] = parameters.has(lowercase) 
+                        ? output[i].replace(`=${elem}`, `=${parameters.get(lowercase)}}}`)
+                        : output[i];
                 } else {
-                    output[i] = parameters.has(lowercase) ? output[i].replace(elem, parameters.get(lowercase)) : output[i];
+                    output[i] = parameters.has(lowercase) 
+                        ? output[i].replace(`=${elem}`, `=${parameters.get(lowercase)}`) 
+                        : output[i];
                 }
             }
         }    
