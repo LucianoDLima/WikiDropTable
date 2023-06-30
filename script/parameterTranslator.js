@@ -35,38 +35,41 @@ function releaseException(text) {
     });
 }
 
-export function translateParameters(inputText) {
-    let inputTextLines = inputText.split('\n');
-
-    // Applies 'handleParameters()' to each line of inputTextLines.
-    inputTextLines = inputTextLines.map(handleParameters).join('\n');
-
+function translatePredefNames(inputText) {
     // Searches as many predef/infobox names from the known ones at infoboxes. 
     const predefNames = Array.from(infoboxes.keys()).filter(key => new RegExp(key, 'i').test(inputText));
 
     if (predefNames != null) {
         predefNames.forEach(
             // Translates as many occurrences of all predef/infobox names found as possible.
-            element => inputTextLines = inputTextLines.replace(new RegExp(element, 'gi'), infoboxes.get(element))
+            element => inputText = inputText.replace(new RegExp(element, 'gi'), infoboxes.get(element))
         );
     }
 
-    return inputTextLines;
+    return inputText;
 }
 
-function splitLineParameters(paramLine) {
+export function translateParameters(inputText) {
+    // Needs to be splitted by newlines to catch the end of a predef/infobox.
+    inputText = inputText.split('\n').map(handleParameters).join('\n');
+    return translatePredefNames(inputText);
+}
+
+function splitParamsFromLine(paramLine) {
     let params = paramLine.split(/[|=]+/);
-    if (params.length === 1) {
-        return false;
-    }
-    // Groups paramName and paramValue together, whilist also getting rid of the first element.
-    // The first element here is either an empty string or the predef name, which gets replaced at the end.
-    return Array.from({ length: (params.length - 1) / 2 }, (_, i) => [params[i * 2 + 1].trim(), params[i * 2 + 2].trim()]);
+
+    return params.length === 1 ? false : Array.from(
+        // Groups paramName and paramValue together.
+        { length: (params.length - 1) / 2 }, 
+        (_, i) => [
+            params[i * 2 + 1].trim(), 
+            params[i * 2 + 2].trim()
+        ]);
 }
 
-function handleParameters(inputText) {
+function handleParameters(inputTextLine) {
     // Tries to split by both '<' and '>' via RegEx.
-    let output = inputText.split(/[<>]+/) || [output];
+    let output = inputTextLine.split(/[<>]+/);
     const outputLength = output.length;
 
     for (let i = 0; i < outputLength; i++) {
@@ -75,7 +78,7 @@ function handleParameters(inputText) {
         }
 
         // Handles lines with multiple param-value combinations.
-        const allParams = splitLineParameters(output[i]);
+        const allParams = splitParamsFromLine(output[i]);
 
         // It's an empty line.
         if (!allParams) {
@@ -83,27 +86,23 @@ function handleParameters(inputText) {
         }
 
         for (const [paramName, paramValue] of allParams) {
-            const lowercaseParamName = paramName.toLowerCase(); 
+            let lowercase = paramName.toLowerCase();
             
-            if (exceptions.has(lowercaseParamName)) {
-                // 'exceptions.get(paramName)' is the function that handles the entire 'output[i]'.
-                output[i] = exceptions.get(lowercaseParamName)(output[i]);
+            if (exceptions.has(lowercase)) {
+                // 'exceptions.get(lowercase)' is the function that handles the entire 'output[i]'.
+                output[i] = exceptions.get(lowercase)(output[i]);
                 continue;
             }
 
-            if (parameters.has(lowercaseParamName)) { 
-                output[i] = output[i].replace(paramName, parameters.get(lowercaseParamName));
+            if (parameters.has(lowercase)) {
+                output[i] = output[i].replace(paramName, parameters.get(lowercase));
             }
-
-            if (paramValue == null) {
-                continue;
-            }
-
+            
             // Splits by ':', '|' and ', ' to catch [[File]], (Notes) and multiple values.
             let splittedParamValue = paramValue.split(/, |:|\(/);
 
             for (const elem of splittedParamValue) {
-                let lowercase = elem.toLowerCase();
+                lowercase = elem.toLowerCase();
 
                 // Handles {{DropsLine}} and such, that end with }}.
                 if (lowercase.endsWith('}}')) {
@@ -117,10 +116,5 @@ function handleParameters(inputText) {
     }
 
     // Joins 'output' by alternating between angle brackets.
-    return output.reduce((acc, curr, index) => {
-        if (index === 0) {
-          return curr;
-        }
-        return `${acc}${index % 2 === 0 ? '>' : '<'}${curr}`;
-    }, '');
+    return output.reduce((acc, curr, index) => { return index === 0 ? curr : `${acc}${index % 2 === 0 ? '>' : '<'}${curr}` }, '');
 };
