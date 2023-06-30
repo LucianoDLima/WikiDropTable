@@ -99,8 +99,8 @@ function handleParameters(inputText) {
                 continue;
             }
 
-            // Splits by both ', ' and ':' to catch multiple values or [[File]].
-            let splittedParamValue = paramValue.split(/, |:/);
+            // Splits by ':', '|' and ', ' to catch [[File]], (Notes) and multiple values.
+            let splittedParamValue = paramValue.split(/, |:|\(/);
 
             for (const elem of splittedParamValue) {
                 let lowercase = elem.toLowerCase();
