@@ -7,32 +7,46 @@ const yearButtons = document.querySelectorAll('[data-filter="years"]');
 const searchButton = document.querySelector('[data-filter="search"]');
 const searchContainer = document.querySelectorAll('.droptable__date');
 
-let website = '';
-let day = '';
-let month = '';
-let year = '';
+const searchOptions = {
+    websiteDate: {
+        website: undefined,
+        day: undefined,
+        month: undefined,
+        year: undefined,
+    },
+    monthList: [
+        'Janeiro',
+        'Fevereiro',
+        'Março',
+        'Abril',
+        'Maio',
+        'Junho',
+        'Julho',
+        'Agosto',
+        'Setembro',
+        'Outubro',
+        'November',
+        'Dezembro',
+    ],
+    // From year 2009 to 2023
+    yearList: Array.from({ length: 15 }, (_, index) => 2009 + index),
+};
 
-const monthList = [
-    'Janeiro',
-    'Fevereiro',
-    'Março',
-    'Abril',
-    'Maio',
-    'Junho',
-    'Julho',
-    'Agosto',
-    'Setembro',
-    'Outubro',
-    'November',
-    'Dezembro',
-];
-const yearList = [
-    2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020,
-    2021, 2022, 2023,
-];
+function showHeaderInterface() {
+    // Checks which date interface should appear
+    const website = searchOptions.websiteDate.website;
+    const daysContainer = searchContainer[1];
+    const yearsContainer = searchContainer[3];
 
-// Handles the information got from the buttons
+    const showDays = website === 'Wiki' || website !== 'Oficial';
+    const showYears = website !== 'Wiki' || website === 'Oficial';
+
+    daysContainer.classList.toggle('hidden', !showDays);
+    yearsContainer.classList.toggle('hidden', !showYears);
+}
+
 function handleSearchButtons(selected) {
+    // Handles the information got from the buttons
     const dayArray = Array.from(dayButtons);
     const monthArray = Array.from(monthButtons);
     const yearArray = Array.from(yearButtons);
@@ -45,42 +59,73 @@ function handleSearchButtons(selected) {
 
             button.classList.add('active');
 
-			// Gets the index (textContent for website only) of the clicked item
-            switch (e.target.getAttribute('data-filter')) {
-                case 'website':
-                    website = e.target.textContent;
+            const buttonsFilter = e.target.getAttribute('data-filter');
 
-					// Only show the interface needed for the current selected website
-                    if (website === 'Wiki') {
-                        searchContainer[1].classList.remove('hidden');
-                        searchContainer[3].classList.add('hidden');
-                    } else if (website === 'Oficial') {
-                        searchContainer[1].classList.add('hidden');
-                        searchContainer[3].classList.remove('hidden');
-                    } else {
-                        searchContainer[1].classList.remove('hidden');
-                        searchContainer[3].classList.remove('hidden');
-                    }
+			// Gets the index (textContent for website only) of the clicked item
+            switch (buttonsFilter) {
+                case 'website':
+                    searchOptions.websiteDate.website = e.target.textContent;
+                    showHeaderInterface()
                     break;
 
                 case 'days':
-                    day = dayArray.indexOf(e.target);
+                    searchOptions.websiteDate.day = dayArray.indexOf(e.target);
                     break;
                 case 'months':
-                    month = monthArray.indexOf(e.target);
+                    searchOptions.websiteDate.month = monthArray.indexOf(e.target);
                     break;
                 case 'years':
-                    year = yearArray.indexOf(e.target);
+                    searchOptions.websiteDate.year = yearArray.indexOf(e.target);
                     break;
             }
         });
     });
 }
 
-handleSearchButtons(websiteButtons);
-handleSearchButtons(dayButtons);
-handleSearchButtons(monthButtons);
-handleSearchButtons(yearButtons);
+function activateButtons() {
+    // All buttons in the HA section only
+    handleSearchButtons(websiteButtons);
+    handleSearchButtons(dayButtons);
+    handleSearchButtons(monthButtons);
+    handleSearchButtons(yearButtons);
+}
+
+function openWebsite(url) {
+    // Opens it in a new tab
+    window.open(url, '_blank');
+}
+
+searchButton.addEventListener('click', () => {
+    // Handles where the new tab will take you
+    const { yearList, websiteDate, monthList } = searchOptions;
+    const officialWebsite = `https://secure.runescape.com/m=news/l=3/a=9/archive?year=${yearList[websiteDate.year]}&month=${websiteDate.month + 1}&filter=Filtrar`;
+    const wikiWebsite = `https://pt.runescape.wiki/w/${websiteDate.day + 1}_de_${monthList[websiteDate.month]?.toLowerCase()}`;
+  
+    switch (searchOptions.websiteDate.website) {
+        case 'Wiki':
+            openWebsite(wikiWebsite);
+            break;
+
+        case 'Oficial':
+            openWebsite(officialWebsite);
+            break;
+
+        case 'Ambos':
+            setTimeout(() => {
+                openWebsite(officialWebsite);
+            }, 100);
+
+            setTimeout(() => {
+                openWebsite(wikiWebsite);
+            }, 200);
+            break;
+        default:
+            console.error('You must select the preferred website');
+            break;
+    }
+});
+
+activateButtons()
 
 // Opens the search interface
 haButton.addEventListener('click', () => {
@@ -93,34 +138,5 @@ document.body.addEventListener('click', (e) => {
     if (!e.target.closest('.active')) {
         haButton.classList.remove('active');
         haInputs.classList.remove('active');
-    }
-});
-
-// Opens a new tab, taking you to the website selected
-searchButton.addEventListener('click', () => {
-    let officialWebsite = `https://secure.runescape.com/m=news/l=3/a=9/archive?year=${yearList[year]}&month=${month + 1}&filter=Filtrar`;
-    let wikiWebsite = `https://pt.runescape.wiki/w/${day + 1}_de_${monthList[month]?.toLowerCase()}`;
-
-    switch (website) {
-        case 'Wiki':
-            window.open(wikiWebsite, '_blank');
-            break;
-
-        case 'Oficial':
-            window.open(officialWebsite, '_blank');
-            break;
-
-        case 'Ambos':
-            setTimeout(() => {
-                window.open(officialWebsite, '_blank');
-            }, 100);
-
-            setTimeout(() => {
-                window.open(wikiWebsite, '_blank');
-            }, 200);
-            break;
-        default:
-            console.error('You must select the preferred website');
-            break;
     }
 });
