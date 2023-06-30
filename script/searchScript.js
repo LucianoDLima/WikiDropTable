@@ -60,22 +60,23 @@ function handleSearchButtons(selected) {
             button.classList.add('active');
 
             const buttonsFilter = e.target.getAttribute('data-filter');
+            const { websiteDate } = searchOptions
 
 			// Gets the index (textContent for website only) of the clicked item
             switch (buttonsFilter) {
                 case 'website':
-                    searchOptions.websiteDate.website = e.target.textContent;
+                    websiteDate.website = e.target.textContent;
                     showHeaderInterface()
                     break;
 
                 case 'days':
-                    searchOptions.websiteDate.day = dayArray.indexOf(e.target);
+                    websiteDate.day = dayArray.indexOf(e.target);
                     break;
                 case 'months':
-                    searchOptions.websiteDate.month = monthArray.indexOf(e.target);
+                    websiteDate.month = monthArray.indexOf(e.target);
                     break;
                 case 'years':
-                    searchOptions.websiteDate.year = yearArray.indexOf(e.target);
+                    websiteDate.year = yearArray.indexOf(e.target);
                     break;
             }
         });
