@@ -203,7 +203,7 @@
     "stock": "estoque",
     "sell": "vender",
     "buy": "comprar",
-    "N/A": "não",
+    "n/a": "não",
     "pack": "pacote",
     "packnum": "pacoteNum",
     "noted)": "Notas)",
