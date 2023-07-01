@@ -98,7 +98,7 @@ function handleParameters(inputTextLine) {
             }
 
             if (parameters.has(lowercase)) {
-                output[i] = output[i].replace(paramName, parameters.get(lowercase));
+                output[i] = output[i].replace(`${paramName}=`, `${parameters.get(lowercase)}=`);
             }
 
             // Splits by ':', '|' and ', ' to catch [[File]], (Notes) and multiple values.
