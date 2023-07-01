@@ -1,4 +1,6 @@
 import { parameters, infoboxes } from './parameters.js';
+import { itemNames, npcNames } from './items.js';
+import { paramValuesTrie } from './trie.js';
 
 const exceptions = new Map([
     ['date', dateException],
@@ -49,12 +51,6 @@ function translatePredefNames(inputText) {
     return inputText;
 }
 
-export function translateParameters(inputText) {
-    // Needs to be splitted by newlines to catch the end of a predef/infobox.
-    inputText = inputText.split('\n').map(handleParameters).join('\n');
-    return translatePredefNames(inputText);
-}
-
 function splitParamsFromLine(paramLine) {
     let params = paramLine.split(/[|=]+/);
 
@@ -72,7 +68,7 @@ function handleParameters(inputTextLine) {
     let output = inputTextLine.replace(/ = /g, "=");
 
     // Tries to split by both '<' and '>' via RegEx.
-    output = inputTextLine.split(/[<>]+/);
+    output = output.split(/[<>]+/);
 
     const outputLength = output.length;
     for (let i = 0; i < outputLength; i++) {
@@ -102,21 +98,49 @@ function handleParameters(inputTextLine) {
             }
 
             // Splits by ':', '|' and ', ' to catch [[File]], (Notes) and multiple values.
-            let splittedParamValue = paramValue.split(/, |:|\(/);
+            const paramValues = paramValue.split(/, |:|\(/);
 
-            for (const elem of splittedParamValue) {
+            for (const elem of paramValues) {
                 lowercase = elem.toLowerCase();
-
+                
                 // Handles {{DropsLine}} and such, that end with }}.
                 if (lowercase.endsWith('}}')) {
                     lowercase = lowercase.replace('}}', '');
-                    output[i] = parameters.has(lowercase) 
-                        ? output[i].replace(`=${elem}`, `=${parameters.get(lowercase)}}}`)
-                        : output[i];
-                } else {
-                    output[i] = parameters.has(lowercase) 
-                        ? output[i].replace(`=${elem}`, `=${parameters.get(lowercase)}`) 
-                        : output[i];
+                    if (parameters.has(lowercase)) {
+                        output[i] = output[i].replace(`=${elem}`, `=${parameters.get(lowercase)}}}`);
+                        continue;
+                    }
+                }
+
+                if (parameters.has(lowercase)) {
+                    output[i] = output[i].replace(`=${elem}`, `=${parameters.get(lowercase)}`);
+                    continue;
+                }
+
+                // Most likely, it's an item name if it made it here.
+                if (itemNames.has(lowercase)) {
+                    output[i] = output[i].replace(elem, itemNames.get(lowercase));
+                    continue;
+                }
+
+                // Past here, it'll try to scavenge the string to remove any gunk.
+                const scavengedString = paramValuesTrie.removeSymbols(elem);
+                lowercase = scavengedString.toLowerCase();
+
+                // Sometimes, stuff like (melee) on image names will make it down here.
+                if (parameters.has(lowercase)) {
+                    output[i] = output[i].replace(scavengedString, parameters.get(lowercase));
+                    continue;
+                }
+
+                if (itemNames.has(lowercase)) {
+                    output[i] = output[i].replace(scavengedString, itemNames.get(lowercase));
+                    continue;
+                }
+
+                if (npcNames.has(lowercase)) {
+                    output[i] = output[i].replace(scavengedString, npcNames.get(lowercase));
+                    continue;
                 }
             }
         }    
@@ -124,4 +148,10 @@ function handleParameters(inputTextLine) {
 
     // Joins 'output' by alternating between angle brackets.
     return output.reduce((acc, curr, index) => { return index === 0 ? curr : `${acc}${index % 2 === 0 ? '>' : '<'}${curr}` }, '');
-};
+}
+
+export function translate(inputText) {
+    // Needs to be splitted by newlines to catch the end of a predef/infobox.
+    inputText = inputText.split('\n').map(handleParameters).join('\n');
+    return translatePredefNames(inputText);
+}

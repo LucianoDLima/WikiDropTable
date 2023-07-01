@@ -1,13 +1,11 @@
 
-import { translateParameters } from './parameterTranslator.js';
-import { translateItemNames } from './itemTranslator.js';
+import { translate } from './translator.js';
 
 const inputDrops = document.querySelector('#input');
 const outputDrops = document.querySelector('#output');
 
 inputDrops.addEventListener('input', () => {    
-    outputDrops.value = translateParameters(inputDrops.value);
-    outputDrops.value = translateItemNames(outputDrops.value);
+    outputDrops.value = translate(inputDrops.value);
 });
 
 outputDrops.addEventListener('click', () => {

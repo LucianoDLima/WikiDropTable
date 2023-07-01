@@ -1,15 +1,14 @@
-export let namesDataSet;
+export let itemNames;
+export let npcNames;
 
-try {
-    const [itemNames, npcNames] = await Promise.all([
-        fetch('./data/dataItems.json').then(response => response.json()),
-        fetch('./data/dataNPCs.json').then(response => response.json())
-    ]);
-
-    namesDataSet = [
-        new Map(itemNames.map(([key, value]) => [key.toLowerCase(), value])),
-        new Map(npcNames.map(([key, value]) => [key.toLowerCase(), value]))
-    ];
-} catch (error) {
-    console.error('Error loading JSON file:', error);
-}
+Promise.all([
+    fetch('./data/dataItems.json').then(response => response.json()),
+    fetch('./data/dataNPCs.json').then(response => response.json())
+    ])
+    .then(([jsonData1, jsonData2]) => {
+        itemNames = new Map(jsonData1.map(([key, value]) => [key.toLowerCase(), value]));
+        npcNames = new Map(jsonData2.map(([key, value]) => [key.toLowerCase(), value]));
+    })
+    .catch(error => {
+        console.error('Error loading JSON files:', error);
+    });
