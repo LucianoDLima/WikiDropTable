@@ -102,10 +102,21 @@ function handleParameters(inputTextLine) {
 
             for (const elem of paramValues) {
                 lowercase = elem.toLowerCase();
+
+                const lastChar = lowercase.slice(-1);
                 
+                // Handles (Noted) and other variants.
+                if (lastChar === ')') {
+                    lowercase = lowercase.slice(0, -1);
+                    if (parameters.has(lowercase)) {
+                        output[i] = output[i].replace(`${elem}`, `${parameters.get(lowercase)})`);
+                        continue;
+                    }
+                }
+
                 // Handles {{DropsLine}} and such, that end with }}.
-                if (lowercase.endsWith('}}')) {
-                    lowercase = lowercase.replace('}}', '');
+                if (lastChar === '}') {
+                    lowercase = lowercase.slice(0, -2);
                     if (parameters.has(lowercase)) {
                         output[i] = output[i].replace(`=${elem}`, `=${parameters.get(lowercase)}}}`);
                         continue;
