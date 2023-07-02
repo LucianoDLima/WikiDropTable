@@ -25,7 +25,7 @@ const searchOptions = {
         'Agosto',
         'Setembro',
         'Outubro',
-        'November',
+        'Novembro',
         'Dezembro',
     ],
     // From year 2009 to 2023
