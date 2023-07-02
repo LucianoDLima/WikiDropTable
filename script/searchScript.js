@@ -5,7 +5,7 @@ const dayButtons = document.querySelectorAll('[data-filter="days"]');
 const monthButtons = document.querySelectorAll('[data-filter="months"]');
 const yearButtons = document.querySelectorAll('[data-filter="years"]');
 const searchButton = document.querySelector('[data-filter="search"]');
-const searchContainer = document.querySelectorAll('.droptable__date');
+const searchContainer = document.querySelectorAll('[data-filter="container"]');
 
 const searchOptions = {
     websiteDate: {
