@@ -91,7 +91,7 @@ function handleParamValue(paramValue, outputLine) {
     // Splits by ':', '(' and ', ' to catch [[File]], (Notes) and multiple values.
     const paramValues = paramValue.split(/, |:|\(/);
 
-    for (const elem of paramValues) {
+    for (const [index, elem] of paramValues.entries()) {
         let lowercase = elem.toLowerCase();
 
         const lastChar = lowercase.slice(-1);
@@ -115,7 +115,10 @@ function handleParamValue(paramValue, outputLine) {
         }
 
         if (parameters.has(lowercase)) {
-            outputLine = outputLine.replace(`=${elem}`, `=${parameters.get(lowercase)}`);
+            // Properly translate entire words on lines that have multiple params.
+            outputLine = index === 0
+                ? outputLine.replace(`=${elem}`, `=${parameters.get(lowercase)}`)
+                : outputLine.replace(`, ${elem}`, `, ${parameters.get(lowercase)}`);
             continue;
         }
 
