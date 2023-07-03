@@ -4,7 +4,9 @@ import { paramValuesTrie } from './trie.js';
 
 const exceptions = new Map([
     ['date', dateException],
-    ['release', releaseException]
+    ['release', releaseException],
+    ['exchange', mercadoException],
+    ['gemw', mercadoException]
 ]);
 
 function dateException(text) {
@@ -35,6 +37,12 @@ function releaseException(text) {
         const [day, month] = dayMonth.trim().split(' ');
         return `lançamento={{Data|${day}|${months.get(month.toLowerCase())}|${year.trim()}}}`;
     });
+}
+
+function mercadoException(inputText) {
+    // inputText isn't used, but needs to be here
+    // because of how the exceptions are called.
+    return "|mercado=gemw";
 }
 
 function translatePredefNames(inputText) {
