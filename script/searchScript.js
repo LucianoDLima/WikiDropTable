@@ -1,5 +1,5 @@
-const haButton = document.querySelector('#uh-button');
-const haInputs = document.querySelector('[data-uh]');
+const haButton = document.querySelector('[data-uh="button"]');
+const haInputs = document.querySelector('[data-uh="container"]');
 const websiteButtons = document.querySelectorAll('[data-filter="website"]');
 const dayButtons = document.querySelectorAll('[data-filter="days"]');
 const monthButtons = document.querySelectorAll('[data-filter="months"]');
@@ -65,7 +65,7 @@ function handleSearchButtons(selected) {
 			// Gets the index (textContent for website only) of the clicked item
             switch (buttonsFilter) {
                 case 'website':
-                    websiteDate.website = e.target.textContent;
+                    websiteDate.website = e.target.textContent.trim();
                     showHeaderInterface()
                     break;
 
@@ -128,16 +128,18 @@ searchButton.addEventListener('click', () => {
 
 activateButtons()
 
-// Opens the search interface
 haButton.addEventListener('click', () => {
+    // Opens the search interface
     haButton.classList.toggle('active');
-    haInputs.classList.toggle('active');
+    haInputs.classList.toggle('hidden');
 });
 
-// Closes if clicked outside the ha container
 document.body.addEventListener('click', (e) => {
-    if (!e.target.closest('.active')) {
+    // Closes if clicked outside the ha container
+    const headerContainer = e.target.closest('.translator__header-container')
+
+    if (!headerContainer) {
         haButton.classList.remove('active');
-        haInputs.classList.remove('active');
+        haInputs.classList.add('hidden');
     }
 });
