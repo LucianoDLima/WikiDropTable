@@ -1,5 +1,26 @@
-@mixin screen ($size) {
-  @media screen and (max-width: $size) {
-    @content
-  }
+@use './_variables' as *;
+
+@mixin screen($size) {
+    @media screen and (max-width: $size) {
+        @content;
+    }
+}
+
+@mixin header-buttons() {
+    padding: 0.25rem 0.5rem;
+    background-color: map-get($colors, bg-secondary);
+    border-radius: 0.25rem;
+    border-left: 2px solid map-get($colors, soft-neutral);
+    border-top: 2px solid map-get($colors, soft-neutral);
+    border-right: 2px solid map-get($colors, strong-neutral);
+    border-bottom: 2px solid map-get($colors, strong-neutral);
+    cursor: pointer;
+    &.active {
+        background-color: map-get($colors, bg-tertiary);
+        border-right: 2px solid map-get($colors, soft-neutral);
+        border-bottom: 2px solid map-get($colors, soft-neutral);
+        border-left: 2px solid map-get($colors, strong-neutral);
+        border-top: 2px solid map-get($colors, strong-neutral);
+        color: map-get($colors, text-off-white);
+    }
 }

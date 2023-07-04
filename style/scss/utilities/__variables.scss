@@ -9,7 +9,7 @@ $colors: (
     text-off-white: hsl(0, 0%, 80%),
 
     strong-neutral: hsl(0, 0%, 10%),
-    soft-neutral: hsl(0, 0%, 40%),
+    soft-neutral: hsl(0, 0%, 40%)
 );
 
 $fs: (
@@ -26,5 +26,11 @@ $breakpoints: (
     mobile-m: 23.438rem,
     mobile-l: 26.563rem,
     tablet: 48rem,
-    laptop: 64rem,
+    laptop: 64rem
+);
+
+$priority: (
+    top: 10,
+    medium: 5,
+    bottom: -1
 );

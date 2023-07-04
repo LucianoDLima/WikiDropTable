@@ -2,114 +2,98 @@
 @use '../utilities/_mixins' as *;
 
 .translator {
+    // Section that holds basically everything
     display: flex;
-    height: 90vh;
+    flex-direction: column;
+    height: 100%;
+    gap: 3.5rem;
+    padding-top: 1.5rem;
     color: map-get($colors, text-secondary);
 
-    &__main-container {
-        display: flex;
-        flex-direction: column;
-        gap: 3.5rem;
-        width: 100%;
+    &__container {
+        // Contains input and output textareas plus its headers
+        position: relative;
+        width: 65%;
+        height: inherit;
+        margin-inline: auto;
+    }
+}
 
-        .translator__individual-container {
-            position: relative;
-            width: 65%;
-            height: 100%;
-            margin-inline: auto;
+.translator__header {
+    // Contains the visible-at-all-time buttons in the header
+    display: flex;
+    padding: 0.25rem;
+    background-color: map-get($colors, bg-tertiary);
+    color: map-get($colors, text-white);
 
-            .translator__uh {
-                background-color: map-get($colors, bg-tertiary);
-                padding: .25rem;
-                display: flex;
-                color: map-get($colors, text-white);
-                
-                .translator__uh-container {
-                    button {
-                        padding: .25rem .5rem;
-                        background-color: map-get($colors, bg-secondary);
-                        border-radius: .25rem;
-                        border-left: 2px solid map-get($colors, soft-neutral);
-                        border-top: 2px solid map-get($colors, soft-neutral);
-                        border-right: 2px solid map-get($colors, strong-neutral);
-                        border-bottom: 2px solid map-get($colors, strong-neutral);
-                        cursor: pointer;
-                        &.active {
-                            background-color: map-get($colors, bg-tertiary);
-                            border-right: 2px solid map-get($colors, soft-neutral);
-                            border-bottom: 2px solid map-get($colors, soft-neutral);
-                            border-left: 2px solid map-get($colors, strong-neutral);
-                            border-top: 2px solid map-get($colors, strong-neutral);
-                            color: map-get($colors, text-off-white);
-                        }
-                    }
-    
-                    .translator__uh-filter {
-                        position: absolute;
-                        top: 3rem;
-                        left: 50%;
-                        transform: translateX(-50%);
-                        z-index: 10;
-                        max-width: 27.5rem;
-                        width: 100%;
+    &-container {
+        .translator__header-button {
+            @include header-buttons()
+        }
 
-                        .translator__uh-input {
-                            padding-inline: .5rem;
-                            border: 1px solid map-get($colors, strong-neutral);
-                            border-radius: .15rem;
+        .translator__header-interface {
+            // Contains the interface opened when you click one of the header buttons
+            position: absolute;
+            max-width: 27.5rem;
+            width: 100%;
+            top: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: map-get($priority, top);
+            background-color: map-get($colors, bg-tertiary);
 
-                            &.hidden {
-                                display: none;
-                            }
-        
-                            &.active {
-                                display: inline-block;
-                                background-color: map-get($colors, bg-tertiary);
-                            }
-
-                            .translator__date {
-                                text-align: center;
-                                padding-block: 1rem;
-                                border-bottom: 1px solid map-get($colors, text-off-white);
-                                display: block;
-
-                                &.hidden {
-                                    display: none;
-                                }
-                                h2 {
-                                    margin-bottom: .5rem;
-                                }
-                                ol, ul {
-                                    display: flex;
-                                    justify-content: center;
-                                    flex-wrap: wrap;
-                                    gap: .5rem;
-                                    
-                                }
-                                .translator__filter-btns {
-                                    padding: .25rem .75rem;
-                                }
-                            }
-
-                            .translator__date:last-child {
-                                border: none;
-                            }
-
-                        }
-                    }
-                }
-            }
-
-            .translator__text-box {
-                border-radius: 0 0 0.25rem 0.25rem;
-                width: 100%;
-                height: 100%;
-                border: none;
-                background-color: map-get($colors, bg-secondary);
-                padding: 0.5rem;
-                line-height: 1.6;
-                resize: none;
-            }
         }
     }
+}
+
+.translator__history-update {
+    // All the buttons related to the history update date buttons
+    padding-inline: 0.5rem;
+    border-radius: 0.25rem;
+    border: 1px solid map-get($colors, strong-neutral);
+
+    &.hidden {
+        display: none;
+    }
+
+    .translator__date {
+        text-align: center;
+        padding-block: 1rem;
+        border-bottom: 1px solid map-get($colors, text-off-white);
+        display: block;
+
+        &.hidden {
+            display: none;
+        }
+
+        h2 {
+            margin-bottom: 0.5rem;
+        }
+
+        ol,
+        ul {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .translator__filter-btns {
+            @include header-buttons()
+        }
+    }
+
+    .translator__date:last-child {
+        border: none;
+    }
+}
+
+.translator__text-box {
+    width: 100%;
+    height: inherit;
+    line-height: 1.6;
+    padding: 0.5rem;
+    border-radius: 0 0 0.25rem 0.25rem;
+    border: none;
+    resize: none;
+    background-color: map-get($colors, bg-secondary);
 }

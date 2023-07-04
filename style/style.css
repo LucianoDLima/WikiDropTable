@@ -19,44 +19,34 @@ body {
   font-family: monospace, sans-serif;
 }
 
-.header {
-  max-width: 64rem;
-  margin-inline: auto;
-  margin-bottom: 1.5rem;
-}
-.header__logo {
-  color: hsl(28deg, 100%, 65%);
-}
-
 main {
   max-width: 64rem;
   margin-inline: auto;
+  height: 90vh;
 }
 
 .translator {
   display: flex;
-  height: 90vh;
+  flex-direction: column;
+  height: 100%;
+  gap: 3.5rem;
+  padding-top: 1.5rem;
   color: hsl(28deg, 44%, 66%);
 }
-.translator__main-container {
-  display: flex;
-  flex-direction: column;
-  gap: 3.5rem;
-  width: 100%;
-}
-.translator__main-container .translator__individual-container {
+.translator__container {
   position: relative;
   width: 65%;
-  height: 100%;
+  height: inherit;
   margin-inline: auto;
 }
-.translator__main-container .translator__individual-container .translator__uh {
-  background-color: hsl(220deg, 29%, 27%);
-  padding: 0.25rem;
+
+.translator__header {
   display: flex;
+  padding: 0.25rem;
+  background-color: hsl(220deg, 29%, 27%);
   color: hsl(0deg, 0%, 97%);
 }
-.translator__main-container .translator__individual-container .translator__uh .translator__uh-container button {
+.translator__header-container .translator__header-button {
   padding: 0.25rem 0.5rem;
   background-color: hsl(220deg, 34%, 20%);
   border-radius: 0.25rem;
@@ -66,7 +56,7 @@ main {
   border-bottom: 2px solid hsl(0deg, 0%, 10%);
   cursor: pointer;
 }
-.translator__main-container .translator__individual-container .translator__uh .translator__uh-container button.active {
+.translator__header-container .translator__header-button.active {
   background-color: hsl(220deg, 29%, 27%);
   border-right: 2px solid hsl(0deg, 0%, 40%);
   border-bottom: 2px solid hsl(0deg, 0%, 40%);
@@ -74,60 +64,75 @@ main {
   border-top: 2px solid hsl(0deg, 0%, 10%);
   color: hsl(0deg, 0%, 80%);
 }
-.translator__main-container .translator__individual-container .translator__uh .translator__uh-container .translator__uh-filter {
+.translator__header-container .translator__header-interface {
   position: absolute;
+  max-width: 27.5rem;
+  width: 100%;
   top: 3rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
-  max-width: 27.5rem;
-  width: 100%;
-}
-.translator__main-container .translator__individual-container .translator__uh .translator__uh-container .translator__uh-filter .translator__uh-input {
-  padding-inline: 0.5rem;
-  border: 1px solid hsl(0deg, 0%, 10%);
-  border-radius: 0.15rem;
-}
-.translator__main-container .translator__individual-container .translator__uh .translator__uh-container .translator__uh-filter .translator__uh-input.hidden {
-  display: none;
-}
-.translator__main-container .translator__individual-container .translator__uh .translator__uh-container .translator__uh-filter .translator__uh-input.active {
-  display: inline-block;
   background-color: hsl(220deg, 29%, 27%);
 }
-.translator__main-container .translator__individual-container .translator__uh .translator__uh-container .translator__uh-filter .translator__uh-input .translator__date {
+
+.translator__history-update {
+  padding-inline: 0.5rem;
+  border-radius: 0.25rem;
+  border: 1px solid hsl(0deg, 0%, 10%);
+}
+.translator__history-update.hidden {
+  display: none;
+}
+.translator__history-update .translator__date {
   text-align: center;
   padding-block: 1rem;
   border-bottom: 1px solid hsl(0deg, 0%, 80%);
   display: block;
 }
-.translator__main-container .translator__individual-container .translator__uh .translator__uh-container .translator__uh-filter .translator__uh-input .translator__date.hidden {
+.translator__history-update .translator__date.hidden {
   display: none;
 }
-.translator__main-container .translator__individual-container .translator__uh .translator__uh-container .translator__uh-filter .translator__uh-input .translator__date h2 {
+.translator__history-update .translator__date h2 {
   margin-bottom: 0.5rem;
 }
-.translator__main-container .translator__individual-container .translator__uh .translator__uh-container .translator__uh-filter .translator__uh-input .translator__date ol, .translator__main-container .translator__individual-container .translator__uh .translator__uh-container .translator__uh-filter .translator__uh-input .translator__date ul {
+.translator__history-update .translator__date ol,
+.translator__history-update .translator__date ul {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
-.translator__main-container .translator__individual-container .translator__uh .translator__uh-container .translator__uh-filter .translator__uh-input .translator__date .translator__filter-btns {
-  padding: 0.25rem 0.75rem;
-}
-.translator__main-container .translator__individual-container .translator__uh .translator__uh-container .translator__uh-filter .translator__uh-input .translator__date:last-child {
-  border: none;
-}
-.translator__main-container .translator__individual-container .translator__text-box {
-  border-radius: 0 0 0.25rem 0.25rem;
-  width: 100%;
-  height: 100%;
-  border: none;
+.translator__history-update .translator__date .translator__filter-btns {
+  padding: 0.25rem 0.5rem;
   background-color: hsl(220deg, 34%, 20%);
-  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border-left: 2px solid hsl(0deg, 0%, 40%);
+  border-top: 2px solid hsl(0deg, 0%, 40%);
+  border-right: 2px solid hsl(0deg, 0%, 10%);
+  border-bottom: 2px solid hsl(0deg, 0%, 10%);
+  cursor: pointer;
+}
+.translator__history-update .translator__date .translator__filter-btns.active {
+  background-color: hsl(220deg, 29%, 27%);
+  border-right: 2px solid hsl(0deg, 0%, 40%);
+  border-bottom: 2px solid hsl(0deg, 0%, 40%);
+  border-left: 2px solid hsl(0deg, 0%, 10%);
+  border-top: 2px solid hsl(0deg, 0%, 10%);
+  color: hsl(0deg, 0%, 80%);
+}
+.translator__history-update .translator__date:last-child {
+  border: none;
+}
+
+.translator__text-box {
+  width: 100%;
+  height: inherit;
   line-height: 1.6;
+  padding: 0.5rem;
+  border-radius: 0 0 0.25rem 0.25rem;
+  border: none;
   resize: none;
+  background-color: hsl(220deg, 34%, 20%);
 }
 
 .footer {
