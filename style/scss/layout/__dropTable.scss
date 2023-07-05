@@ -38,6 +38,8 @@
             max-width: 27.5rem;
             width: 100%;
             border-radius: .25rem;
+            padding-inline: 0.5rem;
+            border: 1px solid map-get($colors, bg-primary);
             top: 3rem;
             left: 50%;
             transform: translateX(-50%);
@@ -51,10 +53,6 @@
 
 .translator__history-update {
     // All the buttons related to the history update date buttons
-    padding-inline: 0.5rem;
-    border-radius: inherit;
-    border: 1px solid map-get($colors, bg-primary);
-
     &.hidden {
         display: none;
     }

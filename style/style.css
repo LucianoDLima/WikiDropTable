@@ -72,6 +72,8 @@ main {
   max-width: 27.5rem;
   width: 100%;
   border-radius: 0.25rem;
+  padding-inline: 0.5rem;
+  border: 1px solid hsl(220deg, 66%, 8%);
   top: 3rem;
   left: 50%;
   transform: translateX(-50%);
@@ -80,11 +82,6 @@ main {
   box-shadow: 0.25rem 0.15rem 0.25rem 0 rgba(0, 0, 0, 0.15);
 }
 
-.translator__history-update {
-  padding-inline: 0.5rem;
-  border-radius: inherit;
-  border: 1px solid hsl(220deg, 66%, 8%);
-}
 .translator__history-update.hidden {
   display: none;
 }
