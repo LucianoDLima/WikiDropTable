@@ -43,6 +43,7 @@ main {
 .translator__header {
   display: flex;
   padding: 0.25rem;
+  gap: 0.25rem;
   background-color: hsl(220deg, 29%, 27%);
   color: hsl(0deg, 0%, 97%);
 }
@@ -54,6 +55,7 @@ main {
   border-top: 2px solid hsl(0deg, 0%, 40%);
   border-right: 2px solid hsl(0deg, 0%, 10%);
   border-bottom: 2px solid hsl(0deg, 0%, 10%);
+  box-shadow: 0.25rem 0.15rem 0.25rem 0 rgba(0, 0, 0, 0.15);
   cursor: pointer;
 }
 .translator__header-container .translator__header-button.active {
@@ -63,22 +65,25 @@ main {
   border-left: 2px solid hsl(0deg, 0%, 10%);
   border-top: 2px solid hsl(0deg, 0%, 10%);
   color: hsl(0deg, 0%, 80%);
+  box-shadow: unset;
 }
 .translator__header-container .translator__header-interface {
   position: absolute;
   max-width: 27.5rem;
   width: 100%;
+  border-radius: 0.25rem;
   top: 3rem;
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
   background-color: hsl(220deg, 29%, 27%);
+  box-shadow: 0.25rem 0.15rem 0.25rem 0 rgba(0, 0, 0, 0.15);
 }
 
 .translator__history-update {
   padding-inline: 0.5rem;
-  border-radius: 0.25rem;
-  border: 1px solid hsl(0deg, 0%, 10%);
+  border-radius: inherit;
+  border: 1px solid hsl(220deg, 66%, 8%);
 }
 .translator__history-update.hidden {
   display: none;
@@ -110,6 +115,7 @@ main {
   border-top: 2px solid hsl(0deg, 0%, 40%);
   border-right: 2px solid hsl(0deg, 0%, 10%);
   border-bottom: 2px solid hsl(0deg, 0%, 10%);
+  box-shadow: 0.25rem 0.15rem 0.25rem 0 rgba(0, 0, 0, 0.15);
   cursor: pointer;
 }
 .translator__history-update .translator__date .translator__filter-btns.active {
@@ -119,6 +125,7 @@ main {
   border-left: 2px solid hsl(0deg, 0%, 10%);
   border-top: 2px solid hsl(0deg, 0%, 10%);
   color: hsl(0deg, 0%, 80%);
+  box-shadow: unset;
 }
 .translator__history-update .translator__date:last-child {
   border: none;

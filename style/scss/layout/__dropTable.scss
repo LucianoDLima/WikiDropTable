@@ -23,6 +23,7 @@
     // Contains the visible-at-all-time buttons in the header
     display: flex;
     padding: 0.25rem;
+    gap: .25rem;
     background-color: map-get($colors, bg-tertiary);
     color: map-get($colors, text-white);
 
@@ -36,11 +37,13 @@
             position: absolute;
             max-width: 27.5rem;
             width: 100%;
+            border-radius: .25rem;
             top: 3rem;
             left: 50%;
             transform: translateX(-50%);
             z-index: map-get($priority, top);
             background-color: map-get($colors, bg-tertiary);
+            @include overlay-shadow();
 
         }
     }
@@ -49,8 +52,8 @@
 .translator__history-update {
     // All the buttons related to the history update date buttons
     padding-inline: 0.5rem;
-    border-radius: 0.25rem;
-    border: 1px solid map-get($colors, strong-neutral);
+    border-radius: inherit;
+    border: 1px solid map-get($colors, bg-primary);
 
     &.hidden {
         display: none;
