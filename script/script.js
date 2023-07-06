@@ -9,14 +9,9 @@ inputDrops.addEventListener('input', () => {
 });
 
 outputDrops.addEventListener('click', () => {
-    outputDrops.select();
-    document.execCommand('copy');
-
-    // Unselect it all after copying
-    const selection = window.getSelection();
-    selection.removeAllRanges();
-
-    setTimeout(() => {
-        outputDrops.textContent = outputDrops.value;
-    }, 1500);
+    navigator.clipboard.writeText(
+        outputDrops.value
+    ).catch((error) => {
+        console.error('Failed to copy text: ', error);
+    });
 });
