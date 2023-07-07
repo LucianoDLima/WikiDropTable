@@ -1,6 +1,7 @@
 import { parameters, infoboxes } from './parameters.js';
 import { itemNames, npcNames } from './items.js';
 import { paramValuesTrie } from './trie.js';
+import { infoboxesTrie } from './trie.js';
 
 const exceptions = new Map([
     ['date', dateException],
@@ -45,31 +46,35 @@ function mercadoException(inputText) {
     return "|mercado=gemw";
 }
 
-function translatePredefNames(inputText) {
-    // Searches as many predef/infobox names from the known ones at infoboxes. 
-    const predefNames = Array.from(infoboxes.keys()).filter(key => new RegExp(key, 'i').test(inputText));
-
-    if (predefNames != null) {
-        predefNames.forEach(
-            // Translates as many occurrences of all predef/infobox names found as possible.
-            element => inputText = inputText.replace(new RegExp(element, 'gi'), infoboxes.get(element))
-        );
-    }
-
-    return inputText;
+function groupParams(params) {
+    return Array.from(
+        // Groups paramName and paramValue together.
+        { length: (params.length - 1) / 2 },
+        (_, i) => [
+            params[i * 2 + 1].trim(),
+            params[i * 2 + 2].trim()
+        ]
+    );
 }
 
 function splitParamsFromLine(paramLine) {
     // Splits by both '|' and '=' to separate all params in a line.
-    let params = paramLine.split(/[|=]+/);
+    const params = paramLine.split(/[|=]+/);
+    
+    if (params.length === 1) {
+        // Returns a dummy array in case the line is a single infobox, like '{{DropsTableHead}}'.
+        return params[0].length === 0 ? false : [params[0], '']
+    }
 
-    return params.length === 1 ? false : Array.from(
-        // Groups paramName and paramValue together.
-        { length: (params.length - 1) / 2 }, 
-        (_, i) => [
-            params[i * 2 + 1].trim(), 
-            params[i * 2 + 2].trim()
-        ]);
+    // If the line starts with a infobox/param name (most likely).
+    if (params[0].length !== 0) {
+        return [
+            params[0], 
+            groupParams(params)
+        ]
+    }
+
+    return groupParams(params);
 }
 
 function handleParamName(paramName, outputLine) {
@@ -166,17 +171,28 @@ function handleInputLine(inputTextLine) {
     const outputLength = output.length;
     
     for (let i = 0; i < outputLength; i++) {
-        // If there were any refNotes, they'll be left on odd indexes.
+        // Any refNotes will be left on odd indexes.
         if (i % 2 === 1) {
             continue;
         }
 
         // Handles lines with multiple param-value combinations.
-        const allParams = splitParamsFromLine(output[i]);
+        let allParams = splitParamsFromLine(output[i]);
 
         // It's an empty line.
         if (!allParams) {
             continue;
+        }
+
+        // If there's an infobox/predef name to be translated.
+        if (allParams.length === 2) {
+            const infobox = infoboxesTrie.removeSymbols(allParams[0]);
+
+            if (infoboxes.has(infobox)) {
+                output[i] = output[i].replace(infobox, infoboxes.get(infobox));
+            }
+            
+            allParams = allParams[1]; 
         }
 
         for (const [paramName, paramValue] of allParams) {
@@ -191,6 +207,5 @@ function handleInputLine(inputTextLine) {
 
 export function translate(inputText) {
     // Needs to split by newlines to catch the end of a predef/infobox.
-    inputText = inputText.split('\n').map(handleInputLine).join('\n');
-    return translatePredefNames(inputText);
+    return inputText.split('\n').map(handleInputLine).join('\n');
 }
