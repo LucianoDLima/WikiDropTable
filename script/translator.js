@@ -200,9 +200,10 @@ function handleInputLine(inputTextLine) {
         // If there's an infobox/predef name to be translated.
         if (allParams.length === 2) {
             const infobox = infoboxesTrie.removeSymbols(allParams[0]);
+            const lowercase = infobox.toLowerCase();
 
-            if (infoboxes.has(infobox)) {
-                output[i] = output[i].replace(infobox, infoboxes.get(infobox));
+            if (infoboxes.has(lowercase)) {
+                output[i] = output[i].replace(infobox, infoboxes.get(lowercase));
             }
             
             allParams = allParams[1]; 

@@ -7,7 +7,8 @@ Promise.all([
     ])
     .then(([jsonData1, jsonData2]) => {
         parameters = new Map(Object.entries(jsonData1));
-        infoboxes = new Map(Object.entries(jsonData2));
+        infoboxes = new Map(Object.entries(jsonData2)
+            .map(([key, value]) => [key.toLowerCase(), value]));
     })
     .catch(error => {
         console.error('Error loading JSON files:', error);
