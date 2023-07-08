@@ -112,8 +112,21 @@ function handleParamValue(paramValue, outputLine) {
         // Handles (Noted) and other variants.
         if (lastChar === ')') {
             lowercase = lowercase.slice(0, -1);
+
+            // In case the paramValue is a potion with a dosage (x).
+            if (!lowercase.isNaN) {
+                if (index > 0) {
+                    const itemName = `${paramValues[index - 1]}(${lowercase})`;
+                    lowercase = itemName.toLowerCase();
+                    if (itemNames.has(lowercase)) {
+                        outputLine = outputLine.replace(itemName, itemNames.get(lowercase));
+                        continue;
+                    }
+                } 
+            }
+
             if (parameters.has(lowercase)) {
-                outputLine = outputLine.replace(`${elem}`, `${parameters.get(lowercase)})`);
+                outputLine = outputLine.replace(elem, `${parameters.get(lowercase)})`);
                 continue;
             }
         }
