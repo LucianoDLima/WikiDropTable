@@ -40,10 +40,9 @@ function releaseException(text) {
     });
 }
 
-function mercadoException(inputText) {
-    // inputText isn't used, but needs to be here
-    // because of how the exceptions are called.
-    return "|mercado=gemw";
+function mercadoException(text) {
+    // 'text' isn't used, but needs to be here because of how the exceptions are called.
+    return text.replace(/\|(exchange|gemw)=([^|\[\]]+)/ig, "|mercado=gemw");
 }
 
 function groupParams(params) {
