@@ -35,17 +35,17 @@
         .translator__header-interface {
             // Contains the interface opened when you click one of the header buttons
             position: absolute;
+            text-align: center;
             max-width: 27.5rem;
             width: 100%;
             border-radius: .25rem;
             padding-inline: 0.5rem;
-            border: 1px solid map-get($colors, bg-primary);
             top: 3rem;
             left: 50%;
             transform: translateX(-50%);
             z-index: map-get($priority, top);
             background-color: map-get($colors, bg-tertiary);
-            @include overlay-shadow();
+            @include soft-shadow();
 
         }
     }
@@ -58,7 +58,6 @@
     }
 
     .translator__date {
-        text-align: center;
         padding-block: 1rem;
         border-bottom: 1px solid map-get($colors, text-off-white);
         display: block;
@@ -85,6 +84,40 @@
 
     .translator__date:last-child {
         border: none;
+    }
+}
+
+.translator__search-container {
+    padding-top: .5rem;
+
+    &.hidden {
+        display: none;
+    }
+
+    .translator__search-interface {
+        padding-block: .5rem 1rem;
+        border-radius: inherit;
+    
+        input {
+            padding: .35rem .25rem;
+            background-color: map-get($colors, bg-tertiary);
+            color: inherit;
+            @include border-lighting(soft-neutral, strong-neutral);
+    
+            &::placeholder {
+                color: map-get($colors, text-off-white);
+            }
+    
+        }
+    
+        button {
+            @include header-buttons();
+    
+            &:active {
+                @include border-lighting(soft-neutral, strong-neutral);
+                background-color: map-get($colors, bg-tertiary);
+            }
+        }
     }
 }
 

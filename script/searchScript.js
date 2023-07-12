@@ -1,11 +1,14 @@
-const haButton = document.querySelector('[data-uh="button"]');
-const haInputs = document.querySelector('[data-uh="container"]');
+const headerButtons = document.querySelectorAll('[data-header="button"]');
+const datesInterface = document.querySelector('[data-uh="container"]');
+const searchInterface = document.querySelector('[data-search="container"]');
 const websiteButtons = document.querySelectorAll('[data-filter="website"]');
 const dayButtons = document.querySelectorAll('[data-filter="days"]');
 const monthButtons = document.querySelectorAll('[data-filter="months"]');
 const yearButtons = document.querySelectorAll('[data-filter="years"]');
-const searchButton = document.querySelector('[data-filter="search"]');
-const searchContainer = document.querySelectorAll('[data-filter="container"]');
+const historyUpdateSearchButton = document.querySelector('[data-filter="search"]');
+const historyUpdateSearchContainer = document.querySelectorAll('[data-filter="container"]');
+const grandExchangeSearchInput = document.querySelector('[data-search="input"]');
+const grandExchangeSearchButton = document.querySelector('[data-search="button"]');
 
 const searchOptions = {
     websiteDate: {
@@ -14,20 +17,7 @@ const searchOptions = {
         month: undefined,
         year: undefined,
     },
-    monthList: [
-        'Janeiro',
-        'Fevereiro',
-        'Março',
-        'Abril',
-        'Maio',
-        'Junho',
-        'Julho',
-        'Agosto',
-        'Setembro',
-        'Outubro',
-        'Novembro',
-        'Dezembro',
-    ],
+    monthList: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
     // From year 2009 to 2023
     yearList: Array.from({ length: 15 }, (_, index) => 2009 + index),
 };
@@ -35,8 +25,8 @@ const searchOptions = {
 function showHeaderInterface() {
     // Checks which date interface should appear
     const website = searchOptions.websiteDate.website;
-    const daysContainer = searchContainer[1];
-    const yearsContainer = searchContainer[3];
+    const daysContainer = historyUpdateSearchContainer[1];
+    const yearsContainer = historyUpdateSearchContainer[3];
 
     const showDays = website === 'Wiki' || website !== 'Oficial';
     const showYears = website !== 'Wiki' || website === 'Oficial';
@@ -60,13 +50,13 @@ function handleSearchButtons(selected) {
             button.classList.add('active');
 
             const buttonsFilter = e.target.getAttribute('data-filter');
-            const { websiteDate } = searchOptions
+            const { websiteDate } = searchOptions;
 
-			// Gets the index (textContent for website only) of the clicked item
+            // Gets the index (textContent for website only) of the clicked item
             switch (buttonsFilter) {
                 case 'website':
                     websiteDate.website = e.target.textContent.trim();
-                    showHeaderInterface()
+                    showHeaderInterface();
                     break;
 
                 case 'days':
@@ -96,12 +86,19 @@ function openWebsite(url) {
     window.open(url, '_blank');
 }
 
-searchButton.addEventListener('click', () => {
+let geValue;
+function handleSearcInputValue() {
+    // Saves the value typed in the GE Search Item interface
+    geValue = grandExchangeSearchInput.value;
+}
+
+activateButtons();
+historyUpdateSearchButton.addEventListener('click', () => {
     // Handles where the new tab will take you
     const { yearList, websiteDate, monthList } = searchOptions;
     const officialWebsite = `https://secure.runescape.com/m=news/l=3/a=9/archive?year=${yearList[websiteDate.year]}&month=${websiteDate.month + 1}&filter=Filtrar`;
     const wikiWebsite = `https://pt.runescape.wiki/w/${websiteDate.day + 1}_de_${monthList[websiteDate.month]?.toLowerCase()}`;
-  
+
     switch (searchOptions.websiteDate.website) {
         case 'Wiki':
             openWebsite(wikiWebsite);
@@ -121,25 +118,54 @@ searchButton.addEventListener('click', () => {
             }, 200);
             break;
         default:
+            // TODO: Remove it from console and just add a simple tooltip instead
             console.error('You must select the preferred website');
             break;
     }
 });
 
-activateButtons()
+headerButtons.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+        const historyUpdate = e.target.closest('[data-history]');
+        const grandExchange = e.target.closest('[data-exchange]');
 
-haButton.addEventListener('click', () => {
-    // Opens the search interface
-    haButton.classList.toggle('active');
-    haInputs.classList.toggle('hidden');
+        headerButtons.forEach((button) => {
+            // Closes the interface that's not the button's target
+            if (button !== btn) {
+                button.classList.remove('active');
+            }
+        });
+
+        // Opens the interface that's the button's target
+        if (historyUpdate) {
+            searchInterface.classList.add('hidden');
+            datesInterface.classList.toggle('hidden');
+        } else if (grandExchange) {
+            datesInterface.classList.add('hidden');
+            searchInterface.classList.toggle('hidden');
+        }
+
+        btn.classList.toggle('active');
+    });
 });
 
 document.body.addEventListener('click', (e) => {
-    // Closes if clicked outside the ha container
-    const headerContainer = e.target.closest('.translator__header-container')
+    // Closes the header interfaces if clicked outside
+    const headerContainer = e.target.closest('.translator__header-container');
 
     if (!headerContainer) {
-        haButton.classList.remove('active');
-        haInputs.classList.add('hidden');
+        headerButtons.forEach((btns) => {
+            btns.classList.remove('active');
+        });
+        datesInterface.classList.add('hidden');
+        searchInterface.classList.add('hidden');
     }
 });
+
+// grandExchangeSearchInput.addEventListener('input', () => {
+//     handleSearcInputValue();
+// });
+
+// grandExchangeSearchButton.addEventListener('click', () => {
+//     openWebsite(`https://secure.runescape.com/m=itemdb_rs/l=3/a=9/${geValue}/viewitem?obj=39812`);
+// });
