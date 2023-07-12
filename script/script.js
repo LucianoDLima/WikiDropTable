@@ -1,17 +1,14 @@
-
 import { translate } from './translator.js';
 
-const inputDrops = document.querySelector('#input');
-const outputDrops = document.querySelector('#output');
+const inputTranslator = document.querySelector('#input');
+const outputTranslator = document.querySelector('#output');
 
-inputDrops.addEventListener('input', () => {    
-    outputDrops.value = translate(inputDrops.value);
+inputTranslator.addEventListener('input', () => {
+    outputTranslator.value = translate(inputTranslator.value);
 });
 
-outputDrops.addEventListener('click', () => {
-    navigator.clipboard.writeText(
-        outputDrops.value
-    ).catch((error) => {
+outputTranslator.addEventListener('click', () => {
+    navigator.clipboard.writeText(outputDrops.value).catch((error) => {
         console.error('Failed to copy text: ', error);
     });
 });
