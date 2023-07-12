@@ -15,7 +15,7 @@ ol, ul {
 }
 
 body {
-  background-color: hsl(220deg, 66%, 8%);
+  background-color: hsl(220, 66%, 8%);
   font-family: monospace, sans-serif;
 }
 
@@ -31,7 +31,7 @@ main {
   height: 100%;
   gap: 3.5rem;
   padding-top: 1.5rem;
-  color: hsl(28deg, 44%, 66%);
+  color: hsl(28, 44%, 66%);
 }
 .translator__container {
   position: relative;
@@ -44,27 +44,30 @@ main {
   display: flex;
   padding: 0.25rem;
   gap: 0.25rem;
-  background-color: hsl(220deg, 29%, 27%);
-  color: hsl(0deg, 0%, 97%);
+  background-color: hsl(220, 29%, 27%);
+  color: hsl(0, 0%, 97%);
 }
 .translator__header-container .translator__header-button {
   padding: 0.25rem 0.5rem;
-  background-color: hsl(220deg, 34%, 20%);
+  background-color: hsl(220, 34%, 20%);
   border-radius: 0.25rem;
-  border-right: 2px solid hsl(0deg, 0%, 10%);
-  border-left: 2px solid hsl(0deg, 0%, 40%);
-  border-top: 2px solid hsl(0deg, 0%, 40%);
-  border-bottom: 2px solid hsl(0deg, 0%, 10%);
+  border-right: 2px solid hsl(0, 0%, 10%);
+  border-left: 2px solid hsl(0, 0%, 40%);
+  border-top: 2px solid hsl(0, 0%, 40%);
+  border-bottom: 2px solid hsl(0, 0%, 10%);
   box-shadow: 0.25rem 0.15rem 0.25rem 0 rgba(0, 0, 0, 0.15);
   cursor: pointer;
 }
+.translator__header-container .translator__header-button:hover {
+  background-color: hsl(220, 20%, 30%);
+}
 .translator__header-container .translator__header-button.active {
-  background-color: hsl(220deg, 29%, 27%);
-  color: hsl(0deg, 0%, 80%);
-  border-right: 2px solid hsl(0deg, 0%, 40%);
-  border-left: 2px solid hsl(0deg, 0%, 10%);
-  border-top: 2px solid hsl(0deg, 0%, 10%);
-  border-bottom: 2px solid hsl(0deg, 0%, 40%);
+  background-color: hsl(220, 29%, 27%);
+  color: hsl(0, 0%, 80%);
+  border-right: 2px solid hsl(0, 0%, 40%);
+  border-left: 2px solid hsl(0, 0%, 10%);
+  border-top: 2px solid hsl(0, 0%, 10%);
+  border-bottom: 2px solid hsl(0, 0%, 40%);
   box-shadow: unset;
 }
 .translator__header-container .translator__header-interface {
@@ -78,7 +81,7 @@ main {
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
-  background-color: hsl(220deg, 29%, 27%);
+  background-color: hsl(220, 29%, 27%);
   box-shadow: 0.25rem 0.15rem 0.25rem 0 rgba(0, 0, 0, 0.15);
 }
 
@@ -87,7 +90,7 @@ main {
 }
 .translator__history-update .translator__date {
   padding-block: 1rem;
-  border-bottom: 1px solid hsl(0deg, 0%, 80%);
+  border-bottom: 1px solid hsl(0, 0%, 80%);
   display: block;
 }
 .translator__history-update .translator__date.hidden {
@@ -105,22 +108,25 @@ main {
 }
 .translator__history-update .translator__date .translator__filter-btns {
   padding: 0.25rem 0.5rem;
-  background-color: hsl(220deg, 34%, 20%);
+  background-color: hsl(220, 34%, 20%);
   border-radius: 0.25rem;
-  border-right: 2px solid hsl(0deg, 0%, 10%);
-  border-left: 2px solid hsl(0deg, 0%, 40%);
-  border-top: 2px solid hsl(0deg, 0%, 40%);
-  border-bottom: 2px solid hsl(0deg, 0%, 10%);
+  border-right: 2px solid hsl(0, 0%, 10%);
+  border-left: 2px solid hsl(0, 0%, 40%);
+  border-top: 2px solid hsl(0, 0%, 40%);
+  border-bottom: 2px solid hsl(0, 0%, 10%);
   box-shadow: 0.25rem 0.15rem 0.25rem 0 rgba(0, 0, 0, 0.15);
   cursor: pointer;
 }
+.translator__history-update .translator__date .translator__filter-btns:hover {
+  background-color: hsl(220, 20%, 30%);
+}
 .translator__history-update .translator__date .translator__filter-btns.active {
-  background-color: hsl(220deg, 29%, 27%);
-  color: hsl(0deg, 0%, 80%);
-  border-right: 2px solid hsl(0deg, 0%, 40%);
-  border-left: 2px solid hsl(0deg, 0%, 10%);
-  border-top: 2px solid hsl(0deg, 0%, 10%);
-  border-bottom: 2px solid hsl(0deg, 0%, 40%);
+  background-color: hsl(220, 29%, 27%);
+  color: hsl(0, 0%, 80%);
+  border-right: 2px solid hsl(0, 0%, 40%);
+  border-left: 2px solid hsl(0, 0%, 10%);
+  border-top: 2px solid hsl(0, 0%, 10%);
+  border-bottom: 2px solid hsl(0, 0%, 40%);
   box-shadow: unset;
 }
 .translator__history-update .translator__date:last-child {
@@ -139,42 +145,48 @@ main {
 }
 .translator__search-container .translator__search-interface input {
   padding: 0.35rem 0.25rem;
-  background-color: hsl(220deg, 29%, 27%);
+  background-color: hsl(220, 29%, 27%);
   color: inherit;
-  border-right: 2px solid hsl(0deg, 0%, 40%);
-  border-left: 2px solid hsl(0deg, 0%, 10%);
-  border-top: 2px solid hsl(0deg, 0%, 10%);
-  border-bottom: 2px solid hsl(0deg, 0%, 40%);
+  border-right: 2px solid hsl(0, 0%, 40%);
+  border-left: 2px solid hsl(0, 0%, 10%);
+  border-top: 2px solid hsl(0, 0%, 10%);
+  border-bottom: 2px solid hsl(0, 0%, 40%);
+}
+.translator__search-container .translator__search-interface input::-moz-placeholder {
+  color: hsl(0, 0%, 80%);
 }
 .translator__search-container .translator__search-interface input::placeholder {
-  color: hsl(0deg, 0%, 80%);
+  color: hsl(0, 0%, 80%);
 }
 .translator__search-container .translator__search-interface button {
   padding: 0.25rem 0.5rem;
-  background-color: hsl(220deg, 34%, 20%);
+  background-color: hsl(220, 34%, 20%);
   border-radius: 0.25rem;
-  border-right: 2px solid hsl(0deg, 0%, 10%);
-  border-left: 2px solid hsl(0deg, 0%, 40%);
-  border-top: 2px solid hsl(0deg, 0%, 40%);
-  border-bottom: 2px solid hsl(0deg, 0%, 10%);
+  border-right: 2px solid hsl(0, 0%, 10%);
+  border-left: 2px solid hsl(0, 0%, 40%);
+  border-top: 2px solid hsl(0, 0%, 40%);
+  border-bottom: 2px solid hsl(0, 0%, 10%);
   box-shadow: 0.25rem 0.15rem 0.25rem 0 rgba(0, 0, 0, 0.15);
   cursor: pointer;
 }
+.translator__search-container .translator__search-interface button:hover {
+  background-color: hsl(220, 20%, 30%);
+}
 .translator__search-container .translator__search-interface button.active {
-  background-color: hsl(220deg, 29%, 27%);
-  color: hsl(0deg, 0%, 80%);
-  border-right: 2px solid hsl(0deg, 0%, 40%);
-  border-left: 2px solid hsl(0deg, 0%, 10%);
-  border-top: 2px solid hsl(0deg, 0%, 10%);
-  border-bottom: 2px solid hsl(0deg, 0%, 40%);
+  background-color: hsl(220, 29%, 27%);
+  color: hsl(0, 0%, 80%);
+  border-right: 2px solid hsl(0, 0%, 40%);
+  border-left: 2px solid hsl(0, 0%, 10%);
+  border-top: 2px solid hsl(0, 0%, 10%);
+  border-bottom: 2px solid hsl(0, 0%, 40%);
   box-shadow: unset;
 }
 .translator__search-container .translator__search-interface button:active {
-  border-right: 2px solid hsl(0deg, 0%, 40%);
-  border-left: 2px solid hsl(0deg, 0%, 10%);
-  border-top: 2px solid hsl(0deg, 0%, 10%);
-  border-bottom: 2px solid hsl(0deg, 0%, 40%);
-  background-color: hsl(220deg, 29%, 27%);
+  border-right: 2px solid hsl(0, 0%, 40%);
+  border-left: 2px solid hsl(0, 0%, 10%);
+  border-top: 2px solid hsl(0, 0%, 10%);
+  border-bottom: 2px solid hsl(0, 0%, 40%);
+  background-color: hsl(220, 29%, 27%);
 }
 
 .translator__text-box {
@@ -185,7 +197,7 @@ main {
   border-radius: 0 0 0.25rem 0.25rem;
   border: none;
   resize: none;
-  background-color: hsl(220deg, 34%, 20%);
+  background-color: hsl(220, 34%, 20%);
 }
 
 .footer {
@@ -196,30 +208,28 @@ main {
   height: 2.5em;
   text-align: center;
   transition: 0.5s;
-  background-color: hsl(220deg, 29%, 27%);
-  border-top: 2px solid hsl(0deg, 0%, 40%);
+  background-color: hsl(220, 29%, 27%);
+  border-top: 2px solid hsl(0, 0%, 40%);
 }
 .footer__title {
   margin-top: 0.5rem;
   font-weight: bold;
-  color: hsl(0deg, 0%, 97%);
+  color: hsl(0, 0%, 97%);
   transition: 0.5s;
 }
 .footer__details {
   font-size: 0.75rem;
   text-align: center;
   padding: 1em;
-  color: hsl(28deg, 100%, 65%);
+  color: hsl(28, 100%, 65%);
 }
 .footer__details a {
-  color: hsl(28deg, 44%, 66%);
+  color: hsl(28, 44%, 66%);
 }
 .footer:hover, .footer:focus-within {
   height: 4em;
   opacity: 1;
 }
 .footer:hover > .footer__title {
-  color: hsl(28deg, 100%, 65%);
-}
-
-/*# sourceMappingURL=style.css.map */
+  color: hsl(28, 100%, 65%);
+}/*# sourceMappingURL=style.css.map */
