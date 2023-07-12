@@ -1,3 +1,5 @@
+import { geItems } from './items.js';
+
 const headerButtons = document.querySelectorAll('[data-header="button"]');
 const datesInterface = document.querySelector('[data-uh="container"]');
 const searchInterface = document.querySelector('[data-search="container"]');
@@ -86,12 +88,6 @@ function openWebsite(url) {
     window.open(url, '_blank');
 }
 
-let geValue;
-function handleSearcInputValue() {
-    // Saves the value typed in the GE Search Item interface
-    geValue = grandExchangeSearchInput.value;
-}
-
 activateButtons();
 historyUpdateSearchButton.addEventListener('click', () => {
     // Handles where the new tab will take you
@@ -162,10 +158,10 @@ document.body.addEventListener('click', (e) => {
     }
 });
 
-// grandExchangeSearchInput.addEventListener('input', () => {
-//     handleSearcInputValue();
-// });
-
-// grandExchangeSearchButton.addEventListener('click', () => {
-//     openWebsite(`https://secure.runescape.com/m=itemdb_rs/l=3/a=9/${geValue}/viewitem?obj=39812`);
-// });
+grandExchangeSearchButton.addEventListener('click', () => {
+    const item = grandExchangeSearchInput.value;
+    if (geItems.has(item)) {
+        const id = geItems.get(item);
+        openWebsite(`https://secure.runescape.com/m=itemdb_rs/l=3/a=9/${item}/viewitem?obj=${id}`);
+    }
+});
