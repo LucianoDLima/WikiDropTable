@@ -4,3 +4,7 @@ body {
     background-color: map-get($colors, bg-primary);
     font-family: monospace ,sans-serif;
 }
+
+.hidden {
+    display: none !important;
+}

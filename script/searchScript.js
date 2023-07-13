@@ -147,7 +147,7 @@ headerButtons.forEach((btn) => {
 
 document.body.addEventListener('click', (e) => {
     // Closes the header interfaces if clicked outside
-    const headerContainer = e.target.closest('.translator__header-container');
+    const headerContainer = e.target.closest('.header__container');
 
     if (!headerContainer) {
         headerButtons.forEach((btns) => {

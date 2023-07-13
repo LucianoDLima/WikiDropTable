@@ -1,0 +1,23 @@
+@use '../utilities/_variables' as *;
+
+.option-selector {
+    padding-block: 1rem;
+    border-bottom: 1px solid map-get($colors, text-off-white);
+    display: block;
+
+    &:last-child {
+        border: none;
+    }
+
+    h2 {
+        margin-bottom: 0.5rem;
+    }
+
+    ol,
+    ul {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+}

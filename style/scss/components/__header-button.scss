@@ -1,0 +1,22 @@
+@use '../utilities/_variables' as *;
+@use '../utilities/_mixins' as *;
+
+.header-button {
+    padding: 0.25rem 0.5rem;
+    background-color: map-get($colors, bg-secondary);
+    border-radius: 0.25rem;
+    @include border-lighting(strong-neutral, soft-neutral);
+    @include soft-shadow();
+    cursor: pointer;
+
+    &:hover {
+        background-color: map-get($colors, bg-quaternary);
+    }
+
+    &.active {
+        background-color: map-get($colors, bg-tertiary);
+        color: map-get($colors, text-off-white);
+        @include border-lighting(soft-neutral, strong-neutral);
+        box-shadow: unset;
+    }
+}
