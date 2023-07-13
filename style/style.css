@@ -133,6 +133,10 @@ main {
   border-bottom: 2px solid hsl(0, 0%, 40%);
   box-shadow: unset;
 }
+.header-button.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
 
 .option-selector {
   padding-block: 1rem;
@@ -155,12 +159,15 @@ main {
 
 .search-bar {
   padding-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.search-bar__input {
+.search-bar__container {
   padding-block: 0.5rem 1rem;
   border-radius: inherit;
 }
-.search-bar__input input {
+.search-bar__container input {
   padding: 0.35rem 0.25rem;
   background-color: hsl(220, 29%, 27%);
   color: inherit;
@@ -169,16 +176,42 @@ main {
   border-top: 2px solid hsl(0, 0%, 10%);
   border-bottom: 2px solid hsl(0, 0%, 40%);
 }
-.search-bar__input input::-moz-placeholder {
+.search-bar__container input::-moz-placeholder {
   color: hsl(0, 0%, 80%);
 }
-.search-bar__input input::placeholder {
+.search-bar__container input::placeholder {
   color: hsl(0, 0%, 80%);
 }
-.search-bar__input button:active {
+.search-bar__container button:active {
   border-right: 2px solid hsl(0, 0%, 40%);
   border-left: 2px solid hsl(0, 0%, 10%);
   border-top: 2px solid hsl(0, 0%, 10%);
   border-bottom: 2px solid hsl(0, 0%, 40%);
   background-color: hsl(220, 29%, 27%);
+}
+.search-bar__message {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 5px;
+  width: 70%;
+}
+.search-bar__message img {
+  height: 20px;
+  width: 20px;
+}
+@media (max-width: 490px) {
+  .search-bar h2 {
+    width: 90%;
+  }
+}
+@media (max-width: 410px) {
+  .search-bar__container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+  }
+  .search-bar__container button {
+    margin-top: 10px;
+  }
 }/*# sourceMappingURL=style.css.map */

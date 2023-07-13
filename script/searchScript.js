@@ -12,6 +12,9 @@ const historyUpdateSearchContainer = document.querySelectorAll('[data-filter="co
 const grandExchangeSearchInput = document.querySelector('[data-search="input"]');
 const grandExchangeSearchButton = document.querySelector('[data-search="button"]');
 
+const searchBarFound = document.getElementById('ge_item_found');
+const searchBarNotFound = document.getElementById('ge_not_found');
+
 const searchOptions = {
     websiteDate: {
         website: undefined,
@@ -158,10 +161,29 @@ document.body.addEventListener('click', (e) => {
     }
 });
 
+grandExchangeSearchInput.addEventListener('input', () => {
+    const input = grandExchangeSearchInput.value;
+
+    if (!input) {
+        grandExchangeSearchButton.classList.add('disabled');
+        searchBarFound.classList.add('hidden');
+        searchBarNotFound.classList.add('hidden');
+        return;
+    }
+    
+    if (geItems.has(input)) {
+        grandExchangeSearchButton.classList.remove('disabled');
+        searchBarFound.classList.remove('hidden');
+        searchBarNotFound.classList.add('hidden');
+    } else {
+        grandExchangeSearchButton.classList.add('disabled');
+        searchBarNotFound.classList.remove('hidden');
+        searchBarFound.classList.add('hidden');
+    }
+});
+
 grandExchangeSearchButton.addEventListener('click', () => {
     const item = grandExchangeSearchInput.value;
-    if (geItems.has(item)) {
-        const id = geItems.get(item);
-        openWebsite(`https://secure.runescape.com/m=itemdb_rs/l=3/a=9/${item}/viewitem?obj=${id}`);
-    }
+    const id = geItems.get(item);
+    openWebsite(`https://secure.runescape.com/m=itemdb_rs/l=3/a=9/${item}/viewitem?obj=${id}`);
 });

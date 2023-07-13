@@ -564,15 +564,33 @@
                                     data-search="container"
                                 >
                                     <h2>Buscar no Mercado Geral</h2>
-                                    <div class="search-bar__input">
-                                        <div>
+                                    <div class="search-bar__container">
+                                        <div class="search-bar__input">
                                             <input
                                                 type="text"
                                                 placeholder="Digite o nome de um item"
                                                 data-search="input"
                                             />
                                             
-                                            <button class="header-button" data-search="button">Buscar</button>
+                                            <button class="header-button disabled" data-search="button">Abrir</button>
+                                        </div>
+
+                                        <div class="search-bar__message hidden" id="ge_item_found">
+                                            <img 
+                                                src="./style/svgs/positive_icon.svg" 
+                                                class="search-bar__svg-icon" 
+                                                alt="Positive icon"
+                                            />
+                                            <p>Item encontrado!</p>
+                                        </div>
+
+                                        <div class="search-bar__message hidden" id="ge_not_found">
+                                            <img 
+                                                src="./style/svgs/negative_icon.svg" 
+                                                class="search-bar__svg-icon" 
+                                                alt="Negative icon"
+                                            /> 
+                                            <p>Item não existe!</p>
                                         </div>
                                     </div>
                                 </div>

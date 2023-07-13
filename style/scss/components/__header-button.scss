@@ -19,4 +19,9 @@
         @include border-lighting(soft-neutral, strong-neutral);
         box-shadow: unset;
     }
+
+    &.disabled {
+        opacity: 0.5;
+        pointer-events: none;
+    }
 }

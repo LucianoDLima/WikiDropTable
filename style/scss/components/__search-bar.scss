@@ -3,8 +3,11 @@
 
 .search-bar {
     padding-top: .5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     
-    &__input {
+    &__container {
         padding-block: .5rem 1rem;
         border-radius: inherit;
 
@@ -24,6 +27,37 @@
             &:active {
                 @include border-lighting(soft-neutral, strong-neutral);
                 background-color: map-get($colors, bg-tertiary);
+            }
+        }
+    }
+
+    &__message {
+        display: flex; 
+        justify-content: space-evenly;
+        margin-top: 5px;
+        width: 70%;
+
+        img {
+            height: 20px;
+            width: 20px;
+        }
+    }
+
+    @media (max-width: 490px) {
+        h2 {
+            width: 90%;
+        }
+    }
+
+    @media (max-width: 410px) {
+        &__container {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            align-items: center;
+
+            button {
+                margin-top: 10px;
             }
         }
     }
