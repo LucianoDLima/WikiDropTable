@@ -99,6 +99,21 @@ function handleParamName(paramName, outputLine) {
     return outputLine;
 }
 
+function removeGunk(text) {
+    // In case it's some edge-case like '2 [[Hellfire metal]]'.
+    if (/^\d+\s/.test(text)) {
+        // Splits by the first whitespace.
+        const temp = text.split(/\s+(.+)/)[1];
+
+        // Stuff like '6 (noted)' become '6 ' after splitting,
+        // meaning the element at index 1 is undefined. 
+        if (temp != undefined)
+            return paramValuesTrie.removeSymbols(temp); 
+    }
+
+    return paramValuesTrie.removeSymbols(text);
+}
+
 function handleParamValue(paramValue, outputLine) {
     // Splits by ':', '(' and ', ' to catch [[File]], (Notes) and multiple values.
     const paramValues = paramValue.split(/, |:|\(/);
@@ -154,7 +169,7 @@ function handleParamValue(paramValue, outputLine) {
         }
 
         // Past here, it'll try to scavenge the string to remove any gunk.
-        const scavengedString = paramValuesTrie.removeSymbols(elem);
+        const scavengedString = removeGunk(elem);
 
         // Potions in lines with multiple images may get here.
         if (parseInt(scavengedString)) {
