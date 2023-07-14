@@ -218,4 +218,34 @@ main {
   .search-bar__container button {
     margin-top: 10px;
   }
+}
+
+.copy-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  background-color: hsl(220, 29%, 27%);
+  border-radius: 0.25rem;
+  opacity: 0.5;
+  width: 40px;
+  height: 40px;
+  left: calc(100% - 50px);
+  top: 10px;
+  border-right: 2px solid hsl(0, 0%, 10%);
+  border-left: 2px solid hsl(0, 0%, 40%);
+  border-top: 2px solid hsl(0, 0%, 40%);
+  border-bottom: 2px solid hsl(0, 0%, 10%);
+  box-shadow: 0.25rem 0.15rem 0.25rem 0 rgba(0, 0, 0, 0.15);
+}
+.copy-button:hover {
+  opacity: 1;
+}
+.copy-button__icon {
+  width: 70%;
+  height: 70%;
+}
+.copy-button--active-scroll {
+  left: calc(100% - 70px);
 }/*# sourceMappingURL=style.css.map */
