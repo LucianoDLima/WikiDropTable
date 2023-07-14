@@ -19,6 +19,10 @@ body {
   font-family: monospace, sans-serif;
 }
 
+h2 {
+  text-shadow: 2px 2px 2px hsl(0, 0%, 10%);
+}
+
 .hidden {
   display: none !important;
 }

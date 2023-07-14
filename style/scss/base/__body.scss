@@ -5,6 +5,10 @@ body {
     font-family: monospace ,sans-serif;
 }
 
+h2 {
+    text-shadow: 2px 2px 2px map-get($colors, strong-neutral);
+}
+
 .hidden {
     display: none !important;
 }
