@@ -155,6 +155,21 @@ function handleParamValue(paramValue, outputLine) {
 
         // Past here, it'll try to scavenge the string to remove any gunk.
         const scavengedString = paramValuesTrie.removeSymbols(elem);
+
+        // Potions in lines with multiple images may get here.
+        if (parseInt(scavengedString)) {
+            if (index > 0) {  
+                const elementBefore = paramValuesTrie.removeSymbols(paramValues[index - 1]);
+                const potionName = `${elementBefore}(${scavengedString})`;
+                lowercase = potionName.toLowerCase();
+
+                if (itemNames.has(lowercase)) {
+                    outputLine = outputLine.replace(potionName, itemNames.get(lowercase));
+                    continue;
+                } 
+            }
+        }
+
         lowercase = scavengedString.toLowerCase();
 
         // Sometimes, stuff like (melee) on image names will make it down here.
