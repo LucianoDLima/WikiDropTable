@@ -5,10 +5,10 @@
 The RS3 Wiki Helper Tool is a browser application designed to assist users in translating pages from the Runescape 3 Wiki. It simplifies the translation process by automatically translating specific template parameters and all the runescape 3 items and NPCs. Please note that this tool is not intended for translating entire pages but rather templates with fixed translations plus the game items. You can see more on how to use in the section [How to use it](#how-to-properly-use-it).
 
 ## Features
-- Translates most of the wiki infoboxes and parameters.
-- Translates all the NPC and Item names.
-- Searches for the correct page containing the updates from the selected day.
-- Upcoming feature: Searches for the correct GE page containing the item so you can check the Examine text.
+- Translates most of the wiki infoboxes and parameters;
+- Translates all the NPC and Item names;
+- Searches for the correct page containing the updates from the selected day;
+- Searches for the correct GE page containing the item so you can check the Examine text.
 
 
 ## How to properly use it
@@ -83,7 +83,4 @@ In short, this app is designed to assist in translating templates and the corres
   * [Update history - Histórico de atualização](https://runescape.wiki/w/Template:Update_history)
 
 ## Current known bugs
-
-- If there are multiple items or NPCs in the same line, only the first one will be translated. This does not happen in parameters, however. For example:
-  * **"[[Super prayer renewal potion (6)]], [[Ancient elven ritual shard]], [[Luck of the Dwarves]]"**, only the **Super prayer potion** will be translated, the rest is ignored as they are in the same line.
-  
+* *Such empty; much wow.*
