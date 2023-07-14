@@ -76,21 +76,19 @@ function splitParamsFromLine(paramLine) {
     return groupParams(params);
 }
 
-function handleParamName(paramName, outputLine) {
-    const lowercase = paramName.toLowerCase();
-            
-    if (exceptions.has(lowercase)) {
-        return exceptions.get(lowercase)(outputLine);
+function handleParamName(paramName, outputLine) {            
+    if (exceptions.has(paramName)) {
+        return exceptions.get(paramName)(outputLine);
     }
 
-    if (parameters.has(lowercase)) {
-        return outputLine.replace(`${paramName}=`, `${parameters.get(lowercase)}=`);
+    if (parameters.has(paramName)) {
+        return outputLine.replace(`${paramName}=`, `${parameters.get(paramName)}=`);
     }
     
     // Handles parameters with numbers, like 'image1='.
-    const versionNumber = lowercase.slice(-1);
+    const versionNumber = paramName.slice(-1);
     if (!isNaN(versionNumber)) {
-        const withoutNumber = lowercase.slice(0, -1);
+        const withoutNumber = paramName.slice(0, -1);
         if (parameters.has(withoutNumber)) {
             return outputLine.replace(`${paramName}=`, `${parameters.get(withoutNumber)}${versionNumber}=`);
         }
@@ -119,52 +117,49 @@ function handleParamValue(paramValue, outputLine) {
     const paramValues = paramValue.split(/, |:|\(/);
 
     for (const [index, elem] of paramValues.entries()) {
-        let lowercase = elem.toLowerCase();
-
-        const lastChar = lowercase.slice(-1);
+        const lastChar = elem.slice(-1);
         
         // Handles (Noted) and other variants.
         if (lastChar === ')') {
-            lowercase = lowercase.slice(0, -1);
+            const reduced = elem.slice(0, -1);
 
             // In case the paramValue is a potion with a dosage (x).
-            if (!lowercase.isNaN) {
+            if (!reduced.isNaN) {
                 if (index > 0) {
-                    const itemName = `${paramValues[index - 1]}(${lowercase})`;
-                    lowercase = itemName.toLowerCase();
-                    if (itemNames.has(lowercase)) {
-                        outputLine = outputLine.replace(itemName, itemNames.get(lowercase));
+                    const itemName = `${paramValues[index - 1]}(${reduced})`;
+                    if (itemNames.has(itemName)) {
+                        outputLine = outputLine.replace(itemName, itemNames.get(itemName));
                         continue;
                     }
                 } 
             }
 
-            if (parameters.has(lowercase)) {
-                outputLine = outputLine.replace(elem, `${parameters.get(lowercase)})`);
+            if (parameters.has(reduced)) {
+                outputLine = outputLine.replace(elem, `${parameters.get(reduced)})`);
                 continue;
             }
         }
 
         // Handles {{DropsLine}} and such, that end with }}.
         if (lastChar === '}') {
-            lowercase = lowercase.slice(0, -2);
-            if (parameters.has(lowercase)) {
-                outputLine = outputLine.replace(`=${elem}`, `=${parameters.get(lowercase)}}}`);
+            const reduced = elem.slice(0, -2);
+            if (parameters.has(reduced)) {
+                outputLine = outputLine.replace(`=${elem}`, `=${parameters.get(reduced)}}}`);
                 continue;
             }
         }
 
-        if (parameters.has(lowercase)) {
+        if (parameters.has(elem)) {
             // Properly translate entire words on lines that have multiple params.
             outputLine = index === 0
-                ? outputLine.replace(`=${elem}`, `=${parameters.get(lowercase)}`)
-                : outputLine.replace(`, ${elem}`, `, ${parameters.get(lowercase)}`);
+                ? outputLine.replace(`=${elem}`, `=${parameters.get(elem)}`)
+                : outputLine.replace(`, ${elem}`, `, ${parameters.get(elem)}`);
             continue;
         }
 
         // Most likely, it's an item name if it made it here.
-        if (itemNames.has(lowercase)) {
-            outputLine = outputLine.replace(elem, itemNames.get(lowercase));
+        if (itemNames.has(elem)) {
+            outputLine = outputLine.replace(elem, itemNames.get(elem));
             continue;
         }
 
@@ -176,30 +171,27 @@ function handleParamValue(paramValue, outputLine) {
             if (index > 0) {  
                 const elementBefore = paramValuesTrie.removeSymbols(paramValues[index - 1]);
                 const potionName = `${elementBefore}(${scavengedString})`;
-                lowercase = potionName.toLowerCase();
 
-                if (itemNames.has(lowercase)) {
-                    outputLine = outputLine.replace(potionName, itemNames.get(lowercase));
+                if (itemNames.has(potionName)) {
+                    outputLine = outputLine.replace(potionName, itemNames.get(potionName));
                     continue;
                 } 
             }
         }
 
-        lowercase = scavengedString.toLowerCase();
-
         // Sometimes, stuff like (melee) on image names will make it down here.
-        if (parameters.has(lowercase)) {
-            outputLine = outputLine.replace(scavengedString, parameters.get(lowercase));
+        if (parameters.has(scavengedString)) {
+            outputLine = outputLine.replace(scavengedString, parameters.get(scavengedString));
             continue;
         }
 
-        if (itemNames.has(lowercase)) {
-            outputLine = outputLine.replace(scavengedString, itemNames.get(lowercase));
+        if (itemNames.has(scavengedString)) {
+            outputLine = outputLine.replace(scavengedString, itemNames.get(scavengedString));
             continue;
         }
 
-        if (npcNames.has(lowercase)) {
-            outputLine = outputLine.replace(scavengedString, npcNames.get(lowercase));
+        if (npcNames.has(scavengedString)) {
+            outputLine = outputLine.replace(scavengedString, npcNames.get(scavengedString));
         }
     }
 
@@ -229,10 +221,9 @@ function handleInputLine(inputTextLine) {
         // If there's an infobox/predef name to be translated.
         if (allParams.length === 2) {
             const infobox = infoboxesTrie.removeSymbols(allParams[0]);
-            const lowercase = infobox.toLowerCase();
 
-            if (infoboxes.has(lowercase)) {
-                output[i] = output[i].replace(infobox, infoboxes.get(lowercase));
+            if (infoboxes.has(infobox)) {
+                output[i] = output[i].replace(infobox, infoboxes.get(infobox));
             }
             
             allParams = allParams[1]; 

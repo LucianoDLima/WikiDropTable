@@ -6,8 +6,8 @@ async function fetchData() {
         fetch('./data/dataNPCs.json').then(response_2 => response_2.json())
     ])
     .then(([json1, json2]) => {
-        const itemNames = new Map(json1.map(([_, pt, eng]) => [eng.toLowerCase(), pt]));
-        const npcNames = new Map(json2.map(([eng, pt]) => [eng.toLowerCase(), pt]));
+        const itemNames = new CaseInsensitiveMap(json1.map(([_, pt, eng]) => [eng, pt]));
+        const npcNames = new CaseInsensitiveMap(json2.map(([eng, pt]) => [eng, pt]));
         const geItems = new CaseInsensitiveMap(json1.map(([id, pt, _]) => [pt, id]));
         return { itemNames, npcNames, geItems };
     })
