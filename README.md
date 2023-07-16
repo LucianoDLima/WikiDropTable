@@ -79,8 +79,6 @@ In short, this app is designed to assist in translating templates and the corres
   * [Monster - Monstro](https://runescape.wiki/w/Template:Infobox_Monster_new)
   * [NPC](https://runescape.wiki/w/Template:Infobox_NPC)
   * [Shop - Loja](https://runescape.wiki/w/Template:Infobox_Shop)
-- Others.
-  * [Update history - Histórico de atualização](https://runescape.wiki/w/Template:Update_history)
 
 ## Current known bugs
 * *Such empty; much wow.*
