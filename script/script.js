@@ -40,8 +40,8 @@ copyButton.addEventListener('click', () => {
             console.error('Failed to copy text: ', error);
         });
 
-    setTimeout(function () {
+    setTimeout(() => {
         copySuccess.classList.add('hidden');
         copyIcon.classList.remove('hidden');
-    }, 1500);
+    }, 2500);
 });
