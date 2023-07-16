@@ -1,8 +1,8 @@
-@use '../utilities/_variables' as *;
+@use '../utilities/_functions' as *;
 
 .option-selector {
     padding-block: 1rem;
-    border-bottom: 1px solid map-get($colors, text-off-white);
+    border-bottom: 1px solid clr(text-off-white);
     display: block;
 
     &:last-child {

@@ -1,4 +1,4 @@
-@use '../utilities/_variables' as *;
+@use '../utilities/_functions' as *;
 @use '../utilities/_mixins' as *;
 
 .copy-button {
@@ -8,7 +8,7 @@
     
     cursor: pointer;
     position: absolute; 
-    background-color: map-get($colors, bg-tertiary);
+    background-color: clr(bg-tertiary);
     border-radius: 0.25rem;
     opacity: 0.5;
     width: 40px; 

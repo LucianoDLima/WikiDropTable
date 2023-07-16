@@ -1,4 +1,4 @@
-@use '../utilities/_variables' as *;
+@use '../utilities/_functions' as *;
 @use '../utilities/_mixins' as *;
 
 .search-bar {
@@ -13,12 +13,12 @@
 
         input {
             padding: .35rem .25rem;
-            background-color: map-get($colors, bg-tertiary);
+            background-color: clr(bg-tertiary);
             color: inherit;
             @include border-lighting(soft-neutral, strong-neutral);
 
             &::placeholder {
-                color: map-get($colors, text-off-white);
+                color: clr(text-off-white);
             }
 
         }
@@ -26,7 +26,7 @@
         button {
             &:active {
                 @include border-lighting(soft-neutral, strong-neutral);
-                background-color: map-get($colors, bg-tertiary);
+                background-color: clr(bg-tertiary);
             }
         }
     }

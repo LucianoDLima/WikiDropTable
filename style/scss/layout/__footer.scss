@@ -1,4 +1,4 @@
-@use '../utilities/_variables' as *;
+@use '../utilities/_functions' as *;
 
 .footer {
     position: fixed;
@@ -8,24 +8,24 @@
     height: 2.5em;
     text-align: center;
     transition: 0.5s;
-    background-color: map-get($colors, bg-tertiary);
-    border-top: 2px solid map-get($colors, soft-neutral);
+    background-color: clr(bg-tertiary);
+    border-top: 2px solid clr(soft-neutral);
 
     &__title { 
         margin-top: 0.5rem;
         font-weight: bold;
-        color: map-get($colors, text-white);
+        color: clr(text-white);
         transition: 0.5s;
     }
 
     &__details {
-        font-size: map-get($fs, xs); 
+        font-size: fs(xs); 
         text-align: center;
         padding: 1em;
-        color: map-get($colors, text-primary);
+        color: clr(text-primary);
 
         & a {
-            color: map-get($colors, text-secondary); 
+            color: clr(text-secondary); 
         }
     }
 
@@ -36,6 +36,6 @@
     }
 
     &:hover > &__title {
-        color: map-get($colors, text-primary);
+        color: clr(text-primary);
     }
 }

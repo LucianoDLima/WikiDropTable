@@ -1,7 +1,7 @@
-@use '../utilities/_variables' as *;
+@use '../utilities/_functions' as *;
 
 main {
-    max-width: map-get($breakpoints, laptop);
+    max-width: bp(laptop);
     margin-inline: auto;
     height: 90vh;
 }

@@ -15,12 +15,12 @@ ol, ul {
 }
 
 body {
-  background-color: hsl(220, 66%, 8%);
+  background-color: hsl(220deg, 66%, 8%);
   font-family: monospace, sans-serif;
 }
 
 h2 {
-  text-shadow: 2px 2px 2px hsl(0, 0%, 10%);
+  text-shadow: 2px 2px 2px hsl(0deg, 0%, 10%);
 }
 
 .hidden {
@@ -39,7 +39,7 @@ main {
   height: 100%;
   gap: 3.5rem;
   padding-top: 1.5rem;
-  color: hsl(28, 44%, 66%);
+  color: hsl(28deg, 44%, 66%);
 }
 .translator__container {
   position: relative;
@@ -55,15 +55,15 @@ main {
   border-radius: 0 0 0.25rem 0.25rem;
   border: none;
   resize: none;
-  background-color: hsl(220, 34%, 20%);
+  background-color: hsl(220deg, 34%, 20%);
 }
 
 .header {
   display: flex;
   padding: 0.25rem;
   gap: 0.25rem;
-  background-color: hsl(220, 29%, 27%);
-  color: hsl(0, 0%, 97%);
+  background-color: hsl(220deg, 29%, 27%);
+  color: hsl(0deg, 0%, 97%);
 }
 .header__interface {
   position: absolute;
@@ -76,7 +76,7 @@ main {
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
-  background-color: hsl(220, 29%, 27%);
+  background-color: hsl(220deg, 29%, 27%);
   box-shadow: 0.25rem 0.15rem 0.25rem 0 rgba(0, 0, 0, 0.15);
 }
 
@@ -88,53 +88,53 @@ main {
   height: 2.5em;
   text-align: center;
   transition: 0.5s;
-  background-color: hsl(220, 29%, 27%);
-  border-top: 2px solid hsl(0, 0%, 40%);
+  background-color: hsl(220deg, 29%, 27%);
+  border-top: 2px solid hsl(0deg, 0%, 40%);
 }
 .footer__title {
   margin-top: 0.5rem;
   font-weight: bold;
-  color: hsl(0, 0%, 97%);
+  color: hsl(0deg, 0%, 97%);
   transition: 0.5s;
 }
 .footer__details {
   font-size: 0.75rem;
   text-align: center;
   padding: 1em;
-  color: hsl(28, 100%, 65%);
+  color: hsl(28deg, 100%, 65%);
 }
 .footer__details a {
-  color: hsl(28, 44%, 66%);
+  color: hsl(28deg, 44%, 66%);
 }
 .footer:hover, .footer:focus-within {
   height: 4em;
   opacity: 1;
 }
 .footer:hover > .footer__title {
-  color: hsl(28, 100%, 65%);
+  color: hsl(28deg, 100%, 65%);
 }
 
 .header-button {
   padding: 0.25rem 0.5rem;
-  background-color: hsl(220, 34%, 20%);
+  background-color: hsl(220deg, 34%, 20%);
   border-radius: 0.25rem;
-  border-right: 2px solid hsl(0, 0%, 10%);
-  border-left: 2px solid hsl(0, 0%, 40%);
-  border-top: 2px solid hsl(0, 0%, 40%);
-  border-bottom: 2px solid hsl(0, 0%, 10%);
+  border-right: 2px solid hsl(0deg, 0%, 10%);
+  border-left: 2px solid hsl(0deg, 0%, 40%);
+  border-top: 2px solid hsl(0deg, 0%, 40%);
+  border-bottom: 2px solid hsl(0deg, 0%, 10%);
   box-shadow: 0.25rem 0.15rem 0.25rem 0 rgba(0, 0, 0, 0.15);
   cursor: pointer;
 }
 .header-button:hover {
-  background-color: hsl(220, 20%, 30%);
+  background-color: hsl(220deg, 20%, 30%);
 }
 .header-button.active {
-  background-color: hsl(220, 29%, 27%);
-  color: hsl(0, 0%, 80%);
-  border-right: 2px solid hsl(0, 0%, 40%);
-  border-left: 2px solid hsl(0, 0%, 10%);
-  border-top: 2px solid hsl(0, 0%, 10%);
-  border-bottom: 2px solid hsl(0, 0%, 40%);
+  background-color: hsl(220deg, 29%, 27%);
+  color: hsl(0deg, 0%, 80%);
+  border-right: 2px solid hsl(0deg, 0%, 40%);
+  border-left: 2px solid hsl(0deg, 0%, 10%);
+  border-top: 2px solid hsl(0deg, 0%, 10%);
+  border-bottom: 2px solid hsl(0deg, 0%, 40%);
   box-shadow: unset;
 }
 .header-button.disabled {
@@ -144,7 +144,7 @@ main {
 
 .option-selector {
   padding-block: 1rem;
-  border-bottom: 1px solid hsl(0, 0%, 80%);
+  border-bottom: 1px solid hsl(0deg, 0%, 80%);
   display: block;
 }
 .option-selector:last-child {
@@ -173,25 +173,22 @@ main {
 }
 .search-bar__container input {
   padding: 0.35rem 0.25rem;
-  background-color: hsl(220, 29%, 27%);
+  background-color: hsl(220deg, 29%, 27%);
   color: inherit;
-  border-right: 2px solid hsl(0, 0%, 40%);
-  border-left: 2px solid hsl(0, 0%, 10%);
-  border-top: 2px solid hsl(0, 0%, 10%);
-  border-bottom: 2px solid hsl(0, 0%, 40%);
-}
-.search-bar__container input::-moz-placeholder {
-  color: hsl(0, 0%, 80%);
+  border-right: 2px solid hsl(0deg, 0%, 40%);
+  border-left: 2px solid hsl(0deg, 0%, 10%);
+  border-top: 2px solid hsl(0deg, 0%, 10%);
+  border-bottom: 2px solid hsl(0deg, 0%, 40%);
 }
 .search-bar__container input::placeholder {
-  color: hsl(0, 0%, 80%);
+  color: hsl(0deg, 0%, 80%);
 }
 .search-bar__container button:active {
-  border-right: 2px solid hsl(0, 0%, 40%);
-  border-left: 2px solid hsl(0, 0%, 10%);
-  border-top: 2px solid hsl(0, 0%, 10%);
-  border-bottom: 2px solid hsl(0, 0%, 40%);
-  background-color: hsl(220, 29%, 27%);
+  border-right: 2px solid hsl(0deg, 0%, 40%);
+  border-left: 2px solid hsl(0deg, 0%, 10%);
+  border-top: 2px solid hsl(0deg, 0%, 10%);
+  border-bottom: 2px solid hsl(0deg, 0%, 40%);
+  background-color: hsl(220deg, 29%, 27%);
 }
 .search-bar__message {
   display: flex;
@@ -226,17 +223,17 @@ main {
   justify-content: center;
   cursor: pointer;
   position: absolute;
-  background-color: hsl(220, 29%, 27%);
+  background-color: hsl(220deg, 29%, 27%);
   border-radius: 0.25rem;
   opacity: 0.5;
   width: 40px;
   height: 40px;
   left: calc(100% - 50px);
   top: 10px;
-  border-right: 2px solid hsl(0, 0%, 10%);
-  border-left: 2px solid hsl(0, 0%, 40%);
-  border-top: 2px solid hsl(0, 0%, 40%);
-  border-bottom: 2px solid hsl(0, 0%, 10%);
+  border-right: 2px solid hsl(0deg, 0%, 10%);
+  border-left: 2px solid hsl(0deg, 0%, 40%);
+  border-top: 2px solid hsl(0deg, 0%, 40%);
+  border-bottom: 2px solid hsl(0deg, 0%, 10%);
   box-shadow: 0.25rem 0.15rem 0.25rem 0 rgba(0, 0, 0, 0.15);
 }
 .copy-button:hover {
@@ -248,4 +245,6 @@ main {
 }
 .copy-button--active-scroll {
   left: calc(100% - 70px);
-}/*# sourceMappingURL=style.css.map */
+}
+
+/*# sourceMappingURL=style.css.map */

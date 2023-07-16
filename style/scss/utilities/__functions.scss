@@ -1,0 +1,21 @@
+@use './_variables' as *;
+
+@function clr($name) {
+    // Handle colors for all properties
+    @return map-get($colors, $name);
+}
+
+@function fs($size) {
+    // Handle font-sizes
+    @return map-get($font-sizes, $size);
+}
+
+@function bp($size) {
+    // Handles breakpoints
+    @return map-get($breakpoints, $size);
+}
+
+@function priority($place) {
+    // Handles z-index
+    @return map-get($priority, $place);
+}

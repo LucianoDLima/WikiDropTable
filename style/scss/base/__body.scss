@@ -1,12 +1,12 @@
-@use '../utilities/_variables' as *;
+@use '../utilities/_functions' as *;
 
 body {
-    background-color: map-get($colors, bg-primary);
-    font-family: monospace ,sans-serif;
+    background-color: clr(bg-primary);
+    font-family: monospace, sans-serif;
 }
 
 h2 {
-    text-shadow: 2px 2px 2px map-get($colors, strong-neutral);
+    text-shadow: 2px 2px 2px clr(strong-neutral);
 }
 
 .hidden {

@@ -1,13 +1,13 @@
-@use '../utilities/_variables' as *;
 @use '../utilities/_mixins' as *;
+@use '../utilities/_functions' as *;
 
 .header {
     // Contains the visible-at-all-time buttons in the header
     display: flex;
     padding: 0.25rem;
     gap: .25rem;
-    background-color: map-get($colors, bg-tertiary);
-    color: map-get($colors, text-white);
+    background-color: clr(bg-tertiary);
+    color: clr(text-white);
 
     &__interface {
         // Contains the interface opened when you click one of the header buttons
@@ -20,8 +20,8 @@
         top: 3rem;
         left: 50%;
         transform: translateX(-50%);
-        z-index: map-get($priority, top);
-        background-color: map-get($colors, bg-tertiary);
+        z-index: priority(high);
+        background-color: clr(bg-tertiary);
         @include soft-shadow();
     }
 }
