@@ -4,7 +4,7 @@ const inputTranslator = document.querySelector('#input');
 const outputTranslator = document.querySelector('#output');
 const copyButton = document.getElementById('copy-button');
 const copyIcon = document.getElementById('copy-icon');
-const copySucess = document.getElementById('copy-success');
+const copySuccess = document.getElementById('copy-success');
 
 inputTranslator.addEventListener('input', () => {
     const translated = translate(inputTranslator.value);
@@ -25,7 +25,7 @@ inputTranslator.addEventListener('input', () => {
 });
 
 copyButton.addEventListener('focusout', () => {
-    copySucess.classList.add('hidden');
+    copySuccess.classList.add('hidden');
     copyIcon.classList.remove('hidden');
 });
 
@@ -34,9 +34,14 @@ copyButton.addEventListener('click', () => {
         .writeText(outputTranslator.value)
         .then(() => {
             copyIcon.classList.add('hidden');
-            copySucess.classList.remove('hidden');
+            copySuccess.classList.remove('hidden');
         })
         .catch((error) => {
             console.error('Failed to copy text: ', error);
         });
+
+    setTimeout(function () {
+        copySuccess.classList.add('hidden');
+        copyIcon.classList.remove('hidden');
+    }, 1500);
 });
