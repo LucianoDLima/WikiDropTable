@@ -11,10 +11,10 @@
     background-color: clr(bg-tertiary);
     border-radius: 0.25rem;
     opacity: 0.5;
-    width: 40px; 
-    height: 40px; 
+    width: 2.5rem; 
+    height: 2.5rem; 
     left: calc(100% - 50px);
-    top: 10px;
+    top: 0.625rem;
 
     @include border-lighting(strong-neutral, soft-neutral);
     @include soft-shadow();

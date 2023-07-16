@@ -11,8 +11,8 @@
 }
 
 @mixin border-lighting($right-bottom, $left-top ) {
-    border-right: 2px solid map-get($colors, $right-bottom);
-    border-left: 2px solid map-get($colors, $left-top);
-    border-top: 2px solid map-get($colors, $left-top);
-    border-bottom: 2px solid map-get($colors, $right-bottom);
+    border-right: 0.125rem solid map-get($colors, $right-bottom);
+    border-left: 0.125rem solid map-get($colors, $left-top);
+    border-top: 0.125rem solid map-get($colors, $left-top);
+    border-bottom: 0.125rem solid map-get($colors, $right-bottom);
 }
