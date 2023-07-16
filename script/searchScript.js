@@ -10,7 +10,8 @@ const yearButtons = document.querySelectorAll('[data-filter="years"]');
 const historyUpdateSearchButton = document.querySelector('[data-filter="search"]');
 const historyUpdateSearchContainer = document.querySelectorAll('[data-filter="container"]');
 const grandExchangeSearchInput = document.querySelector('[data-search="input"]');
-const grandExchangeSearchButton = document.querySelector('[data-search="button"]');
+const grandExchangeUrlButton = document.querySelector('[data-search="button"]');
+const grandExchangeButton = headerButtons[1];
 
 const searchBarFound = document.getElementById('ge_item_found');
 const searchBarNotFound = document.getElementById('ge_not_found');
@@ -161,28 +162,37 @@ document.body.addEventListener('click', (e) => {
     }
 });
 
+function resetSearchBar() {
+    grandExchangeUrlButton.classList.add('disabled');
+    searchBarFound.classList.add('hidden');
+    searchBarNotFound.classList.add('hidden');
+}
+
+grandExchangeButton.addEventListener('click', () => {
+    grandExchangeSearchInput.value = '';
+    resetSearchBar();
+});
+
 grandExchangeSearchInput.addEventListener('input', () => {
     const input = grandExchangeSearchInput.value;
 
     if (!input) {
-        grandExchangeSearchButton.classList.add('disabled');
-        searchBarFound.classList.add('hidden');
-        searchBarNotFound.classList.add('hidden');
+        resetSearchBar();
         return;
     }
     
     if (geItems.has(input)) {
-        grandExchangeSearchButton.classList.remove('disabled');
+        grandExchangeUrlButton.classList.remove('disabled');
         searchBarFound.classList.remove('hidden');
         searchBarNotFound.classList.add('hidden');
     } else {
-        grandExchangeSearchButton.classList.add('disabled');
+        grandExchangeUrlButton.classList.add('disabled');
         searchBarNotFound.classList.remove('hidden');
         searchBarFound.classList.add('hidden');
     }
 });
 
-grandExchangeSearchButton.addEventListener('click', () => {
+grandExchangeUrlButton.addEventListener('click', () => {
     const item = grandExchangeSearchInput.value;
     const id = geItems.get(item);
     openWebsite(`https://secure.runescape.com/m=itemdb_rs/l=3/a=9/${item}/viewitem?obj=${id}`);
