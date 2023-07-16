@@ -200,12 +200,12 @@ main {
   height: 1.25rem;
   width: 1.25rem;
 }
-@media (max-width: 490px) {
+@media screen and (max-width: 30.625rem) {
   .search-bar h2 {
     width: 90%;
   }
 }
-@media (max-width: 410px) {
+@media screen and (max-width: 26.563rem) {
   .search-bar__container {
     display: flex;
     justify-content: space-between;

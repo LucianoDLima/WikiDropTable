@@ -43,13 +43,13 @@
         }
     }
 
-    @media (max-width: 490px) {
+    @include tablet-s() {
         h2 {
             width: 90%;
         }
     }
 
-    @media (max-width: 410px) {
+    @include mobile-l() {
         &__container {
             display: flex;
             justify-content: space-between;

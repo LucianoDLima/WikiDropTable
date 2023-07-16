@@ -1,18 +1,44 @@
-@use './_variables' as *;
+@use './_functions' as *;
 
-@mixin screen($size) {
-    @media screen and (max-width: $size) {
+// Breakpoints
+@mixin mobile() {
+    @media screen and (max-width: bp(mobile)) {
         @content;
     }
 }
 
+@mixin mobile-l() {
+    @media screen and (max-width: bp(mobile-l)) {
+        @content;
+    }
+}
+
+@mixin tablet-s() {
+    @media screen and (max-width: bp(tablet-s)) {
+        @content;
+    }
+}
+
+@mixin tablet() {
+    @media screen and (max-width: bp(tablet)) {
+        @content;
+    }
+}
+
+@mixin laptop() {
+    @media screen and (max-width: bp(laptop)) {
+        @content;
+    }
+}
+
+// Styles
 @mixin soft-shadow() {
     box-shadow: .25rem .15rem .25rem 0 rgba(0, 0, 0, .15);
 }
 
 @mixin border-lighting($right-bottom, $left-top ) {
-    border-right: 0.125rem solid map-get($colors, $right-bottom);
-    border-left: 0.125rem solid map-get($colors, $left-top);
-    border-top: 0.125rem solid map-get($colors, $left-top);
-    border-bottom: 0.125rem solid map-get($colors, $right-bottom);
+    border-right: 0.125rem solid clr($right-bottom);
+    border-left: 0.125rem solid clr($left-top);
+    border-top: 0.125rem solid clr($left-top);
+    border-bottom: 0.125rem solid clr($right-bottom);
 }
