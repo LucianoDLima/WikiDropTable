@@ -2,13 +2,14 @@ import { CaseInsensitiveMap } from "./caseInsensitiveMap.js";
 
 async function fetchData() {
     return Promise.all([
-        fetch('./data/dataItems.json').then(response_1 => response_1.json()),
-        fetch('./data/dataNPCs.json').then(response_2 => response_2.json())
+        fetch('./data/dataItems.json').then(response => response.json()),
+        fetch('./data/dataNPCs.json').then(response => response.json()),
+        fetch('./data/dataGE.json').then(response => response.json())
     ])
-    .then(([json1, json2]) => {
-        const itemNames = new CaseInsensitiveMap(json1.map(([_, pt, eng]) => [eng, pt]));
-        const npcNames = new CaseInsensitiveMap(json2.map(([eng, pt]) => [eng, pt]));
-        const geItems = new CaseInsensitiveMap(json1.map(([id, pt, _]) => [pt, id]));
+    .then(([json1, json2, json3]) => {
+        const itemNames = new CaseInsensitiveMap(json1);
+        const npcNames = new CaseInsensitiveMap(json2);
+        const geItems = new CaseInsensitiveMap(json3);
         return { itemNames, npcNames, geItems };
     })
     .catch(error => {
