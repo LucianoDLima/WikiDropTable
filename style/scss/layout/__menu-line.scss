@@ -1,0 +1,34 @@
+@use '../utilities/_mixins' as *;
+@use '../utilities/_functions' as *;
+
+.menu-line {
+    display: flex;
+    padding: 0.25rem;
+    width: 60%;
+    gap: 1rem;
+    color: clr(text-white);
+
+    &__popup-window {
+        position: fixed;
+        text-align: center;
+        max-width: 27.5rem;
+        padding-inline: 0.5rem;
+        height: 100%;
+        width: 0;
+        right: -25rem;
+        top: 0;
+        z-index: priority(high);
+        background-color: clr(bg-tertiary);
+
+        &--show {
+            width: 100vw;
+            animation: slideIn 0.75s forwards;
+        }
+    }
+}
+
+@keyframes slideIn {
+    to {
+        right: 0;
+    }
+}

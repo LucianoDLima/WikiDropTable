@@ -33,7 +33,7 @@
 
 // Styles
 @mixin soft-shadow() {
-    box-shadow: .25rem .15rem .25rem 0 rgba(0, 0, 0, .15);
+    box-shadow: .25rem .15rem .25rem 0 clr(strong-neutral);
 }
 
 @mixin border-lighting($right-bottom, $left-top ) {

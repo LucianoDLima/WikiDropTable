@@ -1,41 +1,20 @@
 @use '../utilities/_functions' as *;
 
 .footer {
-    position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
     height: 2.5em;
+    position: fixed;
     text-align: center;
-    transition: 0.5s;
-    background-color: clr(bg-tertiary);
-    border-top: 2px solid clr(soft-neutral);
+    font-size: 12px;
 
-    &__title { 
+    p { 
         margin-top: 0.5rem;
-        font-weight: bold;
         color: clr(text-white);
-        transition: 0.5s;
     }
 
-    &__details {
-        font-size: fs(xs); 
-        text-align: center;
-        padding: 1em;
-        color: clr(text-primary);
-
-        & a {
-            color: clr(text-secondary); 
-        }
-    }
-
-    &:hover,
-    &:focus-within {
-        height: 4em;
-        opacity: 1;
-    }
-
-    &:hover > &__title {
-        color: clr(text-primary);
+    a {
+        color: clr(text-off-white);
     }
 }

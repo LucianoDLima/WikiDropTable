@@ -1,7 +1,8 @@
 @use '../utilities/_functions' as *;
 
 main {
-    max-width: bp(laptop);
-    margin-inline: auto;
-    height: 90vh;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
 }

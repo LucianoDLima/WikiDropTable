@@ -15,12 +15,13 @@ ol, ul {
 }
 
 body {
-  background-color: hsl(220deg, 66%, 8%);
+  background-color: hsl(220, 66%, 8%);
   font-family: monospace, sans-serif;
+  overflow: hidden;
 }
 
 h2 {
-  text-shadow: 0.125rem 0.125rem 0.125rem hsl(0deg, 0%, 10%);
+  text-shadow: 0.125rem 0.125rem 0.125rem hsl(0, 0%, 10%);
 }
 
 .hidden {
@@ -28,123 +29,146 @@ h2 {
 }
 
 main {
-  max-width: 64rem;
-  margin-inline: auto;
-  height: 90vh;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
 }
 
 .translator {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  gap: 3.5rem;
+  height: 60%;
+  width: 80%;
+  gap: 1rem;
   padding-top: 1.5rem;
-  color: hsl(28deg, 44%, 66%);
+  color: hsl(28, 44%, 66%);
 }
 .translator__container {
-  position: relative;
-  width: 65%;
-  height: inherit;
+  display: flex;
   margin-inline: auto;
+  height: 100%;
+  width: 100%;
+  gap: 2rem;
 }
 .translator__text-box {
-  width: 100%;
-  height: inherit;
-  line-height: 1.6;
-  padding: 0.5rem;
-  border-radius: 0 0 0.25rem 0.25rem;
   border: none;
   resize: none;
-  background-color: hsl(220deg, 34%, 20%);
+  width: 100%;
+  height: 100%;
+  line-height: 1.6;
+  padding: 0.5rem;
+  border-radius: 0 0 0.5rem 0.5rem;
+  background-color: hsl(220, 34%, 20%);
+}
+.translator__text-box:hover, .translator__text-box:focus {
+  background-color: hsl(220, 29%, 27%);
+}
+.translator__output {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+@media screen and (max-width: 48rem) {
+  .translator {
+    height: 80%;
+    width: 90%;
+  }
+  .translator__container {
+    flex-direction: column;
+  }
 }
 
-.header {
+.menu-line {
   display: flex;
   padding: 0.25rem;
-  gap: 0.25rem;
-  background-color: hsl(220deg, 29%, 27%);
-  color: hsl(0deg, 0%, 97%);
+  width: 60%;
+  gap: 1rem;
+  color: hsl(0, 0%, 97%);
 }
-.header__interface {
-  position: absolute;
+.menu-line__popup-window {
+  position: fixed;
   text-align: center;
   max-width: 27.5rem;
-  width: 100%;
-  border-radius: 0.25rem;
   padding-inline: 0.5rem;
-  top: 3rem;
-  left: 50%;
-  transform: translateX(-50%);
+  height: 100%;
+  width: 0;
+  right: -25rem;
+  top: 0;
   z-index: 10;
-  background-color: hsl(220deg, 29%, 27%);
-  box-shadow: 0.25rem 0.15rem 0.25rem 0 rgba(0, 0, 0, 0.15);
+  background-color: hsl(220, 29%, 27%);
+}
+.menu-line__popup-window--show {
+  width: 100vw;
+  animation: slideIn 0.75s forwards;
+}
+
+@keyframes slideIn {
+  to {
+    right: 0;
+  }
+}
+.header {
+  display: flex;
+  width: 100%;
+  gap: 0.25rem;
+  padding: 0.25rem;
+  color: hsl(0, 0%, 97%);
+  background-color: hsl(220, 34%, 20%);
+  border-bottom: 2px solid hsl(0, 0%, 40%);
+}
+.header__title {
+  color: hsl(0, 0%, 80%);
+  margin: 0.75rem;
 }
 
 .footer {
-  position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
   height: 2.5em;
+  position: fixed;
   text-align: center;
-  transition: 0.5s;
-  background-color: hsl(220deg, 29%, 27%);
-  border-top: 2px solid hsl(0deg, 0%, 40%);
+  font-size: 12px;
 }
-.footer__title {
+.footer p {
   margin-top: 0.5rem;
-  font-weight: bold;
-  color: hsl(0deg, 0%, 97%);
-  transition: 0.5s;
+  color: hsl(0, 0%, 97%);
 }
-.footer__details {
-  font-size: 0.75rem;
-  text-align: center;
-  padding: 1em;
-  color: hsl(28deg, 100%, 65%);
-}
-.footer__details a {
-  color: hsl(28deg, 44%, 66%);
-}
-.footer:hover, .footer:focus-within {
-  height: 4em;
-  opacity: 1;
-}
-.footer:hover > .footer__title {
-  color: hsl(28deg, 100%, 65%);
+.footer a {
+  color: hsl(0, 0%, 80%);
 }
 
 .header-button {
   padding: 0.25rem 0.5rem;
-  background-color: hsl(220deg, 34%, 20%);
+  background-color: hsl(220, 34%, 20%);
   border-radius: 0.25rem;
-  border-right: 0.125rem solid hsl(0deg, 0%, 10%);
-  border-left: 0.125rem solid hsl(0deg, 0%, 40%);
-  border-top: 0.125rem solid hsl(0deg, 0%, 40%);
-  border-bottom: 0.125rem solid hsl(0deg, 0%, 10%);
-  box-shadow: 0.25rem 0.15rem 0.25rem 0 rgba(0, 0, 0, 0.15);
+  border-right: 0.125rem solid hsl(0, 0%, 10%);
+  border-left: 0.125rem solid hsl(0, 0%, 40%);
+  border-top: 0.125rem solid hsl(0, 0%, 40%);
+  border-bottom: 0.125rem solid hsl(0, 0%, 10%);
   cursor: pointer;
 }
-.header-button:hover {
-  background-color: hsl(220deg, 20%, 30%);
-}
-.header-button.active {
-  background-color: hsl(220deg, 29%, 27%);
-  color: hsl(0deg, 0%, 80%);
-  border-right: 0.125rem solid hsl(0deg, 0%, 40%);
-  border-left: 0.125rem solid hsl(0deg, 0%, 10%);
-  border-top: 0.125rem solid hsl(0deg, 0%, 10%);
-  border-bottom: 0.125rem solid hsl(0deg, 0%, 40%);
+.header-button--active {
+  background-color: hsl(220, 29%, 27%);
+  color: hsl(0, 0%, 80%);
+  border-right: 0.125rem solid hsl(0, 0%, 40%);
+  border-left: 0.125rem solid hsl(0, 0%, 10%);
+  border-top: 0.125rem solid hsl(0, 0%, 10%);
+  border-bottom: 0.125rem solid hsl(0, 0%, 40%);
   box-shadow: unset;
 }
-.header-button.disabled {
+.header-button--disabled {
   opacity: 0.5;
   pointer-events: none;
+}
+.header-button:hover {
+  background-color: hsl(220, 20%, 30%);
 }
 
 .option-selector {
   padding-block: 1rem;
-  border-bottom: 0.065rem solid hsl(0deg, 0%, 80%);
+  border-bottom: 0.065rem solid hsl(0, 0%, 80%);
   display: block;
 }
 .option-selector:last-child {
@@ -173,22 +197,25 @@ main {
 }
 .search-bar__container input {
   padding: 0.35rem 0.25rem;
-  background-color: hsl(220deg, 29%, 27%);
+  background-color: hsl(220, 29%, 27%);
   color: inherit;
-  border-right: 0.125rem solid hsl(0deg, 0%, 40%);
-  border-left: 0.125rem solid hsl(0deg, 0%, 10%);
-  border-top: 0.125rem solid hsl(0deg, 0%, 10%);
-  border-bottom: 0.125rem solid hsl(0deg, 0%, 40%);
+  border-right: 0.125rem solid hsl(0, 0%, 40%);
+  border-left: 0.125rem solid hsl(0, 0%, 10%);
+  border-top: 0.125rem solid hsl(0, 0%, 10%);
+  border-bottom: 0.125rem solid hsl(0, 0%, 40%);
+}
+.search-bar__container input::-moz-placeholder {
+  color: hsl(0, 0%, 80%);
 }
 .search-bar__container input::placeholder {
-  color: hsl(0deg, 0%, 80%);
+  color: hsl(0, 0%, 80%);
 }
 .search-bar__container button:active {
-  border-right: 0.125rem solid hsl(0deg, 0%, 40%);
-  border-left: 0.125rem solid hsl(0deg, 0%, 10%);
-  border-top: 0.125rem solid hsl(0deg, 0%, 10%);
-  border-bottom: 0.125rem solid hsl(0deg, 0%, 40%);
-  background-color: hsl(220deg, 29%, 27%);
+  border-right: 0.125rem solid hsl(0, 0%, 40%);
+  border-left: 0.125rem solid hsl(0, 0%, 10%);
+  border-top: 0.125rem solid hsl(0, 0%, 10%);
+  border-bottom: 0.125rem solid hsl(0, 0%, 40%);
+  background-color: hsl(220, 29%, 27%);
 }
 .search-bar__message {
   display: flex;
@@ -223,18 +250,18 @@ main {
   justify-content: center;
   cursor: pointer;
   position: absolute;
-  background-color: hsl(220deg, 29%, 27%);
+  background-color: hsl(220, 29%, 27%);
   border-radius: 0.25rem;
   opacity: 0.5;
   width: 2.5rem;
   height: 2.5rem;
   left: calc(100% - 50px);
   top: 0.625rem;
-  border-right: 0.125rem solid hsl(0deg, 0%, 10%);
-  border-left: 0.125rem solid hsl(0deg, 0%, 40%);
-  border-top: 0.125rem solid hsl(0deg, 0%, 40%);
-  border-bottom: 0.125rem solid hsl(0deg, 0%, 10%);
-  box-shadow: 0.25rem 0.15rem 0.25rem 0 rgba(0, 0, 0, 0.15);
+  border-right: 0.125rem solid hsl(0, 0%, 10%);
+  border-left: 0.125rem solid hsl(0, 0%, 40%);
+  border-top: 0.125rem solid hsl(0, 0%, 40%);
+  border-bottom: 0.125rem solid hsl(0, 0%, 10%);
+  box-shadow: 0.25rem 0.15rem 0.25rem 0 hsl(0, 0%, 10%);
 }
 .copy-button:hover {
   opacity: 1;
@@ -245,6 +272,4 @@ main {
 }
 .copy-button--active-scroll {
   left: calc(100% - 70px);
-}
-
-/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */

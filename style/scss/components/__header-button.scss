@@ -6,22 +6,21 @@
     background-color: clr(bg-secondary);
     border-radius: 0.25rem;
     @include border-lighting(strong-neutral, soft-neutral);
-    @include soft-shadow();
     cursor: pointer;
 
-    &:hover {
-        background-color: clr(bg-quaternary);
-    }
-
-    &.active {
+    &--active {
         background-color: clr(bg-tertiary);
         color: clr(text-off-white);
         @include border-lighting(soft-neutral, strong-neutral);
         box-shadow: unset;
     }
 
-    &.disabled {
+    &--disabled {
         opacity: 0.5;
         pointer-events: none;
+    }
+
+    &:hover {
+        background-color: clr(bg-quaternary);
     }
 }

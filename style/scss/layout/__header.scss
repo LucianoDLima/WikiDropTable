@@ -2,26 +2,16 @@
 @use '../utilities/_functions' as *;
 
 .header {
-    // Contains the visible-at-all-time buttons in the header
     display: flex;
-    padding: 0.25rem;
+    width: 100%;
     gap: .25rem;
-    background-color: clr(bg-tertiary);
+    padding: 0.25rem;
     color: clr(text-white);
+    background-color: clr(bg-secondary);
+    border-bottom: 2px solid clr(soft-neutral);
 
-    &__interface {
-        // Contains the interface opened when you click one of the header buttons
-        position: absolute;
-        text-align: center;
-        max-width: 27.5rem;
-        width: 100%;
-        border-radius: .25rem;
-        padding-inline: 0.5rem;
-        top: 3rem;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: priority(high);
-        background-color: clr(bg-tertiary);
-        @include soft-shadow();
+    &__title {
+        color: clr(text-off-white);
+        margin: 0.75rem;
     }
 }

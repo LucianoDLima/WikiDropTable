@@ -1,20 +1,25 @@
 import { geItems } from './items.js';
 
-const headerButtons = document.querySelectorAll('[data-header="button"]');
-const datesInterface = document.querySelector('[data-uh="container"]');
-const searchInterface = document.querySelector('[data-search="container"]');
+const popupWindows = document.querySelectorAll('[data-window="popup"]');
+const popupButtons = document.querySelectorAll('[data-button="menu"]');
+
 const websiteButtons = document.querySelectorAll('[data-filter="website"]');
 const dayButtons = document.querySelectorAll('[data-filter="days"]');
 const monthButtons = document.querySelectorAll('[data-filter="months"]');
 const yearButtons = document.querySelectorAll('[data-filter="years"]');
+
 const historyUpdateSearchButton = document.querySelector('[data-filter="search"]');
 const historyUpdateSearchContainer = document.querySelectorAll('[data-filter="container"]');
 const grandExchangeSearchInput = document.querySelector('[data-search="input"]');
 const grandExchangeUrlButton = document.querySelector('[data-search="button"]');
-const grandExchangeButton = headerButtons[1];
+const grandExchangeButton = popupButtons[1];
 
 const searchBarFound = document.getElementById('ge_item_found');
 const searchBarNotFound = document.getElementById('ge_not_found');
+
+// Used for the swipe-to-close motion on the menu windows.
+let startX;
+let startY;
 
 const searchOptions = {
     websiteDate: {
@@ -50,10 +55,10 @@ function handleSearchButtons(selected) {
     selected.forEach((button) => {
         button.addEventListener('click', (e) => {
             selected.forEach((buttons) => {
-                buttons.classList.remove('active');
+                buttons.classList.remove('header-button--active');
             });
 
-            button.classList.add('active');
+            button.classList.add('header-button--active');
 
             const buttonsFilter = e.target.getAttribute('data-filter');
             const { websiteDate } = searchOptions;
@@ -124,46 +129,70 @@ historyUpdateSearchButton.addEventListener('click', () => {
     }
 });
 
-headerButtons.forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-        const historyUpdate = e.target.closest('[data-history]');
-        const grandExchange = e.target.closest('[data-exchange]');
+popupWindows.forEach((window) => {
+    window.addEventListener('touchstart', (event) => {
+        const touch = event.touches[0];
+        startX = touch.clientX;
+        startY = touch.clientY;
+    });
+    
+    window.addEventListener('touchend', (event) => {
+        const touch = event.changedTouches[0];
+        const endX = touch.clientX;
+        const endY = touch.clientY;
 
-        headerButtons.forEach((button) => {
-            // Closes the interface that's not the button's target
-            if (button !== btn) {
-                button.classList.remove('active');
-            }
-        });
+        // Calculate the horizontal distance and vertical distance of the swipe.
+        const deltaX = endX - startX;
+        const deltaY = endY - startY;
 
-        // Opens the interface that's the button's target
-        if (historyUpdate) {
-            searchInterface.classList.add('hidden');
-            datesInterface.classList.toggle('hidden');
-        } else if (grandExchange) {
-            datesInterface.classList.add('hidden');
-            searchInterface.classList.toggle('hidden');
+        const minSwipeDistance = 100;
+
+        // This handles the closing of the popup windows on mobile 
+        // by allowing a swipe-to-close motion.
+        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > minSwipeDistance) {
+            const activeButton = document.querySelector('.header-button--active');
+            activeButton.classList.remove('header-button--active');
+            window.classList.remove('menu-line__popup-window--show');
         }
-
-        btn.classList.toggle('active');
     });
 });
 
-document.body.addEventListener('click', (e) => {
-    // Closes the header interfaces if clicked outside
-    const headerContainer = e.target.closest('.header__container');
+popupButtons.forEach((button, btnIndex) => {
+    button.addEventListener('click', () => {
+        const isActive = button.classList.contains('header-button--active');
 
-    if (!headerContainer) {
-        headerButtons.forEach((btns) => {
-            btns.classList.remove('active');
+        popupButtons.forEach((btn) => btn.classList.remove('header-button--active'));
+
+        if (!isActive)
+            button.classList.toggle('header-button--active');
+
+        popupWindows.forEach((window, wndIndex) => {
+            if (btnIndex === wndIndex) {
+                window.classList.toggle('menu-line__popup-window--show');   
+            } else {
+                window.classList.remove('menu-line__popup-window--show');
+            }
         });
-        datesInterface.classList.add('hidden');
-        searchInterface.classList.add('hidden');
+    });
+});
+
+document.addEventListener('click', (event) => {
+    const activeButton = document.querySelector('.header-button--active');
+    const activeContainer = document.querySelector('.menu-line__popup-window--show');
+    
+    if (activeButton == null || activeContainer == null) 
+        return;
+
+    const bothNotClicked = !activeButton.contains(event.target) && !activeContainer.contains(event.target);
+
+    if (bothNotClicked) {
+        activeButton.classList.remove('header-button--active');
+        activeContainer.classList.remove('menu-line__popup-window--show');
     }
 });
 
 function resetSearchBar() {
-    grandExchangeUrlButton.classList.add('disabled');
+    grandExchangeUrlButton.classList.add('header-button--disabled');
     searchBarFound.classList.add('hidden');
     searchBarNotFound.classList.add('hidden');
 }
@@ -182,11 +211,11 @@ grandExchangeSearchInput.addEventListener('input', () => {
     }
     
     if (geItems.has(input)) {
-        grandExchangeUrlButton.classList.remove('disabled');
+        grandExchangeUrlButton.classList.remove('header-button--disabled');
         searchBarFound.classList.remove('hidden');
         searchBarNotFound.classList.add('hidden');
     } else {
-        grandExchangeUrlButton.classList.add('disabled');
+        grandExchangeUrlButton.classList.add('header-button--disabled');
         searchBarNotFound.classList.remove('hidden');
         searchBarFound.classList.add('hidden');
     }
