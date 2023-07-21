@@ -291,5 +291,8 @@
     "classic components": "Componentes clássicos",
     "timeworn components": "Componentes danificados pelo tempo",
     "historic components": "Componentes históricos",
-    "vintage components": "Componentes vintage"
+    "vintage components": "Componentes vintage",
+    "alchable": "alquimia",
+    "restriction": "restrição",
+    "bankable": "depositável"
 }
