@@ -41,8 +41,12 @@ function releaseException(text) {
 }
 
 function mercadoException(text) {
-    // 'text' isn't used, but needs to be here because of how the exceptions are called.
-    return text.replace(/\|(exchange|gemw)=([^|\[\]]+)/ig, "|mercado=gemw");
+    const gemw = text.match(/\|(exchange|gemw)=([^|\[\]]+)/ig)[0];
+    
+    if (gemw.slice(-2) === '}}')
+        return text.replace(gemw, "|mercado=gemw}}");
+
+    return text.replace(gemw, "|mercado=gemw");
 }
 
 function groupParams(params) {
@@ -147,6 +151,12 @@ function handleParamValue(paramValue, outputLine) {
                 outputLine = outputLine.replace(`=${elem}`, `=${parameters.get(reduced)}}}`);
                 continue;
             }
+
+            // {{ShopsLine}} may have an item name right at the end. Who'd have thunk?
+            if (itemNames.has(reduced)) {
+                outputLine = outputLine.replace(`=${elem}`, `=${itemNames.get(reduced)}}}`);
+                continue;
+            }
         }
 
         if (parameters.has(elem)) {
@@ -230,6 +240,7 @@ function handleInputLine(inputTextLine) {
         }
 
         for (const [paramName, paramValue] of allParams) {
+            //console.log(`${paramName} --- ${paramValue}`);
             output[i] = handleParamName(paramName, output[i]);
             output[i] = handleParamValue(paramValue, output[i]);
         }
