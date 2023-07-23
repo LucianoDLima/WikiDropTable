@@ -55,10 +55,10 @@ function handleSearchButtons(selected) {
     selected.forEach((button) => {
         button.addEventListener('click', (e) => {
             selected.forEach((buttons) => {
-                buttons.classList.remove('header-button--active');
+                buttons.classList.remove('window-button--active');
             });
 
-            button.classList.add('header-button--active');
+            button.classList.add('window-button--active');
 
             const buttonsFilter = e.target.getAttribute('data-filter');
             const { websiteDate } = searchOptions;
@@ -192,7 +192,7 @@ document.addEventListener('click', (event) => {
 });
 
 function resetSearchBar() {
-    grandExchangeUrlButton.classList.add('header-button--disabled');
+    grandExchangeUrlButton.classList.add('window-button--disabled');
     searchBarFound.classList.add('hidden');
     searchBarNotFound.classList.add('hidden');
 }
@@ -211,11 +211,11 @@ grandExchangeSearchInput.addEventListener('input', () => {
     }
     
     if (geItems.has(input)) {
-        grandExchangeUrlButton.classList.remove('header-button--disabled');
+        grandExchangeUrlButton.classList.remove('window-button--disabled');
         searchBarFound.classList.remove('hidden');
         searchBarNotFound.classList.add('hidden');
     } else {
-        grandExchangeUrlButton.classList.add('header-button--disabled');
+        grandExchangeUrlButton.classList.add('window-button--disabled');
         searchBarNotFound.classList.remove('hidden');
         searchBarFound.classList.add('hidden');
     }
