@@ -52,24 +52,6 @@ main {
   width: 100%;
   gap: 2rem;
 }
-.translator__text-box {
-  border: none;
-  resize: none;
-  width: 100%;
-  height: 100%;
-  line-height: 1.6;
-  padding: 0.5rem;
-  border-radius: 0 0 0.5rem 0.5rem;
-  background-color: hsl(220, 34%, 20%);
-}
-.translator__text-box:hover, .translator__text-box:focus {
-  background-color: hsl(220, 29%, 27%);
-}
-.translator__output {
-  position: relative;
-  height: 100%;
-  width: 100%;
-}
 @media screen and (max-width: 48rem) {
   .translator {
     height: 80%;
@@ -110,6 +92,8 @@ main {
 }
 .header {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   gap: 0.25rem;
   padding: 0.25rem;
@@ -120,6 +104,14 @@ main {
 .header__title {
   color: hsl(0, 0%, 80%);
   margin: 0.75rem;
+}
+.header__icon {
+  height: 2.5rem;
+  width: 2.5rem;
+  background-color: hsl(220, 34%, 20%);
+  margin-right: 0.5rem;
+  border: none;
+  cursor: pointer;
 }
 
 .footer {
@@ -275,14 +267,32 @@ main {
   }
 }
 
-.copy-button {
+.textbox {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.textbox__textarea {
+  border: none;
+  resize: none;
+  width: 100%;
+  height: 100%;
+  line-height: 1.6;
+  padding: 0.5rem;
+  border-radius: 0 0 0.5rem 0.5rem;
+  background-color: hsl(220, 34%, 20%);
+}
+.textbox__textarea:hover, .textbox__textarea:focus {
+  background-color: hsl(220, 29%, 27%);
+}
+.textbox__button {
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   position: absolute;
   background-color: hsl(220, 29%, 27%);
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
   opacity: 0.5;
   width: 2.5rem;
   height: 2.5rem;
@@ -292,15 +302,14 @@ main {
   border-left: 0.125rem solid hsl(0, 0%, 40%);
   border-top: 0.125rem solid hsl(0, 0%, 40%);
   border-bottom: 0.125rem solid hsl(0, 0%, 10%);
-  box-shadow: 0.25rem 0.15rem 0.25rem 0 hsl(0, 0%, 10%);
 }
-.copy-button:hover {
+.textbox__button:hover {
   opacity: 1;
 }
-.copy-button__icon {
-  width: 70%;
-  height: 70%;
+.textbox__button img {
+  width: 60%;
+  height: 60%;
 }
-.copy-button--active-scroll {
+.textbox__button--active-scroll {
   left: calc(100% - 70px);
 }/*# sourceMappingURL=style.css.map */

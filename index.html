@@ -15,6 +15,13 @@
             <h2 class="header__title">
                 PT-BR Wiki Translator
             </h2>
+            <a class="header__icon" href="https://github.com/LucianoDLima/WikiDropTable">
+                <img 
+                    src="./style/svgs/gh_icon.svg"               
+                    id="github-icon" 
+                    alt="Github icon"
+                />
+            </a>
         </header>
         <main>
             <section class="translator">
@@ -598,33 +605,57 @@
                             </div>
                         </div>
                     </div>
+
+                    <div>
+                        <button class="header-button" data-button="menu">
+                            <img 
+                                src="./style/svgs/options_icon.svg" 
+                                class="header-button__icon"
+                                id="options-icon" 
+                                alt="options icon"
+                            /> 
+                            OPÇÕES
+                        </button>
+                        <div class="menu-line__popup-window" data-window="popup">
+                            Soon™
+                        </div>
+                    </div>
                 </div>
 
                 <div class="translator__container">
-                    <textarea
-                        class="translator__text-box"
-                        id="input"
-                    ></textarea>
+                    <div class="textbox">
+                        <button class="textbox__button hidden" id="delete-button">
+                            <img 
+                                src="./style/svgs/negative_icon.svg" 
+                                id="delete-icon" 
+                                alt="Delete icon"
+                            /> 
+                        </button>
 
-                    <div class="translator__output">
-                        <button class="copy-button hidden" id="copy-button">
+                        <textarea 
+                            class="textbox__textarea" 
+                            id="input"
+                        ></textarea>
+                    </div>
+
+                    <div class="textbox">
+                        <button class="textbox__button hidden" id="copy-button">
                             <img 
                                 src="./style/svgs/copy_icon.svg" 
-                                class="copy-button__icon"
                                 id="copy-icon" 
                                 alt="Copy icon"
                             /> 
                             <img 
-                                src="./style/svgs/positive_icon.svg" 
-                                class="copy-button__icon hidden" 
+                                src="./style/svgs/positive_icon.svg"
+                                class="hidden" 
                                 id="copy-success"
                                 alt="Copy icon"
                             /> 
                         </button>
                         
-                        <textarea
-                            class="translator__text-box"
-                            id="output"
+                        <textarea 
+                            class="textbox__textarea"
+                            id="output" 
                             readonly
                         ></textarea>
                     </div>

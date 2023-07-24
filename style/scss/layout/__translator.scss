@@ -21,28 +21,6 @@
         gap: 2rem;
     }
 
-    &__text-box {
-        border: none;
-        resize: none;
-        width: 100%;
-        height: 100%;
-        line-height: 1.6;
-        padding: 0.5rem;
-        border-radius: 0 0 0.5rem 0.5rem;
-        background-color: clr(bg-secondary);
-
-        &:hover, &:focus {
-            background-color: clr(bg-tertiary);
-        }
-    }
-
-    &__output {
-        // Output div for the copy button anchoring.
-        position: relative;
-        height: 100%;
-        width: 100%;
-    }
-
     @include tablet() {
         height: 80%;
         width: 90%;

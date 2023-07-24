@@ -3,6 +3,8 @@
 
 .header {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
     gap: .25rem;
     padding: 0.25rem;
@@ -13,5 +15,14 @@
     &__title {
         color: clr(text-off-white);
         margin: 0.75rem;
+    }
+
+    &__icon {
+        height: 2.5rem;
+        width: 2.5rem;
+        background-color: clr(bg-secondary);
+        margin-right: 0.5rem;
+        border: none;
+        cursor: pointer;
     }
 }

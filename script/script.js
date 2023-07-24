@@ -5,6 +5,7 @@ const outputTranslator = document.querySelector('#output');
 const copyButton = document.getElementById('copy-button');
 const copyIcon = document.getElementById('copy-icon');
 const copySuccess = document.getElementById('copy-success');
+const delButton = document.getElementById('delete-button');
 
 inputTranslator.addEventListener('input', () => {
     const translated = translate(inputTranslator.value);
@@ -13,13 +14,19 @@ inputTranslator.addEventListener('input', () => {
     if (translated) {
         // Moves it to the side if there's a scrollbar active.
         copyButton.classList.toggle(
-            'copy-button--active-scroll', 
+            'textbox__button--active-scroll', 
             outputTranslator.clientHeight < outputTranslator.scrollHeight
+        );
+        delButton.classList.toggle(
+            'textbox__button--active-scroll', 
+            inputTranslator.clientHeight < inputTranslator.scrollHeight
         );
         
         copyButton.classList.remove('hidden');
+        delButton.classList.remove('hidden');
     } else {
         copyButton.classList.add('hidden');
+        delButton.classList.add('hidden');
     }
 
 });
@@ -44,4 +51,11 @@ copyButton.addEventListener('click', () => {
         copySuccess.classList.add('hidden');
         copyIcon.classList.remove('hidden');
     }, 2500);
+});
+
+delButton.addEventListener('click', () => {
+    inputTranslator.value = '';
+    outputTranslator.value = '';
+    copyButton.classList.add('hidden');
+    delButton.classList.add('hidden');
 });
