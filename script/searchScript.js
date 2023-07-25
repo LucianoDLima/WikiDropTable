@@ -169,6 +169,7 @@ popupButtons.forEach((button, btnIndex) => {
         popupWindows.forEach((window, wndIndex) => {
             if (btnIndex === wndIndex) {
                 window.classList.toggle('menu-line__popup-window--show');   
+                grandExchangeSearchInput.focus()
             } else {
                 window.classList.remove('menu-line__popup-window--show');
             }
