@@ -7,6 +7,8 @@ const copyIcon = document.getElementById('copy-icon');
 const copySuccess = document.getElementById('copy-success');
 const delButton = document.getElementById('delete-button');
 
+inputTranslator.focus()
+
 inputTranslator.addEventListener('input', () => {
     const translated = translate(inputTranslator.value);
     outputTranslator.value = translated;
