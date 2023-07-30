@@ -5,10 +5,11 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Wiki Helper Tools</title>
-        <link rel="stylesheet" href="style/style.css" />
+        <link rel="stylesheet" href="./public/static/css/style.css" />
 
-        <script src="script/script.js" defer type="module"></script>
-        <script src="script/searchScript.js" defer type="module"></script>
+        <script src="./public/static/bundle/script.js" defer></script>
+        <!-- <script src="script/script.js" defer type="module"></script>
+        <script src="script/searchScript.js" defer type="module"></script> -->
     </head>
     <body>
         <header class="header">
@@ -17,7 +18,7 @@
             </h2>
             <a class="header__icon" href="https://github.com/LucianoDLima/WikiDropTable">
                 <img 
-                    src="./style/svgs/gh_icon.svg"               
+                    src="./public/assets/svgs/gh_icon.svg"               
                     id="github-icon" 
                     alt="Github icon"
                 />
@@ -29,7 +30,7 @@
                     <div>
                         <button class="header-button" data-button="menu">
                             <img 
-                                src="./style/svgs/ha_icon.svg" 
+                                src="./public/assets/svgs/ha_icon.svg" 
                                 class="header-button__icon"
                                 id="updates-icon" 
                                 alt="Updates icon"
@@ -563,7 +564,7 @@
                     <div>
                         <button class="header-button" data-button="menu">
                             <img 
-                                src="./style/svgs/ge_icon.svg" 
+                                src="./public/assets/svgs/ge_icon.svg" 
                                 class="header-button__icon"
                                 id="exchange-icon" 
                                 alt="Exchange icon"
@@ -586,7 +587,7 @@
 
                                     <div class="search-bar__message hidden" id="ge_item_found">
                                         <img 
-                                            src="./style/svgs/positive_icon.svg" 
+                                            src="./public/assets/svgs/positive_icon.svg" 
                                             class="search-bar__svg-icon" 
                                             alt="Positive icon"
                                         />
@@ -595,7 +596,7 @@
 
                                     <div class="search-bar__message hidden" id="ge_not_found">
                                         <img 
-                                            src="./style/svgs/negative_icon.svg" 
+                                            src="./public/assets/svgs/negative_icon.svg" 
                                             class="search-bar__svg-icon" 
                                             alt="Negative icon"
                                         /> 
@@ -609,7 +610,7 @@
                     <div>
                         <button class="header-button" data-button="menu">
                             <img 
-                                src="./style/svgs/options_icon.svg" 
+                                src="./public/assets/svgs/options_icon.svg" 
                                 class="header-button__icon"
                                 id="options-icon" 
                                 alt="options icon"
@@ -624,38 +625,38 @@
 
                 <div class="translator__container">
                     <div class="textbox">
-                        <button class="textbox__button hidden" id="delete-button">
+                        <button class="textbox__button hidden" data-js="delete-button">
                             <img 
-                                src="./style/svgs/negative_icon.svg" 
-                                id="delete-icon" 
+                                src="./public/assets/svgs/negative_icon.svg" 
+                                data-js="delete-icon" 
                                 alt="Delete icon"
                             /> 
                         </button>
 
                         <textarea 
                             class="textbox__textarea" 
-                            id="input"
+                            data-js="text-input"
                         ></textarea>
                     </div>
 
                     <div class="textbox">
-                        <button class="textbox__button hidden" id="copy-button">
+                        <button class="textbox__button hidden" data-js="copy-button">
                             <img 
-                                src="./style/svgs/copy_icon.svg" 
-                                id="copy-icon" 
+                                src="./public/assets/svgs/copy_icon.svg" 
+                                data-js="copy-icon" 
                                 alt="Copy icon"
                             /> 
                             <img 
-                                src="./style/svgs/positive_icon.svg"
+                                src="./public/assets/svgs/positive_icon.svg"
                                 class="hidden" 
-                                id="copy-success"
+                                data-js="copy-success"
                                 alt="Copy icon"
                             /> 
                         </button>
                         
                         <textarea 
                             class="textbox__textarea"
-                            id="output" 
+                            data-js="text-output"
                             readonly
                         ></textarea>
                     </div>

@@ -1,9 +1,9 @@
-import { CaseInsensitiveMap } from "./caseInsensitiveMap.js";
+import { CaseInsensitiveMap } from "./caseInsensitiveMap";
 
-async function fetchData() {
+async function fetchData(): Promise<{ parameters: CaseInsensitiveMap<string, any>, infoboxes: CaseInsensitiveMap<string, any> }> {
     return Promise.all([
-        fetch('./data/parameters.json').then(response => response.json()),
-        fetch('./data/infoboxes.json').then(response => response.json())
+        fetch('public/data/parameters.json').then(response => response.json() as Promise<Record<string, any>>),
+        fetch('public/data/infoboxes.json').then(response => response.json() as Promise<Record<string, any>>)
     ])
     .then(([jsonData1, jsonData2]) => {
         const parameters = new CaseInsensitiveMap(Object.entries(jsonData1));
@@ -12,7 +12,9 @@ async function fetchData() {
     })
     .catch(error => {
         console.error('Error loading JSON files:', error);
+        throw error;
     });
 }
+
 
 export const { parameters, infoboxes } = await fetchData();

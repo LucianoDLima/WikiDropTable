@@ -15,13 +15,13 @@ ol, ul {
 }
 
 body {
-  background-color: hsl(220, 66%, 8%);
+  background-color: hsl(220deg, 66%, 8%);
   font-family: monospace, sans-serif;
   overflow: hidden;
 }
 
 h2 {
-  text-shadow: 0.125rem 0.125rem 0.125rem hsl(0, 0%, 10%);
+  text-shadow: 0.125rem 0.125rem 0.125rem hsl(0deg, 0%, 10%);
 }
 
 .hidden {
@@ -43,7 +43,7 @@ main {
   width: 80%;
   gap: 1.5rem;
   padding-top: 1.5rem;
-  color: hsl(28, 44%, 66%);
+  color: hsl(28deg, 44%, 66%);
 }
 .translator__container {
   display: flex;
@@ -66,7 +66,7 @@ main {
   display: flex;
   width: 60%;
   gap: 1rem;
-  color: hsl(0, 0%, 97%);
+  color: hsl(0deg, 0%, 97%);
 }
 .menu-line__popup-window {
   position: fixed;
@@ -78,7 +78,7 @@ main {
   right: -25rem;
   top: 0;
   z-index: 10;
-  background-color: hsl(220, 29%, 27%);
+  background-color: hsl(220deg, 29%, 27%);
 }
 .menu-line__popup-window--show {
   width: 100vw;
@@ -97,18 +97,18 @@ main {
   width: 100%;
   gap: 0.25rem;
   padding: 0.25rem;
-  color: hsl(0, 0%, 97%);
-  background-color: hsl(220, 34%, 20%);
-  border-bottom: 2px solid hsl(0, 0%, 40%);
+  color: hsl(0deg, 0%, 97%);
+  background-color: hsl(220deg, 34%, 20%);
+  border-bottom: 2px solid hsl(0deg, 0%, 40%);
 }
 .header__title {
-  color: hsl(0, 0%, 80%);
+  color: hsl(0deg, 0%, 80%);
   margin: 0.75rem;
 }
 .header__icon {
   height: 2.5rem;
   width: 2.5rem;
-  background-color: hsl(220, 34%, 20%);
+  background-color: hsl(220deg, 34%, 20%);
   margin-right: 0.5rem;
   border: none;
   cursor: pointer;
@@ -125,10 +125,10 @@ main {
 }
 .footer p {
   margin-top: 0.5rem;
-  color: hsl(0, 0%, 97%);
+  color: hsl(0deg, 0%, 97%);
 }
 .footer a {
-  color: hsl(0, 0%, 80%);
+  color: hsl(0deg, 0%, 80%);
 }
 
 .header-button {
@@ -136,12 +136,12 @@ main {
   align-items: center;
   gap: 0.5rem;
   padding: 0.25rem 0.5rem;
-  background-color: hsl(220, 34%, 20%);
+  background-color: hsl(220deg, 34%, 20%);
   border-radius: 0.4rem;
-  border-right: 0.125rem solid hsl(0, 0%, 25%);
-  border-left: 0.125rem solid hsl(0, 0%, 40%);
-  border-top: 0.125rem solid hsl(0, 0%, 40%);
-  border-bottom: 0.125rem solid hsl(0, 0%, 25%);
+  border-right: 0.125rem solid hsl(0deg, 0%, 25%);
+  border-left: 0.125rem solid hsl(0deg, 0%, 40%);
+  border-top: 0.125rem solid hsl(0deg, 0%, 40%);
+  border-bottom: 0.125rem solid hsl(0deg, 0%, 25%);
   cursor: pointer;
 }
 .header-button__icon {
@@ -151,34 +151,34 @@ main {
   height: 1.1rem;
 }
 .header-button--active {
-  background-color: hsl(220, 29%, 27%);
-  border-right: 0.125rem solid hsl(0, 0%, 40%);
-  border-left: 0.125rem solid hsl(0, 0%, 25%);
-  border-top: 0.125rem solid hsl(0, 0%, 25%);
-  border-bottom: 0.125rem solid hsl(0, 0%, 40%);
+  background-color: hsl(220deg, 29%, 27%);
+  border-right: 0.125rem solid hsl(0deg, 0%, 40%);
+  border-left: 0.125rem solid hsl(0deg, 0%, 25%);
+  border-top: 0.125rem solid hsl(0deg, 0%, 25%);
+  border-bottom: 0.125rem solid hsl(0deg, 0%, 40%);
   box-shadow: unset;
 }
 .header-button:hover {
-  background-color: hsl(220, 20%, 30%);
+  background-color: hsl(220deg, 20%, 30%);
 }
 
 .window-button {
   padding: 0.25rem 0.5rem;
-  background-color: hsl(220, 34%, 20%);
+  background-color: hsl(220deg, 34%, 20%);
   border-radius: 0.25rem;
-  border-right: 0.125rem solid hsl(0, 0%, 10%);
-  border-left: 0.125rem solid hsl(0, 0%, 40%);
-  border-top: 0.125rem solid hsl(0, 0%, 40%);
-  border-bottom: 0.125rem solid hsl(0, 0%, 10%);
+  border-right: 0.125rem solid hsl(0deg, 0%, 10%);
+  border-left: 0.125rem solid hsl(0deg, 0%, 40%);
+  border-top: 0.125rem solid hsl(0deg, 0%, 40%);
+  border-bottom: 0.125rem solid hsl(0deg, 0%, 10%);
   cursor: pointer;
 }
 .window-button--active {
-  background-color: hsl(220, 29%, 27%);
-  color: hsl(0, 0%, 80%);
-  border-right: 0.125rem solid hsl(0, 0%, 40%);
-  border-left: 0.125rem solid hsl(0, 0%, 10%);
-  border-top: 0.125rem solid hsl(0, 0%, 10%);
-  border-bottom: 0.125rem solid hsl(0, 0%, 40%);
+  background-color: hsl(220deg, 29%, 27%);
+  color: hsl(0deg, 0%, 80%);
+  border-right: 0.125rem solid hsl(0deg, 0%, 40%);
+  border-left: 0.125rem solid hsl(0deg, 0%, 10%);
+  border-top: 0.125rem solid hsl(0deg, 0%, 10%);
+  border-bottom: 0.125rem solid hsl(0deg, 0%, 40%);
   box-shadow: unset;
 }
 .window-button--disabled {
@@ -186,12 +186,12 @@ main {
   pointer-events: none;
 }
 .window-button:hover {
-  background-color: hsl(220, 20%, 30%);
+  background-color: hsl(220deg, 20%, 30%);
 }
 
 .option-selector {
   padding-block: 1rem;
-  border-bottom: 0.065rem solid hsl(0, 0%, 80%);
+  border-bottom: 0.065rem solid hsl(0deg, 0%, 80%);
   display: block;
 }
 .option-selector:last-child {
@@ -220,25 +220,22 @@ main {
 }
 .search-bar__container input {
   padding: 0.35rem 0.25rem;
-  background-color: hsl(220, 29%, 27%);
+  background-color: hsl(220deg, 29%, 27%);
   color: inherit;
-  border-right: 0.125rem solid hsl(0, 0%, 40%);
-  border-left: 0.125rem solid hsl(0, 0%, 10%);
-  border-top: 0.125rem solid hsl(0, 0%, 10%);
-  border-bottom: 0.125rem solid hsl(0, 0%, 40%);
-}
-.search-bar__container input::-moz-placeholder {
-  color: hsl(0, 0%, 80%);
+  border-right: 0.125rem solid hsl(0deg, 0%, 40%);
+  border-left: 0.125rem solid hsl(0deg, 0%, 10%);
+  border-top: 0.125rem solid hsl(0deg, 0%, 10%);
+  border-bottom: 0.125rem solid hsl(0deg, 0%, 40%);
 }
 .search-bar__container input::placeholder {
-  color: hsl(0, 0%, 80%);
+  color: hsl(0deg, 0%, 80%);
 }
 .search-bar__container button:active {
-  border-right: 0.125rem solid hsl(0, 0%, 40%);
-  border-left: 0.125rem solid hsl(0, 0%, 10%);
-  border-top: 0.125rem solid hsl(0, 0%, 10%);
-  border-bottom: 0.125rem solid hsl(0, 0%, 40%);
-  background-color: hsl(220, 29%, 27%);
+  border-right: 0.125rem solid hsl(0deg, 0%, 40%);
+  border-left: 0.125rem solid hsl(0deg, 0%, 10%);
+  border-top: 0.125rem solid hsl(0deg, 0%, 10%);
+  border-bottom: 0.125rem solid hsl(0deg, 0%, 40%);
+  background-color: hsl(220deg, 29%, 27%);
 }
 .search-bar__message {
   display: flex;
@@ -280,10 +277,10 @@ main {
   line-height: 1.6;
   padding: 0.5rem;
   border-radius: 0 0 0.5rem 0.5rem;
-  background-color: hsl(220, 34%, 20%);
+  background-color: hsl(220deg, 34%, 20%);
 }
 .textbox__textarea:hover, .textbox__textarea:focus {
-  background-color: hsl(220, 29%, 27%);
+  background-color: hsl(220deg, 29%, 27%);
 }
 .textbox__button {
   display: flex;
@@ -291,17 +288,17 @@ main {
   justify-content: center;
   cursor: pointer;
   position: absolute;
-  background-color: hsl(220, 29%, 27%);
+  background-color: hsl(220deg, 29%, 27%);
   border-radius: 0.5rem;
   opacity: 0.5;
   width: 2.5rem;
   height: 2.5rem;
   left: calc(100% - 50px);
   top: 0.625rem;
-  border-right: 0.125rem solid hsl(0, 0%, 10%);
-  border-left: 0.125rem solid hsl(0, 0%, 40%);
-  border-top: 0.125rem solid hsl(0, 0%, 40%);
-  border-bottom: 0.125rem solid hsl(0, 0%, 10%);
+  border-right: 0.125rem solid hsl(0deg, 0%, 10%);
+  border-left: 0.125rem solid hsl(0deg, 0%, 40%);
+  border-top: 0.125rem solid hsl(0deg, 0%, 40%);
+  border-bottom: 0.125rem solid hsl(0deg, 0%, 10%);
 }
 .textbox__button:hover {
   opacity: 1;
@@ -312,4 +309,6 @@ main {
 }
 .textbox__button--active-scroll {
   left: calc(100% - 70px);
-}/*# sourceMappingURL=style.css.map */
+}
+
+/*# sourceMappingURL=style.css.map */
