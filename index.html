@@ -8,8 +8,6 @@
         <link rel="stylesheet" href="./public/static/css/style.css" />
 
         <script src="./public/static/bundle/script.js" defer></script>
-        <!-- <script src="script/script.js" defer type="module"></script>
-        <script src="script/searchScript.js" defer type="module"></script> -->
     </head>
     <body>
         <header class="header">
@@ -324,7 +322,7 @@
                                     </ol>
                                 </div>
 
-                                <div class="option-selector" data-filter="container">
+                                <div class="option-selector hidden" data-filter="container">
                                     <h2>Mês</h2>
                                     <ol>
                                         <li>
@@ -553,7 +551,7 @@
                                 </div>
 
                                 <div class="option-selector" data-filter="container">
-                                    <button class="window-button" data-filter="search">
+                                    <button class="window-button window-button--disabled" data-filter="search">
                                         Pesquisar
                                     </button>
                                 </div>
@@ -582,7 +580,7 @@
                                             data-search="input"
                                         />
                                         
-                                        <button class="window-button disabled" data-search="button">Abrir</button>
+                                        <button class="window-button" data-search="button">Abrir</button>
                                     </div>
 
                                     <div class="search-bar__message hidden" id="ge_item_found">

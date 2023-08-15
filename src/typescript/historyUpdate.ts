@@ -46,13 +46,16 @@ function showUpdatesInterface(): void {
     // Checks which date interface should appear
     const website = searchOptions.websiteDate.website;
     const daysContainer = huSearchContainer[1];
+    const monthsContainer = huSearchContainer[2];
     const yearsContainer = huSearchContainer[3];
 
-    const showDays = website === 'Wiki' || website !== 'Oficial';
-    const showYears = !showDays;
+    const showDays = website !== 'Oficial';
+    const showYears = ["Oficial", "Ambos"].includes(website);
 
+    monthsContainer.classList.remove('hidden');
     daysContainer.classList.toggle('hidden', !showDays);
     yearsContainer.classList.toggle('hidden', !showYears);
+    huSearchButton.classList.remove('window-button--disabled');
 }
 
 function handleSearchButtons(selected: HTMLButtonElement[]): void {
@@ -73,7 +76,6 @@ function handleSearchButtons(selected: HTMLButtonElement[]): void {
                     websiteDate.website = e.target.textContent.trim();
                     showUpdatesInterface();
                     break;
-            
                 case 'days':
                     websiteDate.day = dayArray.indexOf(e.target);
                     break;
@@ -100,8 +102,14 @@ function openWebsite(url: string): void {
 
 huSearchButton.addEventListener('click', () => {
     const { yearList, websiteDate, monthList } = searchOptions;
-    const officialWebsite = `https://secure.runescape.com/m=news/l=3/a=9/archive?year=${yearList[websiteDate.year!]}&month=${websiteDate.month !== undefined ? websiteDate.month + 1 : ''}&filter=Filtrar`;
-    const wikiWebsite = `https://pt.runescape.wiki/w/${websiteDate.day !== undefined ? websiteDate.day + 1 : ''}_de_${monthList[websiteDate.month!]?.toLowerCase()}`;
+
+    const year = yearList[websiteDate.year!];
+    const month1 = websiteDate.month !== undefined ? websiteDate.month + 1 : '';
+    const officialWebsite = `https://secure.runescape.com/m=news/l=3/a=9/archive?year=${year}&month=${month1}&filter=Filtrar`;
+    
+    const day = websiteDate.day !== undefined ? websiteDate.day + 1 : '';
+    const month2 = monthList[websiteDate.month!]?.toLowerCase();
+    const wikiWebsite = `https://pt.runescape.wiki/w/${day}_de_${month2}`;
 
     switch (searchOptions.websiteDate.website) {
         case 'Wiki':
@@ -113,17 +121,8 @@ huSearchButton.addEventListener('click', () => {
             break;
 
         case 'Ambos':
-            setTimeout(() => {
-                openWebsite(officialWebsite);
-            }, 100);
-
-            setTimeout(() => {
-                openWebsite(wikiWebsite);
-            }, 200);
-            break;
-        default:
-            // TODO: Remove it from console and just add a simple tooltip instead
-            console.error('You must select the preferred website');
+            openWebsite(officialWebsite);
+            openWebsite(wikiWebsite);
             break;
     }
 });
