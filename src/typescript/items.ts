@@ -1,6 +1,10 @@
 import { CaseInsensitiveMap } from "./caseInsensitiveMap";
 
-async function fetchData(): Promise<{ itemNames: CaseInsensitiveMap<string, string>, npcNames: CaseInsensitiveMap<string, string>, geItems: CaseInsensitiveMap<string, number> }> {
+async function fetchData(): Promise<{ 
+    itemNames: CaseInsensitiveMap<string, string>, 
+    npcNames: CaseInsensitiveMap<string, string>, 
+    geItems: CaseInsensitiveMap<string, number> }> {
+        
     return Promise.all([
         fetch('public/data/dataItems.json').then(response => response.json() as Promise<[string, string][]>),
         fetch('public/data/dataNPCs.json').then(response => response.json() as Promise<[string, string][]>),

@@ -1,6 +1,9 @@
 import { CaseInsensitiveMap } from "./caseInsensitiveMap";
 
-async function fetchData(): Promise<{ parameters: CaseInsensitiveMap<string, any>, infoboxes: CaseInsensitiveMap<string, any> }> {
+async function fetchData(): Promise<{ 
+    parameters: CaseInsensitiveMap<string, any>, 
+    infoboxes: CaseInsensitiveMap<string, any> }> {
+
     return Promise.all([
         fetch('public/data/parameters.json').then(response => response.json() as Promise<Record<string, any>>),
         fetch('public/data/infoboxes.json').then(response => response.json() as Promise<Record<string, any>>)
@@ -15,6 +18,5 @@ async function fetchData(): Promise<{ parameters: CaseInsensitiveMap<string, any
         throw error;
     });
 }
-
 
 export const { parameters, infoboxes } = await fetchData();

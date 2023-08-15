@@ -2,7 +2,11 @@ import path from 'path';
 
 const webpackConfig = () => ({
     mode: 'production',
-    entry: path.resolve(__dirname, './src/typescript/index.ts'),
+    entry: [
+        path.resolve(__dirname, './src/typescript/index.ts'),
+        path.resolve(__dirname, './src/typescript/historyUpdate.ts'),
+        path.resolve(__dirname, './src/typescript/grandExchange.ts')
+    ],
     module: {
         rules: [
             {
