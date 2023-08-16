@@ -294,5 +294,20 @@
     "vintage components": "Componentes vintage",
     "alchable": "alquimia",
     "restriction": "restrição",
-    "bankable": "depositável"
+    "bankable": "depositável",
+    "totals": "totais",
+    "price": "preço",
+    "ge": "mg",
+    "noweapon": "semarma",
+    "noinv": "seminv", 
+    "noattr": "sematributo",
+    "nosumstats": "nãosomarstats",
+    "nostyle": "semestilo",
+    "sortable": "organizável",
+    "nosmw": "semsmw",
+    "rows": "linhas",
+    "skill2": "habilidade2",
+    "level2": "nível2",
+    "image2": "imagem2",
+    "slot": "espaço"
 }

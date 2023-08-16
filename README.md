@@ -79,6 +79,9 @@ In short, this app is designed to assist in translating templates and the corres
   * [Monster - Monstro](https://runescape.wiki/w/Template:Infobox_Monster_new)
   * [NPC](https://runescape.wiki/w/Template:Infobox_NPC)
   * [Shop - Loja](https://runescape.wiki/w/Template:Infobox_Shop)
+  * [Weapons group - Grupo de armas](https://runescape.wiki/w/Template:Infobox_weapon_group)
+  * [Eq infotable - Tabela equipamento](https://runescape.wiki/w/Template:Equipment_bonuses_infotable)
+  * [Eqinforow - Tabela eq linha](https://runescape.wiki/w/Template:Equipment_bonuses_inforow)
 
 ## Current known bugs
 * *Such empty; much wow.*
