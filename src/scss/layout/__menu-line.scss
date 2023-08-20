@@ -5,7 +5,14 @@
     display: flex;
     width: 60%;
     gap: 1rem;
-    color: clr(text-white);
+    
+    &--dark {
+        color: clr-dark(text-white);
+    }
+
+    &--light {
+        color: clr-white(text-white);
+    }
 
     &__popup-window {
         position: fixed;
@@ -17,7 +24,14 @@
         right: -25rem;
         top: 0;
         z-index: priority(high);
-        background-color: clr(bg-tertiary);
+        
+        &--dark {
+            background-color: clr-dark(bg-tertiary);
+        }
+
+        &--light {
+            background-color: clr-light(bg-tertiary);
+        }
 
         &--show {
             width: 100vw;

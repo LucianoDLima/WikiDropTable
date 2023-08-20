@@ -36,9 +36,16 @@
     box-shadow: .25rem .15rem .25rem 0 clr(strong-neutral);
 }
 
-@mixin border-lighting($right-bottom, $left-top ) {
-    border-right: 0.125rem solid clr($right-bottom);
-    border-left: 0.125rem solid clr($left-top);
-    border-top: 0.125rem solid clr($left-top);
-    border-bottom: 0.125rem solid clr($right-bottom);
+@mixin border-lighting($mode, $right-bottom, $left-top) {
+    @if $mode == dark {
+        border-right: 0.125rem solid clr-dark($right-bottom);
+        border-left: 0.125rem solid clr-dark($left-top);
+        border-top: 0.125rem solid clr-dark($left-top);
+        border-bottom: 0.125rem solid clr-dark($right-bottom);
+    } @else {
+        border-right: 0.125rem solid clr-light($right-bottom);
+        border-left: 0.125rem solid clr-light($left-top);
+        border-top: 0.125rem solid clr-light($left-top);
+        border-bottom: 0.125rem solid clr-light($right-bottom);
+    }
 }

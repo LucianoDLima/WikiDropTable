@@ -1,4 +1,4 @@
-$colors: (
+$colors-dark: (
     bg-primary: hsl(220, 66%, 8%),
     bg-secondary: hsl(220, 34%, 20%),
     bg-tertiary: hsl(220, 29%, 27%),
@@ -11,7 +11,29 @@ $colors: (
 
     strong-neutral: hsl(0, 0%, 10%),
     soft-neutral: hsl(0, 0%, 40%),
-    mid-neutral: hsl(0, 0%, 25%)
+    mid-neutral: hsl(0, 0%, 25%),
+
+    // hsl(0, 0%, 97%)
+    svg: invert(99%) sepia(6%) saturate(144%) hue-rotate(238deg) brightness(112%) contrast(94%)
+);
+
+$colors-light: (
+    bg-primary: rgb(250, 250, 250),
+    bg-secondary: rgb(230, 230, 230),
+    bg-tertiary: rgb(210, 210, 210),
+    bg-quaternary: rgb(190, 190, 190),
+
+    text-primary: rgb(23, 102, 206),
+    text-secondary: rgb(50, 160, 238),
+    text-white: rgb(68, 78, 90),
+    text-off-white: rgb(126, 112, 115),
+
+    strong-neutral: rgb(7, 164, 255),
+    soft-neutral: rgb(123, 180, 255),
+    mid-neutral: rgb(28, 141, 221),
+
+    // rgb(50, 160, 238)
+    svg: brightness(0) saturate(100%) invert(52%) sepia(62%) saturate(1252%) hue-rotate(179deg) brightness(95%) contrast(96%)
 );
 
 $font-sizes: (

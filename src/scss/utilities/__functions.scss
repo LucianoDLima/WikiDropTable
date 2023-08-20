@@ -1,8 +1,13 @@
 @use './_variables' as *;
 
-@function clr($name) {
+@function clr-dark($name) {
     // Handle colors for all properties
-    @return map-get($colors, $name);
+    @return map-get($colors-dark, $name);
+}
+
+@function clr-light($name) {
+    // Handle colors for all properties
+    @return map-get($colors-light, $name);
 }
 
 @function fs($size) {

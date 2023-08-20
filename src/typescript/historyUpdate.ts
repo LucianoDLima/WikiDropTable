@@ -1,3 +1,5 @@
+import { currentMode } from "./colorMode";
+
 const websiteButtons = Array.from(document.querySelectorAll('[data-filter="website"]')) as HTMLButtonElement[];
 const dayButtons = Array.from(document.querySelectorAll('[data-filter="days"]')) as HTMLButtonElement[];
 const monthButtons = Array.from(document.querySelectorAll('[data-filter="months"]')) as HTMLButtonElement[];
@@ -62,10 +64,10 @@ function handleSearchButtons(selected: HTMLButtonElement[]): void {
     selected.forEach((button: HTMLButtonElement): void => {
         button.addEventListener('click', (e: any): void => {
             selected.forEach((btn: HTMLButtonElement): void => {
-                btn.classList.remove('window-button--active');
+                btn.classList.remove(`window-button--active-${currentMode}`);
             });
-
-            button.classList.add('window-button--active');
+            
+            button.classList.add(`window-button--active-${currentMode}`);
 
             const buttonsFilter = e.target.getAttribute('data-filter');
             const { websiteDate } = searchOptions;

@@ -9,12 +9,25 @@
     text-align: center;
     font-size: 12px;
 
-    p { 
+    &__text { 
         margin-top: 0.5rem;
-        color: clr(text-white);
+
+        &--dark {
+            color: clr-dark(text-white);
+        }
+
+        &--light {
+            color: clr-light(text-white);
+        }
     }
 
-    a {
-        color: clr(text-off-white);
+    &__link {
+        &--dark {
+            color: clr-dark(text-off-white);
+        }
+
+        &--light {
+            color: clr-light(text-off-white);
+        }
     }
 }

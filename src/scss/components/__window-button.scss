@@ -3,24 +3,66 @@
 
 .window-button {
     padding: 0.25rem 0.5rem;
-    background-color: clr(bg-secondary);
     border-radius: 0.25rem;
-    @include border-lighting(strong-neutral, soft-neutral);
     cursor: pointer;
 
-    &--active {
-        background-color: clr(bg-tertiary);
-        color: clr(text-off-white);
-        @include border-lighting(soft-neutral, strong-neutral);
+    & img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        margin: 0.25rem auto;
+    }
+
+    &--dark {
+        @include border-lighting(dark, strong-neutral, soft-neutral);
+        background-color: clr-dark(bg-secondary);
+
+        &:hover {
+            background-color: clr-dark(bg-quaternary);
+        }
+
+        & img {
+            filter: clr-dark(svg);
+        }
+    }
+
+    &--light {
+        @include border-lighting(light, strong-neutral, soft-neutral);
+        background-color: clr-light(bg-secondary);
+
+        &:hover {
+            background-color: clr-light(bg-quaternary);
+        }
+
+        & img {
+            filter: clr-light(svg);
+        }
+    }
+
+    &--active-dark {
+        @include border-lighting(dark, soft-neutral, strong-neutral);
+        background-color: clr-dark(bg-tertiary);
+        color: clr-dark(text-off-white);
         box-shadow: unset;
+
+        &:hover {
+            background-color: clr-dark(bg-quaternary);
+        }
+    }
+
+    &--active-light {
+        @include border-lighting(light, soft-neutral, strong-neutral);
+        background-color: clr-light(bg-tertiary);
+        color: clr-light(text-off-white);
+        box-shadow: unset;
+
+        &:hover {
+            background-color: clr-light(bg-quaternary);
+        }
     }
 
     &--disabled {
-        opacity: 0.5;
         pointer-events: none;
-    }
-
-    &:hover {
-        background-color: clr(bg-quaternary);
+        opacity: 0.5;
     }
 }

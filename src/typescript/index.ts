@@ -1,4 +1,5 @@
 import { translate } from './translator';
+import { currentMode } from './colorMode';
 
 const inputTranslator: HTMLTextAreaElement = document.querySelector('[data-js="text-input"]')!;
 const outputTranslator: HTMLTextAreaElement = document.querySelector('[data-js="text-output"]')!;
@@ -85,44 +86,46 @@ popupWindows.forEach((window): void => {
 
         const minSwipeDistance = 100;
 
-        // This handles the closing of the popup windows on mobile
-        // by allowing a swipe-to-close motion.
+        // Handles the closing of the popup windows by a swipe-to-close motion on mobile.
         if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > minSwipeDistance) {
-            const activeButton = document.querySelector('.header-button--active');
-            activeButton?.classList.remove('header-button--active');
+            const activeButton = document.querySelector(`header-button--active-${currentMode}`);
+            activeButton?.classList.remove(`header-button--active-${currentMode}`);
             window.classList.remove('menu-line__popup-window--show');
         }
     });
 });
 
 popupButtons.forEach((button: HTMLButtonElement, btnIndex: number) => {
-    button.addEventListener('click', () => {
-        const isActive = button.classList.contains('header-button--active');
-
-        popupButtons.forEach(
-            (btn: HTMLButtonElement): void => btn.classList.remove('header-button--active')
-        );
-
-        if (!isActive) button.classList.toggle('header-button--active');
-
-        popupWindows.forEach((window: HTMLDivElement, wndIndex: number): void => {
-            btnIndex === wndIndex
-                ? window.classList.toggle('menu-line__popup-window--show')
-                : window.classList.remove('menu-line__popup-window--show');
+    button.addEventListener('click', (): void => {
+        const toggleClass = `header-button--active-${currentMode}`;
+    
+        if (!button.classList.contains(toggleClass)) {
+            popupButtons.forEach((btn: HTMLButtonElement) => btn.classList.remove(toggleClass));
+            button.classList.toggle(toggleClass);
+        }
+        
+        popupWindows.forEach((window: HTMLDivElement, wndIndex: number) => {
+            window.classList.toggle('menu-line__popup-window--show', btnIndex === wndIndex);
         });
     });
 });
 
 document.addEventListener('click', (event): void => {
-    const activeButton = document.querySelector('.header-button--active');
+    const classMode = `header-button--active-${currentMode}`;
+
+    const activeButton = document.querySelector(`.${classMode}`);
+        
     const activeContainer = document.querySelector('.menu-line__popup-window--show');
 
-    if (activeButton == null || activeContainer == null) return;
+    if (activeButton == null || activeContainer == null) 
+        return;
 
-    const bothNotClicked = !activeButton.contains(event.target as Node) && !activeContainer.contains(event.target as Node);
-
+    const bothNotClicked = 
+        !activeButton.contains(event.target as Node) && 
+        !activeContainer.contains(event.target as Node);
+        
     if (bothNotClicked) {
-        activeButton.classList.remove('header-button--active');
+        activeButton.classList.remove(classMode);
         activeContainer.classList.remove('menu-line__popup-window--show');
     }
 });

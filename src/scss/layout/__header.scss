@@ -8,21 +8,52 @@
     width: 100%;
     gap: .25rem;
     padding: 0.25rem;
-    color: clr(text-white);
-    background-color: clr(bg-secondary);
-    border-bottom: 2px solid clr(soft-neutral);
+    
+    &--dark {
+        color: clr-dark(text-white);
+        background-color: clr-dark(bg-secondary);
+        border-bottom: 2px solid clr-dark(soft-neutral);
+    }
+
+    &--light {
+        color: clr-light(text-white);
+        background-color: clr-light(bg-secondary);
+        border-bottom: 2px solid clr-light(soft-neutral);
+    }
 
     &__title {
-        color: clr(text-off-white);
         margin: 0.75rem;
+
+        &--dark {
+            color: clr-dark(text-off-white);
+        }
+
+        &--light {
+            color: clr-light(text-off-white);
+        }
     }
 
     &__icon {
         height: 2.5rem;
         width: 2.5rem;
-        background-color: clr(bg-secondary);
         margin-right: 0.5rem;
         border: none;
         cursor: pointer;
+
+        &--dark {
+            background-color: clr-dark(bg-secondary);
+
+            & img {
+                filter: clr-dark(svg);
+            }
+        }
+
+        &--light {
+            background-color: clr-light(bg-secondary);
+
+            & img {
+                filter: clr-light(svg);
+            }
+        }
     }
 }

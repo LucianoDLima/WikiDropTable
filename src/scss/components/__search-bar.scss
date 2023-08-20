@@ -11,21 +11,43 @@
         padding-block: .5rem 1rem;
         border-radius: inherit;
 
-        input {
+        & input {
+            border-radius: 0.25rem;
             padding: .35rem .25rem;
-            background-color: clr(bg-tertiary);
             color: inherit;
-            @include border-lighting(soft-neutral, strong-neutral);
+        }
+    
+        &--dark {
+            & input {
+                background-color: clr-dark(bg-tertiary);
+                
+                &::placeholder {
+                    color: clr-dark(text-off-white);
+                }
+            }
 
-            &::placeholder {
-                color: clr(text-off-white);
+            button {
+                &:active {
+                    @include border-lighting(dark, soft-neutral, strong-neutral);
+                    background-color: clr-dark(bg-tertiary);
+                }
             }
         }
+    
+        &--light {
+            & input {
+                background-color: clr-light(bg-tertiary);
+        
+                &::placeholder {
+                    color: clr-light(text-off-white);
+                }
+            }
 
-        button {
-            &:active {
-                @include border-lighting(soft-neutral, strong-neutral);
-                background-color: clr(bg-tertiary);
+            button {
+                &:active {
+                    @include border-lighting(light, soft-neutral, strong-neutral);
+                    background-color: clr-light(bg-tertiary);
+                }
             }
         }
     }

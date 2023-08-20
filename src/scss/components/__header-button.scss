@@ -6,25 +6,59 @@
     align-items: center;
     gap: 0.5rem;
     padding: 0.25rem 0.5rem;
-    background-color: clr(bg-secondary);
     border-radius: 0.4rem;
-    @include border-lighting(mid-neutral, soft-neutral);
     cursor: pointer;
+
+    &--dark {
+        @include border-lighting(dark, mid-neutral, soft-neutral);
+        background-color: clr-dark(bg-secondary);
+
+        &:hover {
+            background-color: clr-dark(bg-tertiary);
+        }
+
+        & img {
+            filter: clr-dark(svg);
+        }
+    }
+
+    &--light {
+        @include border-lighting(light, mid-neutral, soft-neutral);
+        background-color: clr-light(bg-secondary);
+
+        &:hover {
+            background-color: clr-light(bg-tertiary);
+        }
+
+        & img {
+            filter: clr-light(svg);
+        }
+    }
+
+    &--active-dark {
+        @include border-lighting(dark, soft-neutral, mid-neutral);
+        background-color: clr-dark(bg-tertiary);
+        box-shadow: unset;
+
+        &:hover {
+            background-color: clr-dark(bg-quaternary);
+        }
+    }
+
+    &--active-light {
+        @include border-lighting(light, soft-neutral, mid-neutral);
+        background-color: clr-light(bg-tertiary);
+        box-shadow: unset;
+
+        &:hover {
+            background-color: clr-light(bg-quaternary);
+        }
+    }
 
     &__icon {
         margin-top: 0.25rem;
         margin-bottom: 0.25rem;
         width: 1.1rem;
         height: 1.1rem; 
-    }
-
-    &--active {
-        background-color: clr(bg-tertiary);
-        @include border-lighting(soft-neutral, mid-neutral);
-        box-shadow: unset;
-    }
-
-    &:hover {
-        background-color: clr(bg-quaternary);
     }
 }

@@ -2,19 +2,25 @@
 
 .option-selector {
     padding-block: 1rem;
-    border-bottom: 0.065rem solid clr(text-off-white);
     display: block;
+    
+    &--dark {
+        border-bottom: 0.065rem solid clr-dark(text-off-white);
+    }
 
+    &--light {
+        border-bottom: 0.065rem solid clr-light(text-off-white);
+    }
+    
     &:last-child {
         border: none;
     }
 
-    h2 {
+    h2, h3 {
         margin-bottom: 0.5rem;
     }
 
-    ol,
-    ul {
+    ol, ul {
         display: flex;
         justify-content: center;
         flex-wrap: wrap;

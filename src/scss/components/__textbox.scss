@@ -14,10 +14,21 @@
         line-height: 1.6;
         padding: 0.5rem;
         border-radius: 0 0 0.5rem 0.5rem;
-        background-color: clr(bg-secondary);
 
-        &:hover, &:focus {
-            background-color: clr(bg-tertiary);
+        &--dark {
+            background-color: clr-dark(bg-secondary);
+
+            &:hover, &:focus {
+                background-color: clr-dark(bg-tertiary);
+            }
+        }
+
+        &--light {
+            background-color: clr-light(bg-secondary);
+
+            &:hover, &:focus {
+                background-color: clr-light(bg-tertiary);
+            }
         }
     }
 
@@ -28,7 +39,6 @@
         
         cursor: pointer;
         position: absolute; 
-        background-color: clr(bg-tertiary);
         border-radius: 0.5rem;
         opacity: 0.5;
         width: 2.5rem; 
@@ -36,19 +46,35 @@
         left: calc(100% - 50px);
         top: 0.625rem;
 
-        @include border-lighting(strong-neutral, soft-neutral);
+        &--dark {
+            @include border-lighting(dark, strong-neutral, soft-neutral);
+            background-color: clr-dark(bg-tertiary);
+        }
+
+        &--light {
+            @include border-lighting(light, strong-neutral, soft-neutral);
+            background-color: clr-light(bg-tertiary);
+        }
 
         &:hover {
             opacity: 1;
         }
 
-        img {
-            width: 60%;
-            height: 60%;
-        }
-
         &--active-scroll {
             left: calc(100% - 70px);
+        }
+    }
+
+    &__img {
+        width: 60%;
+        height: 60%;
+
+        &--dark {
+            filter: clr-dark(svg);
+        }
+
+        &--light {
+            filter: clr-light(svg);
         }
     }
 }

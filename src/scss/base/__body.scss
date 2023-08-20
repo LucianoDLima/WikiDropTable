@@ -1,9 +1,17 @@
 @use '../utilities/_functions' as *;
 
-body {
-    background-color: clr(bg-primary);
+.body {
     font-family: monospace, sans-serif;
     overflow: hidden;
+
+    &--dark {
+        background-color: clr-dark(bg-primary);
+    }
+
+    &--light {
+        background-color: clr-light(bg-primary);
+    }
+    
 }
 
 h2 {
