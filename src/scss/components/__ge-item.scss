@@ -1,0 +1,30 @@
+@use '../utilities/_functions' as *;
+@use '../utilities/_mixins' as *;
+
+.ge-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    margin: 1rem;
+    width: 80%;
+
+    &--dark {
+        border-bottom: 0.065rem solid clr-dark(text-off-white);
+    }
+
+    &--light {
+        border-bottom: 0.065rem solid clr-light(text-off-white);
+    }
+
+    &:last-child {
+        border: none;
+    }
+
+    &__name {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        width: 70%;
+    }
+}

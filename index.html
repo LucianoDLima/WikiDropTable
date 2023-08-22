@@ -571,18 +571,15 @@
                         </button>
 
                         <div class="menu-line__popup-window menu-line__popup-window--dark" data-window="popup">
-                            <div class="search-bar">
+                            <div class="search-bar" id="ge-items">
                                 <h2>Buscar no Mercado Geral</h2>
                                 <div class="search-bar__container search-bar__container--dark">
-                                    <div>
-                                        <input
-                                            type="text"
-                                            placeholder="Digite o nome de um item"
-                                            data-search="input"
-                                        />
-                                        
-                                        <button class="window-button window-button--dark" data-search="button">Abrir</button>
-                                    </div>
+                                    <input
+                                        type="text"
+                                        name="ge-item-input"
+                                        placeholder="Digite o nome de um item"
+                                        data-search="input"
+                                    />
 
                                     <div class="search-bar__message hidden" id="ge_item_found">
                                         <img 
@@ -590,7 +587,7 @@
                                             class="search-bar__svg-icon" 
                                             alt="Positive icon"
                                         />
-                                        <p>Item encontrado!</p>
+                                        <p>‎ Item(s) encontrado(s)!</p>
                                     </div>
 
                                     <div class="search-bar__message hidden" id="ge_not_found">
@@ -599,9 +596,10 @@
                                             class="search-bar__svg-icon" 
                                             alt="Negative icon"
                                         /> 
-                                        <p>Item não existe!</p>
+                                        <p>‎ Nenhum item encontrado!</p>
                                     </div>
                                 </div>
+                                <br/>
                             </div>
                         </div>
                     </div>

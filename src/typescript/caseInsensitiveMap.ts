@@ -35,6 +35,14 @@ export class CaseInsensitiveMap<K, V> {
         return this.map.has(lowercaseKey);
     }
 
+    keys(): K[] {
+        const keys: K[] = [];
+        for (const entry of this.map.values()) {
+            keys.push(entry.key);
+        }
+        return keys;
+    }
+
     private getKeyInLowerCase(key: K): string {
         if (typeof key === 'string') {
             return key.toLowerCase();

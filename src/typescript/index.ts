@@ -123,7 +123,6 @@ document.addEventListener('click', (event): void => {
     const bothNotClicked = 
         !activeButton.contains(event.target as Node) && 
         !activeContainer.contains(event.target as Node);
-        
     if (bothNotClicked) {
         activeButton.classList.remove(classMode);
         activeContainer.classList.remove('menu-line__popup-window--show');
