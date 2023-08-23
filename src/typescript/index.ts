@@ -111,13 +111,19 @@ popupButtons.forEach((button: HTMLButtonElement, btnIndex: number) => {
         const toggleClass = `header-button--active-${currentMode}`;
     
         if (!button.classList.contains(toggleClass)) {
-            popupButtons.forEach((btn: HTMLButtonElement) => btn.classList.remove(toggleClass));
+            popupButtons.forEach((btn: HTMLButtonElement) => 
+                btn.classList.remove(toggleClass)
+            );
+
+            popupWindows.forEach((window: HTMLDivElement, wndIndex: number) => 
+                window.classList.toggle('menu-line__popup-window--show', btnIndex === wndIndex)
+            );
+            
             button.classList.toggle(toggleClass);
+        } else {
+            button.classList.remove(toggleClass);
+            popupWindows[btnIndex].classList.toggle('menu-line__popup-window--show');
         }
-        
-        popupWindows.forEach((window: HTMLDivElement, wndIndex: number) => {
-            window.classList.toggle('menu-line__popup-window--show', btnIndex === wndIndex);
-        });
     });
 });
 
