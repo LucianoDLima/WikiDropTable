@@ -342,6 +342,28 @@ main {
   overflow-y: auto;
   max-height: 100vh;
 }
+.search-bar::-webkit-scrollbar {
+  width: 0.5rem;
+}
+.search-bar::-webkit-scrollbar-track {
+  margin-block: 0.5rem;
+  border-radius: 0.2rem;
+}
+.search-bar::-webkit-scrollbar-thumb {
+  border-radius: 0.2rem;
+}
+.search-bar--dark::-webkit-scrollbar-track {
+  background: hsl(0, 0%, 80%);
+}
+.search-bar--dark::-webkit-scrollbar-thumb {
+  background: hsl(220, 34%, 20%);
+}
+.search-bar--light::-webkit-scrollbar-track {
+  background: rgb(230, 230, 230);
+}
+.search-bar--light::-webkit-scrollbar-thumb {
+  background: rgb(50, 160, 238);
+}
 .search-bar__container {
   padding-block: 0.5rem 1rem;
   height: 5rem;
@@ -424,17 +446,44 @@ main {
   padding: 0.5rem;
   border-radius: 0 0 0.5rem 0.5rem;
 }
+.textbox__textarea::-webkit-scrollbar {
+  width: 1.5rem;
+}
+.textbox__textarea::-webkit-scrollbar-track {
+  border-radius: 0.2rem;
+  margin-top: 0.25rem;
+}
+.textbox__textarea::-webkit-scrollbar-thumb {
+  border-radius: 1rem;
+  margin: 1rem;
+}
 .textbox__textarea--dark {
   background-color: hsl(220, 34%, 20%);
 }
 .textbox__textarea--dark:hover, .textbox__textarea--dark:focus {
   background-color: hsl(220, 29%, 27%);
 }
+.textbox__textarea--dark:hover::-webkit-scrollbar-thumb, .textbox__textarea--dark:focus::-webkit-scrollbar-thumb {
+  border: 0.5rem solid hsl(220, 29%, 27%);
+  background: hsl(220, 34%, 20%);
+}
+.textbox__textarea--dark::-webkit-scrollbar-thumb {
+  border: 0.5rem solid hsl(220, 34%, 20%);
+  background: hsl(220, 29%, 27%);
+}
 .textbox__textarea--light {
   background-color: rgb(230, 230, 230);
 }
 .textbox__textarea--light:hover, .textbox__textarea--light:focus {
   background-color: rgb(210, 210, 210);
+}
+.textbox__textarea--light:hover::-webkit-scrollbar-thumb, .textbox__textarea--light:focus::-webkit-scrollbar-thumb {
+  border: 0.5rem solid rgb(210, 210, 210);
+  background: rgb(28, 141, 221);
+}
+.textbox__textarea--light::-webkit-scrollbar-thumb {
+  border: 0.5rem solid rgb(230, 230, 230);
+  background: rgb(123, 180, 255);
 }
 .textbox__button {
   display: flex;
@@ -467,7 +516,7 @@ main {
   opacity: 1;
 }
 .textbox__button--active-scroll {
-  left: calc(100% - 70px);
+  left: calc(100% - 4rem);
 }
 .textbox__img {
   width: 60%;

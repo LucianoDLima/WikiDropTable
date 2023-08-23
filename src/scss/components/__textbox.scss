@@ -15,11 +15,35 @@
         padding: 0.5rem;
         border-radius: 0 0 0.5rem 0.5rem;
 
+        &::-webkit-scrollbar {
+            width: 1.5rem;
+        }
+    
+        &::-webkit-scrollbar-track {
+            border-radius: 0.2rem;
+            margin-top: 0.25rem;
+        }
+        
+        &::-webkit-scrollbar-thumb { 
+            border-radius: 1rem;
+            margin: 1rem;
+        }
+    
         &--dark {
             background-color: clr-dark(bg-secondary);
 
             &:hover, &:focus {
                 background-color: clr-dark(bg-tertiary);
+
+                &::-webkit-scrollbar-thumb {
+                    border: 0.5rem solid clr-dark(bg-tertiary);
+                    background: clr-dark(bg-secondary);
+                }
+            }
+    
+            &::-webkit-scrollbar-thumb {
+                border: 0.5rem solid clr-dark(bg-secondary);
+                background: clr-dark(bg-tertiary);
             }
         }
 
@@ -28,6 +52,16 @@
 
             &:hover, &:focus {
                 background-color: clr-light(bg-tertiary);
+
+                &::-webkit-scrollbar-thumb {
+                    border: 0.5rem solid clr-light(bg-tertiary);
+                    background: clr-light(mid-neutral);
+                }
+            }
+        
+            &::-webkit-scrollbar-thumb {
+                border: 0.5rem solid clr-light(bg-secondary);
+                background: clr-light(soft-neutral);
             }
         }
     }
@@ -61,7 +95,7 @@
         }
 
         &--active-scroll {
-            left: calc(100% - 70px);
+            left: calc(100% - 4rem);
         }
     }
 

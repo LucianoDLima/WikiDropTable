@@ -8,6 +8,39 @@
     align-items: center;
     overflow-y: auto;
     max-height: 100vh;
+
+    &::-webkit-scrollbar {
+        width: 0.5rem;
+    }
+
+    &::-webkit-scrollbar-track {
+        margin-block: 0.5rem;
+        border-radius: 0.2rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border-radius: 0.2rem;
+    }
+
+    &--dark {
+        &::-webkit-scrollbar-track {
+            background: clr-dark(text-off-white);
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: clr-dark(bg-secondary);
+        }
+    }
+
+    &--light {
+        &::-webkit-scrollbar-track {
+            background: clr-light(bg-secondary);
+        }
+    
+        &::-webkit-scrollbar-thumb {
+            background: clr-light(text-secondary);
+        }
+    } 
     
     &__container {
         padding-block: .5rem 1rem;
