@@ -40,6 +40,17 @@ inputTranslator.addEventListener('input', (): void => {
     }
 });
 
+window.addEventListener('resize', (): void => {
+    copyButton?.classList.toggle(
+        'textbox__button--active-scroll', 
+        outputTranslator.clientHeight < outputTranslator.scrollHeight
+    );
+    delButton?.classList.toggle(
+        'textbox__button--active-scroll', 
+        inputTranslator.clientHeight < inputTranslator.scrollHeight
+    );
+});
+
 copyButton?.addEventListener('focusout', (): void => {
     copySuccess?.classList.add('hidden');
     copyIcon?.classList.remove('hidden');
