@@ -1,6 +1,6 @@
 import { translate } from './translator';
 import { currentMode } from './colorMode';
-import { sleep } from './grandExchange';
+import { sleep } from './sleep';
 
 const inputTranslator: HTMLTextAreaElement = document.querySelector('[data-js="text-input"]')!;
 const outputTranslator: HTMLTextAreaElement = document.querySelector('[data-js="text-output"]')!;

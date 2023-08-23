@@ -1,5 +1,6 @@
 import { currentMode } from './colorMode';
 import { geItems } from './items';
+import { sleep } from './sleep';
 
 const geButton = document.querySelectorAll('[data-button="menu"]')[1]! as HTMLButtonElement;
 const geSearchInput: HTMLInputElement = document.querySelector('[data-search="input"]')!;
@@ -12,10 +13,6 @@ const geItemKeys = geItems.keys();
 let iconsTimer: NodeJS.Timeout | null = null;
 let itemsFound: string[] = [];
 let itemInput: string;
-
-export function sleep(ms: number): Promise<void> {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
 
 async function addItemsFound() {
     searchBarFound.classList.remove('hidden');
@@ -104,7 +101,6 @@ geSearchInput.addEventListener('input', () => {
     }
 
     if (itemsFound.length === 0) {
-        console.log("A");
         searchBarNotFound.classList.remove('hidden');
         return;
     } 
