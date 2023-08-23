@@ -1,5 +1,5 @@
 import { currentMode } from './colorMode';
-import { geItems, itemNames } from './items';
+import { geItems } from './items';
 
 const geButton = document.querySelectorAll('[data-button="menu"]')[1]! as HTMLButtonElement;
 const geSearchInput: HTMLInputElement = document.querySelector('[data-search="input"]')!;
@@ -13,7 +13,7 @@ let iconsTimer: NodeJS.Timeout | null = null;
 let itemsFound: string[] = [];
 let itemInput: string;
 
-function sleep(ms: number): Promise<void> {
+export function sleep(ms: number): Promise<void> {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 

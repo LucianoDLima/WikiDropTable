@@ -1,5 +1,6 @@
 import { translate } from './translator';
 import { currentMode } from './colorMode';
+import { sleep } from './grandExchange';
 
 const inputTranslator: HTMLTextAreaElement = document.querySelector('[data-js="text-input"]')!;
 const outputTranslator: HTMLTextAreaElement = document.querySelector('[data-js="text-output"]')!;
@@ -14,6 +15,9 @@ const popupButtons = Array.from(document.querySelectorAll('[data-button="menu"]'
 // Used for the swipe-to-close motion on the menu windows.
 let startX: any;
 let startY: any;
+
+// Used to close the last opened side window.
+let lastButtonIndex: number;
 
 inputTranslator.focus();
 
@@ -107,22 +111,33 @@ popupWindows.forEach((window): void => {
 });
 
 popupButtons.forEach((button: HTMLButtonElement, btnIndex: number) => {
-    button.addEventListener('click', (): void => {
+    button.addEventListener('click', async (): Promise<void> => {
         const toggleClass = `header-button--active-${currentMode}`;
+        const popupWindow = popupWindows[btnIndex];
     
         if (!button.classList.contains(toggleClass)) {
-            popupButtons.forEach((btn: HTMLButtonElement) => 
-                btn.classList.remove(toggleClass)
-            );
-
-            popupWindows.forEach((window: HTMLDivElement, wndIndex: number) => 
-                window.classList.toggle('menu-line__popup-window--show', btnIndex === wndIndex)
-            );
-            
+            // Must happen first to feel responsive.
             button.classList.toggle(toggleClass);
+
+            const lastActiveButton = popupButtons[lastButtonIndex];
+            const lastActiveWindow = popupWindows[lastButtonIndex];
+
+            if (lastActiveWindow) {
+                lastActiveButton?.classList.remove(toggleClass);
+                lastActiveWindow?.classList.remove('menu-line__popup-window--show');
+                lastActiveWindow?.classList.add('menu-line__popup-window--hide');
+                // Animation is 750ms, but 500ms feels just right.
+                await sleep(500);
+            }
+            
+            popupWindow.classList.remove('menu-line__popup-window--hide');
+            popupWindow.classList.add('menu-line__popup-window--show');
+
+            lastButtonIndex = btnIndex;
         } else {
             button.classList.remove(toggleClass);
-            popupWindows[btnIndex].classList.toggle('menu-line__popup-window--show');
+            popupWindow.classList.remove('menu-line__popup-window--show');
+            popupWindow.classList.add('menu-line__popup-window--hide');
         }
     });
 });
@@ -140,8 +155,10 @@ document.addEventListener('click', (event): void => {
     const bothNotClicked = 
         !activeButton.contains(event.target as Node) && 
         !activeContainer.contains(event.target as Node);
+
     if (bothNotClicked) {
         activeButton.classList.remove(classMode);
         activeContainer.classList.remove('menu-line__popup-window--show');
+        activeContainer.classList.add('menu-line__popup-window--hide');
     }
 });

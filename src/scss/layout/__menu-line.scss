@@ -19,11 +19,11 @@
         text-align: center;
         max-width: 27.5rem;
         padding-inline: 0.5rem;
-        height: 100%;
-        width: 0;
-        right: -25rem;
-        top: 0;
         z-index: priority(high);
+        height: 100%;
+        width: 100vw;
+        right: -30rem;
+        top: 0;
         
         &--dark {
             background-color: clr-dark(bg-tertiary);
@@ -34,8 +34,12 @@
         }
 
         &--show {
-            width: 100vw;
             animation: slideIn 0.75s forwards;
+        }
+
+        &--hide {
+            right: 0;
+            animation: slideOut 0.75s forwards;
         }
     }
 }
@@ -43,5 +47,11 @@
 @keyframes slideIn {
     to {
         right: 0;
+    }
+}
+
+@keyframes slideOut {
+    to {
+        right: -30rem;
     }
 }
