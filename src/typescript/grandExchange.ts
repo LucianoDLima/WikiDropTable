@@ -1,3 +1,4 @@
+import { showIcons, showDetailed } from './geOptions';
 import { currentMode } from './colorMode';
 import { geItems } from './items';
 import { sleep } from './sleep';
@@ -43,15 +44,24 @@ async function addItemsFound() {
             );
         });
     
-        const image = document.createElement('img');
-        image.src = `https://secure.runescape.com/m=itemdb_rs/obj_sprite.gif?id=${itemID}`;
-    
-        container.appendChild(image);
+        if (showIcons) {
+            const image = document.createElement('img');
+            const variant = showDetailed ? 'big' : 'sprite';
+            const imgClass = showDetailed ? 'ge-item__img' : '';
+            
+            image.src = `https://secure.runescape.com/m=itemdb_rs/obj_${variant}.gif?id=${itemID}`;
+            image.className = imgClass;
+
+            container.appendChild(image);
+
+            // Prevents request spam to the API.
+            await sleep(50);
+        }
+
         container.appendChild(paragraph);
         container.appendChild(button);
     
         geItemsContainer.appendChild(container);
-        await sleep(50);
     }
 }  
 
@@ -105,5 +115,8 @@ geSearchInput.addEventListener('input', () => {
         return;
     } 
 
-    iconsTimer = setTimeout(addItemsFound, 250);
+    if (showIcons)
+        iconsTimer = setTimeout(addItemsFound, 250);
+    else
+        addItemsFound();
 });

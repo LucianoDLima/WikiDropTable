@@ -27,4 +27,10 @@
         word-wrap: break-word;
         width: 70%;
     }
+
+    // Used when 'showDetailed' is true.
+    &__img {
+        width: 3.5rem;
+        height: 3.5rem;
+    }
 }

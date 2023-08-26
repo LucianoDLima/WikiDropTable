@@ -560,5 +560,69 @@ main {
   word-wrap: break-word;
   width: 70%;
 }
+.ge-item__img {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+.options-list li {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.options-list li label:hover {
+  cursor: pointer;
+}
+.options-list li div:first-child {
+  width: 40%;
+  text-align: right;
+  margin-right: 1rem;
+}
+.options-list li div:last-child {
+  width: 10%;
+  display: flex;
+  align-items: center;
+}
+.options-list--disabled {
+  opacity: 50% !important;
+  pointer-events: none !important;
+}
+.options-list__checkerbox {
+  appearance: none;
+  position: relative;
+  border-radius: 0.4rem;
+  height: 2rem;
+  width: 2rem;
+}
+.options-list__checkerbox--dark {
+  border-right: 0.125rem solid hsl(0, 0%, 10%);
+  border-left: 0.125rem solid hsl(0, 0%, 40%);
+  border-top: 0.125rem solid hsl(0, 0%, 40%);
+  border-bottom: 0.125rem solid hsl(0, 0%, 10%);
+  background-color: hsl(220, 20%, 30%);
+}
+.options-list__checkerbox--dark:hover {
+  background-color: hsl(220, 29%, 27%);
+}
+.options-list__checkerbox--light {
+  border-right: 0.125rem solid rgb(7, 164, 255);
+  border-left: 0.125rem solid rgb(123, 180, 255);
+  border-top: 0.125rem solid rgb(123, 180, 255);
+  border-bottom: 0.125rem solid rgb(7, 164, 255);
+  background-color: rgb(190, 190, 190);
+}
+.options-list__checkerbox--light:hover {
+  background-color: rgb(210, 210, 210);
+}
+.options-list__checkerbox:hover {
+  cursor: pointer;
+}
+.options-list__checkerbox:checked::after {
+  content: url("../../assets/svgs/positive_icon.svg");
+  position: absolute;
+  width: 110%;
+  height: 110%;
+}
 
 /*# sourceMappingURL=style.css.map */

@@ -6,7 +6,8 @@ const webpackConfig = () => ({
         path.resolve(__dirname, './src/typescript/index.ts'),
         path.resolve(__dirname, './src/typescript/historyUpdate.ts'),
         path.resolve(__dirname, './src/typescript/grandExchange.ts'),
-        path.resolve(__dirname, './src/typescript/colorMode.ts')
+        path.resolve(__dirname, './src/typescript/colorMode.ts'),
+        path.resolve(__dirname, './src/typescript/geOptions.ts')
     ],
     module: {
         rules: [

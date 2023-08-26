@@ -1,0 +1,71 @@
+@use '../utilities/_functions' as *;
+@use '../utilities/_mixins' as *;
+
+.options-list {
+    & li {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        & label:hover {
+            cursor: pointer;
+        }
+
+        // Label.
+        & div:first-child {
+            width: 40%;
+            text-align: right;
+            margin-right: 1rem;
+        }
+
+        // Input checkerbox.
+        & div:last-child {
+            width: 10%;
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    &--disabled {
+        opacity: 50% !important;
+        pointer-events: none !important;
+    }
+
+    &__checkerbox {
+        appearance: none;
+        position: relative;
+        border-radius: 0.4rem;
+        height: 2rem;
+        width: 2rem;
+
+        &--dark {
+            @include border-lighting(dark, strong-neutral, soft-neutral);
+            background-color: clr-dark(bg-quaternary);
+
+            &:hover {
+                background-color: clr-dark(bg-tertiary);
+            }
+        }
+
+        &--light {
+            @include border-lighting(light, strong-neutral, soft-neutral);
+            background-color: clr-light(bg-quaternary);
+
+            &:hover {
+                background-color: clr-light(bg-tertiary);
+            }
+        }
+
+        &:hover {
+            cursor: pointer;           
+        }
+
+        &:checked::after {
+            content: url('../../assets/svgs/positive_icon.svg');
+            position: absolute;
+            width: 110%;
+            height: 110%;
+        }
+    }
+}
