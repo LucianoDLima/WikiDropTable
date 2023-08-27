@@ -8,6 +8,7 @@ const webpackConfig = () => ({
         path.resolve(__dirname, './src/typescript/grandExchange.ts'),
         path.resolve(__dirname, './src/typescript/colorMode.ts'),
         path.resolve(__dirname, './src/typescript/geOptions.ts'),
+        path.resolve(__dirname, './src/typescript/reduceAnims.ts'),
         path.resolve(__dirname, './src/typescript/tooltip.ts')
     ],
     module: {

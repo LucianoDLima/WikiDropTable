@@ -1,6 +1,6 @@
 import { translate } from './translator';
 import { currentMode } from './colorMode';
-import { sleep } from './sleep';
+import { reduceAnims } from './reduceAnims';
 
 const inputTranslator: HTMLTextAreaElement = document.querySelector('[data-js="text-input"]')!;
 const outputTranslator: HTMLTextAreaElement = document.querySelector('[data-js="text-output"]')!;
@@ -16,8 +16,9 @@ const popupButtons = Array.from(document.querySelectorAll('[data-button="menu"]'
 let startX: any;
 let startY: any;
 
-// Used to close the last opened side window.
-let lastButtonIndex: number;
+// Used for the opening and closing of popupWindows.
+let animationTimeout: ReturnType<typeof setTimeout> | null = null;
+let lastButtonIndex: number = -1;
 
 inputTranslator.focus();
 
@@ -111,54 +112,82 @@ popupWindows.forEach((window): void => {
 });
 
 popupButtons.forEach((button: HTMLButtonElement, btnIndex: number) => {
-    button.addEventListener('click', async (): Promise<void> => {
+    button.addEventListener('click', (): void => {
         const toggleClass = `header-button--active-${currentMode}`;
         const popupWindow = popupWindows[btnIndex];
-    
-        if (!button.classList.contains(toggleClass)) {
-            // Must happen first to feel responsive.
-            button.classList.toggle(toggleClass);
 
-            const lastActiveButton = popupButtons[lastButtonIndex];
-            const lastActiveWindow = popupWindows[lastButtonIndex];
+        if (animationTimeout !== null) {
+            clearTimeout(animationTimeout);
+            animationTimeout = null;
+        }
 
-            if (lastActiveWindow) {
-                lastActiveButton?.classList.remove(toggleClass);
-                lastActiveWindow?.classList.remove('menu-line__popup-window--show');
-                lastActiveWindow?.classList.add('menu-line__popup-window--hide');
-                // Animation is 750ms, but 500ms feels just right.
-                await sleep(500);
-            }
-            
-            popupWindow.classList.remove('menu-line__popup-window--hide');
+        // Clicks an Opens the windows associated with the clicked button.
+        if (lastButtonIndex === -1) {
+            button.classList.add(toggleClass);
             popupWindow.classList.add('menu-line__popup-window--show');
-
             lastButtonIndex = btnIndex;
-        } else {
+            return;
+        }
+        
+        // Clicks again and closes the currently opened window.
+        if (lastButtonIndex === btnIndex) {
             button.classList.remove(toggleClass);
             popupWindow.classList.remove('menu-line__popup-window--show');
-            popupWindow.classList.add('menu-line__popup-window--hide');
+            lastButtonIndex = -1;
+
+            if (!reduceAnims) {
+                popupWindow.classList.add('menu-line__popup-window--hide');
+                animationTimeout = setTimeout(() => {
+                    popupWindow.classList.remove('menu-line__popup-window--hide');
+                }, 500); 
+            }
+        
+            return;
+        } 
+
+        // Closes the previously open windows and opens the new one.
+        button.classList.add(toggleClass);
+
+        const lastActiveButton = popupButtons[lastButtonIndex];
+        const lastActiveWindow = popupWindows[lastButtonIndex];
+
+        lastActiveButton?.classList.remove(toggleClass);
+        lastActiveWindow?.classList.remove('menu-line__popup-window--show');
+
+        if (!reduceAnims) {
+            lastActiveWindow?.classList.add('menu-line__popup-window--hide');
+            animationTimeout = setTimeout(() => {
+                popupWindow.classList.remove('menu-line__popup-window--hide');
+                popupWindow.classList.add('menu-line__popup-window--show');
+            }, 500); 
+        } else {
+            popupWindow.classList.remove('menu-line__popup-window--hide');
+            popupWindow.classList.add('menu-line__popup-window--show');
         }
+
+        lastButtonIndex = btnIndex;
     });
 });
 
-document.addEventListener('click', (event): void => {
-    const classMode = `header-button--active-${currentMode}`;
+document.addEventListener('click', (event: MouseEvent): void => {
+    if (lastButtonIndex === -1) return;
 
-    const activeButton = document.querySelector(`.${classMode}`);
-        
-    const activeContainer = document.querySelector('.menu-line__popup-window--show');
+    const eventTarget = event.target as Node;
+    const activeButton = popupButtons[lastButtonIndex];
+    const activeWindow = popupWindows[lastButtonIndex];
 
-    if (activeButton == null || activeContainer == null) 
-        return;
+    if (!activeButton.contains(eventTarget) && !activeWindow.contains(eventTarget)) {
+        activeButton.classList.remove(`header-button--active-${currentMode}`);
+        activeWindow.classList.remove('menu-line__popup-window--show');
 
-    const bothNotClicked = 
-        !activeButton.contains(event.target as Node) && 
-        !activeContainer.contains(event.target as Node);
+        if (!reduceAnims) {
+            activeWindow.classList.add('menu-line__popup-window--hide');
 
-    if (bothNotClicked) {
-        activeButton.classList.remove(classMode);
-        activeContainer.classList.remove('menu-line__popup-window--show');
-        activeContainer.classList.add('menu-line__popup-window--hide');
+            animationTimeout = setTimeout(() => {
+                activeWindow.classList.remove('menu-line__popup-window--hide');
+            }, 500);
+        }
+
+        lastButtonIndex = -1;
     }
 });
