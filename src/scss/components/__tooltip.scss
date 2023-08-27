@@ -1,0 +1,33 @@
+@use '../utilities/_functions' as *;
+@use '../utilities/_mixins' as *;
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+
+    &:hover > &__text {
+        visibility: visible;
+    }
+
+    &__text {
+        position: absolute;
+        visibility: hidden;
+        text-align: center;
+        border-radius: 0.5rem;
+        padding: 0.5rem;
+        width: 16rem;
+        z-index: 100;
+
+        &--dark {
+            @include border-lighting(dark, strong-neutral, soft-neutral);
+            background-color: clr-dark(bg-secondary);
+            color: clr-dark(text-off-white);
+        }
+
+        &--light {
+            @include border-lighting(light, strong-neutral, soft-neutral);
+            background-color: clr-light(bg-secondary);
+            color: clr-light(text-primary);
+        }
+    }
+}

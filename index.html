@@ -624,7 +624,7 @@
                                         <h3>Aparência</h3>
                                         <br/>
                                         <ul>
-                                            <li>
+                                            <li class="tooltip">
                                                 <button
                                                     class="window-button window-button--dark"
                                                     id="darkmode-button"
@@ -636,8 +636,11 @@
                                                         alt="dark-mode-icon"
                                                     /> 
                                                 </button>
+                                                <span class="tooltip__text tooltip__text--dark">
+                                                    Modo de cores escuras.
+                                                </span>
                                             </li>
-                                            <li>
+                                            <li class="tooltip">
                                                 <button
                                                     class="window-button window-button--dark"
                                                     id="lightmode-button"
@@ -649,6 +652,9 @@
                                                         alt="light-mode-icon"
                                                     /> 
                                                 </button>
+                                                <span class="tooltip__text tooltip__text--dark">
+                                                    Modo de cores errado.
+                                                </span>
                                             </li>
                                         </ul>
                                     </div>
@@ -658,8 +664,13 @@
                                         <br/>
                                         <ul class="options-list">
                                             <li>
-                                                <div>
-                                                    <label for="showIconsToggle">Mostrar ícones</label>
+                                                <div class="tooltip">
+                                                    <label for="showIconsToggle">
+                                                        Mostrar ícones
+                                                    </label>
+                                                    <span class="tooltip__text tooltip__text--dark">
+                                                        Desabilitar ícones faz com que a busca por itens fique mais responsiva.
+                                                    </span>
                                                 </div>
                                                 <div>
                                                     <input 
@@ -671,8 +682,13 @@
                                                 </div>
                                             </li>
                                             <li id="showDetailedOption">
-                                                <div>
-                                                    <label for="showDetailedToggle">Ícones em detalhe</label>
+                                                <div class="tooltip">
+                                                    <label for="showDetailedToggle">
+                                                        Ícones em detalhe
+                                                    </label>
+                                                    <span class="tooltip__text tooltip__text--dark">
+                                                        Usar imagens dos modelos ao invés de ícones do inventário.
+                                                    </span>
                                                 </div>
                                                 <div>
                                                     <input 
