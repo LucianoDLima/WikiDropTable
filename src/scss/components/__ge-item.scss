@@ -6,8 +6,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
-    margin: 1rem;
+    padding: 1.25rem;
     width: 80%;
 
     &--dark {
@@ -25,11 +24,27 @@
     &__name {
         overflow-wrap: break-word;
         word-wrap: break-word;
+        padding-right: 0.25rem;
+        padding-left: 0.25rem;
         width: 70%;
     }
 
-    // Used when 'showDetailed' is true.
-    &__img {
+    &__open-url {
+        content: url('../../assets/svgs/open_url_icon.svg');
+        // Needs to overwrite because window-button already sets size for <img>.
+        width: 1.5rem !important;
+        height: 1.5rem !important;
+
+        &--dark {
+            filter: clr-dark(svg);
+        }
+
+        &--light {
+            filter: clr-light(svg);
+        }
+    }
+
+    &__detail-icon {
         width: 3.5rem;
         height: 3.5rem;
     }

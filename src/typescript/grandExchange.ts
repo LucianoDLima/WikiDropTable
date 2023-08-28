@@ -36,18 +36,21 @@ async function addItemsFound() {
     
         const button = document.createElement('button');
         button.className = `window-button window-button--${currentMode}`;
-        button.textContent = 'Abrir';
         button.addEventListener('click', () => {
             window.open(
                 `https://secure.runescape.com/m=itemdb_rs/l=3/a=9/${item}/viewitem?obj=${itemID}`, 
                 '_blank'
             );
         });
+
+        const buttonImage = document.createElement('img');
+        buttonImage.className = 'ge-item__open-url ge__item-open-url--dark'; 
+        button.appendChild(buttonImage);
     
         if (showIcons) {
             const image = document.createElement('img');
             const variant = showDetailed ? 'big' : 'sprite';
-            const imgClass = showDetailed ? 'ge-item__img' : '';
+            const imgClass = showDetailed ? 'ge-item__detail-icon' : '';
             
             image.src = `https://secure.runescape.com/m=itemdb_rs/obj_${variant}.gif?id=${itemID}`;
             image.className = imgClass;

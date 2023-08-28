@@ -24,7 +24,7 @@
 
     &--dark {
         &::-webkit-scrollbar-track {
-            background: clr-dark(text-off-white);
+            background: clr-dark(bg-tertiary);
         }
 
         &::-webkit-scrollbar-thumb {
@@ -34,7 +34,7 @@
 
     &--light {
         &::-webkit-scrollbar-track {
-            background: clr-light(bg-secondary);
+            background: clr-light(bg-tertiary);
         }
     
         &::-webkit-scrollbar-thumb {

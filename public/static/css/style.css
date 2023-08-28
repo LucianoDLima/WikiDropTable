@@ -364,13 +364,13 @@ main {
   border-radius: 0.2rem;
 }
 .search-bar--dark::-webkit-scrollbar-track {
-  background: hsl(0, 0%, 80%);
+  background: hsl(220, 29%, 27%);
 }
 .search-bar--dark::-webkit-scrollbar-thumb {
   background: hsl(220, 34%, 20%);
 }
 .search-bar--light::-webkit-scrollbar-track {
-  background: rgb(230, 230, 230);
+  background: rgb(210, 210, 210);
 }
 .search-bar--light::-webkit-scrollbar-thumb {
   background: rgb(50, 160, 238);
@@ -548,8 +548,7 @@ main {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
-  margin: 1rem;
+  padding: 1.25rem;
   width: 80%;
 }
 .ge-item--dark {
@@ -564,9 +563,22 @@ main {
 .ge-item__name {
   overflow-wrap: break-word;
   word-wrap: break-word;
+  padding-right: 0.25rem;
+  padding-left: 0.25rem;
   width: 70%;
 }
-.ge-item__img {
+.ge-item__open-url {
+  content: url("../../assets/svgs/open_url_icon.svg");
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+}
+.ge-item__open-url--dark {
+  filter: invert(99%) sepia(6%) saturate(144%) hue-rotate(238deg) brightness(112%) contrast(94%);
+}
+.ge-item__open-url--light {
+  filter: brightness(0) saturate(100%) invert(52%) sepia(62%) saturate(1252%) hue-rotate(179deg) brightness(95%) contrast(96%);
+}
+.ge-item__detail-icon {
   width: 3.5rem;
   height: 3.5rem;
 }
