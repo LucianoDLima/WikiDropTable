@@ -53,7 +53,7 @@
     &--active-light {
         @include border-lighting(light, soft-neutral, strong-neutral);
         background-color: clr-light(bg-tertiary);
-        color: clr-light(text-off-white);
+        color: clr-light(text-off-grey);
         box-shadow: unset;
 
         &:hover {

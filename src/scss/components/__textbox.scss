@@ -31,6 +31,7 @@
     
         &--dark {
             background-color: clr-dark(bg-secondary);
+            color: clr-dark(text-secondary);
 
             &:hover, &:focus {
                 background-color: clr-dark(bg-tertiary);
@@ -49,6 +50,7 @@
 
         &--light {
             background-color: clr-light(bg-secondary);
+            color: clr-dark(text-grey);
 
             &:hover, &:focus {
                 background-color: clr-light(bg-tertiary);
@@ -83,11 +85,13 @@
         &--dark {
             @include border-lighting(dark, strong-neutral, soft-neutral);
             background-color: clr-dark(bg-tertiary);
+            color: clr-dark(text-off-white);
         }
 
         &--light {
             @include border-lighting(light, strong-neutral, soft-neutral);
             background-color: clr-light(bg-tertiary);
+            color: clr-light(text-off-grey);
         }
 
         &:hover {

@@ -27,7 +27,7 @@
         &--light {
             @include border-lighting(light, strong-neutral, soft-neutral);
             background-color: clr-light(bg-secondary);
-            color: clr-light(text-primary);
+            color: clr-light(text-off-grey);
         }
     }
 }

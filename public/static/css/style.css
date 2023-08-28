@@ -1,13 +1,16 @@
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 textarea, button {
   font-family: inherit;
-  color: inherit;
   font-size: inherit;
+}
+
+button {
+  color: inherit;
 }
 
 ol, ul {
@@ -81,7 +84,7 @@ main {
   color: hsl(0, 0%, 97%);
 }
 .menu-line--light {
-  color: clr-white(text-white);
+  color: rgb(68, 78, 90);
 }
 .menu-line__popup-window {
   position: fixed;
@@ -134,7 +137,7 @@ main {
 .header--light {
   color: rgb(68, 78, 90);
   background-color: rgb(230, 230, 230);
-  border-bottom: 2px solid rgb(123, 180, 255);
+  border-bottom: 2px solid rgb(103, 169, 255);
 }
 .header__title {
   margin: 0.75rem;
@@ -143,7 +146,7 @@ main {
   color: hsl(0, 0%, 80%);
 }
 .header__title--light {
-  color: rgb(126, 112, 115);
+  color: rgb(71, 73, 80);
 }
 .header__icon {
   height: 2.5rem;
@@ -187,7 +190,7 @@ main {
   color: hsl(0, 0%, 80%);
 }
 .footer__link--light {
-  color: rgb(126, 112, 115);
+  color: rgb(71, 73, 80);
 }
 
 .header-button {
@@ -213,8 +216,8 @@ main {
 }
 .header-button--light {
   border-right: 0.125rem solid rgb(28, 141, 221);
-  border-left: 0.125rem solid rgb(123, 180, 255);
-  border-top: 0.125rem solid rgb(123, 180, 255);
+  border-left: 0.125rem solid rgb(103, 169, 255);
+  border-top: 0.125rem solid rgb(103, 169, 255);
   border-bottom: 0.125rem solid rgb(28, 141, 221);
   background-color: rgb(230, 230, 230);
 }
@@ -236,10 +239,10 @@ main {
   background-color: hsl(220, 20%, 30%);
 }
 .header-button--active-light {
-  border-right: 0.125rem solid rgb(123, 180, 255);
+  border-right: 0.125rem solid rgb(103, 169, 255);
   border-left: 0.125rem solid rgb(28, 141, 221);
   border-top: 0.125rem solid rgb(28, 141, 221);
-  border-bottom: 0.125rem solid rgb(123, 180, 255);
+  border-bottom: 0.125rem solid rgb(103, 169, 255);
   background-color: rgb(210, 210, 210);
   box-shadow: unset;
 }
@@ -278,10 +281,10 @@ main {
   filter: invert(99%) sepia(6%) saturate(144%) hue-rotate(238deg) brightness(112%) contrast(94%);
 }
 .window-button--light {
-  border-right: 0.125rem solid rgb(7, 164, 255);
-  border-left: 0.125rem solid rgb(123, 180, 255);
-  border-top: 0.125rem solid rgb(123, 180, 255);
-  border-bottom: 0.125rem solid rgb(7, 164, 255);
+  border-right: 0.125rem solid rgb(7, 135, 255);
+  border-left: 0.125rem solid rgb(103, 169, 255);
+  border-top: 0.125rem solid rgb(103, 169, 255);
+  border-bottom: 0.125rem solid rgb(7, 135, 255);
   background-color: rgb(230, 230, 230);
 }
 .window-button--light:hover {
@@ -303,12 +306,12 @@ main {
   background-color: hsl(220, 20%, 30%);
 }
 .window-button--active-light {
-  border-right: 0.125rem solid rgb(123, 180, 255);
-  border-left: 0.125rem solid rgb(7, 164, 255);
-  border-top: 0.125rem solid rgb(7, 164, 255);
-  border-bottom: 0.125rem solid rgb(123, 180, 255);
+  border-right: 0.125rem solid rgb(103, 169, 255);
+  border-left: 0.125rem solid rgb(7, 135, 255);
+  border-top: 0.125rem solid rgb(7, 135, 255);
+  border-bottom: 0.125rem solid rgb(103, 169, 255);
   background-color: rgb(210, 210, 210);
-  color: rgb(126, 112, 115);
+  color: rgb(71, 73, 80);
   box-shadow: unset;
 }
 .window-button--active-light:hover {
@@ -327,7 +330,7 @@ main {
   border-bottom: 0.065rem solid hsl(0, 0%, 80%);
 }
 .option-selector--light {
-  border-bottom: 0.065rem solid rgb(126, 112, 115);
+  border-bottom: 0.065rem solid rgb(71, 73, 80);
 }
 .option-selector:last-child {
   border: none;
@@ -400,13 +403,13 @@ main {
   background-color: rgb(210, 210, 210);
 }
 .search-bar__container--light input::placeholder {
-  color: rgb(126, 112, 115);
+  color: rgb(71, 73, 80);
 }
 .search-bar__container--light button:active {
-  border-right: 0.125rem solid rgb(123, 180, 255);
-  border-left: 0.125rem solid rgb(7, 164, 255);
-  border-top: 0.125rem solid rgb(7, 164, 255);
-  border-bottom: 0.125rem solid rgb(123, 180, 255);
+  border-right: 0.125rem solid rgb(103, 169, 255);
+  border-left: 0.125rem solid rgb(7, 135, 255);
+  border-top: 0.125rem solid rgb(7, 135, 255);
+  border-bottom: 0.125rem solid rgb(103, 169, 255);
   background-color: rgb(210, 210, 210);
 }
 .search-bar__message {
@@ -467,6 +470,7 @@ main {
 }
 .textbox__textarea--dark {
   background-color: hsl(220, 34%, 20%);
+  color: hsl(28, 44%, 66%);
 }
 .textbox__textarea--dark:hover, .textbox__textarea--dark:focus {
   background-color: hsl(220, 29%, 27%);
@@ -491,7 +495,7 @@ main {
 }
 .textbox__textarea--light::-webkit-scrollbar-thumb {
   border: 0.5rem solid rgb(230, 230, 230);
-  background: rgb(123, 180, 255);
+  background: rgb(103, 169, 255);
 }
 .textbox__button {
   display: flex;
@@ -512,13 +516,15 @@ main {
   border-top: 0.125rem solid hsl(0, 0%, 40%);
   border-bottom: 0.125rem solid hsl(0, 0%, 10%);
   background-color: hsl(220, 29%, 27%);
+  color: hsl(0, 0%, 80%);
 }
 .textbox__button--light {
-  border-right: 0.125rem solid rgb(7, 164, 255);
-  border-left: 0.125rem solid rgb(123, 180, 255);
-  border-top: 0.125rem solid rgb(123, 180, 255);
-  border-bottom: 0.125rem solid rgb(7, 164, 255);
+  border-right: 0.125rem solid rgb(7, 135, 255);
+  border-left: 0.125rem solid rgb(103, 169, 255);
+  border-top: 0.125rem solid rgb(103, 169, 255);
+  border-bottom: 0.125rem solid rgb(7, 135, 255);
   background-color: rgb(210, 210, 210);
+  color: rgb(71, 73, 80);
 }
 .textbox__button:hover {
   opacity: 1;
@@ -550,7 +556,7 @@ main {
   border-bottom: 0.065rem solid hsl(0, 0%, 80%);
 }
 .ge-item--light {
-  border-bottom: 0.065rem solid rgb(126, 112, 115);
+  border-bottom: 0.065rem solid rgb(71, 73, 80);
 }
 .ge-item:last-child {
   border: none;
@@ -606,10 +612,10 @@ main {
   background-color: hsl(220, 29%, 27%);
 }
 .options-list__checkerbox--light {
-  border-right: 0.125rem solid rgb(7, 164, 255);
-  border-left: 0.125rem solid rgb(123, 180, 255);
-  border-top: 0.125rem solid rgb(123, 180, 255);
-  border-bottom: 0.125rem solid rgb(7, 164, 255);
+  border-right: 0.125rem solid rgb(7, 135, 255);
+  border-left: 0.125rem solid rgb(103, 169, 255);
+  border-top: 0.125rem solid rgb(103, 169, 255);
+  border-bottom: 0.125rem solid rgb(7, 135, 255);
   background-color: rgb(190, 190, 190);
 }
 .options-list__checkerbox--light:hover {
@@ -650,12 +656,12 @@ main {
   color: hsl(0, 0%, 80%);
 }
 .tooltip__text--light {
-  border-right: 0.125rem solid rgb(7, 164, 255);
-  border-left: 0.125rem solid rgb(123, 180, 255);
-  border-top: 0.125rem solid rgb(123, 180, 255);
-  border-bottom: 0.125rem solid rgb(7, 164, 255);
+  border-right: 0.125rem solid rgb(7, 135, 255);
+  border-left: 0.125rem solid rgb(103, 169, 255);
+  border-top: 0.125rem solid rgb(103, 169, 255);
+  border-bottom: 0.125rem solid rgb(7, 135, 255);
   background-color: rgb(230, 230, 230);
-  color: rgb(23, 102, 206);
+  color: rgb(71, 73, 80);
 }
 
 /*# sourceMappingURL=style.css.map */

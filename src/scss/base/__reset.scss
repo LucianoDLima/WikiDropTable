@@ -1,13 +1,16 @@
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
 textarea, button {
     font-family: inherit;
-    color: inherit;
     font-size: inherit;
+}
+
+button { 
+    color: inherit;
 }
 
 ol, ul {

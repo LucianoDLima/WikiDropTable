@@ -16,7 +16,7 @@
     }
 
     &--light {
-        color: clr-light(text-white);
+        color: clr-light(text-grey);
         background-color: clr-light(bg-secondary);
         border-bottom: 2px solid clr-light(soft-neutral);
     }
@@ -29,7 +29,7 @@
         }
 
         &--light {
-            color: clr-light(text-off-white);
+            color: clr-light(text-off-grey);
         }
     }
 
