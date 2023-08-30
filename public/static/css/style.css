@@ -592,19 +592,19 @@ main {
 .options-list li label:hover {
   cursor: pointer;
 }
-.options-list li div:first-child {
+.options-list--disabled {
+  opacity: 50% !important;
+  pointer-events: none !important;
+}
+.options-list__label {
   width: 40%;
   text-align: right;
   margin-right: 1rem;
 }
-.options-list li div:last-child {
+.options-list__container {
   width: 10%;
   display: flex;
   align-items: center;
-}
-.options-list--disabled {
-  opacity: 50% !important;
-  pointer-events: none !important;
 }
 .options-list__checkerbox {
   appearance: none;
@@ -641,6 +641,59 @@ main {
   position: absolute;
   width: 110%;
   height: 110%;
+}
+.options-list__shadowy {
+  left: calc(100% - 7rem);
+  top: calc(100% - 4.325rem);
+  position: absolute;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+}
+.options-list__shadowy button {
+  background-color: transparent !important;
+  border: none !important;
+}
+.options-list__shadowy button:hover + div {
+  opacity: 100%;
+  cursor: pointer;
+}
+.options-list__shadowy button:hover > img {
+  opacity: 100%;
+  cursor: pointer;
+}
+.options-list__shadowy img {
+  transition: 0.2s;
+  margin: 0.5rem;
+  height: 3rem;
+  width: 3rem;
+  opacity: 0;
+}
+.options-list__shadowy div {
+  opacity: 0%;
+  transition: 0.2s;
+  text-align: center;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  width: 3rem;
+  z-index: 100;
+}
+.options-list__shadowy--dark div {
+  border-right: 0.125rem solid hsl(0, 0%, 10%);
+  border-left: 0.125rem solid hsl(0, 0%, 40%);
+  border-top: 0.125rem solid hsl(0, 0%, 40%);
+  border-bottom: 0.125rem solid hsl(0, 0%, 10%);
+  background-color: hsl(220, 34%, 20%);
+  color: hsl(0, 0%, 80%);
+}
+.options-list__shadowy--light div {
+  border-right: 0.125rem solid rgb(7, 135, 255);
+  border-left: 0.125rem solid rgb(103, 169, 255);
+  border-top: 0.125rem solid rgb(103, 169, 255);
+  border-bottom: 0.125rem solid rgb(7, 135, 255);
+  background-color: rgb(230, 230, 230);
+  color: rgb(71, 73, 80);
 }
 
 .tooltip {

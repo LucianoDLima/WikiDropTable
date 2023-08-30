@@ -8,12 +8,8 @@ const yearButtons = Array.from(document.querySelectorAll('[data-filter="years"]'
 const huSearchContainer = Array.from(document.querySelectorAll('[data-filter="container"]')) as HTMLDivElement[];
 const huSearchButton: HTMLButtonElement = document.querySelector('[data-filter="search"]')!;
 
-const dayArray = Array.from(dayButtons);
-const monthArray = Array.from(monthButtons);
-const yearArray = Array.from(yearButtons);
-
 interface WebsiteDate {
-    website: '' | 'Wiki' | 'Oficial' | 'Ambos';
+    website: number;
     day: number | undefined;
     month: number | undefined;
     year: number | undefined;
@@ -27,7 +23,7 @@ interface SearchOptions {
 
 const searchOptions: SearchOptions = {
     websiteDate: {
-        website: '',
+        website: -1,
         day: undefined,
         month: undefined,
         year: undefined,
@@ -44,63 +40,64 @@ const searchOptions: SearchOptions = {
     )
 };
 
-function showUpdatesInterface(): void {
-    // Checks which date interface should appear
-    const website = searchOptions.websiteDate.website;
-    const daysContainer = huSearchContainer[1];
-    const monthsContainer = huSearchContainer[2];
-    const yearsContainer = huSearchContainer[3];
-
-    const showDays = website !== 'Oficial';
-    const showYears = ["Oficial", "Ambos"].includes(website);
-
-    monthsContainer.classList.remove('hidden');
-    daysContainer.classList.toggle('hidden', !showDays);
-    yearsContainer.classList.toggle('hidden', !showYears);
-    huSearchButton.classList.remove('window-button--disabled');
-}
-
-function handleSearchButtons(selected: HTMLButtonElement[]): void {
-    selected.forEach((button: HTMLButtonElement): void => {
-        button.addEventListener('click', (e: any): void => {
-            selected.forEach((btn: HTMLButtonElement): void => {
-                btn.classList.remove(`window-button--active-${currentMode}`);
-            });
-            
-            button.classList.add(`window-button--active-${currentMode}`);
-
-            const buttonsFilter = e.target.getAttribute('data-filter');
-            const { websiteDate } = searchOptions;
-
-            // Gets the index (textContent for website only) of the clicked item
-            switch (buttonsFilter) {
-                case 'website':
-                    websiteDate.website = e.target.textContent.trim();
-                    showUpdatesInterface();
-                    break;
-                case 'days':
-                    websiteDate.day = dayArray.indexOf(e.target);
-                    break;
-                case 'months':
-                    websiteDate.month = monthArray.indexOf(e.target);
-                    break;
-                case 'years':
-                    websiteDate.year = yearArray.indexOf(e.target);
-                    break;
-            }
-        });
-    });
-}
-
-handleSearchButtons(websiteButtons);
-handleSearchButtons(dayButtons);
-handleSearchButtons(monthButtons);
-handleSearchButtons(yearButtons);
-
 function openWebsite(url: string): void {
     // Opens it in a new tab
     window.open(url, '_blank');
 }
+
+websiteButtons.forEach((button: HTMLButtonElement, index: number): void => {
+    button.addEventListener('click', (): void => {
+        const toggleClass = `window-button--active-${currentMode}`;
+        websiteButtons.forEach(btn => btn.classList.remove(toggleClass));
+        button.classList.add(toggleClass);
+
+        searchOptions.websiteDate.website = index;
+        
+        // Checks which date interface should appear.
+        const website = searchOptions.websiteDate.website;
+        const daysContainer = huSearchContainer[1];
+        const monthsContainer = huSearchContainer[2];
+        const yearsContainer = huSearchContainer[3];
+
+        const showDays = website !== 1; // Isn't "Official".
+        const showYears = [1, 2].includes(website); // Isn't "Wiki".
+
+        monthsContainer.classList.remove('hidden');
+        daysContainer.classList.toggle('hidden', !showDays);
+        yearsContainer.classList.toggle('hidden', !showYears);
+        huSearchButton.classList.remove('window-button--disabled');
+    });
+});
+
+dayButtons.forEach((button: HTMLButtonElement, index: number): void => {
+    button.addEventListener('click', (): void => {
+        const toggleClass = `window-button--active-${currentMode}`;
+        dayButtons.forEach(btn => btn.classList.remove(toggleClass));
+        button.classList.add(toggleClass);
+
+        searchOptions.websiteDate.day = index;
+    });
+});
+
+monthButtons.forEach((button: HTMLButtonElement, index: number): void => {
+    button.addEventListener('click', (): void => {
+        const toggleClass = `window-button--active-${currentMode}`;
+        monthButtons.forEach(btn => btn.classList.remove(toggleClass));
+        button.classList.add(toggleClass);
+
+        searchOptions.websiteDate.month = index;
+    });
+});
+
+yearButtons.forEach((button: HTMLButtonElement, index: number): void => {
+    button.addEventListener('click', (): void => {
+        const toggleClass = `window-button--active-${currentMode}`;
+        yearButtons.forEach(btn => btn.classList.remove(toggleClass));
+        button.classList.add(toggleClass);
+
+        searchOptions.websiteDate.year = index;
+    });
+});
 
 huSearchButton.addEventListener('click', () => {
     const { yearList, websiteDate, monthList } = searchOptions;
@@ -114,15 +111,15 @@ huSearchButton.addEventListener('click', () => {
     const wikiWebsite = `https://pt.runescape.wiki/w/${day}_de_${month2}`;
 
     switch (searchOptions.websiteDate.website) {
-        case 'Wiki':
+        case 0: // Wiki
             openWebsite(wikiWebsite);
             break;
 
-        case 'Oficial':
+        case 1: // Official
             openWebsite(officialWebsite);
             break;
 
-        case 'Ambos':
+        case 2: // Both
             openWebsite(officialWebsite);
             openWebsite(wikiWebsite);
             break;

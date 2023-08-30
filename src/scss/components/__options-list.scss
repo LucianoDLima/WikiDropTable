@@ -11,25 +11,23 @@
         & label:hover {
             cursor: pointer;
         }
-
-        // Label.
-        & div:first-child {
-            width: 40%;
-            text-align: right;
-            margin-right: 1rem;
-        }
-
-        // Input checkerbox.
-        & div:last-child {
-            width: 10%;
-            display: flex;
-            align-items: center;
-        }
     }
 
     &--disabled {
         opacity: 50% !important;
         pointer-events: none !important;
+    }
+
+    &__label {
+        width: 40%;
+        text-align: right;
+        margin-right: 1rem;
+    }
+
+    &__container {
+        width: 10%;
+        display: flex;
+        align-items: center;
     }
 
     &__checkerbox {
@@ -66,6 +64,65 @@
             position: absolute;
             width: 110%;
             height: 110%;
+        }
+    }
+
+    &__shadowy {
+        left: calc(100% - 7rem);
+        top: calc(100% - 4.325rem);
+        position: absolute;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: center;
+        align-items: center;
+        
+        & button {
+            background-color: transparent !important;
+            border: none !important;
+
+            &:hover + div {
+                opacity: 100%;
+                cursor: pointer;
+            }
+
+            &:hover > img {
+                opacity: 100%;
+                cursor: pointer;
+            }
+        }
+
+        & img {
+            transition: 0.2s;
+            margin: 0.5rem;
+            height: 3rem; 
+            width: 3rem;
+            opacity: 0;
+        }
+
+        & div {
+            opacity: 0%;
+            transition: 0.2s;
+            text-align: center;
+            border-radius: 0.5rem;
+            padding: 0.5rem;
+            width: 3rem;
+            z-index: 100;
+        }
+
+        &--dark {
+            & div {
+                @include border-lighting(dark, strong-neutral, soft-neutral);
+                background-color: clr-dark(bg-secondary);
+                color: clr-dark(text-off-white);
+            }
+        }
+
+        &--light {
+            & div {
+                @include border-lighting(light, strong-neutral, soft-neutral);
+                background-color: clr-light(bg-secondary);
+                color: clr-light(text-off-grey);
+            }
         }
     }
 }

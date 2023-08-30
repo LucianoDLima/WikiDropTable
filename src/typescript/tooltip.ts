@@ -1,7 +1,7 @@
 const containers: NodeListOf<HTMLElement> = document.querySelectorAll('.tooltip');
 
 containers.forEach((container) => {
-    const tooltip: HTMLSpanElement = container.querySelector('.tooltip__text')!;
+    const tooltip: HTMLDivElement = container.querySelector('.tooltip__text')!;
 
     container.addEventListener('mousemove', (event: MouseEvent): void => {
         // Calculates the position inside the hovered element.

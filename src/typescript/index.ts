@@ -11,6 +11,7 @@ const delButton: HTMLButtonElement = document.querySelector('[data-js="delete-bu
 
 const popupWindows = Array.from(document.querySelectorAll('[data-window="popup"]')) as HTMLDivElement[];
 const popupButtons = Array.from(document.querySelectorAll('[data-button="menu"]')) as HTMLButtonElement[];
+const shadowy: HTMLButtonElement = document.querySelector('.options-list__shadowy')!;
 
 // Used for the swipe-to-close motion on the menu windows.
 let startX: any;
@@ -82,6 +83,19 @@ delButton?.addEventListener('click', (): void => {
     inputTranslator.value = outputTranslator.value = '';
     copyButton?.classList.add('hidden');
     delButton?.classList.add('hidden');
+});
+
+shadowy.addEventListener('click', (): void => {
+    const text: HTMLSpanElement = document.getElementById('shadowy')!;
+
+    if (text) {
+        const newText = 
+            text.textContent?.includes('escuro') 
+                ? 'Modo <i>sombrio</i>' 
+                : 'Modo escuro';
+      
+        text.innerHTML = newText;
+    }
 });
 
 popupWindows.forEach((window): void => {
