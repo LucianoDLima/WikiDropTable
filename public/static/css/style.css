@@ -201,6 +201,9 @@ main {
   border-radius: 0.4rem;
   cursor: pointer;
 }
+.header-button a {
+  text-decoration: none;
+}
 .header-button--dark {
   border-right: 0.125rem solid hsl(0, 0%, 25%);
   border-left: 0.125rem solid hsl(0, 0%, 40%);
@@ -214,6 +217,9 @@ main {
 .header-button--dark img {
   filter: invert(99%) sepia(6%) saturate(144%) hue-rotate(238deg) brightness(112%) contrast(94%);
 }
+.header-button--dark a {
+  color: hsl(0, 0%, 97%);
+}
 .header-button--light {
   border-right: 0.125rem solid rgb(28, 141, 221);
   border-left: 0.125rem solid rgb(103, 169, 255);
@@ -226,6 +232,9 @@ main {
 }
 .header-button--light img {
   filter: brightness(0) saturate(100%) invert(52%) sepia(62%) saturate(1252%) hue-rotate(179deg) brightness(95%) contrast(96%);
+}
+.header-button--light a {
+  color: rgb(68, 78, 90);
 }
 .header-button--active-dark {
   border-right: 0.125rem solid hsl(0, 0%, 40%);

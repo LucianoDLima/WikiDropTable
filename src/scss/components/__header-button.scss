@@ -9,6 +9,10 @@
     border-radius: 0.4rem;
     cursor: pointer;
 
+    & a {
+        text-decoration: none;
+    }
+
     &--dark {
         @include border-lighting(dark, mid-neutral, soft-neutral);
         background-color: clr-dark(bg-secondary);
@@ -19,6 +23,10 @@
 
         & img {
             filter: clr-dark(svg);
+        }
+
+        & a {
+            color: clr-dark(text-white);
         }
     }
 
@@ -32,6 +40,10 @@
 
         & img {
             filter: clr-light(svg);
+        }
+
+        & a {
+            color: clr-light(text-grey);
         }
     }
 

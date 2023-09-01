@@ -127,6 +127,8 @@ popupWindows.forEach((window): void => {
 
 popupButtons.forEach((button: HTMLButtonElement, btnIndex: number) => {
     button.addEventListener('click', (): void => {
+        if (btnIndex === 3) return; // "Help" button.
+
         const toggleClass = `header-button--active-${currentMode}`;
         const popupWindow = popupWindows[btnIndex];
 

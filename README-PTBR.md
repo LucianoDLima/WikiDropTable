@@ -1,15 +1,13 @@
-_**Para a versão em português, [clique aqui](README-PTBR.md).**_
-
 # PT-BR Wiki Translator
 
-## Overview
+## Introdução
 
-The PT-BR Wiki Translator is a browser application designed to assist users in translating pages from the main RuneScape 3 Wiki. It automatically translates specific templates and it's parameter/value combinations. Please note that this tool isn't intended for translating entire pages, but rather templates with fixed translations.
+O PT-BR Wiki Translator é uma aplicação direta no navegador feita para auxiliar usuários na tradução de páginas da wiki em inglês do RuneScape 3. Ela automaticamente traduz predefinições específicas e suas combinações de parâmetros e seus valores. Vale ressaltar que esta ferramenta não é feita para traduzir páginas inteiras, e sim predefinições que possuem traduções fixas.
 
-## Usage guide
+## Guia de uso
 
-### Translation
-Place the desired english template source-code into the text area on the left.
+### Tradução
+Coloque o código-fonte da predefinição em inglês desejada na área de texto à esquerda.
 
 ```
 {{Infobox Recipe
@@ -23,7 +21,7 @@ Place the desired english template source-code into the text area on the left.
 }}
 ```
 
-The above template will be translated to:
+A predefinição acima será traduzida para:
 
 ```
 {{Infobox criar
@@ -37,7 +35,7 @@ The above template will be translated to:
 }}
 ```
 
-Unsupported parameters or those that don't have fixed values (like examine texts or reference notes) are left untranslated.
+Parâmetros não-suportados ou então que não possuem tradução fixa (como textos de examinar ou notas de referência) ficarão sem traduzir.
 
 ```
 {{DropsTableHead}}
@@ -46,7 +44,8 @@ Unsupported parameters or those that don't have fixed values (like examine texts
 {{DropsTableBottom}}
 ```
 
-When translated to Portuguese, it becomes:
+Quando traduzido para Português, ficará:
+
 ```
 {{ObjetoLargadoCabeçalho}}
 {{ObjetoLargado|nome=Runa da alma|quantidade=125-175|raridade=comum}}
@@ -54,7 +53,7 @@ When translated to Portuguese, it becomes:
 {{ObjetoLargadoRodapé}}
 ```
 
-#### Templates currently supported
+#### Predefinições suportadas
 - Drops
   * [Monsters and general](https://runescape.wiki/w/Template:DropsLine)
   * [Events and rewards](https://runescape.wiki/w/Template:DropsLineRW)
@@ -76,33 +75,33 @@ When translated to Portuguese, it becomes:
   * [Eqinforow - Tabela eq linha](https://runescape.wiki/w/Template:Equipment_bonuses_inforow)
 
 
-### Update History (U.H.)
-The `U.H.` interface exists to help users find the correct update text on the RuneScape website (in Portuguese).
+### Histórico de Atualizações (H.A.)
+A interface do `H.A.` existe para ajudar os usuários a encontrar o texto de atualizações correto no site do RuneScape.
 
-After clicking the button, choose where to search for a date:
-- On the PT-BR Wiki (to maybe check if there's already an update page created for a given date); 
-- On the RuneScape website (to search for the desired update text); or 
-- Both at once!
+Após clicar no botão, escolha onde procurar por uma data:
+- Na Wiki PT-Br (para checkar se já existe uma página de atualização para uma certa data);
+- No site do RuneScape (para procurar pelo texto da atualização desejada); ou
+- Ambos ao mesmo tempo!
 
-Choose the month, day and year. Then, click "Search" to open the desired page(s).
+Escolha o mês, dia e ano. Então, clique em "Pesquisar" para abrir a(s) página(s) desejada(s). 
 
-### Grand Exchange (G.E.)
-The `G.E.` interface exists to take users directly to the desired item's G.E. page for them to easily find tradeable item examine texts.
+### Mercado Geral (M.G.)
+A interface do `M.G.` existe para levar os usuários diretamente até a página do M.G. de dado item para facilitar encontrar o texto de examinar de itens negociáveis.
 
-After clicking the button, type the Portuguese name of the desired item into the input field at the top.
+Após clicar no botão, digite o nome de um item no campo de texto no topo.
 
-It's case-insensitive, and after finding the item you're looking for, just click the icon next to it's name.
+É insensível a capitalização, e após encontrar o item desejado, basta clicar no ícone ao lado do nome do item
 
-### Options
-- Appearence: changes between dark and light visual modes;
-- Language: changes between Portuguese and English labels;
-- Grand Exchange:
-  - Show icons: toggles item icons on the G.E. item search list;
-  - Use detailed: toggles the use of detailed icons instead of inventory sprites.
-- Interface: toggles an extra animation for proper opening and closing of the side windows.
-- Text area:
-  - Hyperlinks: toggles template hyperlinks to their Wiki pages;
-  - Untranslated: toggles highlighting of untranslated text.
+### Opções
+- Aparência: troca entre modos de cores escuras e claras;
+- Língua: troca os rótulos entre Português e Inglês;
+- Mercado Geral:
+  - Mostrar ícones: ativa ícones de itens na lista de pesquisa do M.G.;
+  - Usar detalhado: ativa ícones em detalhe ao invés de sprites da mochila;
+- Interface: ativa uma animação extra para abertura e fechamento de janelas laterais.
+- Área de texto:
+  - Hyperlinks: ativa hiperlinks para as páginas da wiki das predefinições;
+  - Untranslated: ativa realçamento de termos não-traduzidos.
 
-## Current known bugs
-* *Such empty; much wow.*
+## Bugs conhecidos
+* *Tão vazio; quanta surpresa.*
