@@ -56,23 +56,14 @@ function setVisuals(): void {
 
     const storedValue = localStorage.getItem(localStorageKey);
 
-    if (storedValue === 'dark' && currentMode === 'dark') {
+    storedValue !== null ? changeMode(storedValue) : changeMode(currentMode);
+
+    if (currentMode === 'dark') {
         darkModeButton?.classList.add('window-button--active-dark');
         lightModeButton?.classList.remove('window-button--active-dark');
     } else {
         lightModeButton?.classList.add('window-button--active-light');
         darkModeButton?.classList.remove('window-button--active-light');
-    }
-
-    if (storedValue !== null) {
-        changeMode(storedValue);
-        return;
-    } 
-
-    try {  
-        localStorage.setItem(localStorageKey, 'dark');
-    } catch (error) {
-        console.error("Error accessing local storage:", error);
     }
 }
 
