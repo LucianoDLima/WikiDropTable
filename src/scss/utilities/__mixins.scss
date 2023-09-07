@@ -1,8 +1,8 @@
 @use './_functions' as *;
 
 // Breakpoints
-@mixin mobile() {
-    @media screen and (max-width: bp(mobile)) {
+@mixin mobile-m() {
+    @media screen and (max-width: bp(mobile-m)) {
         @content;
     }
 }

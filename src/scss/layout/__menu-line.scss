@@ -3,7 +3,7 @@
 
 .menu-line {
     display: flex;
-    width: 60%;
+    flex-wrap: wrap;  
     gap: 1rem;
     
     &--dark {
@@ -41,6 +41,11 @@
             right: 0;
             animation: slideOut 0.75s forwards;
         }
+    }
+
+    @include mobile-m() {
+        justify-content: space-evenly;
+        width: 100%;
     }
 }
 

@@ -31,6 +31,10 @@
         &--light {
             color: clr-light(text-off-grey);
         }
+        
+        @include mobile-m() {
+            width: 50%;
+        }
     }
 
     &__icon {
@@ -54,6 +58,12 @@
             & img {
                 filter: clr-light(svg);
             }
+        }
+
+        @include mobile-m() {
+            margin-right: 0;
+            height: 4rem;
+            width: 4rem;
         }
     }
 }

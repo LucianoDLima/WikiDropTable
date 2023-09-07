@@ -77,7 +77,7 @@ main {
 
 .menu-line {
   display: flex;
-  width: 60%;
+  flex-wrap: wrap;
   gap: 1rem;
 }
 .menu-line--dark {
@@ -109,6 +109,12 @@ main {
 .menu-line__popup-window--hide {
   right: 0;
   animation: slideOut 0.75s forwards;
+}
+@media screen and (max-width: 27.812rem) {
+  .menu-line {
+    justify-content: space-evenly;
+    width: 100%;
+  }
 }
 
 @keyframes slideIn {
@@ -148,6 +154,11 @@ main {
 .header__title--light {
   color: rgb(71, 73, 80);
 }
+@media screen and (max-width: 27.812rem) {
+  .header__title {
+    width: 50%;
+  }
+}
 .header__icon {
   height: 2.5rem;
   width: 2.5rem;
@@ -166,6 +177,13 @@ main {
 }
 .header__icon--light img {
   filter: brightness(0) saturate(100%) invert(52%) sepia(62%) saturate(1252%) hue-rotate(179deg) brightness(95%) contrast(96%);
+}
+@media screen and (max-width: 27.812rem) {
+  .header__icon {
+    margin-right: 0;
+    height: 4rem;
+    width: 4rem;
+  }
 }
 
 .footer {
@@ -263,6 +281,12 @@ main {
   margin-bottom: 0.25rem;
   width: 1.1rem;
   height: 1.1rem;
+}
+@media screen and (max-width: 27.812rem) {
+  .header-button {
+    justify-content: center;
+    width: 40vw;
+  }
 }
 
 .window-button {
@@ -435,12 +459,12 @@ main {
 .search-bar__message p {
   font-size: 1.25rem;
 }
-@media screen and (max-width: 30.625rem) {
+@media screen and (max-width: 23.438rem) {
   .search-bar h2 {
     width: 90%;
   }
 }
-@media screen and (max-width: 26.563rem) {
+@media screen and (max-width: 30.625rem) {
   .search-bar__container {
     display: flex;
     justify-content: space-between;
