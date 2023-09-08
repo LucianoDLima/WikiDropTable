@@ -7,6 +7,9 @@ const geInput: HTMLInputElement = document.querySelector('[data-search="input"]'
 const portugueseText: NodeListOf<HTMLElement> = document.querySelectorAll('[lang="pt"]');
 const englishText: NodeListOf<HTMLElement> = document.querySelectorAll('[lang="en"]');
 
+// Used to select the active textarea.
+export let languageIndex: number;
+
 function setPortuguese(): void {
     const toggleClass = `window-button--active-${currentMode}`;
     engButton.classList.remove(toggleClass);
@@ -17,6 +20,7 @@ function setPortuguese(): void {
     geInput.placeholder = "Digite o nome de um item";
 
     localStorage.setItem('wikiTranslatorLanguageKey', 'pt');
+    languageIndex = 0;
 }
 
 function setEnglish(): void {
@@ -29,6 +33,7 @@ function setEnglish(): void {
     geInput.placeholder = "Insert an item name (in Portuguese)";
 
     localStorage.setItem('wikiTranslatorLanguageKey', 'en');
+    languageIndex = 1;
 }
 
 porButton.addEventListener('click', setPortuguese);

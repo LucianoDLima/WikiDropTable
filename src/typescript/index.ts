@@ -1,8 +1,9 @@
 import { translate } from './translator';
 import { currentMode } from './colorMode';
 import { reduceAnims } from './reduceAnims';
+import { languageIndex } from './language';
 
-const inputTranslator: HTMLTextAreaElement = document.querySelector('[data-js="text-input"]')!;
+const inputFields: NodeListOf<HTMLTextAreaElement> = document.querySelectorAll('[data-js="text-input"]');
 const outputTranslator: HTMLDivElement = document.querySelector('[data-js="text-output"]')!;
 const copyButton: HTMLButtonElement = document.querySelector('[data-js="copy-button"]')!;
 const copyIcon: HTMLImageElement = document.querySelector('[data-js="copy-icon"]')!;
@@ -21,29 +22,31 @@ let startY: any;
 let animationTimeout: ReturnType<typeof setTimeout> | null = null;
 let lastButtonIndex: number = -1;
 
-inputTranslator.focus();
+inputFields[languageIndex].focus();
 
-inputTranslator.addEventListener('input', (): void => {
-    const translated = translate(inputTranslator.value);
-    outputTranslator.innerText = translated;
-
-    if (translated) {
-        // Moves it to the side if there's a scrollbar active.
-        copyButton?.classList.toggle(
-            'textbox__button--active-scroll', 
-            outputTranslator.clientHeight < outputTranslator.scrollHeight
-        );
-        delButton?.classList.toggle(
-            'textbox__button--active-scroll', 
-            inputTranslator.clientHeight < inputTranslator.scrollHeight
-        );
-
-        copyButton?.classList.remove('hidden');
-        delButton?.classList.remove('hidden');
-    } else {
-        copyButton?.classList.add('hidden');
-        delButton?.classList.add('hidden');
-    }
+inputFields.forEach((inputTranslator) => {
+    inputTranslator.addEventListener('input', (): void => {
+        const translated = translate(inputTranslator.value);
+        outputTranslator.innerText = translated;
+    
+        if (translated) {
+            // Moves it to the side if there's a scrollbar active.
+            copyButton?.classList.toggle(
+                'textbox__button--active-scroll', 
+                outputTranslator.clientHeight < outputTranslator.scrollHeight
+            );
+            delButton?.classList.toggle(
+                'textbox__button--active-scroll', 
+                inputTranslator.clientHeight < inputTranslator.scrollHeight
+            );
+    
+            copyButton?.classList.remove('hidden');
+            delButton?.classList.remove('hidden');
+        } else {
+            copyButton?.classList.add('hidden');
+            delButton?.classList.add('hidden');
+        }
+    });
 });
 
 outputTranslator.addEventListener('keypress', (event: Event): void => {
@@ -61,7 +64,7 @@ window.addEventListener('resize', (): void => {
     );
     delButton?.classList.toggle(
         'textbox__button--active-scroll', 
-        inputTranslator.clientHeight < inputTranslator.scrollHeight
+        inputFields[languageIndex].clientHeight < inputFields[languageIndex].scrollHeight
     );
 });
 
@@ -88,7 +91,7 @@ copyButton?.addEventListener('click', (): void => {
 });
 
 delButton?.addEventListener('click', (): void => {
-    inputTranslator.value = outputTranslator.textContent = '';
+    inputFields[languageIndex].value = outputTranslator.textContent = '';
     copyButton?.classList.add('hidden');
     delButton?.classList.add('hidden');
 });
