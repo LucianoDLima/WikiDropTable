@@ -3,7 +3,7 @@ import { currentMode } from './colorMode';
 import { reduceAnims } from './reduceAnims';
 
 const inputTranslator: HTMLTextAreaElement = document.querySelector('[data-js="text-input"]')!;
-const outputTranslator: HTMLTextAreaElement = document.querySelector('[data-js="text-output"]')!;
+const outputTranslator: HTMLDivElement = document.querySelector('[data-js="text-output"]')!;
 const copyButton: HTMLButtonElement = document.querySelector('[data-js="copy-button"]')!;
 const copyIcon: HTMLImageElement = document.querySelector('[data-js="copy-icon"]')!;
 const copySuccess: HTMLImageElement = document.querySelector('[data-js="copy-success"]')!;
@@ -25,7 +25,7 @@ inputTranslator.focus();
 
 inputTranslator.addEventListener('input', (): void => {
     const translated = translate(inputTranslator.value);
-    outputTranslator.value = translated;
+    outputTranslator.innerText = translated;
 
     if (translated) {
         // Moves it to the side if there's a scrollbar active.
@@ -46,6 +46,14 @@ inputTranslator.addEventListener('input', (): void => {
     }
 });
 
+outputTranslator.addEventListener('keypress', (event: Event): void => {
+    event.preventDefault();
+});
+
+outputTranslator.addEventListener('paste', (event: Event): void => {
+    event.preventDefault();
+});
+
 window.addEventListener('resize', (): void => {
     copyButton?.classList.toggle(
         'textbox__button--active-scroll', 
@@ -64,7 +72,7 @@ copyButton?.addEventListener('focusout', (): void => {
 
 copyButton?.addEventListener('click', (): void => {
     navigator.clipboard
-        .writeText(outputTranslator.value)
+        .writeText(outputTranslator.textContent!)
         .then((): void => {
             copyIcon?.classList.add('hidden');
             copySuccess?.classList.remove('hidden');
@@ -80,7 +88,7 @@ copyButton?.addEventListener('click', (): void => {
 });
 
 delButton?.addEventListener('click', (): void => {
-    inputTranslator.value = outputTranslator.value = '';
+    inputTranslator.value = outputTranslator.textContent = '';
     copyButton?.classList.add('hidden');
     delButton?.classList.add('hidden');
 });

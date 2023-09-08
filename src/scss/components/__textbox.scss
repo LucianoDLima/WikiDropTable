@@ -3,17 +3,16 @@
 
 .textbox {
     position: relative;
-    height: 100%;
-    width: 100%;
 
     &__textarea {
         border: none;
         resize: none;
-        width: 100%;
-        height: 100%;
+        width: 39vw;
+        height: 51vh;
         line-height: 1.6;
         padding: 0.5rem;
         border-radius: 0 0 0.5rem 0.5rem;
+        overflow-y: auto;
 
         &::-webkit-scrollbar {
             width: 1.5rem;
@@ -65,6 +64,11 @@
                 border: 0.5rem solid clr-light(bg-secondary);
                 background: clr-light(soft-neutral);
             }
+        }
+
+        @include tablet() {
+            height: 30vh;
+            width: 90vw;
         }
     }
 

@@ -26,6 +26,10 @@
         height: 100%;
         width: 100%;
         gap: 2rem;
+
+        @include mobile-m() {
+            gap: 1rem;
+        }
     }
 
     @include tablet() {
@@ -35,5 +39,9 @@
         &__container {
             flex-direction: column;
         }
+    }
+
+    @include mobile-m() {
+        margin-top: 1rem;
     }
 }
