@@ -645,12 +645,12 @@ main {
   pointer-events: none !important;
 }
 .options-list__label {
-  width: 40%;
+  width: 50%;
   text-align: right;
   margin-right: 1rem;
 }
 .options-list__container {
-  width: 10%;
+  width: 20%;
   display: flex;
   align-items: center;
 }
