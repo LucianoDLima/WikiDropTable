@@ -97,8 +97,10 @@ main {
   color: rgb(68, 78, 90);
 }
 .menu-line__popup-window {
-  position: fixed;
+  overflow-y: auto;
+  overflow-x: hidden;
   text-align: center;
+  position: fixed;
   max-width: 27.5rem;
   padding-inline: 0.5rem;
   z-index: 10;
@@ -107,11 +109,31 @@ main {
   right: -30rem;
   top: 0;
 }
+.menu-line__popup-window::-webkit-scrollbar {
+  width: 1.5rem;
+}
+.menu-line__popup-window::-webkit-scrollbar-thumb {
+  border-radius: 1rem;
+}
 .menu-line__popup-window--dark {
   background-color: hsl(220, 29%, 27%);
 }
+.menu-line__popup-window--dark::-webkit-scrollbar-track {
+  background: hsl(220, 29%, 27%);
+}
+.menu-line__popup-window--dark::-webkit-scrollbar-thumb {
+  border: 0.5rem solid hsl(220, 29%, 27%);
+  background: hsl(220, 34%, 20%);
+}
 .menu-line__popup-window--light {
   background-color: rgb(210, 210, 210);
+}
+.menu-line__popup-window--light::-webkit-scrollbar-track {
+  background: rgb(210, 210, 210);
+}
+.menu-line__popup-window--light::-webkit-scrollbar-thumb {
+  border: 0.5rem solid rgb(210, 210, 210);
+  background: rgb(50, 160, 238);
 }
 .menu-line__popup-window--show {
   animation: slideIn 0.75s forwards;
@@ -759,6 +781,7 @@ main {
   padding: 0.5rem;
   width: 16rem;
   z-index: 100;
+  top: -10rem;
 }
 .tooltip__text--dark {
   border-right: 0.125rem solid hsl(0, 0%, 10%);

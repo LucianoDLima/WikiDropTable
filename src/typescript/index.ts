@@ -13,6 +13,7 @@ const delButton: HTMLButtonElement = document.querySelector('[data-js="delete-bu
 const popupWindows = Array.from(document.querySelectorAll('[data-window="popup"]')) as HTMLDivElement[];
 const popupButtons = Array.from(document.querySelectorAll('[data-button="menu"]')) as HTMLButtonElement[];
 const shadowy: HTMLButtonElement = document.querySelector('.options-list__shadowy')!;
+export const options: HTMLDivElement = popupWindows[2];
 
 // Used for the swipe-to-close motion on the menu windows.
 let startX: any;
@@ -66,6 +67,16 @@ window.addEventListener('resize', (): void => {
         'textbox__button--active-scroll', 
         inputFields[languageIndex].clientHeight < inputFields[languageIndex].scrollHeight
     );
+
+    // Pushes the dividing lines between headers on the options menu 
+    // a bit to the side when the scrollbar is out.
+    if (options.className.includes('menu-line__popup-window--show')) {
+        if (options.scrollHeight > options.clientHeight) {
+            options.style.paddingRight = '0rem';
+        } else {
+            options.style.paddingRight = '0.5rem';
+        }
+    }
 });
 
 copyButton?.addEventListener('focusout', (): void => {
@@ -134,6 +145,16 @@ popupWindows.forEach((window): void => {
             window.classList.remove('menu-line__popup-window--show');
         }
     });
+});
+
+popupButtons[2].addEventListener('click', () => {
+    // Needs to also push the padding on the options when it opens,
+    // as it can open with the scrollbar already out.
+    if (options.scrollHeight > options.clientHeight) {
+        options.style.paddingRight = '0rem';
+    } else {
+        options.style.paddingRight = '0.5rem';
+    }
 });
 
 popupButtons.forEach((button: HTMLButtonElement, btnIndex: number) => {
