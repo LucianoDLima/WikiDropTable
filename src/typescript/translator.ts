@@ -2,6 +2,7 @@ import { parameters, infoboxes } from './parameters';
 import { itemNames, npcNames } from './items';
 import { paramValuesTrie } from './trie';
 import { infoboxesTrie } from './trie';
+import { showLinks } from './textOptions';
 
 const exceptions: any = new Map([
     ['date', dateException],
@@ -238,7 +239,14 @@ function handleInputLine(inputTextLine: string): string {
             const infobox = infoboxesTrie.removeSymbols(allParams[0]);
 
             if (infoboxes.has(infobox)) {
-                output[i] = output[i].replace(infobox, infoboxes.get(infobox));
+                const predef = infoboxes.get(infobox);
+
+                if (showLinks) {
+                    const link = `<a href="#" data-url="https://pt.runescape.wiki/w/Predefini%C3%A7%C3%A3o:${predef}">${predef}</a>`;
+                    output[i] = output[i].replace(infobox, link);
+                } else {
+                    output[i] = output[i].replace(infobox, predef);
+                }
             }
 
             allParams = allParams[1];
@@ -257,7 +265,7 @@ function handleInputLine(inputTextLine: string): string {
     }, '');
 }
 
-export function translate(inputText: string): string {
+export function translate(inputText: string): string[] {
     // Needs to split by newlines to catch the end of a predef/infobox.
-    return inputText.split('\n').map(handleInputLine).join('\n');
+    return inputText.split('\n').map(handleInputLine);
 }

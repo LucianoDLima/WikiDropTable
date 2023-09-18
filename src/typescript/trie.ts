@@ -60,3 +60,5 @@ class Trie {
 export const paramValuesTrie = new Trie(['.png', '.gif', '[', ']', ')']);
 
 export const infoboxesTrie = new Trie(['{', '}']);
+
+export const ignoreNumbersTrie = new Trie(['}', '/']);

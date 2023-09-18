@@ -27,10 +27,20 @@
             border-radius: 1rem;
             margin: 1rem;
         }
+
+        & a {
+            &:hover {
+                cursor: pointer;
+            }
+        }
     
         &--dark {
             background-color: clr-dark(bg-secondary);
             color: clr-dark(text-secondary);
+
+            & a {
+                color: clr-dark(text-primary);
+            }
 
             &:hover, &:focus {
                 background-color: clr-dark(bg-tertiary);
@@ -49,7 +59,11 @@
 
         &--light {
             background-color: clr-light(bg-secondary);
-            color: clr-dark(text-grey);
+            color: clr-light(text-grey);
+
+            & a {
+                color: clr-light(text-off-grey);
+            }
 
             &:hover, &:focus {
                 background-color: clr-light(bg-tertiary);

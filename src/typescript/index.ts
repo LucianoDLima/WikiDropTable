@@ -2,6 +2,8 @@ import { translate } from './translator';
 import { currentMode } from './colorMode';
 import { reduceAnims } from './reduceAnims';
 import { languageIndex } from './language';
+import { showHighlight } from './textOptions';
+import { ignoreNumbersTrie } from './trie';
 
 const inputFields: NodeListOf<HTMLTextAreaElement> = document.querySelectorAll('[data-js="text-input"]');
 const outputTranslator: HTMLDivElement = document.querySelector('[data-js="text-output"]')!;
@@ -28,7 +30,39 @@ inputFields[languageIndex].focus();
 inputFields.forEach((inputTranslator) => {
     inputTranslator.addEventListener('input', (): void => {
         const translated = translate(inputTranslator.value);
-        outputTranslator.innerText = translated;
+
+        if (showHighlight) {
+            const original = inputTranslator.value.split("\n");
+
+            for (let i = 0; i < original.length; i++) {
+                const tempOriginal = original[i].replace(' = ', '=');
+                const translatedLine = translated[i].split('=');
+
+                for (let j = 0; j < translatedLine.length; j++) {
+                    const anyNumsInTheChat = ignoreNumbersTrie.removeSymbols(translatedLine[j]);
+                    if (/^[0-9]+$/.test(anyNumsInTheChat)) 
+                        continue; 
+
+                    if (tempOriginal.includes(translatedLine[j])) {
+                        // Checks '}}' at the end just to keep things clean.
+                        const removeCurly = translatedLine[j].slice(-1) === '}';       
+
+                        // Escapes <ref></ref> because it's being put inside innerHTML, which 
+                        // would make those be recognized as HTML elements instead of plain text.
+                        const cleanedTags = translatedLine[j].replace('<', '&lt').replace('>', '&gt');
+
+                        translatedLine[j] = 
+                            removeCurly 
+                                ? `<b>${translatedLine[j].slice(0, -2)}</b>}}`
+                                : `<b>${cleanedTags}</b>`;
+                    }
+                }
+
+                translated[i] = translatedLine.join('=');
+            }
+        } 
+
+        outputTranslator.innerHTML = translated.join('<br>');
     
         if (translated) {
             // Moves it to the side if there's a scrollbar active.
@@ -48,6 +82,13 @@ inputFields.forEach((inputTranslator) => {
             delButton?.classList.add('hidden');
         }
     });
+});
+
+outputTranslator.addEventListener('click', (event) => {
+    if (event.target instanceof HTMLAnchorElement) {
+        event.preventDefault();
+        window.open(event.target.getAttribute('data-url')!, '_blank');
+    }
 });
 
 outputTranslator.addEventListener('keypress', (event: Event): void => {
@@ -86,7 +127,7 @@ copyButton?.addEventListener('focusout', (): void => {
 
 copyButton?.addEventListener('click', (): void => {
     navigator.clipboard
-        .writeText(outputTranslator.textContent!)
+        .writeText(outputTranslator.innerText!)
         .then((): void => {
             copyIcon?.classList.add('hidden');
             copySuccess?.classList.remove('hidden');

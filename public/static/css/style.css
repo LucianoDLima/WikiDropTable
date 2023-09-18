@@ -532,9 +532,15 @@ main {
   border-radius: 1rem;
   margin: 1rem;
 }
+.textbox__textarea a:hover {
+  cursor: pointer;
+}
 .textbox__textarea--dark {
   background-color: hsl(220, 34%, 20%);
   color: hsl(28, 44%, 66%);
+}
+.textbox__textarea--dark a {
+  color: hsl(28, 100%, 65%);
 }
 .textbox__textarea--dark:hover, .textbox__textarea--dark:focus {
   background-color: hsl(220, 29%, 27%);
@@ -549,6 +555,10 @@ main {
 }
 .textbox__textarea--light {
   background-color: rgb(230, 230, 230);
+  color: rgb(68, 78, 90);
+}
+.textbox__textarea--light a {
+  color: rgb(71, 73, 80);
 }
 .textbox__textarea--light:hover, .textbox__textarea--light:focus {
   background-color: rgb(210, 210, 210);
