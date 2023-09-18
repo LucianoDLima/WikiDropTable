@@ -184,7 +184,7 @@ main {
   color: hsl(0, 0%, 80%);
 }
 .header__title--light {
-  color: rgb(71, 73, 80);
+  color: rgb(105, 105, 105);
 }
 @media screen and (max-width: 27.812rem) {
   .header__title {
@@ -240,7 +240,7 @@ main {
   color: hsl(0, 0%, 80%);
 }
 .footer__link--light {
-  color: rgb(71, 73, 80);
+  color: rgb(105, 105, 105);
 }
 
 .header-button {
@@ -376,7 +376,7 @@ main {
   border-top: 0.125rem solid rgb(7, 135, 255);
   border-bottom: 0.125rem solid rgb(103, 169, 255);
   background-color: rgb(210, 210, 210);
-  color: rgb(71, 73, 80);
+  color: rgb(105, 105, 105);
   box-shadow: unset;
 }
 .window-button--active-light:hover {
@@ -395,7 +395,7 @@ main {
   border-bottom: 0.065rem solid hsl(0, 0%, 80%);
 }
 .option-selector--light {
-  border-bottom: 0.065rem solid rgb(71, 73, 80);
+  border-bottom: 0.065rem solid rgb(105, 105, 105);
 }
 .option-selector:last-child {
   border: none;
@@ -468,7 +468,7 @@ main {
   background-color: rgb(210, 210, 210);
 }
 .search-bar__container--light input::placeholder {
-  color: rgb(71, 73, 80);
+  color: rgb(105, 105, 105);
 }
 .search-bar__container--light button:active {
   border-right: 0.125rem solid rgb(103, 169, 255);
@@ -542,6 +542,9 @@ main {
 .textbox__textarea--dark a {
   color: hsl(28, 100%, 65%);
 }
+.textbox__textarea--dark b {
+  color: hsl(0, 100%, 73%);
+}
 .textbox__textarea--dark:hover, .textbox__textarea--dark:focus {
   background-color: hsl(220, 29%, 27%);
 }
@@ -558,7 +561,10 @@ main {
   color: rgb(68, 78, 90);
 }
 .textbox__textarea--light a {
-  color: rgb(71, 73, 80);
+  color: rgb(105, 105, 105);
+}
+.textbox__textarea--light b {
+  color: rgb(255, 120, 120);
 }
 .textbox__textarea--light:hover, .textbox__textarea--light:focus {
   background-color: rgb(210, 210, 210);
@@ -604,7 +610,7 @@ main {
   border-top: 0.125rem solid rgb(103, 169, 255);
   border-bottom: 0.125rem solid rgb(7, 135, 255);
   background-color: rgb(210, 210, 210);
-  color: rgb(71, 73, 80);
+  color: rgb(105, 105, 105);
 }
 .textbox__button:hover {
   opacity: 1;
@@ -635,7 +641,7 @@ main {
   border-bottom: 0.065rem solid hsl(0, 0%, 80%);
 }
 .ge-item--light {
-  border-bottom: 0.065rem solid rgb(71, 73, 80);
+  border-bottom: 0.065rem solid rgb(105, 105, 105);
 }
 .ge-item:last-child {
   border: none;
@@ -773,7 +779,7 @@ main {
   border-top: 0.125rem solid rgb(103, 169, 255);
   border-bottom: 0.125rem solid rgb(7, 135, 255);
   background-color: rgb(230, 230, 230);
-  color: rgb(71, 73, 80);
+  color: rgb(105, 105, 105);
 }
 
 .tooltip {
@@ -807,7 +813,7 @@ main {
   border-top: 0.125rem solid rgb(103, 169, 255);
   border-bottom: 0.125rem solid rgb(7, 135, 255);
   background-color: rgb(230, 230, 230);
-  color: rgb(71, 73, 80);
+  color: rgb(105, 105, 105);
 }
 
 /*# sourceMappingURL=style.css.map */

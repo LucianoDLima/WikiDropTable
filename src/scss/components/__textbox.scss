@@ -42,6 +42,10 @@
                 color: clr-dark(text-primary);
             }
 
+            & b {
+                color: clr-dark(text-highlighted);
+            }
+
             &:hover, &:focus {
                 background-color: clr-dark(bg-tertiary);
 
@@ -63,6 +67,10 @@
 
             & a {
                 color: clr-light(text-off-grey);
+            }
+
+            & b {
+                color: clr-light(text-highlighted);
             }
 
             &:hover, &:focus {
