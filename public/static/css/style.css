@@ -542,8 +542,11 @@ main {
 .textbox__textarea--dark a {
   color: hsl(28, 100%, 65%);
 }
-.textbox__textarea--dark b {
+.textbox__textarea--dark b.untranslated {
   color: hsl(0, 100%, 73%);
+}
+.textbox__textarea--dark b.examine {
+  color: hsl(41, 100%, 65%);
 }
 .textbox__textarea--dark:hover, .textbox__textarea--dark:focus {
   background-color: hsl(220, 29%, 27%);
@@ -563,8 +566,11 @@ main {
 .textbox__textarea--light a {
   color: rgb(105, 105, 105);
 }
-.textbox__textarea--light b {
+.textbox__textarea--light b.untranslated {
   color: rgb(255, 120, 120);
+}
+.textbox__textarea--light b.examine {
+  color: hsl(34, 100%, 65%);
 }
 .textbox__textarea--light:hover, .textbox__textarea--light:focus {
   background-color: rgb(210, 210, 210);

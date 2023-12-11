@@ -43,7 +43,13 @@
             }
 
             & b {
-                color: clr-dark(text-highlighted);
+                &.untranslated {
+                    color: clr-dark(text-highlighted);
+                }
+        
+                &.examine {
+                    color: clr-dark(text-examine);
+                }  
             }
 
             &:hover, &:focus {
@@ -70,7 +76,13 @@
             }
 
             & b {
-                color: clr-light(text-highlighted);
+                &.untranslated {
+                    color: clr-light(text-highlighted);
+                }
+        
+                &.examine {
+                    color: clr-light(text-examine);
+                } 
             }
 
             &:hover, &:focus {

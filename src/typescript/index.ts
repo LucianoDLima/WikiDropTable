@@ -2,8 +2,8 @@ import { translate } from './translator';
 import { currentMode } from './colorMode';
 import { reduceAnims } from './reduceAnims';
 import { languageIndex } from './language';
-import { showHighlight } from './textOptions';
 import { ignoreNumbersTrie } from './trie';
+import { showHighlight, showExamine } from './textOptions';
 
 const inputFields: NodeListOf<HTMLTextAreaElement> = document.querySelectorAll('[data-js="text-input"]');
 const outputTranslator: HTMLDivElement = document.querySelector('[data-js="text-output"]')!;
@@ -39,6 +39,7 @@ inputFields.forEach((inputTranslator) => {
                 const translatedLine = translated[i].split('=');
 
                 for (let j = 0; j < translatedLine.length; j++) {
+                    // Skips numbers, as ofc they won't be translated.
                     const anyNumsInTheChat = ignoreNumbersTrie.removeSymbols(translatedLine[j]);
                     if (/^[0-9]+$/.test(anyNumsInTheChat)) 
                         continue; 
@@ -51,10 +52,21 @@ inputFields.forEach((inputTranslator) => {
                         // would make those be recognized as HTML elements instead of plain text.
                         const cleanedTags = translatedLine[j].replace('<', '&lt').replace('>', '&gt');
 
+                        if (cleanedTags.endsWith(".") || cleanedTags.endsWith(".}}")) {
+                            if (showExamine) {
+                                translatedLine[j] = 
+                                    removeCurly 
+                                        ? `<b class="examine">${translatedLine[j].slice(0, -2)}</b>}}`
+                                        : `<b class="examine">${cleanedTags}</b>`;
+
+                                continue;
+                            }
+                        }
+
                         translatedLine[j] = 
                             removeCurly 
-                                ? `<b>${translatedLine[j].slice(0, -2)}</b>}}`
-                                : `<b>${cleanedTags}</b>`;
+                                ? `<b class="untranslated">${translatedLine[j].slice(0, -2)}</b>}}`
+                                : `<b class="untranslated">${cleanedTags}</b>`;
                     }
                 }
 
