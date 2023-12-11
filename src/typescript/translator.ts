@@ -210,6 +210,13 @@ function handleParamValue(paramValue: any, outputLine: any): string {
 }
 
 function handleInputLine(inputTextLine: string): string {
+    // Hard-coded exception to handle {{NPC map}}, as it breaks the whole code.
+    if (inputTextLine.toLowerCase().includes('npc map')) {
+        const paramName = inputTextLine.split('=')[0].slice(1).trim();
+        const paramValue = inputTextLine.replace(' = ', '=');
+        return handleParamName(paramName, paramValue);
+    }
+
     // Standardizes to properly replace whole words during paramValue replacing.
     // Also tries to split by both '<' and '>' to skip refNotes.
     const output = inputTextLine.replace(/ = /g, '=').split(/[<>]+/);
