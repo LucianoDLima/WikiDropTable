@@ -4,7 +4,7 @@ import { paramValuesTrie } from './trie';
 import { infoboxesTrie } from './trie';
 import { showLinks } from './textOptions';
 
-const exceptions: any = new Map([
+const exceptions: Map<string, Function> = new Map([
     ['date', dateException],
     ['release', releaseException],
     ['exchange', mercadoException],
@@ -19,7 +19,7 @@ function dateException(text: string): string {
 }
 
 function releaseException(text: string): string {
-    const months = new Map([
+    const months: Map<string, string> = new Map([
         ['january', 'Janeiro'],
         ['february', 'Fevereiro'],
         ['march', 'Março'],
@@ -44,11 +44,8 @@ function releaseException(text: string): string {
 function mercadoException(text: string): string {
     const gemwMatch = text.match(/\|(exchange|gemw)=([^|\[\]]+)/gi);
 
-    if (!gemwMatch) {
-        // Return the original text if there is no 'exchange' or 'gemw' param in the text.
-        
-        return text;
-    }
+    // Return the original text if there is no 'exchange' or 'gemw' param in the text.
+    if (!gemwMatch) return text;
 
     const gemw = gemwMatch[0];
 
@@ -59,7 +56,6 @@ function mercadoException(text: string): string {
     return text.replace(gemw, '|mercado=gemw');
 }
 
-
 function groupParams(params: string[]): [string, string][] {
     return Array.from(
         // Groups paramName and paramValue together.
@@ -68,7 +64,7 @@ function groupParams(params: string[]): [string, string][] {
     );
 }
 
-function splitParamsFromLine(paramLine: string): any  {
+function splitParamsFromLine(paramLine: string): [string, string] | boolean | [string, string][] | [string, [string, string][]]  {
     // Splits by both '|' and '=' to separate all params in a line.
     const params = paramLine.split(/[|=]+/);
 
@@ -108,7 +104,6 @@ function handleParamName(paramName: string, outputLine: string): string {
 
     return outputLine;
 }
-
 
 function removeGunk(text: string): string {
     // In case it's some edge-case like '2 [[Hellfire metal]]'.
@@ -222,30 +217,26 @@ function handleInputLine(inputTextLine: string): string {
 
     for (let i = 0; i < outputLength; i++) {
         // Any refNotes will be left on odd indexes.
-        if (i % 2 === 1) {
-            continue;
-        }
+        if (i % 2 === 1) continue;
 
         // Handles lines with multiple param-value combinations.
         let allParams: any = splitParamsFromLine(output[i]);
 
         // It's an empty line.
-        if (!allParams) {
-            continue;
-        }
+        if (!allParams) continue;
 
         // If there's an infobox/predef name to be translated.
         if (allParams.length === 2) {
-            const infobox = infoboxesTrie.removeSymbols(allParams[0]);
+            const infoboxName = infoboxesTrie.removeSymbols(allParams[0]);
 
-            if (infoboxes.has(infobox)) {
-                const predef = infoboxes.get(infobox);
+            if (infoboxes.has(infoboxName)) {
+                const predef = infoboxes.get(infoboxName);
 
                 if (showLinks) {
                     const link = `<a href="#" data-url="https://pt.runescape.wiki/w/Predefini%C3%A7%C3%A3o:${predef}">${predef}</a>`;
-                    output[i] = output[i].replace(infobox, link);
+                    output[i] = output[i].replace(infoboxName, link);
                 } else {
-                    output[i] = output[i].replace(infobox, predef);
+                    output[i] = output[i].replace(infoboxName, predef);
                 }
             }
 
@@ -253,7 +244,6 @@ function handleInputLine(inputTextLine: string): string {
         }
 
         for (const [paramName, paramValue] of allParams) {
-            //console.log(`${paramName} --- ${paramValue}`);
             output[i] = handleParamName(paramName, output[i]);
             output[i] = handleParamValue(paramValue, output[i]);
         }
