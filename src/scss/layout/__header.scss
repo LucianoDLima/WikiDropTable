@@ -6,9 +6,9 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    gap: .25rem;
+    gap: 0.25rem;
     padding: 0.25rem;
-    
+
     &--dark {
         color: clr-dark(text-white);
         background-color: clr-dark(bg-secondary);
@@ -23,6 +23,7 @@
 
     &__title {
         margin: 0.75rem;
+        font-size: clamp(1rem, 3vw + 0.25rem, 1.5rem);
 
         &--dark {
             color: clr-dark(text-off-white);
@@ -31,7 +32,7 @@
         &--light {
             color: clr-light(text-off-grey);
         }
-        
+
         @include mobile-m() {
             width: 50%;
         }

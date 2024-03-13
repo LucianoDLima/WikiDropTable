@@ -179,6 +179,7 @@ main {
 }
 .header__title {
   margin: 0.75rem;
+  font-size: clamp(1rem, 3vw + 0.25rem, 1.5rem);
 }
 .header__title--dark {
   color: hsl(0, 0%, 80%);
@@ -454,6 +455,9 @@ main {
 .search-bar__container--dark input {
   background-color: hsl(220, 29%, 27%);
 }
+.search-bar__container--dark input::-moz-placeholder {
+  color: hsl(0, 0%, 80%);
+}
 .search-bar__container--dark input::placeholder {
   color: hsl(0, 0%, 80%);
 }
@@ -466,6 +470,9 @@ main {
 }
 .search-bar__container--light input {
   background-color: rgb(210, 210, 210);
+}
+.search-bar__container--light input::-moz-placeholder {
+  color: rgb(105, 105, 105);
 }
 .search-bar__container--light input::placeholder {
   color: rgb(105, 105, 105);
@@ -699,7 +706,9 @@ main {
   align-items: center;
 }
 .options-list__checkerbox {
-  appearance: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
   position: relative;
   border-radius: 0.4rem;
   height: 2rem;
@@ -820,6 +829,4 @@ main {
   border-bottom: 0.125rem solid rgb(7, 135, 255);
   background-color: rgb(230, 230, 230);
   color: rgb(105, 105, 105);
-}
-
-/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */
