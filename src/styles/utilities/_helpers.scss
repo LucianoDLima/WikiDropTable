@@ -1,8 +1,0 @@
-// Set the default page's width plus the margin smoothly
-.wrapper {
-  --page-size: 80rem;
-  --inline-space: 2rem;
-
-  width: min(var(--page-size), 100% - var(--inline-space));
-  margin-inline: auto;
-}

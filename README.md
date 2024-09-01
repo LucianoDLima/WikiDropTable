@@ -1,108 +1,50 @@
-_**Para a versão em português, [clique aqui](README-PTBR.md).**_
+# React + TypeScript + Vite
 
-# PT-BR Wiki Translator
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Overview
+Currently, two official plugins are available:
 
-The PT-BR Wiki Translator is a browser application designed to assist users in translating pages from the main RuneScape 3 Wiki. It automatically translates specific templates and it's parameter/value combinations. Please note that this tool isn't intended for translating entire pages, but rather templates with fixed translations.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Usage guide
+## Expanding the ESLint configuration
 
-### Translation
-Place the desired english template source-code into the text area on the left.
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-```
-{{Infobox Recipe
-|name = Luck of the Dwarves
-|ticks = 3
-|skill = Magic
-|level = 87
-|skillXP = 97
-|geValue = gemw
-|members = yes
-}}
-```
+- Configure the top-level `parserOptions` property like this:
 
-The above template will be translated to:
-
-```
-{{Infobox criar
-|nome = Sorte dos Anões
-|ticks = 3
-|habilidade = Magia
-|nível = 87
-|habilidade_exp = 97
-|mercado = gemw
-|membros = Sim
-}}
+```js
+export default tseslint.config({
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
 ```
 
-Unsupported parameters or those that don't have fixed values (like examine texts or reference notes) are left untranslated.
+- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
+- Optionally add `...tseslint.configs.stylisticTypeChecked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
 
+```js
+// eslint.config.js
+import react from 'eslint-plugin-react'
+
+export default tseslint.config({
+  // Set the react version
+  settings: { react: { version: '18.3' } },
+  plugins: {
+    // Add the react plugin
+    react,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended rules
+    ...react.configs.recommended.rules,
+    ...react.configs['jsx-runtime'].rules,
+  },
+})
 ```
-{{DropsTableHead}}
-{{DropsLine|name=Soul rune|quantity=125-175|rarity=Common}}
-{{DropsLine|name=Dark animica stone spirit|quantity=60-95|namenotes=<ref name="Stone spirits" group="d">Light and dark animica stone spirits are dropped together in the same quantities.</ref>|rarity=Common}}
-{{DropsTableBottom}}
-```
-
-When translated to Portuguese, it becomes:
-```
-{{ObjetoLargadoCabeçalho}}
-{{ObjetoLargado|nome=Runa da alma|quantidade=125-175|raridade=comum}}
-{{ObjetoLargado|nome=Espírito da pedra de animica sombria|quantidade=60-95|nomeNotas=<ref name="Stone spirits" group="d">Light and dark animica stone spirits are dropped together in the same quantities.</ref>|raridade=comum}}
-{{ObjetoLargadoRodapé}}
-```
-
-#### Templates currently supported
-- Drops
-  * [Monsters and general](https://runescape.wiki/w/Template:DropsLine)
-  * [Events and rewards](https://runescape.wiki/w/Template:DropsLineRW)
-  * [Woodcutting](https://runescape.wiki/w/Template:DropsLineWC)
-  * [Archeology](https://runescape.wiki/w/Template:DropsLineArch)
-  * [Thieving](https://runescape.wiki/w/Template:DropsLineThiev)
-  * [Hunter](https://runescape.wiki/w/Template:DropsLineHunt)
-- Infoboxes. 
-  * [Recipe - Criação](https://runescape.wiki/w/Template:Infobox_Recipe)
-  * [Item - Objeto](https://runescape.wiki/w/Module:Infobox_Item)
-  * [Summon Pouch - Algibeiras de Evocação](https://runescape.wiki/w/Template:Infobox_Summoning_pouch)
-  * [Summon Scrolls - Pergaminhos de Evocação](https://runescape.wiki/w/Template:Infobox_Summoning_scroll)
-  * [Familiar - Familiar](https://runescape.wiki/w/Template:Infobox_familiar)
-  * [Monster - Monstro](https://runescape.wiki/w/Template:Infobox_Monster_new)
-  * [NPC](https://runescape.wiki/w/Template:Infobox_NPC)
-  * [Shop - Loja](https://runescape.wiki/w/Template:Infobox_Shop)
-  * [Weapons group - Grupo de armas](https://runescape.wiki/w/Template:Infobox_weapon_group)
-  * [Eq infotable - Tabela equipamento](https://runescape.wiki/w/Template:Equipment_bonuses_infotable)
-  * [Eqinforow - Tabela eq linha](https://runescape.wiki/w/Template:Equipment_bonuses_inforow)
-
-
-### Update History (U.H.)
-The `U.H.` interface exists to help users find the correct update text on the RuneScape website (in Portuguese).
-
-After clicking the button, choose where to search for a date:
-- On the PT-BR Wiki (to maybe check if there's already an update page created for a given date); 
-- On the RuneScape website (to search for the desired update text); or 
-- Both at once!
-
-Choose the month, day and year. Then, click "Search" to open the desired page(s).
-
-### Grand Exchange (G.E.)
-The `G.E.` interface exists to take users directly to the desired item's G.E. page for them to easily find tradeable item examine texts.
-
-After clicking the button, type the Portuguese name of the desired item into the input field at the top.
-
-It's case-insensitive, and after finding the item you're looking for, just click the icon next to it's name.
-
-### Options
-- Appearence: changes between dark and light visual modes;
-- Language: changes between Portuguese and English labels;
-- Grand Exchange:
-  - Show icons: toggles item icons on the G.E. item search list;
-  - Use detailed: toggles the use of detailed icons instead of inventory sprites.
-- Interface: toggles an extra animation for proper opening and closing of the side windows.
-- Text area:
-  - Hyperlinks: toggles template hyperlinks to their Wiki pages;
-  - Untranslated: toggles highlighting of untranslated text.
-
-## Current known bugs
-* *Such empty; much wow.*
